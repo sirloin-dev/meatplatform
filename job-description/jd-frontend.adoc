@@ -1,0 +1,52 @@
+= 프론트엔드 개발자
+// Metadata:
+:description: jd-frontend
+:keywords: Sir.LOIN, platform, jd-frontend, hiring
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[jd-frontend-engineer]]
+== 백엔드 개발자
+
+저희는 연차보다는 후보자님의 역량에 따라 Seniority 를 부여합니다. 
+
+경력이 짧다고 후보자님을 주니어 취급하는 현 직장에 지치셨다면, 지금 바로 지원해보세요!
+
+link:hiring-notice.adoc[채용 공고 바로가기]
+
+[[jd-frontend-you-will]]
+=== 주요 업무
+
+* 육쟁이청년들 서비스(육류 도매 플랫폼 서비스) 모바일 웹페이지 구축
+* 육쟁이청년들 서비스 모바일 앱 개발(크로스 플랫폼 이용)
+* 육쟁이청년들 서비스 운영을 위한 Admin 개발 및 구축
+
+[[jd-frontend-you-have]]
+=== 자격 요건
+
+* 학력 무관
+* ts/nodejs, python, java 8 이상, kotlin, swift 중 하나 이상의 언어에 능숙하신 분
+* 웹 프론트엔드 또는 모바일 프론트엔드 개발을 1년 이상 경험하신 분
+* 페어 프로그래밍 및 코드 리뷰에 거부감이 없고 테스트 코드 작성의 필요성을 알고 있으신 분
+* 고객 경험이 중심이라는 생각으로 기술 스택 전환에 대해 유연한 사고를 하실 수 있는 분
+* 모바일 네트워크의 동작 원리를 대강이나마 설명하실 수 있는 분
+* 사소한 문제도 '왜?' 라는 질문을 끊임없이 던지고, 탐구하기를 즐기는 분
+* 4년제 컴퓨터 공학과 수준의 전산 기본 소양을 갖춘 분
+
+[[jd-frontend-you-exceptional]]
+=== 우대 사항
+
+* CI / CD 경험이 있으신 분
+* TDD(Test Driven Development) 방법론을 바탕으로 백엔드 개발 프로젝트를 진행해본 경험이 있으신 분
+* B2B 고객을 대상으로 한 프로젝트 개발 경험이 있으신 분
+* 웹 또는 모바일 클라이언트 개발 경험ruby, dart, scala, rust, go 등의 언어를 경험해 보신 분
+* k8s / docker 사용 경험이 있으신 분
+* noSQL 사용 경험이 있으신 분
+* jvm 및 spring 기술백서를 완독하신 분
+* 모바일 네트워크의 동작 원리를 대강이나마 설명하실 수 있는 분
+* 컴퓨터가 소숫점 계산을 잘 못하는 이유를 상세하게 설명하실 수 있는 분
+* java 9 의 module 또는 gradle module 기능에 능숙하신 분

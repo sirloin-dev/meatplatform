@@ -1,0 +1,42 @@
+= Sir.LOIN 플랫폼팀을 소개합니다!
+// Metadata:
+:description: sirloin-platform-pr
+:keywords: Sir.LOIN, platform, public-relation, hiring
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+:docs-jd: job-description
+:link-sandbox: https://github.com/sirloin-dev/meatplatform-sandbox/tree/main
+
+[[welcome]]
+== 환영합니다
+
+Sir.LOIN 플랫폼팀 채용 페이지에 오신 것을 환영합니다! 저희는 이 페이지에서 저희 플랫폼팀의 다양한 소식들을 전하고 있습니다.
+
+여러분들이 귀중한 시간을 낭비하시지 않도록 알찬 이야기들을 준비하도록 노력하겠습니다.
+
+link:{docs-jd}/jd.adoc[직무 소개 바로가기]
+
+[[what-we-ask]]
+== 저희는 이런 것들이 궁금합니다
+
+저희는 인터뷰 지원하신 후보자님들께 이런 질문을 드리고 있습니다.
+
+link:{docs-jd}/interview-questions.adoc[인터뷰 질문 목록 바로가기]
+
+자신 있게 대답할 수 있는 것이 하나라도 있으신가요? 그렇다면 지금 바로 지원해보세요!
+
+[[how-we-work]]
+== 저희는 이렇게 일합니다
+
+저희는 팀에 새로 합류하신 분들과 이런 프로젝트를 진행하며 함께 성장하기 위해 노력합니다.
+
+- link:{link-sandbox}/server[백엔드 Sandbox project]
+- (준비중) 클라이언트 Sandbox project
+
+'나는 이것보다는 더 잘 할 수 있다?' 가 떠오르시나요? 그렇다면 망설이지 말고 저희 팀에 오셔서 한 수 가르쳐주세요!
+
+link:{docs-jd}/hiring-notice.adoc[채용 공고 바로가기]

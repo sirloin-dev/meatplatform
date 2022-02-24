@@ -1,0 +1,6 @@
+[[hiring-notice]]
+== 채용 중인 직무 목록
+. wanted.co.kr (2022-02)
+* link:https://www.wanted.co.kr/wd/97596[백엔드 주니어 개발자(사내 벤처팀)]
+* link:https://www.wanted.co.kr/wd/93863[백엔드 시니어 개발자(사내 벤처팀)]
+* link:https://www.wanted.co.kr/wd/97592[프론트엔드 주니어 개발자(사내 벤처팀)]
