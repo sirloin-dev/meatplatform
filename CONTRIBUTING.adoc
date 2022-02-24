@@ -1,0 +1,34 @@
+= Sir.LOIN Public Relations 기여 가이드
+
+== 행동 강령
+이 프로젝트는 link:CODE_OF_CONDUCT.adoc[Sir.LOIN Public Relations 행동 강령] 원칙을 적용받습니다. 참여자 여러분들은 행동 강령을 준수해 주시기 바랍니다.
+
+행동 강령 위반하는 여러 행위를 발견하신다면, 즉시 신고해주세요.
+
+== Pull Request 제출 방법
+아래 순서대로 진행해 주시기 바랍니다.
+
+. link:https://github.com/sirloin-dev/meatplatform/issues[Github Issues] 에 발견하신 문제를 issue 로 등록해 주세요.
+. `meatplatform` 을 참여자분의 저장소에 Fork 해 주세요.
+. `master` 브랜치를 최신 상태로 업데이트한 후, 작업을 잘 나타내는 새 브랜치를 생성해주세요. 브랜치 이름은 영문 기준으로 작성해 주시기 바랍니다.
+. 작업을 마치시면 commit message 를 아래 형식으로 작성해 주세요. Commit message 는 한국어, 또는 영어로 작성해 주시기 바랍니다.
++
+[source,shell]
+----
+# ?? 는 Github issue 번호입니다.
+# Commit message 의 길이는 국/한 혼용 40자, 영문 72자를 넘기지 않도록 작성해 주세요.
+
+$ git commit -m "#2 기여 가이드 문서 추가"
+[master 6009820] #2 기여 가이드 문서 추가
+ 2 files changed, 143 insertions(+)
+ create mode 100644 CODE_OF_CONDUCT.adoc
+ create mode 100644 CONTRIBUTING.adoc
+----
+. 참여자분의 브랜치에서 `meatplatform/master` 브랜치로 새로운 PR 을 만드세요.
+. 리뷰를 기다려 주세요. 검토를 거친 후, 병합해 드리겠습니다.
+. 참여 감사합니다!
+
+== 병합 규칙
+내 Commit 이 사라졌더라도 놀라지 마세요!
+
+참여자 여러분들의 기여 내용은 Github 의 link:https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges#squash-and-merge-your-pull-request-commits[Squash and Merge] 규칙에 의거해 병합할 예정입니다. 내용이 궁금하시다면, 확인해 보시기 바랍니다.
