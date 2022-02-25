@@ -10,7 +10,7 @@
 :icons: font
 
 [[jd-frontend-engineer]]
-== 백엔드 개발자
+== 프론트엔드 개발자
 
 저희는 연차보다는 후보자님의 역량에 따라 Seniority 를 부여합니다. 
 
