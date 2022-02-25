@@ -79,7 +79,7 @@
 
 . System call 이 뭔가요?  System call 에 대해 설명해주세요.
 
-. 바이트코드와 기계어의 차이에 대해 설명해주세요
+. 바이트코드와 기계어의 차이에 대해 설명해주세요.
 
 . Thread safety 란 뭔가요? 어떻게 구현해야 Thread safe 한 코드를 만들 수 있나요?
 
@@ -214,7 +214,7 @@
 
 . M 인프라 시스템이 A 시스템 대비 가격이 많이 싸졌다고 가정해 보겠습니다. 우리의 인프라 시스템을 A 에서 M 으로 최대한 빨리 바꾸려면 어떤 점을 고려해야 할까요?
 
-. 우리 앱의 어떤 페이지(또는 특정 view) 의 로딩이 매우 늦다면 어떻게 개선할 수 있을까?
+. 우리 앱의 어떤 페이지(또는 특정 view) 의 로딩이 매우 늦다면 어떻게 개선할 수 있을까요?
 
 . 우리가 사용하는 앱들의 API 는 예고없이 바뀌기도 합니다. 외부 API 가 마구 변경되는 상황에서도 우리 앱이 크래시 나지 않게 하려면 어떻게 해야 할까요?
 
@@ -225,7 +225,7 @@
 
 . JVM 에서의 autoboxing 이란 어떤 현상을 말하는 걸까요?
 
-. `interface` default implementation 이란? `abstract class` 를 상속받는 것과 기본 구현을 들고 있는 `interface` 를 `implement` 하는것은 어떤 차이가 있나?
+. `interface` default implementation 이란? `abstract class` 를 상속받는 것과 기본 구현을 들고 있는 `interface` 를 `implement` 하는것은 어떤 차이가 있나요?
 
 . Java stream method 중 `map` 과 `flatMap` 의 차이에 대해 설명해주세요.
 
