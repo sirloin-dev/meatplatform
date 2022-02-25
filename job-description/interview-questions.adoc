@@ -71,7 +71,7 @@
 
 . 컴파일러와 인터프리터는 어떤 차이가 있을까요?
 
-. Garbage Collection 이란 무엇일까요? Garbage collection 방식 중 제일 잘 알고 계시는 GC를 아무거나 하나만 설명해주세요.
+. Garbage Collection 이란 무엇일까요? Garbage Collection 방식 중 제일 잘 알고 계시는 GC를 아무거나 하나만 설명해주세요.
 
 . Garbage Collection 과정에서 발생하는 Stop-The-World 현상의 근본 원인에 대해 설명해 주세요. 
 
@@ -128,9 +128,9 @@
 
 . 저희는 도축장에서 전달받은 원육을 소매점에 도매하는 서비스를 운영하고 있습니다. 여기서, 원육과 소매점을 어떻게 테이블로 모델링 하시겠습니까?
 
-. 어플리케이션의 String 을 데이터베이스에 저장하기 위해 고려해야 할 사항에는 어떤 점이 있을까요?
+. 어플리케이션의 문자열(String) 을 데이터베이스에 저장하기 위해 고려해야 할 사항에는 어떤 점이 있을까요?
 
-. 데이터의 양이 많아지면 RDBMS 대신 NoSQL 을 쓰라고 하는데, 그럼 large data set 에는 항상 NoSQL 만 써야 할까요? RBDMS 를 이용해 large data set 을 다루려면 어떻게 해야 할까요?
+. Big data 를 다루려면 RDBMS 보다 NoSQL 이 더 좋다는 말이 많습니다. 그렇다면 large data set 에는 항상 NoSQL 만 써야 할까요? 반드시 RDBMS 만을 이용해 large data set 을 다루려면 어떻게 해야 할까요?
 
 . 실 서비스의 데이터를 조작하고, 또 조회해야 하는 Admin app 을 만들어야 한다면, 어떻게 구현하시겠습니까?
 
@@ -138,7 +138,7 @@
         
 . (JPA 경험자 한정) JPA 를 이용할 때, JPQL 을 쓰는 경우가 종종 있는데, JPQL 을 쓰시며 좋았던 점과 불편했던 점을 말씀해 주세요.
 
-. (JPA 경험자 한정) JPA 의 `@Entity` 란 뭔가요? 도메인 객체와 Entity 는 어떤 차이가 있나요?
+. (JPA 경험자 한정) JPA 의 `@Entity` 란 뭔가요? 도메인 객체와 Entity 를 각각 어떻게 정의하시겠습니까?
 
 [[interview-questions-data-structure-algorithm]]
 === 자료 구조 및 알고리즘
@@ -159,8 +159,6 @@
 
 . List 와 Set 의 차이에 대해 설명해주세요.
 
-. (JVM 경험자 한정) 배열과 ArrayList, LinkedList 의 차이점은 무엇인가요?
-
 . 이진 탐색의 최선 / 최악의 경우에 대해 말씀해주세요.
 
 . 손실 압축과 무손실 압축의 차이에 대해 설명해주세요.
@@ -169,7 +167,9 @@
 
 . 순환 Queue 를 만드려면 어떻게 하시겠습니까? 그리고 어떤 Queue 또는 Graph 가 무한 순환 구조라는 것을 어떻게 판단하시겠습니까?
 
-. 압축 알고리즘을 설계하라는 요구사항이 들어왔다면, 어떻게 하시겠습니까?
+. 압축 알고리즘을 설계하라는 요구사항이 들어왔다면, 어떻게 구현하시겠습니까?
+
+. (JVM 경험자 한정) 배열과 ArrayList, LinkedList 의 차이점은 무엇인가요?
 
 [[interview-questions-design-testing]]
 === 디자인 및 테스트
@@ -180,7 +180,7 @@
 
 . 좋은 Test 라고 평가할 수 있는 가장 중요한 요소를 말씀해주세요. 후보자님은 어떤 Test 를 좋은 Test 라고 정의하십니까?
 
-. Callback function 이 뭔가요(또는 Closure)?
+. Callback function(또는 Closure) 이 뭔가요? 주의할 점이 있을까요?
 
 . Mutable, Immutable 이란 뭔가요? 각각은 어떤 특징이 있을까요?
 
@@ -196,7 +196,7 @@
 
 . blackbox testing, whitebox testing 의 차이에 대해 설명해주세요. 어떤 상황에서 어떤 테스트 방법을 사용하시겠습니까?
 
-. 상속의 이점 중 "코드의 중복을 줄여준다" 는 말이 있습니다. 그런데 코드 중복을 줄이기 위해서 상속을 쓰는 것은 매우 좋지 않은 코딩 방식입니다. 이에 대한 후보자님의 의견을 듣고 싶습니다. 
+. 상속의 이점 중 "코드의 중복을 줄여준다" 는 말이 있습니다. 그런데 코드 중복을 줄이기 위해서 상속을 쓰는 것은 매우 좋지 않은 코딩 방식이라고 저희는 생각합니다. 이에 대한 후보자님의 의견을 듣고 싶습니다.
 
 . Java 의 Marker interface (아무 메소드도 없이 타입만 있는) 에 대해 어떻게 생각하시나요?
 
@@ -208,7 +208,7 @@
 
 . 서비스의 memory leak 을 어떻게 판단하고, 해결하시겠습니까?
 
-. 우리 서비스가 대 성공해서 이용자가 4000만이 되었다고 가정합니다. 이용자 4천만 돌파 기념으로 선착순으로 접속한 사용자에게 보너스 포인트를 주는 이벤트를 운영하려 합니다. 이벤트 운영은 플랫폼이 제공하는 Push 를 활용할 예정입니다. 이 경우, 어떤 점들을 고려해야 할까요?
+. 우리 서비스가 대 성공해서 이용자가 4000만이 되었다고 가정합니다. 이용자 4천만 돌파 기념으로 선착순으로 접속한 사용자에게 보너스 포인트를 주는 이벤트를 운영하려 합니다. 모든 이용자들에게 공평하게, 플랫폼이 제공하는 Push 를 보내려 하는데요. 이 경우, 어떤 점들을 고려해야 할까요?
 
 . MSA vs Monolithic 을 선택하는 기준이 있습니까?
 
@@ -229,14 +229,14 @@
 
 . Java stream method 중 `map` 과 `flatMap` 의 차이에 대해 설명해주세요.
 
-. 메소드에서 리스트 타입의 파라미터를 받는 방법으로 ArrayList - List - Collection - Iterable 등 상위 개념이 있는데 구체 타입의 API 디자인을 선호하는지, 추상 타입의 API 디자인을 선호하는지를 설명해 주세요. 왜 그런 선택을 하시나요?
+. 메소드에서 리스트 타입의 파라미터를 받는 방법으로 `ArrayList` - `List` - `Collection` - `Iterable` 등 상위 개념이 있는데 구체 타입의 API 디자인을 선호하는지, 추상 타입의 API 디자인을 선호하는지를 설명해 주세요. 왜 그런 선택을 하시나요?
 
 . Java 의 `equals` 와 `==` 의 차이에 대해 설명해주세요. Kotlin 의 `==` 와 `===` 는 어떤 차이가 있나요?
 
 . 스프링의 `@Autowired` 를 가급적 쓰지 말라는 이야기가 종종 들리는데 원인이 뭘까요?
 
 . `final` 키워드를 변수, 메소드, 클래스에 선언하는 것은 어떤 의미가 있습니까?
-    
+
 . `synchronized` 를 메소드에 선언하는 것과, 특정 객체에 선언하는 것은 어떤 차이가 있습니까?
 
 . Reflection 을 유용하게 사용하는 사례를 말씀해 주세요.
@@ -245,7 +245,7 @@
 
 . hashCode / equals 메소드의 역할에 대해 아시는 내용을 최대한 설명해주세요.
 
-. Java 의 Collections.unmodifiableList 같은 API 를 이용해 List 같은 collection 을 변경 불가능하게 만들 수 있습니다. 그렇다면 이 API 를 사용하면 immutability 를 달성할 수 있을까요?
+. Java 의 `Collections.unmodifiableList` 같은 API 를 이용해 `List` 같은 collection 을 변경 불가능하게 만들 수 있습니다. 그렇다면 이 API 를 사용하면 immutability 를 달성할 수 있을까요?
 
 . 다음 싱글턴 코드의 어떤 점을 개선하실 수 있습니까? (개선이 필요 없을 수도 있음 / 왜?)
 +
@@ -267,7 +267,7 @@ class MySingleton {
 
 . 민감한 정보를 String 으로 저장하는 것과, `char[]` 또는 `StringBuilder`/`StringBuffer` 같은 클래스로 저장하는 것은 어떤 차이가 있나요?
 
-. 크기를 지정하지 않고 `ArrayList` 를 new 로 생성하면 크기 10의 `ArrayList` 가 생성됩니다. Array 는 크기를 넘길 수 없는데 반해 `ArrayList` 는 꽉 찬 List 에 element 를 추가로 더할 수 있습니다. 그렇다면 10개의 element 를 채워넣은 `ArrayList` 의 11번째 item 을 add 하기위해 어떤 일이 일어나는지 설명해주세요.
+. 크기를 지정하지 않고 `ArrayList` 를 new 로 생성하면 크기 10의 `ArrayList` 가 생성됩니다. Array 는 크기를 넘길 수 없는데 반해 `ArrayList` 는 꽉 찬 List 에 element 를 추가로 더할 수 있습니다. 그렇다면 10개의 element 를 채워넣은 `ArrayList` 의 11번째 element 을 `add` 하기위해 어떤 일이 일어나는지 설명해주세요.
 
 . `java.lang.String` 의 `hashCode` 구현에 대해 고찰해 봅시다. 왜 그런 구현일지, 문제점은 없을지 이야기해주세요.
 
@@ -287,9 +287,9 @@ class MySingleton {
 
 . Spring boot 가 stereotype annotation 을 붙인 클래스들을 어떻게 찾고 bean 으로 등록하는지 그 과정을 최대한 상세하게 설명해주세요.
 
-. Spring 은 `@Transactional` 어노테이션 붙인 메소드를 어떻게 트랜잭션을 처리하나요? 그 내부 구현을 상세하게 설명해 주세요.
+. Spring 은 `@Transactional` 어노테이션 붙인 메소드를 어떻게 찾고 트랜잭션을 처리하나요? 그 내부 구현을 상세하게 설명해 주세요.
 
-. 메소드에 @Transactional 을 붙이는 것과, TransactionTemplate 을 사용해 트랜잭션을 직접 제어하는 것에는 어떤 차이가 있나요? 어떤 방식을 더 선호하시는지 그 이유도 함께 설명해 주시기 바랍니다.
+. 메소드에 `@Transactional` 을 붙이는 것과, `TransactionTemplate` 을 사용해 트랜잭션을 직접 제어하는 것에는 어떤 차이가 있나요? 어떤 방식을 더 선호하시는지 그 이유도 함께 설명해 주시기 바랍니다.
 
 [[interview-questions-kotlin]]
 === Kotlin
@@ -301,7 +301,7 @@ class MySingleton {
 [[interview-questions-python]]
 === Python
 
-. Equatable, Hashable 에 대해 설명해 주세요. 두 인터페이스를 모두 구현할 때, 어떤 점을 주의해야 할까요?
+. object 의 기본 메소드인 `__eq__`, `__hash__` 에 대해 설명해 주세요. 두 인터페이스를 모두 구현할 때, 어떤 점을 주의해야 할까요?
 
 . Memory leak 을 유발하는 python 코딩 패턴의 사례를 말씀해주세요.
 
@@ -320,7 +320,7 @@ class MySingleton {
     
 . Javascript 와 Java 의 차이를 우리 할머니도 알아들으실 수 있도록 설명해주실 수 있습니까?
 
-. Map 의 키로 `number`, `string` 대신 object 를 쓰고 싶다면, 어떤 점을 고려해야 합니까?
+. Map 의 키로 `number`, `string` 대신 `object` 를 쓰고 싶다면, 어떤 점을 고려해야 합니까?
 
 . Prototype 기반 상속과 일반적인 OOP 에서의 상속은 어떤 차이가 있습니까?
 
