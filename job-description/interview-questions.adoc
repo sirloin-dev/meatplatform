@@ -135,10 +135,10 @@
 . 실 서비스의 데이터를 조작하고, 또 조회해야 하는 Admin app 을 만들어야 한다면, 어떻게 구현하시겠습니까?
 
 . 데이터 마이그레이션 기간 동안 서비스 순단을 최소한으로 하고 싶습니다. 이런 요구사항에 맞는 테이블을 어떻게 설계하시겠습니까?
-        
+
 . (JPA 경험자 한정) JPA 를 이용할 때, JPQL 을 쓰는 경우가 종종 있는데, JPQL 을 쓰시며 좋았던 점과 불편했던 점을 말씀해 주세요.
 
-. (JPA 경험자 한정) JPA 의 `@Entity` 란 뭔가요? 도메인 객체와 Entity 를 각각 어떻게 정의하시겠습니까?
+. (JPA 경험자 한정) JPA 의 `@Entity` 란 뭔가요? 도메인 객체와 Entity 객체를 각각 어떻게 정의하시겠습니까?
 
 [[interview-questions-data-structure-algorithm]]
 === 자료 구조 및 알고리즘
@@ -169,7 +169,9 @@
 
 . 압축 알고리즘을 설계하라는 요구사항이 들어왔다면, 어떻게 구현하시겠습니까?
 
-. (JVM 경험자 한정) 배열과 ArrayList, LinkedList 의 차이점은 무엇인가요?
+. 전화번호부 앱을 만든다고 가정하겠습니다. 1명당 1KiB의 정보를 갖도록 모델을 설계했습니다. 앱이 온전히 사용할 수 있는 메모리가 4메가인 기기에서, 10000명(총 10메가)의 이용자 정보를 검색할 수 있도록 구현해야 합니다. 어떻게 하시겠습니까?
+
+. (JVM 경험자 한정) 배열과 `ArrayList`, `LinkedList` 의 차이점은 무엇인가요?
 
 [[interview-questions-design-testing]]
 === 디자인 및 테스트
@@ -225,11 +227,11 @@
 
 . JVM 에서의 autoboxing 이란 어떤 현상을 말하는 걸까요?
 
-. `interface` default implementation 이란? `abstract class` 를 상속받는 것과 기본 구현을 들고 있는 `interface` 를 `implement` 하는것은 어떤 차이가 있나요?
+. `interface` default implementation 이란? `abstract class` 를 상속받는 것과 기본 구현을 들고 있는 `interface` 를 `implements` 하는것은 어떤 차이가 있나요?
 
 . Java stream method 중 `map` 과 `flatMap` 의 차이에 대해 설명해주세요.
 
-. 메소드에서 리스트 타입의 파라미터를 받는 방법으로 `ArrayList` - `List` - `Collection` - `Iterable` 등 상위 개념이 있는데 구체 타입의 API 디자인을 선호하는지, 추상 타입의 API 디자인을 선호하는지를 설명해 주세요. 왜 그런 선택을 하시나요?
+. 메소드에서 리스트 타입의 파라미터를 받을 때, `ArrayList` - `List` - `Collection` - `Iterable` 처럼 구체 타입 뿐 아니라 상위 타입도 받을 수 있습니다. 컬렉션을 받는 어떤 API 를 구현하실 때 구체 타입의 API 디자인을 선호하는지, 추상 타입의 API 디자인을 선호하는지를 설명해 주세요. 왜 그런 선택을 하시나요?
 
 . Java 의 `equals` 와 `==` 의 차이에 대해 설명해주세요. Kotlin 의 `==` 와 `===` 는 어떤 차이가 있나요?
 
@@ -243,7 +245,7 @@
 
 . JDK/JVM 은 대표적으로 OpenJDK 와 Oracle JDK 로 나뉘는데요, 업무에 어떤 JDK 를 사용하시겠습니까? 선택의 이유를 말씀해 주세요.
 
-. hashCode / equals 메소드의 역할에 대해 아시는 내용을 최대한 설명해주세요.
+. `hashCode` / `equals` 메소드의 역할에 대해 아시는 내용을 최대한 설명해주세요.
 
 . Java 의 `Collections.unmodifiableList` 같은 API 를 이용해 `List` 같은 collection 을 변경 불가능하게 만들 수 있습니다. 그렇다면 이 API 를 사용하면 immutability 를 달성할 수 있을까요?
 
@@ -301,7 +303,7 @@ class MySingleton {
 [[interview-questions-python]]
 === Python
 
-. object 의 기본 메소드인 `__eq__`, `__hash__` 에 대해 설명해 주세요. 두 인터페이스를 모두 구현할 때, 어떤 점을 주의해야 할까요?
+. object 의 기본 메소드인 `+__eq__+`, `+__hash__+` 에 대해 설명해 주세요. 두 메소드를 모두 구현할 때, 어떤 점을 주의해야 할까요?
 
 . Memory leak 을 유발하는 python 코딩 패턴의 사례를 말씀해주세요.
 
@@ -316,8 +318,8 @@ class MySingleton {
 
 . Typescript 의 `type` 과 `interface` 의 공통점 및 차이점을 설명해 보세요.
 
-. Typescript 의 `interface` 의 특징? 컴파일 이후에는 어떻게 되는지? 
-    
+. Typescript 의 `interface` 의 특징? 컴파일 이후에는 어떻게 되는지 말씀해주세요. 
+
 . Javascript 와 Java 의 차이를 우리 할머니도 알아들으실 수 있도록 설명해주실 수 있습니까?
 
 . Map 의 키로 `number`, `string` 대신 `object` 를 쓰고 싶다면, 어떤 점을 고려해야 합니까?
