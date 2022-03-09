@@ -73,7 +73,7 @@
 
 . Garbage Collection 이란 무엇일까요? Garbage Collection 방식 중 제일 잘 알고 계시는 GC를 아무거나 하나만 설명해주세요.
 
-. Garbage Collection 과정에서 발생하는 Stop-The-World 현상의 근본 원인에 대해 설명해 주세요. 
+. Garbage collection 이 있는 언어를 원자력 발전소, 자동차 동력 제어, 인공위성, 국가 전력망 제어시스템 같은 곳에 쓸 수 있을까요? 후보자님의 생각을 말씀해 주세요.
 
 . 지금 이용하시는 기술/언어에서 제일 마음에 드는점과 불만인 점 한가지를 말씀해주세요.
 
