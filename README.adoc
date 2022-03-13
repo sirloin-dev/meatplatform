@@ -35,7 +35,7 @@ link:{docs-jd}/interview-questions.adoc[인터뷰 질문 목록 바로가기]
 저희는 팀에 새로 합류하신 분들과 이런 프로젝트를 진행하며 함께 성장하기 위해 노력합니다.
 
 - link:{link-sandbox}/server[백엔드 Sandbox project]
-- (준비중) 클라이언트 Sandbox project
+- link:{link-sandbox}/client[클라이언트 Sandbox project]
 
 '나는 이것보다는 더 잘 할 수 있다?' 가 떠오르시나요? 그렇다면 망설이지 말고 저희 팀에 오셔서 한 수 가르쳐주세요!
 
