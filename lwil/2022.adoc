@@ -1,0 +1,17 @@
+= 2022년 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: 
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[202203-week5]]
+== 2022년 3월 5주
+
+hwan: Apple M1 기기에 Jenkins 설치는 Java 8 설치부터 빡세다. AArch64 용 OpenJDK 8 이 없어서, Azul 같은 배포판을 이용해야 한다.
+gon: aggregate에 대한 이해도가 상승하였다. 개념적 모델인 도메인은 물리적 모델과 연관을 끊고 순수해질수 있게하는 개념이다.
+yoonho: 네이비씰 승리의 기술을 보면서 우선 순위를 정하는 것의 중요성을 알았다. 전체적인 그림에 있어서 한가지 업무에 매몰되면 목표 달성에 있어서 차질이 생길수도 있다.
