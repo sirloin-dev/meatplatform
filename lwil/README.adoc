@@ -1,0 +1,16 @@
+= Last Week I Learnt
+// Metadata:
+:description: 성장 기록
+:keywords: growth, development
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+Last Week I Learnt 는 좀 더 가벼운 TIL(Today I Learnt) 활동입니다. 매일 무언가를 배우고 이를 공유하는 것은 모두의 성장을 돕는 긍정적인 활동입니다. 또한 활동을 수행하며 내 동료가 어떤 사람인지도 간접적으로 체험할 수 있습니다. 하지만 TIL 을 매일 공유하다 보면 그게 어느 순간 Spam 이 되어버리는 경우가 많았습니다.
+
+따라서 문제를 해결하고자 TIL 의 긍정적인 기능을 살리면서도 문제를 해결하고자 LWIL 활동을 진행하고자 합니다. 또한 이 활동에서는 업무나, 개발 이야기만을 반드시 쓸 필요도 없습니다. 무언가를 배운다는 것은, 우리가 성장을 게을리하지 않는단 뜻이니까요.
+
+어떤 내용도 좋으니 최소 1 문장, 최대 1 문단 이내로 LWIL 을 채워나갑시다.
