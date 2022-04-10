@@ -1,0 +1,22 @@
+= 2022년 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[section-202203-W5]]
+== 2022년 3월 5주
+
+- hwan: Apple M1 기기에 Jenkins 설치는 Java 8 설치부터 빡세다. AArch64 용 OpenJDK 8 이 없어서, Azul 같은 배포판을 이용해야 한다.
+- gon: aggregate에 대한 이해도가 상승하였다. 개념적 모델인 도메인은 물리적 모델과 연관을 끊고 순수해질수 있게하는 개념이다.
+- yoonho: 네이비씰 승리의 기술을 보면서 우선 순위를 정하는 것의 중요성을 알았다. 전체적인 그림에 있어서 한가지 업무에 매몰되면 목표 달성에 있어서 차질이 생길수도 있다.
+
+[[section-202204-W1]]
+== 2022년 4월 1주
+- gon: 코틀린의 operator에 대하여 학습하였다. 연산자 오버라이딩을 할 경우 객체의 표현으 좀 더 다양하게 할 수 있게 되었다.
+- yoonho: 프로그래머, 열정을 말하다를 읽으면서 특정 기술에 종속되는 것은 좋지 않다는 것을 알게 되었다. 기술을 이루는 근본(?)에 대한 앎이 중요하다고 생각했다.
