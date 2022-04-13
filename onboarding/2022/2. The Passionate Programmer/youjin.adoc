@@ -1,11 +1,11 @@
-= Extreme Ownership(네이비 씰 승리의 기술) 독서 감상문
+= The Passionate Programmer(프로그래머, 열정을 말하다) 독서 감상문
 youjin <howyoujini@sirloin.co.kr>
 // Metadata:
-:description: 입문교육 1주차 제공 도서의 독서 감상문입니다.
-:keywords: leadership, professionalism
+:description: 입문교육 2주차 제공 도서의 독서 감상문입니다.
+:keywords: passionate, programmer's mind
 // Settings:
 
-# 네이비 씰 승리의 기술, 극한의 오너십
+# 프로그래머, 열정을 말하다
 
 
 21세기에 살고 여자라는 이유로 전쟁 속 군대를 경험해보지 못해 목숨을 건 팀워크가 무엇이고, 그 팀이 주는 영향력과 결과에 대해 진지하게 생각해본 적은 없었다. +
