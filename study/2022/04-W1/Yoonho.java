@@ -27,7 +27,7 @@ public class Coding {
                 break;
             }
         }
-        for(int i = orig.length - 1; 0 < i ; i--){
+        for(int i = orig.length - 1; 0 <= i ; i--){
             if(orig[i] == nums[last]) {
                 last = i;
                 break;
