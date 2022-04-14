@@ -30,6 +30,6 @@ class Solution {
             "(" -> ")"
             "[" -> "]"
             "{" -> "}"
-             else -> throw Exception("")
+             else -> throw Exception("페어를 이루지 못한 괄호가 스택에 있습니다.")
         }
 }
