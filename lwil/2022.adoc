@@ -24,9 +24,15 @@
 - hwan: javascript 에서는 *A = C, B = C 이면 A = B 다* 라는 명제가 성립하지 않는 케이스가 있다. 이렇게.
 +
 [source,shell]
-----
 0 == "0"  // true
 0 == []   // true
 "0" == [] // false  << 헐?!?!
-----
-  
+
+
+[[section-202204-W2]]
+== 2022년 4월 2주
+- youjin: Xcode로 실행을 시켜보려다 이런 에러를 마주쳤다. 이는 루비의 패키지 매니저인 gem이 mac에 의존적이면서 생기는 문제였다. rbenv를 통해 문제를 해결할 수 있었다.
+[source,shell]
+$ gem install bundler
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
