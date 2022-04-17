@@ -1,0 +1,14 @@
+= Algorithm study 2022-04-W3
+// Metadata:
+:description: 
+:keywords: algorithm, study, leetcode
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+Leetcode top 100 문제들 중 쉬운 것부터 하나씩 풀어봅니다.
+
+https://leetcode.com/problems/valid-parentheses/
