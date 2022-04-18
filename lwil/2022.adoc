@@ -19,3 +19,24 @@
 [[section-202204-W1]]
 == 2022년 4월 1주
 - gon: 코틀린의 operator에 대하여 학습하였다. 연산자 오버라이딩을 할 경우 객체의 표현으 좀 더 다양하게 할 수 있게 되었다.
+- yoonho: 프로그래머, 열정을 말하다를 읽으면서 특정 기술에 종속되는 것은 좋지 않다는 것을 알게 되었다. 기술을 이루는 근본(?)에 대한 앎이 중요하다고 생각했다.
+- youjin: 코드없이 UI를 제작하고 firebase, API를 지원해서 빌드까지 할 수 있는 flutterflow 개발이 있다는 것을 알게 되었고 빠르게 프로토타입을 제작해야 할 때는 부분적으로 활용해볼 수 있겠다고 생각했다. 
+- hwan: javascript 에서는 *A = C, B = C 이면 A = B 다* 라는 명제가 성립하지 않는 케이스가 있다. 이렇게.
++
+[source,shell]
+0 == "0"  // true
+0 == []   // true
+"0" == [] // false  << 헐?!?!
+  
+[[section-202204-W3]]
+== 2022년 4월 3주
+
+- hwan: 유튜브 미트러버 채널 보면서 육류에 대한 지식을 좀 더 늘려갈 수 있을 것 같다.
+- gon : 지도 API는 국내 한정으론 카카오가 제일 좋은것 같다. 네이버는 위치를 지정해서 검색이 불가능하다.
+- yoonho : '이용자가 많은 생각을 하게 만드는 서비스를 만들지 않도록 해야겠다.' 라는 생각을 '소프트웨어 누가 개떡같이 만든거야'를 읽으면서 하게되었다.
+- youjin: Xcode로 실행을 시켜보려다 이런 에러를 마주쳤다. 이는 루비의 패키지 매니저인 gem이 mac에 의존적이면서 생기는 문제였다. rbenv를 통해 문제를 해결할 수 있었다.
++
+[source,shell]
+$ gem install bundler
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
