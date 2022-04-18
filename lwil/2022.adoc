@@ -24,11 +24,9 @@
 - hwan: javascript 에서는 *A = C, B = C 이면 A = B 다* 라는 명제가 성립하지 않는 케이스가 있다. 이렇게.
 +
 [source,shell]
-----
 0 == "0"  // true
 0 == []   // true
 "0" == [] // false  << 헐?!?!
-----
   
 [[section-202204-W3]]
 == 2022년 4월 3주
