@@ -40,3 +40,9 @@
 $ gem install bundler
 ERROR:  While executing gem ... (Gem::FilePermissionError)
     You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
+    
+    
+[[section-202204-W4]]
+== 2022년 4월 4주
+
+- gon : 버거킹은 쿠폰을 사용하여 결제하고 취소 할 경우 쿠폰이 사용 처리되는 기이한 프로세스를 가진다.
