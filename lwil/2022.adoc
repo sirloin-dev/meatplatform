@@ -57,3 +57,5 @@ connection.close 도 꼭 같이 해줘야 한다
 ----
 +
 JdbcTemplate 같은거 오래 쓰다보니 이 기본을 놓쳐 삽질 4시간 했다 ㅠㅠ
+
+- youjin: link:https://flowingdata.com/2015/12/15/a-day-in-the-life-of-americans/[미국인의 하루 flowing data] 를 확인해보면서 "데이터"가 제공하는 가치, 그리고 데이터를 어떻게 가공하고 시각적으로 표현하는지에 따라 어떻게 하면 사용자들에게 정보를 신선하게 제공할 수 있을까 생각해볼 수 있었다.
