@@ -45,7 +45,7 @@ ERROR:  While executing gem ... (Gem::FilePermissionError)
 [[section-202204-W4]]
 == 2022년 4월 4주
 
-- gon : 버거킹은 쿠폰을 사용하여 결제하고 취소 할 경우 쿠폰이 사용 처리되는 기이한 프로세스를 가진다.
+- gon : B햄버거프랜차이즈는 쿠폰을 사용하여 결제하고 취소 할 경우 쿠폰이 사용 처리되는 기이한 프로세스를 가진다.
 - hwan : 저수준 JDBC 직접 구현할 때:
 +
 [source,java]
