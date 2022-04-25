@@ -40,3 +40,20 @@
 $ gem install bundler
 ERROR:  While executing gem ... (Gem::FilePermissionError)
     You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
+    
+    
+[[section-202204-W4]]
+== 2022년 4월 4주
+
+- gon : 버거킹은 쿠폰을 사용하여 결제하고 취소 할 경우 쿠폰이 사용 처리되는 기이한 프로세스를 가진다.
+- hwan : 저수준 JDBC 직접 구현할 때:
++
+[source,java]
+----
+DataSource#getConnection#createStatement 이후에
+
+statement.close 뿐 아니라
+connection.close 도 꼭 같이 해줘야 한다
+----
++
+JdbcTemplate 같은거 오래 쓰다보니 이 기본을 놓쳐 삽질 4시간 했다 ㅠㅠ
