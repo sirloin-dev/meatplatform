@@ -331,7 +331,7 @@ class MySingleton {
 
 . 비동기로 처리한 작업을 UI 에 표시하기 위해 어떤 일이 필요한지 설명해주세요.
 
-. 안드로이드 Activity 처리 결과를 다루는 `onActivityResult`` 메소드는 왜 deprecated 처리되었을까요?
+. 안드로이드 Activity 처리 결과를 다루는 `onActivityResult` 메소드는 왜 deprecated 처리되었을까요?
 
 . `ViewGroup` 내에 선언한 `View` 들에 `onClickListener` 를 선언할 경우 안드로이드가 이벤트를 어떻게 핸들링하는지 설명해 주시기 바랍니다.
 
@@ -347,6 +347,57 @@ class MySingleton {
 === iOS
 
 . 비동기로 처리한 작업을 UI 에 표시하기 위해 어떤 일이 필요한지 설명해주세요.
+
+* Main thread queue 에 sync call 을 하면 어떤 일이 발생할까요?
+
+. `protocol`` 이란? `protocol` 에 대해 아시는 내용을 최대한 많이 말씀해 주시기 바랍니다.
+
+. `struct` 와 `class` 는 어떤 차이가 있나요?
+
+. Swift 에서 제공하는 ARC 에 대해 상세하게 설명해 주세요. ARC 와 Garbage Collection 은 같은 개념인가요, 다른 개념인가요?
+
+* 그렇게 생각하시는 이유는 뭔가요?
+
+. Swift optional 은 좋지만 일종의 wrapper 타입이므로 이걸 벗겨내야 하는 과정이 언젠가는 필요합니다. Optional 을 자주 쓰시나요? 아니면 안 쓰시나요?
+
+* 이유가 있나요?
+
+. 메모리 누수로 App 을 크래시 시키려면 어떻게 코딩하면 될까요?
+
+. 클래스 멤버함수를 `class func` 와 `static func` 으로 선언할 때의 차이점을 말씀해주세요.
+
+. closure 내부에서 클래스 변수를 참조하면 어떤 일이 발생하나요? 
+
+. `@escaping` / `@nonescaping` closure 의 차이를 말씀해주세요.
+
+. 아래 swift code 을 살펴보고, 개선 방향을 제시해 주시기 바랍니다.
++
+[source, swift]
+----
+class HTMLElement { 
+    let name: String 
+    let text: String? 
+
+    lazy var asHTML: () -> String = { 
+        if let text = self.text { 
+            return "<\(self.name)>\(text)</\(self.name)>" 
+        } else { 
+            return "<\(self.name) />" 
+        } 
+    } 
+
+    init(name: String, text: String? = nil) { 
+        self.name = name 
+        self.text = text 
+    } 
+
+    deinit { 
+        print("\(name) is being deinitialized") 
+    } 
+} 
+----
+
+. `Hashable` 의 `hash()` 함수를 구현했지만 `Equatable` 의 operator 를 제대로 구현하지 않은 타입을 `Dictionary` 에 반복해서 넣고 꺼내고 하다 보면 어떤 문제가 발생할까요?
 
 [[interview-questions-web]]
 === Web
