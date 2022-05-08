@@ -73,3 +73,31 @@ JdbcTemplate 같은거 오래 쓰다보니 이 기본을 놓쳐 삽질 4시간 �
 == 2022년 5월 2주
 
 - youjin: link:https://thegithubshop.com/[github Shop]에서 티셔츠를 판다.. 우연히 알고리즘에 이끌려 개발자들의 데일리룩에 대해서 인터넷 서핑을 해보다가 깃헙쇼핑몰을 알게 되었다. 언젠가 한번은 대한민국 개발자들에게 데일리룩 설문조사를 해보고 싶다. 현재까지는 개발자 데일리룩에 대한 떠도는 밈들만 있지만 통계자료가 있다면 재밌을 것 같다. 무엇보다 너무 궁금하다.
+- hwan: CLI 에서 Github deploy key 를 쓰는 법은 다음과 같다.
+. 키 생성:
++
+[source,shell]
+----
+ssh-keygen -t ed25519 -C "your_email@example.com"
+----
+. github project 에 에 1단계에서 생성한 deploy key 추가
+. ssh-agent 에 identity 추가
++
+[source,shell]
+----
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_ed25519_<SSH_KEY>
+----
+. `~/.ssh/config`` 에 다음과 같이 추가
++
+[source,shell]
+----
+Host github.com          # 이거 이름 아무거나 지어도 됨
+  HostName github.com
+  User git               # 중요
+  IdentityFile /home/alice/.ssh/alice_github.id_rsa  # Private Key 여야 함
+  IdentitiesOnly yes     # 중요
+----
+. `git clone` 으로 체크아웃
+
+이렇게 하면 조직 기능 없이도 이용자들을 접근제한 하는게 가능해진다. 외주 업체와의 협업 시나리오에서 유용하다.
