@@ -104,3 +104,5 @@ Host github.com          # 이거 이름 아무거나 지어도 됨
 - wongue: 지난주에 link:https://ohou.se/productions/773067/selling?utm_source=google_shop&utm_medium=cpc&utm_campaign=uc_web-all-all-google_shop_pmax&utm_term=773067&utm_content=ssc&affect_type=UtmUrl&gclid=Cj0KCQjw1N2TBhCOARIsAGVHQc7niZxsyOaIf8aJEuGwjTs0BvScixjyYm-V77uFrHvjTp7Jt2NncDoaAn7rEALw_wcB[카페트 타일]이라는 인테리어 소품을 발견해서 바로 사서 자취방에 시공해봤다.
 셀프 인테리어는 하지 말자는 결론을 얻게 되었다... 비싼 돈을 받는데에는 이유가 있는거구나. +
 기술적으로는 한창 dart의 언어 특성에 대해서 공부하는 중이다.
+
+- gon : git브랜치의 구조를 잘 다루게된 한주가 되었다 체리픽과 리셋만 잘 다루어도 pr 나누기 등 다양한 조작이 가능해진다.
