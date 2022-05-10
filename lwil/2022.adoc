@@ -101,6 +101,7 @@ Host github.com          # 이거 이름 아무거나 지어도 됨
 . `git clone` 으로 체크아웃
 
 이렇게 하면 조직 기능 없이도 이용자들을 접근제한 하는게 가능해진다. 외주 업체와의 협업 시나리오에서 유용하다.
+
 - wongue: 지난주에 link:https://ohou.se/productions/773067/selling?utm_source=google_shop&utm_medium=cpc&utm_campaign=uc_web-all-all-google_shop_pmax&utm_term=773067&utm_content=ssc&affect_type=UtmUrl&gclid=Cj0KCQjw1N2TBhCOARIsAGVHQc7niZxsyOaIf8aJEuGwjTs0BvScixjyYm-V77uFrHvjTp7Jt2NncDoaAn7rEALw_wcB[카페트 타일]이라는 인테리어 소품을 발견해서 바로 사서 자취방에 시공해봤다.
 셀프 인테리어는 하지 말자는 결론을 얻게 되었다... 비싼 돈을 받는데에는 이유가 있는거구나. +
 기술적으로는 한창 dart의 언어 특성에 대해서 공부하는 중이다.
