@@ -2,8 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Yoonho {
-    static volatile int count = 0;
-
     public static void main(String[] args) throws InterruptedException {
         System.out.println(new Yoonho().longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
     }
