@@ -1,3 +1,7 @@
+/*
+1. 문자배열을 가장 짧은 순서로 정렬합니다.
+2. 가장 짧은 문자열을 기준으로 비교합니다.
+*/
 fun longestCommonPrefix(strs: Array<String>): String {
         var answer = ""
 
@@ -14,4 +18,4 @@ fun longestCommonPrefix(strs: Array<String>): String {
         }
 
         return answer
-    }
+}
