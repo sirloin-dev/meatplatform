@@ -107,4 +107,13 @@ Host github.com          # 이거 이름 아무거나 지어도 됨
 기술적으로는 한창 dart의 언어 특성에 대해서 공부하는 중이다.
 
 - gon : git브랜치의 구조를 잘 다루게된 한주가 되었다 체리픽과 리셋만 잘 다루어도 pr 나누기 등 다양한 조작이 가능해진다.
+
 - yoonho : 외국어는 자신감이 중요하다는 것을 새삼 깨달았다.
+
+[[section-202205-W3]]
+== 2022년 5월 3주
+- hwan: Flutter 명령이 hang 될때:
+. https://stackoverflow.com/questions/54191643/flutter-doctor-hangs-on-start-no-output
+. OSX 에서는 '인터넷에서 다운로드한 프로그램을 실행하시겠습니까?' ui 로 인해서 hang 될 수도 있음. `ps` 로 좀비 프로세스 아닌거 확인한 뒤에는, ui 를 바로 확인해 보자.
+. 우리 OSX CI 서버에서 flutter app 빌드가 안되는 문제는 바로 osx 의 UI 가 hang 을 걸어서 발생한 문제였었다... System UI 를 켤 일이 잘 없다 보니 발생하는 문제였음
+. OSX CI 서버의 빌드가 잘 안 될 때는 Remote desktop 등으로 UI 를 바로 확인해 보자.
