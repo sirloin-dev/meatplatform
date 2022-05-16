@@ -300,6 +300,40 @@ class MySingleton {
 
 . Kotlin extension function 이 실제 native code 로 바뀔 때 어떤 형태로 바뀌는지 설명해주세요.
 
+[[interview-questions-dart-flutter]]
+=== Dart/Flutter
+
+. StatelessWidget 와 StatefulWidget 의 차이에 대해 설명해 주세요.
+
+. `BuildContext` 가 뭔가요?
+
+. web build 한 flutter app 을 기존의 web server project 에 통합하고 싶습니다. 즉, 웹서버만 띄워도 flutter app 도 같이 동작하게 하는 방식이요. 어떻게 하는게 좋을까요?
+
+. mainAxisAlignment 와 crossAxisAlignment 가 뭔가요? `Row()` 와 `Column()` 에서 각각 어떤 차이가 있습니까?
+
+. `dynamic` 과 `Object` 의 공통점과 차이점에 대해 말씀해주세요.
+
+. `factory` 키워드와 `static` 키워드를 이용해 객체를 만드는 방법은 어떤 공통점과 차이점이 있을까요?
+
+. `const` 키워드에 대해 설명해 보세요. 다른 언어와 어떤 차이점이 있습니까?
+
+. `mixin` 이 뭔가요? `mixin` 을 우리 할머니도 알아들으실 수 있도록 설명하실 수 있습니까?
+  - mixin 과 abstract class 의 차이에 대해 설명해 주세요.
+
+. 도대체 `mixin` 은 왜 있는 걸까요? 구현 메소드 전혀 없는 `abstract class` 들만 써서 다중 상속을 구현할 수 있는데 말이죠. 상속 대신 `mixin` 을 반드시 써야 하는 상황을 알고 계신다면 설명해 주실 수 있습니까?
+
+. `Stream` 과 `Broadcast Stream` 의 차이에 대해 설명해 주세요.
+
+. Widget testing 과 unit testing 의 공통점과 차이점을 이야기 해 주시기 바랍니다.
+
+. isolate 에 대해서 최대한 상세하게 설명해 주시기 바랍니다. iOS 나 Android native 와 비교해서 설명해 주신다면 더욱 좋습니다.
+
+. Flutter 를 쓰면 1벌의 코드로도 다양한 플랫폼용 앱을 만들 수 있습니다. 그런데 그게 진짜일까요? 불가능하다면 왜 불가능할까요?
+
+. `Future` 와 `Stream` 의 공통점과 차이점에 대해 설명하실 수 있습니까?
+
+. `StatefulWidget` 이 가지는 `State` 의 생명주기를 최대한 상세하게 설명해 주세요.
+
 [[interview-questions-python]]
 === Python
 
