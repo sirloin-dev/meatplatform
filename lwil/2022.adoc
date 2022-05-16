@@ -137,4 +137,11 @@ emulator @avd_name [ {-option [value]} … ]    // emulator 에 연결되어 있
 
 - wongue: flutter의 flutter_bloc, bloc, provider 세 가지의 상태 관리 모듈에 대해 알아보는 중입니다. +
   모듈의 사용방법을 습득하는것과 동시에 React에서는 화면의 UI구성을 먼저 생각하고 화면을 그리기 위한 state를 구현했다면, bloc을 그 의도에 맞게 사용하기 위해서는 먼저 사용할 data 클래스를 정의한뒤 비즈니스 로직을 정의하고, 그 뒤 화면을 구현하는 방식으로 구현하는 사고 과정을 완전히 다르게 생각하기를 요구하는 느낌을 받았습니다.
+  
+  - yoonho : 코드리뷰 관련 영상을 보면서 인상이 갔던 댓글이 있었다. +
+  1. actionable한 제안없이 애매모호한 comment를 남기는 것 +
+  2. 자신도 잘 알지 못하는 document를 가지고 와서 더 좋은 방법이 있을 수 있으니 찾아보라는 것 +
+  3. PR blocing 할만한 것이 아닌데 nit picking comment로 merge를 막는 것 +
+  을 지양해야한다는 댓글이었다. +
+  신경을 써야겠다는 생각이 들었고, 소프트 스킬이 중요하다는 것을 새삼 깨달았다. 
 
