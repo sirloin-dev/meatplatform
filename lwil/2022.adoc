@@ -123,15 +123,12 @@ Host github.com          # 이거 이름 아무거나 지어도 됨
 ----
 ./emulator --list-avds    // emulator 에 연결되어 있는 것 찾기
 ----
-+
 [source,shell]
 ----
 emulator @avd_name [ {-option [value]} … ]    // emulator 에 연결되어 있는 avd(Android Virtual Device)를 실행하기
 ----
-+
 [source,shell]
 ----
 ./gradlew task-name    // Mac, Linux에서 앱 빌드하기
 ----
-+
 관련된 헷갈린 용어들은 avd(Android Virtual Device), adb(Android Debug Bridge), apk(Android Application Package) 등이 있었고 이는 약자를 풀어보니 이해할 수 있었다.
