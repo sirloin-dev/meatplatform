@@ -134,3 +134,7 @@ emulator @avd_name [ {-option [value]} … ]    // emulator 에 연결되어 있
 관련된 헷갈린 용어들은 avd(Android Virtual Device), adb(Android Debug Bridge), apk(Android Application Package) 등이 있었고 이는 약자를 풀어보니 이해할 수 있었다.
 
 - gon: 설로인 생일 쿠폰은 한번에 사용해야합니다. 20만원어치 고기파티 각 
+
+- wongue: flutter의 flutter_bloc, bloc, provider 세 가지의 상태 관리 모듈에 대해 알아보는 중입니다. +
+  모듈의 사용방법을 습득하는것과 동시에 React에서는 화면의 UI구성을 먼저 생각하고 화면을 그리기 위한 state를 구현했다면, bloc을 그 의도에 맞게 사용하기 위해서는 먼저 사용할 data 클래스를 정의한뒤 비즈니스 로직을 정의하고, 그 뒤 화면을 구현하는 방식으로 구현하는 사고 과정을 완전히 다르게 생각하기를 요구하는 느낌을 받았습니다.
+
