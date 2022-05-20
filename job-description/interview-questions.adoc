@@ -334,6 +334,9 @@ class MySingleton {
 
 . `StatefulWidget` 이 가지는 `State` 의 생명주기를 최대한 상세하게 설명해 주세요.
 
+. Flutter Widget 의 생명주기에 대해 최대한 상세하게 설명해 주세요.
+  * 인터넷 연결을 체크해서 서버로부터 데이터를 가져오는 로직은 어느 생명주기에 구현하는게 좋을까요?
+
 [[interview-questions-python]]
 === Python
 
