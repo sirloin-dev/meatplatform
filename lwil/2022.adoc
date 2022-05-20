@@ -145,3 +145,10 @@ emulator @avd_name [ {-option [value]} … ]    // emulator 에 연결되어 있
   을 지양해야한다는 댓글이었다. +
   신경을 써야겠다는 생각이 들었고, 소프트 스킬이 중요하다는 것을 새삼 깨달았다. 
 
+[[section-202205-W4]]
+== 2022년 5월 4주
+- hwan: 
+. dart 에는 Pattern matching 이 없어서 불편한데, link:https://github.com/dart-lang/language/blob/master/working/0546-patterns/patterns-feature-specification.md[이런 Proposal] 이 올라와 있는 것을 발견했다.
+. 2022-05 현재 Linux IntelliJ 에서  flutter web 을  개발할때 GPU 렌더링이 느린 이유는 link:https://github.com/flutter/flutter/issues/96919[Github issue link]의 내용대로, snap store 에서 내려받는 google chrome 에 뭔가 이상한 문제가 있기 때문이다.
+
+
