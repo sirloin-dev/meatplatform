@@ -179,8 +179,6 @@ OOP, TDD, 계층 분리, 의존성 관리 등 핵심 디자인 패턴과 이를 
 ```
 
 - gon: 코틀린에서의 block: T.() -> R과 block: (T) -> R차이를 알게되었다. 전자는 리시버로 묵시적전달, 후자는 파리미터로 명시적 전달이다.
-그래서 람다내 코드블록에서 this와 it의 범위의 차이가 있다.
-
-- youjin: flutter 3.0이 출시되면서 업그레이드 된 점을 간단히 알 수 있었다.
-1. link:https://github.com/flutter/flutter/issues/91605[material design 3]을 Flutter 3.0과 함께 사용할 수 있게 된다. 
-2. link:https://firebase.google.com/docs/flutter/setup?platform=ios[flutter에 firebase 추가]가 되었다. android, ios, web, desktop 모두 따로 firebase를 설정해야했는데 이젠 한번에 flutter를 지원한다.
+그래서 람다내 코드블록에서 this와 it의 범위의차이가 있다.
+- yoonho: 객체간 비교에서 comparable을 구현하면 비즈니스 코드의 로직을 줄일 수 있다.
+          비교하는 로직이 복잡할수록 빛을 발한다.
