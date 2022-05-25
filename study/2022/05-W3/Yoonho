@@ -1,0 +1,11 @@
+class Solution {
+    fun removeDuplicates(nums: IntArray): Int {
+  var i = 0
+  nums.forEach {
+    if(nums[i] != it){
+      nums[++i] = it
+    }
+  }
+  return i + 1
+    }
+}
