@@ -1,0 +1,16 @@
+= Algorithm study 2022-06-W2
+// Metadata:
+:description: 
+:keywords: algorithm, study, leetcode
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+Leetcode top 100 문제들 중 쉬운 것부터 하나씩 풀어봅니다.
+
+https://leetcode.com/problems/implement-strstr
+
+이번 주 문제는 정규식 같은 고급 기능은 배제하고 언어의 기본 기능만으로 해결해야 합니다.
