@@ -193,23 +193,22 @@ OOP, TDD, 계층 분리, 의존성 관리 등 핵심 디자인 패턴과 이를 
 
 - hwan: 
 
-* `* whois.co.kr` 에 등록한 도메인을 AWS Route 53 으로 변경하기
-+
-이유: 다수의 도메인에 대한 인증서 발급을 letsencrypt 로 직접 발급하던 as-is 가 번거로워서.
+. `* whois.co.kr` 에 등록한 도메인을 AWS Route 53 으로 변경하기
 
-. Route 53 의 NS Record 에 있는 ns domain 들의 목록을 확인
-. whois.co.kr 접속 후 네임서버 정보 변경 항목에서 NS Host 이름들을 Route 53 의 정보로 변경
-. A 레코드 등록
-. 5분 정도 대기
-. `dig @ns-1264.awsdns-30.org meatgo.co.kr` 커맨드로 ns 등록 잘 되었나 확인 (ns 값은 서비스에 따라 다를 수 있음)
+.. Route 53 의 NS Record 에 있는 ns domain 들의 목록을 확인
+.. whois.co.kr 접속 후 네임서버 정보 변경 항목에서 NS Host 이름들을 Route 53 의 정보로 변경
+.. A 레코드 등록
+.. 5분 정도 대기
+.. `dig @ns-1264.awsdns-30.org meatgo.co.kr` 커맨드로 ns 등록 잘 되었나 확인 (ns 값은 서비스에 따라 다를 수 있음)
 
-* AWS 에서 `*.meatgo.co.kr`` 도메인 인증서를 발급하기 위해:
+. AWS 에서 `*.meatgo.co.kr` 도메인 인증서를 발급하기 위해:
 
-. AWS Certificate Manager 페이지에 접속해 `meatgo.co.kr` 및 `*.meatgo.co.kr` 도메인의 인증서를 발급한다. 유형은 DNS Validation 으로 결정한다.
-. Pending Validation 상태의 CNAME Record 를 확인할 수 있다.
-. CNAME name, CNAME value 항목을 AWS 53 의 해당 site 의 CNAME record 로 추가한다.
-. 몇분 기다린다.
-. Issued 상태로 나오나 확인한다.
-. `dig meatgo.co.kr` 커맨드로 ns 등록 잘 되었나 확인한다.
-. 인증서 정보를 확인해 보자.
+.. AWS Certificate Manager 페이지에 접속해 `meatgo.co.kr` 및 `*.meatgo.co.kr` 도메인의 인증서를 발급한다. 유형은 DNS Validation 으로 결정한다.
+.. Pending Validation 상태의 CNAME Record 를 확인할 수 있다.
+.. CNAME name, CNAME value 항목을 AWS 53 의 해당 site 의 CNAME record 로 추가한다.
+.. 몇분 기다린다.
+.. Issued 상태로 나오나 확인한다.
+.. `dig meatgo.co.kr` 커맨드로 ns 등록 잘 되었나 확인한다.
+.. 인증서 정보를 확인해 보자.
+.. 단, AWS CM 에서 발급받은 인증서는 export 가 불가능하기 때문에 사실상 AWS 서비스 내에서만 쓸 수 있다. 강력한 Lock-in effect 를 노린 것 같은데... 무서운 녀석들.
 
