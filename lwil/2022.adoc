@@ -212,3 +212,7 @@ OOP, TDD, 계층 분리, 의존성 관리 등 핵심 디자인 패턴과 이를 
 .. 인증서 정보를 확인해 보자.
 .. 단, AWS CM 에서 발급받은 인증서는 export 가 불가능하기 때문에 사실상 AWS 서비스 내에서만 쓸 수 있다. 강력한 Lock-in effect 를 노린 것 같은데... 무서운 녀석들.
 
+- youjin: flutter에서 theme 속성(테마 속성)은 앱의 일괄되는 테마를 정할 수 있다. 기본적으로는 `theme: ThemeData(
+        primarySwatch: Colors.red
+      ),` 이라고 쓴다. primarySwatch는 theme 속성 덩어리기 때문에 Colors는 Accent가 붙은 키워드는 사용 할 수 없다. (예시: pinkAccent) 다크테마도 사용할 수 있는데 휴대폰 자체에서 다크테마를 사용하면 다크테마가 자동으로 된다고 한다. 다음에 활용하면 업데이트 해봐야겠다. 
+
