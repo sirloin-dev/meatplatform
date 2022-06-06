@@ -275,3 +275,7 @@ abstract class ApiCallBlocTemplate<M extends ApiCallBlocMessage, S extends ApiCa
 (2): `on` 메소드의 `EventHandler` 가 `State` 타입의 공변(Covariance)을 허용하지 않기 때문에, `ApiCallBlocTemplate` 의 `State` 는 고정 타입이어야 한다. 하지만 이로 인해 `ApiCallBlocTemplate` 의 사용 범위가 넓어질 수록 `ApiCallBlocState` 단일 타입 참조가 넓게 퍼지게 된다.
 
 즉, `ApiCallBlocTemplate` 의 하위 구현체에서, `on...(message -> state)` 의 state 를 실수해도 컴파일러가 문제를 인식할 수 없다.
+
+- wongue: OOP 관련 학습이  필요하다 생각되어, http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788998139940[스프링 입문을 위한 자바 객체 지향의 원리와 이해] 를 구매해 읽기 시작했습니다. +
+js와 JVM 메모리 구조의 큰 차이점 중 하나는, jS에는 callstack과 heap영역만 존재하지만, JVM의 메모리 구조에서는 static영역이라는 공간에 정보들을 등록, 관리하면서 OOP라는 개념을 구현 했다는 점인것을 알게되었습니다. +
++ 추가로 조사해보니 dart의 메모리 구조는 JVM의 구조와는 다르게, isolate라는 각각의 메모리 영역안에 heap이 존재하고, heap 안에 static 메모리 공간이 존재하는 차이점이 있는것 같습니다. https://images3.programmersought.com/536/bd/bd8786390503f97155e4cb60e5b7d338.JPEG[관련 이미지]
