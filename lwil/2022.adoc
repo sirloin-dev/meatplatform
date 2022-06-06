@@ -9,15 +9,21 @@
 :sectlinks:
 :icons: font
 
+[[section-202203]]
+== 2022년 3월
+
 [[section-202203-W5]]
-== 2022년 3월 5주
+=== 2022년 3월 5주
 
 - hwan: Apple M1 기기에 Jenkins 설치는 Java 8 설치부터 빡세다. AArch64 용 OpenJDK 8 이 없어서, Azul 같은 배포판을 이용해야 한다.
 - gon: aggregate에 대한 이해도가 상승하였다. 개념적 모델인 도메인은 물리적 모델과 연관을 끊고 순수해질수 있게하는 개념이다.
 - yoonho: 네이비씰 승리의 기술을 보면서 우선 순위를 정하는 것의 중요성을 알았다. 전체적인 그림에 있어서 한가지 업무에 매몰되면 목표 달성에 있어서 차질이 생길수도 있다.
 
+[[section-202204]]
+== 2022년 4월
+
 [[section-202204-W1]]
-== 2022년 4월 1주
+=== 2022년 4월 1주
 - gon: 코틀린의 operator에 대하여 학습하였다. 연산자 오버라이딩을 할 경우 객체의 표현으 좀 더 다양하게 할 수 있게 되었다.
 - yoonho: 프로그래머, 열정을 말하다를 읽으면서 특정 기술에 종속되는 것은 좋지 않다는 것을 알게 되었다. 기술을 이루는 근본(?)에 대한 앎이 중요하다고 생각했다.
 - youjin: 코드없이 UI를 제작하고 firebase, API를 지원해서 빌드까지 할 수 있는 link:https://flutterflow.io/[flutterflow] 개발이 있다는 것을 알게 되었고 빠르게 프로토타입을 제작해야 할 때는 부분적으로 활용해볼 수 있겠다고 생각했다. 
@@ -29,7 +35,7 @@
 "0" == [] // false  << 헐?!?!
   
 [[section-202204-W3]]
-== 2022년 4월 3주
+=== 2022년 4월 3주
 
 - hwan: 유튜브 미트러버 채널 보면서 육류에 대한 지식을 좀 더 늘려갈 수 있을 것 같다.
 - gon : 지도 API는 국내 한정으론 카카오가 제일 좋은것 같다. 네이버는 위치를 지정해서 검색이 불가능하다.
@@ -43,7 +49,7 @@ ERROR:  While executing gem ... (Gem::FilePermissionError)
     
     
 [[section-202204-W4]]
-== 2022년 4월 4주
+=== 2022년 4월 4주
 
 - gon : B햄버거프랜차이즈는 쿠폰을 사용하여 결제하고 취소 할 경우 쿠폰이 사용 처리되는 기이한 프로세스를 가진다.
 - yoonho : 심야버스 첫차는 9호선 출퇴근보다 혼잡하다는 것을 알게 되었다.
@@ -61,8 +67,11 @@ JdbcTemplate 같은거 오래 쓰다보니 이 기본을 놓쳐 삽질 4시간 �
 
 - youjin: link:https://flowingdata.com/2015/12/15/a-day-in-the-life-of-americans/[미국인의 하루 flowing data] 를 확인해보면서 "데이터"가 제공하는 가치, 그리고 데이터를 어떻게 가공하고 시각적으로 표현하는지에 따라 어떻게 하면 사용자들에게 정보를 신선하게 제공할 수 있을까 생각해볼 수 있었다.
 
+[[section-202205]]
+== 2022년 5월
+
 [[section-202205-W1]]
-== 2022년 5월 1주
+=== 2022년 5월 1주
 
 - hwan : 구현 비용, graceful shutdown 대응 등을 고려, 기성품인 spring kafka 를 도입했다. 그런데 `KafkaListener` 가 무조건 비동기라서 메시지 수신 이후 특정동작 수행 같은 통합 테스트 시나리오 구현이 어려웠다. 테스트 검증은 결국 메시지 수신 이후의 기대동작을 poll 하는 형태로 구현했다.
 - gon : kotlin의 sql 프레임워크인 exposed를 사용해보았다. 생각보다 가벼워서 좋은 프레임워크이지만 아직? 좀 불편하다. 
@@ -70,7 +79,7 @@ JdbcTemplate 같은거 오래 쓰다보니 이 기본을 놓쳐 삽질 4시간 �
 - youjin: 데이터를 수집하고 학습하고 정보제공, 결과 등의 반복을 통한 머신러닝을 "link:https://www.tensorflow.org/[tensorflow]"라는 시스템을 통해 쉽게 해볼 수 있다는 것을 알게 되었다. tensorflow는 수치를 계산하고 기계학습을 하는 오픈소스 라이브러리이다. 현재는 tensorflow.js 로 지원해주고 있어서 js로도 사용해볼 수 있을 것 같다.
 
 [[section-202205-W2]]
-== 2022년 5월 2주
+=== 2022년 5월 2주
 
 - youjin: link:https://thegithubshop.com/[github Shop]에서 티셔츠를 판다.. 우연히 알고리즘에 이끌려 개발자들의 데일리룩에 대해서 인터넷 서핑을 해보다가 깃헙쇼핑몰을 알게 되었다. 언젠가 한번은 대한민국 개발자들에게 데일리룩 설문조사를 해보고 싶다. 현재까지는 개발자 데일리룩에 대한 떠도는 밈들만 있지만 통계자료가 있다면 재밌을 것 같다. 무엇보다 너무 궁금하다.
 - hwan: CLI 에서 Github deploy key 를 쓰는 법은 다음과 같다.
@@ -111,7 +120,7 @@ Host github.com          # 이거 이름 아무거나 지어도 됨
 - yoonho : 외국어는 자신감이 중요하다는 것을 새삼 깨달았다.
 
 [[section-202205-W3]]
-== 2022년 5월 3주
+=== 2022년 5월 3주
 - hwan: Flutter 명령이 hang 될때:
 . https://stackoverflow.com/questions/54191643/flutter-doctor-hangs-on-start-no-output
 . OSX 에서는 '인터넷에서 다운로드한 프로그램을 실행하시겠습니까?' ui 로 인해서 hang 될 수도 있음. `ps` 로 좀비 프로세스 아닌거 확인한 뒤에는, ui 를 바로 확인해 보자.
@@ -146,7 +155,7 @@ emulator @avd_name [ {-option [value]} … ]    // emulator 에 연결되어 있
   신경을 써야겠다는 생각이 들었고, 소프트 스킬이 중요하다는 것을 새삼 깨달았다. 
 
 [[section-202205-W4]]
-== 2022년 5월 4주
+=== 2022년 5월 4주
 - hwan: 
 . dart 에는 Pattern matching 이 없어서 불편한데, link:https://github.com/dart-lang/language/blob/master/working/0546-patterns/patterns-feature-specification.md[이런 Proposal] 이 올라와 있는 것을 발견했다.
 . 2022-05 현재 Linux IntelliJ 에서  flutter web 을  개발할때 GPU 렌더링이 느린 이유는 link:https://github.com/flutter/flutter/issues/96919[Github issue link]의 내용대로, snap store 에서 내려받는 google chrome 에 뭔가 이상한 문제가 있기 때문이다.
@@ -189,7 +198,7 @@ OOP, TDD, 계층 분리, 의존성 관리 등 핵심 디자인 패턴과 이를 
           비교하는 로직이 복잡할수록 빛을 발한다.
 
 [[section-202205-W5]]
-== 2022년 5월 5주
+=== 2022년 5월 5주
 
 - hwan: 
 
@@ -228,11 +237,11 @@ OOP, TDD, 계층 분리, 의존성 관리 등 핵심 디자인 패턴과 이를 
 약한 의식이 있다는 소리일까...? +
 flutter에서 다루는 state가 react와 어떻게 다른지 체감하는 한주였습니다. +
 
-[[section-202206-W1]]
-== 2022년 6월 1주
+[[section-202206]]
+== 2022년 6월
 
 [[section-202206-W1]]
-== 2022년 6월 1주
+=== 2022년 6월 1주
 
 - hwan: BLoC 에서 API Call -> API success / API fail 동작에 동일한 화면 연출이 필요해서 이를 패턴화 하고 싶었다. 그런데 이를 다음처럼 구현할 경우 컴파일 에러가 발생한다.
 
