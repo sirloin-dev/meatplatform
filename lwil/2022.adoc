@@ -279,3 +279,32 @@ abstract class ApiCallBlocTemplate<M extends ApiCallBlocMessage, S extends ApiCa
 - wongue: OOP 관련 학습이  필요하다 생각되어, http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788998139940[스프링 입문을 위한 자바 객체 지향의 원리와 이해] 를 구매해 읽기 시작했습니다. +
 js와 JVM 메모리 구조의 큰 차이점 중 하나는, jS에는 callstack과 heap영역만 존재하지만, JVM의 메모리 구조에서는 static영역이라는 공간에 정보들을 등록, 관리하면서 OOP라는 개념을 구현 했다는 점인것을 알게되었습니다. +
 + 추가로 조사해보니 dart의 메모리 구조는 JVM의 구조와는 다르게, isolate라는 각각의 메모리 영역안에 heap이 존재하고, heap 안에 static 메모리 공간이 존재하는 차이점이 있는것 같습니다. https://images3.programmersought.com/536/bd/bd8786390503f97155e4cb60e5b7d338.JPEG[관련 이미지]
+
+- gon:
+----
+fun main() = runBlocking<Unit> {
+    try {
+        val sum = failedConcurrentSum()
+        println("출력이 안되어야 함 result : $sum")
+    } catch(e: ArithmeticException) {
+        println("main 함수 캐치")
+    }
+}
+
+suspend fun failedConcurrentSum(): Int = coroutineScope {
+    val one = async<Int> {
+        try {
+            delay(Long.MAX_VALUE)
+            42
+        } finally {
+            println("첫번째 async finally")
+        }
+    }
+    val two = async<Int> {
+        println("Exception 발생")
+        throw ArithmeticException()
+    }
+    one.await() + two.await()
+}
+----
+코루틴은 여러 비동기 함수가 같이 실행될때 만약 하나라도 에러난다면 실행한 비동기 함수전부에서 예외를 발생한다
