@@ -323,8 +323,9 @@ yoonho: '만들면서 배우는 클린아키텍처' 책을 마저 읽으면서 �
 상황에 맞는 판단을 할 수 있어야한다.
 
 youjin: 플러터 기본 앱 레이아웃 만드는법(Scaffold)을 정리해보았다. +
-- Scaffold 위젯 +
-    ```
+  - Scaffold 위젯 +
+    [source,dart]
+    ----
     MaterialApp(
     home: Scaffold(
             appBar: AppBar( title: Text('앱제목') ), 
@@ -332,8 +333,8 @@ youjin: 플러터 기본 앱 레이아웃 만드는법(Scaffold)을 정리해보
             bottomNavigationBar: BottomAppBar( child: Text('앱하단') )
         )
     ); 
-    ```
-    +
+    ----
+
     - :heavy_exclamation_mark: body 속성은 반드시 있어야한다. +
 - Row, Column 위젯 +
     ```
