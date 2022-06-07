@@ -309,9 +309,12 @@ suspend fun failedConcurrentSum(): Int = coroutineScope {
 ----
 
 실행결과
+
+
 ----
 Exception 발생
 첫번째 async finally
 main 함수 캐치
 ----
+
 코루틴은 여러 비동기 함수가 같이 실행될때 만약 하나라도 에러난다면 실행한 비동기 함수전부에서 예외를 발생한다
