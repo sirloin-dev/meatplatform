@@ -382,9 +382,9 @@ certbot certonly \
   --manual-public-ip-logging-ok \
   --rsa-key-size 4096
 ----
-. certbot renew --dry-run 로 자동 재시작 여부를 확인해 본다.
-. crontab 에 certbot renew 를 적절한 기간동안 자동 재시작하도록 등록해 둔다.
+. `certbot renew --dry-run` 로 자동 재시작 여부를 확인해 본다.
+. crontab 에 `certbot renew` 를 적절한 기간동안 자동 재시작하도록 등록해 둔다. (https://crontab.guru/ 같은 사이트
 +
 그 외에 https://eff-certbot.readthedocs.io/en/stable/using.html#dns-plugins 에 다른 플러그인들도 있음
-. *.meatgo.co.kr 같은 인증서로는 api.meatgo.co.kr 호스트명은 인증 가능하지만, openbeta.api.meatgo.co.kr 같은 호스트이름은 인증할 수 없다(https://www.rfc-editor.org/rfc/rfc6125#page-27).
+. `*.meatgo.co.kr` 같은 인증서로는 `api.meatgo.co.kr` 호스트명은 인증 가능하지만, `openbeta.api.meatgo.co.kr` 같은 호스트이름은 인증할 수 없다(https://www.rfc-editor.org/rfc/rfc6125#page-27).
 
