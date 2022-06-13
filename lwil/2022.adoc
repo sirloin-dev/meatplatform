@@ -360,7 +360,7 @@ youjin: 플러터 기본 앱 레이아웃 만드는법(Scaffold)을 정리해보
 
 - wongue: OOP 관련 공부를 진행하던 중에, 멀티스레딩 관련한 내용에서 말하는 쓰레드의 의미가 내가 알고있는 CPU의 N코어 M'스레드' 를 말할때의 스레드와 다르다는 느낌을 받았다. +
 관련해 구글링해보니, 쓰레드는 물리적, 논리적 스레드로 라는 두 종류로 분류가 가능하고, 물리적 스레드는 병렬성을 담당하고, 논리적 스레드는 프로그렘이 실행될 때의 동시성을 담당한다고 한다. + 
-nodejs나 dart가 싱글스레드로 동작한다는건 서버를 올려 동작시킬때, 1코어만 갈군다는 뜻이 아니라 논리적 스레드가 1개로 구성되었다는 뜻인거 같다.. https://doc-04-4g-docs.googleusercontent.com/docs/securesc/baah4gtgmr143t0vpt18r7todnm09pd4/92sm9fb0liqrrh82bgd6pmn8cj7q7glh/1655022825000/03379748967294701232/03881168332971601646/19IccYaHveCytcletVpItr2l-SJLa4_UJ?e=view&ax=ACxEAsb1mX-FHVOQu95vygQB539L-T12UFbihZlTiKXmo-QWbYm4z8jNS9wRKWvB_Ink6yxDhwanKj1CagmvtP4o3IXXRzp3X91rDBhFwjfi538skfLBoddCdPUv2g6LFsxeUsJTiAmOsW-9cWl4Uvo_kGuP7t_FfEtGnHcMehxGqUc7yvhT5128b5nMs4vCcaO5chivRQi2KGUP1TfPEJqP1UAg6f_eE4FWsBCL6cSrFFCuNTpMXfDYuFThk9-hswwSq9Er10DQ63_X4hAxvfYReseWDlTNaHKe933avnM_ETzzQ-O36M4ZTCzYGocg6M1w79Sg3965hNeTucfC2CTyV63juoWbS9LlJirtTT7sa1VHuJXTKaF6bqH1jC83idmR8fRB4piGURQ9CBhCooKQ9diIdr_TTCgsn2CrE2baIwGmPx795s5aEZKtDFwMrkQ9brCU4sUZdu9C54YIOcBBYpuBqOKQwUHIuzqqsvAF10UBbSzGFcZP0CG7qwytAR3y-ZJ7jKUeX0ybXGtgFuNJleHboZ0nLnZS3vu14PzK4-13itRa1Ev8rgDh9rTb5pkbMRxelMIwwuyzR90nxtzm_gufso4cG4-55CDhXIGjkf2346T-ykhzjlZBWeiDrzMlKY_hxaZFMc72-T2owGYwQJ4yupFAQizjrqQHG6XQYrrV2B3BlMvV93pKT9Y0QrvkMN1uUw1jQNZxGGS4_e3UC_oUZ75a1LilaN4domnEhWZZhkHb&authuser=0&nonce=8c6bcik870pte&user=03881168332971601646&hash=4628ujid0fdn9c9n3m0kierm964cb6h9[참고이미지]
+nodejs나 dart가 싱글스레드로 동작한다는건 서버를 올려 동작시킬때, 1코어만 갈군다는 뜻이 아니라 논리적 스레드가 1개로 구성되었다는 뜻인거 같다.. https://imgur.com/a/4vkYdo7[참고이미지]
 
 - hwan: letsencrypt 로 wildcard 인증서 '자동'발급받기
 +
