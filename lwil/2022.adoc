@@ -390,7 +390,9 @@ certbot certonly \
 
 - yoonho: PR을 분리하면서 여러개의 커밋을 cherrypick 해야했다. +
 git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을 한번에 cherrypick 할 수 있다. +
-^ 는 시작 커밋 포함 여부를 표현한다.
+^ 는 시작 커밋 포함 여부를 표현한다. +
+아침에 날씨가 좋아서 신논현에서 걸어왔다. +
+때로는 주변을 돌아보며 환기를 하는 것도 좋은 것 같다.
 
 - gon: 코루틴이 활동중 취소가 잘되려면 취소에 협조적으로 짜여야한다. 이 키워드를 yield가 담당한다
 - youjini: 깃헙에서 . 를 누르면 리소스를 vscode로 바로 확인가능하다.
