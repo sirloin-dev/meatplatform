@@ -388,3 +388,7 @@ certbot certonly \
 그 외에 https://eff-certbot.readthedocs.io/en/stable/using.html#dns-plugins 에 다른 플러그인들도 있음
 . `*.meatgo.co.kr` 같은 인증서로는 `api.meatgo.co.kr` 호스트명은 인증 가능하지만, `openbeta.api.meatgo.co.kr` 같은 호스트이름은 인증할 수 없다(https://www.rfc-editor.org/rfc/rfc6125#page-27).
 
+- yoonho: PR을 분리하면서 여러개의 커밋을 cherrypick 해야했다. +
+git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을 한번에 cherrypick 할 수 있다. +
+^ 는 시작 커밋 포함 여부를 표현한다.
+
