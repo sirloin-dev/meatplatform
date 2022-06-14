@@ -388,10 +388,11 @@ certbot certonly \
 그 외에 https://eff-certbot.readthedocs.io/en/stable/using.html#dns-plugins 에 다른 플러그인들도 있음
 . `*.meatgo.co.kr` 같은 인증서로는 `api.meatgo.co.kr` 호스트명은 인증 가능하지만, `openbeta.api.meatgo.co.kr` 같은 호스트이름은 인증할 수 없다(https://www.rfc-editor.org/rfc/rfc6125#page-27).
 
-- yoonho: PR을 분리하면서 여러개의 커밋을 cherrypick 해야했다. +
+- yoonho: +
+1. PR을 분리하면서 여러개의 커밋을 cherrypick 해야했다. +
 git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을 한번에 cherrypick 할 수 있다. +
 ^ 는 시작 커밋 포함 여부를 표현한다. +
-아침에 날씨가 좋아서 신논현에서 걸어왔다. +
+2. 아침에 날씨가 좋아서 신논현에서 걸어왔다. +
 때로는 주변을 돌아보며 환기를 하는 것도 좋은 것 같다.
 
 - gon: 코루틴이 활동중 취소가 잘되려면 취소에 협조적으로 짜여야한다. 이 키워드를 yield가 담당한다
