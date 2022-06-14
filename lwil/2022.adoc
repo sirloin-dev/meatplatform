@@ -392,3 +392,6 @@ certbot certonly \
 git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을 한번에 cherrypick 할 수 있다. +
 ^ 는 시작 커밋 포함 여부를 표현한다.
 
+- gon: 코루틴이 활동중 취소가 잘되려면 취소에 협조적으로 짜여야한다. 이 키워드를 yield가 담당한다
+
+
