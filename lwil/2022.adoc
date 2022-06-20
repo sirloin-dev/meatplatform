@@ -407,3 +407,12 @@ git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을
 - hwan: lwil: flyway 를 이용한 database schema 형상관리
 https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB%8D%98-flyway-db-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-tool/
 
+- youjin: 챗봇이용시 꼭 알아야 하는 단어 
+1. Intent : 목적 -> 사용자가 어떤 의도로 챗봇에 요청한 것인지를 판단한다 
+	- 오늘 날씨 어때? 내일 날씨 어때? 어제는 날씨 어땠어? :: 날씨정보
+	- 넌 코끼리 좋아해 ? 호랑이 좋아해 ? :: 선호동물 정보 
+2. Entity : 실체 (변수) -> 사용자의 의도중 실체가 되는 변하는 경우
+	- 오늘, 내일, 어제 :: date
+	- 코끼리, 호랑이 :: animals
+3. Context : 문맥 -> 대화의 앞뒤 흐름
+	- 오늘날씨 어때? ~~~ 그럼  내일은? :: 내일 (날씨)는 (어때)? 처럼 이어서 요청할 떄
