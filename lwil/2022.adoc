@@ -398,3 +398,6 @@ git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을
 - gon: 코루틴이 활동중 취소가 잘되려면 취소에 협조적으로 짜여야한다. 이 키워드를 yield가 담당한다
 - youjini: 깃헙에서 . 를 누르면 리소스를 vscode로 바로 확인가능하다.
 
+
+[[section-202206-W3]]
+=== 2022년 6월 3주
