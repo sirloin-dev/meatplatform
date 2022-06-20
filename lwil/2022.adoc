@@ -402,4 +402,8 @@ git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을
 [[section-202206-W3]]
 === 2022년 6월 3주
 
-gon : 자바의 최상위 시간타입인 Instant의 경우 기준이 UTC이다 그래서 만약 KST를 zoneoffest없이 그대로 변환하면 KST가 UTC기준이 되기 때문에 주의하여야한다. 타임존에 관한정보는 ZoneDateTiem으로 표현할수 있다.
+- gon : 자바의 최상위 시간타입인 Instant의 경우 기준이 UTC이다 그래서 만약 KST를 zoneoffest없이 그대로 변환하면 KST가 UTC기준이 되기 때문에 주의하여야한다. 타임존에 관한정보는 ZoneDateTiem으로 표현할수 있다.
+
+- hwan: lwil: flyway 를 이용한 database schema 형상관리
+https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB%8D%98-flyway-db-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-tool/
+
