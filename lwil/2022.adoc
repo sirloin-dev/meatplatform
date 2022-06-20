@@ -408,7 +408,8 @@ git cherry-pick commitnumber^..commitnumber 를 이용해 여러개의 커밋을
 https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB%8D%98-flyway-db-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-tool/
 
 - youjin: 
-1. 챗봇이용시 꼭 알아야 하는 단어 +
+. 챗봇이용시 꼭 알아야 하는 단어
++
 [source, shell]
 ----
 	// Intent : 목적 , 사용자가 어떤 의도로 챗봇에 요청한 것인지를 판단한다 
@@ -426,10 +427,10 @@ https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB
 	오늘날씨 어때? ~~~ 그럼  내일은? :: 내일 (날씨)는 (어때)? 처럼 이어서 요청할 때
 ----
 
-2. `GestureDetector()` -> 여러 세밀한 클릭기능(확대, 축소 drag 등)들을 제공하지만, 잉크가 퍼지듯한 애니메이션효과(리플애니메이션 Ripple Animation)를 제공하지 않고 있다.
+. `GestureDetector()` -> 여러 세밀한 클릭기능(확대, 축소 drag 등)들을 제공하지만, 잉크가 퍼지듯한 애니메이션효과(리플애니메이션 Ripple Animation)를 제공하지 않고 있다.
     대신, `InkWell()` -> 기본 탭들은 제공하지만. `GestureDetector`보다는 세밀하지 않고, 그 수가 적고 간단하지만, 터치시 효과주는 리플 애니메이션효과를 제공한다.
     
-3. 사용자 프로필을 원으로 나타내고 싶을 때에는 https://api.flutter.dev/flutter/material/CircleAvatar-class.html[CircleAvatar class] 를 활용하면 더 깔끔하게 구현가능하다.
+. 사용자 프로필을 원으로 나타내고 싶을 때에는 https://api.flutter.dev/flutter/material/CircleAvatar-class.html[CircleAvatar class] 를 활용하면 더 깔끔하게 구현가능하다.
 
 
 - yoonho: 출근시 행단보도쪽에서 바로 올라오는 것보다는 미리 골목에 들어와서 올라오는 것이 덜 힘들수도 있다.
