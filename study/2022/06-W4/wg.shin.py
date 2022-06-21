@@ -25,5 +25,5 @@ class Solution:
 """
 Runtime: 54 ms, faster than 87.70% of Python3 online submissions for Search Insert Position.
 Memory Usage: 15 MB, less than 6.21% of Python3 online submissions for Search Insert Position.
-recursive func 의 경우 heapStack을 차지하기 때문에 메모리는 어쩔수 없는거같다..
+recursive func 의 경우 Call Stack을 차지하기 때문에 메모리는 어쩔수 없는거같다..
 """
