@@ -1,8 +1,8 @@
 // 예전에 만들어뒀던 로직 그냥 올려봄
 
 /**
- * Runtime: 159 ms, faster than 89.15% of Kotlin online submissions for Implement strStr().
- * Memory Usage: 33.4 MB, less than 99.01% of Kotlin online submissions for Implement strStr().
+ * Runtime: 159 ms, faster than 89.15% of Kotlin online submissions for Search Insert Position.
+ * Memory Usage: 33.4 MB, less than 99.01% of Kotlin online submissions for Search Insert Position.
  */
 @Suppress("LoopWithTooManyJumpStatements")
 fun <T : Comparable<T>> List<T>.findInsertPosition(input: T): Int {
