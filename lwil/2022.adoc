@@ -437,3 +437,39 @@ https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB
 
 - wongue: flutter 의 route를 사용하는것과, Navigator.push(), .pop()을 사용하는건 완전히 같은 동작이라는것을 알게 되었습니다. +
   웹 url 에 따른 라우팅을 구현하기 위해서 Navigator ver.2 라는것도 출시되었다고 하는데, 향후 웹앱을 개발할 시점에는 반드시 숙지해야할 기술이라 생각이 들었습니다.
+
+[[section-202206-W4]]
+=== 2022년 6월 4주
+
+- hwan: AWS 의 VPC 자동생성 기능.. 잘못하면 삽질만 할 가능성이 커짐. 하기전에 문서 잘 읽어보자...
+
+.일반적인 service network 구성도
+----
+       Internet
+          |
++-------------------- [ VPC ] ---------------------+
+|         |                                        |
+| +-- subnet-public --+     +-- subnet-private --+ |
+| |       |           |     |                    | |
+| |     GATEWAY <------------->                  | |
+| |                   |     |                    | |
+| +-------------------+     +--------------------+ |
+|                                                  |
++--------------------------------------------------+
+----
+
+위 구조의 Gateway(Bastion) 설정 하는데 삽질 3시간, 결국 손으로 30분만에 구축 성공...
+
+VPC 자동생성 기능을 쓰면:
+
+. VPC
+. Subnet >
+. Routing Table (public: public subnet 및 internet gateway, private: private subnet 에 연결) >
+. EC2 에 사용할 Network Interface 생성 및 public subnet 에 소속 
+. ACL 및 Security rule 설정
+
+정도를 다 해주긴 하는데 정작 EC2 NAT instance 설정을 안 해줘서 결국 저 메뉴들 다 들어가서 확인하는 수고는 여전히 필요하다.
+
+처음 이 기능을 봤을땐 이거 하나만 누르고 ec2 인스턴스 만든 뒤, Network Interface 만 붙여주면 끝날 줄 알았는데 현실은 그렇지 않았다.
+
+ㅜㅜ
