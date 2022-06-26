@@ -281,6 +281,7 @@ js와 JVM 메모리 구조의 큰 차이점 중 하나는, jS에는 callstack과
 + 추가로 조사해보니 dart의 메모리 구조는 JVM의 구조와는 다르게, isolate라는 각각의 메모리 영역안에 heap이 존재하고, heap 안에 static 메모리 공간이 존재하는 차이점이 있는것 같습니다. https://images3.programmersought.com/536/bd/bd8786390503f97155e4cb60e5b7d338.JPEG[관련 이미지]
 
 - gon:
+[source, kotlin]
 ----
 fun main() = runBlocking<Unit> {
     try {
@@ -442,7 +443,7 @@ https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB
 === 2022년 6월 4주
 
 - hwan: AWS 의 VPC 자동생성 기능.. 잘못하면 삽질만 할 가능성이 커짐. 하기전에 문서 잘 읽어보자...
-
++
 .일반적인 service network 구성도
 ----
        Internet
@@ -457,19 +458,17 @@ https://www.popit.kr/%EB%82%98%EB%A7%8C-%EB%AA%A8%EB%A5%B4%EA%B3%A0-%EC%9E%88%EB
 |                                                  |
 +--------------------------------------------------+
 ----
-
++
 위 구조의 Gateway(Bastion) 설정 하는데 삽질 3시간, 결국 손으로 30분만에 구축 성공...
-
++
 VPC 자동생성 기능을 쓰면:
-
++
 . VPC
 . Subnet >
 . Routing Table (public: public subnet 및 internet gateway, private: private subnet 에 연결) >
 . EC2 에 사용할 Network Interface 생성 및 public subnet 에 소속 
 . ACL 및 Security rule 설정
 
-정도를 다 해주긴 하는데 정작 EC2 NAT instance 설정을 안 해줘서 결국 저 메뉴들 다 들어가서 확인하는 수고는 여전히 필요하다.
++
+정도를 다 해주긴 하는데 정작 EC2 NAT instance 설정을 안 해줘서 결국 저 메뉴들 다 들어가서 확인하는 수고는 여전히 필요하다. 처음 이 기능을 봤을땐 이거 하나만 누르고 ec2 인스턴스 만든 뒤, Network Interface 만 붙여주면 끝날 줄 알았는데 현실은 그렇지 않았다. ㅜㅜ
 
-처음 이 기능을 봤을땐 이거 하나만 누르고 ec2 인스턴스 만든 뒤, Network Interface 만 붙여주면 끝날 줄 알았는데 현실은 그렇지 않았다.
-
-ㅜㅜ
