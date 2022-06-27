@@ -472,3 +472,4 @@ VPC 자동생성 기능을 쓰면:
 +
 정도를 다 해주긴 하는데 정작 EC2 NAT instance 설정을 안 해줘서 결국 저 메뉴들 다 들어가서 확인하는 수고는 여전히 필요하다. 처음 이 기능을 봤을땐 이거 하나만 누르고 ec2 인스턴스 만든 뒤, Network Interface 만 붙여주면 끝날 줄 알았는데 현실은 그렇지 않았다. ㅜㅜ
 
+- youjin: AnimatedBuilder() -> 내가 원하는 위젯만 감싸서 애니메이션을 넣으려면, animation 레퍼런스를 넣어서 값을 조작해주는 부분의 위젯을 AnimatedBuilder로 감싸면 된다.
