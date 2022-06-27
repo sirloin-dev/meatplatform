@@ -475,3 +475,6 @@ VPC 자동생성 기능을 쓰면:
 - youjin: AnimatedBuilder() -> 내가 원하는 위젯만 감싸서 애니메이션을 넣으려면, animation 레퍼런스를 넣어서 값을 조작해주는 부분의 위젯을 AnimatedBuilder로 감싸면 된다.
 
 - gon : kotlin의 suspend 함수는 default 파라미터로 지정할수없다
+
+-wongue: Flutter I/O Extended Korea 2022 발표중 클린 아키택처를 flutter package 에서 구현하는 방법을 알게되었다. +
+https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
