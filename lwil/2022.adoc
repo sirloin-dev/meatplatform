@@ -478,3 +478,14 @@ VPC 자동생성 기능을 쓰면:
 
 -wongue: Flutter I/O Extended Korea 2022 발표중 클린 아키택처를 flutter package 에서 구현하는 방법을 알게되었다. +
 https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
+
+[[section-202207]]
+== 2022년 7월
+
+[[section-202207-W1]]
+=== 2022년 7월 1주
+
+- wongue: flutter 의 material 에서 제공해주는 MaterialStateColor와 FocusNode를 arg로 받는 Inkwell을 이용해 위젯을 구현하려고 시도했지만, material 에서 default로 세팅된 값이 너무 많아서 의도한 디자인 대로 위젯을 동작사키기가 힘든 단점이 있다. +
+가능하면 materialState를 사용하는것 보다는 flutter core 에서 제공해주는 focus 위젯등을 사용해 직접 stateful 하게 위젯을 구현하는것이 더 좋은 방향인것 같다. + 
+직접 위젯의 상호작용을 구현해놓으면, 타 패키지의 의존성을 줄임 + 의도한 바 대로 위젯의 디자인을 구현하기 쉬움 + 차후 side effect 가 날 가능성이 적어지는 정도의 장점을 가진다. +
+물론 차후 상호작용을 담당하는 부분에 대한 코드가 위젯별로 파편화되어있어 유 보수가 진행되야 할 경우 비용이 올라간다는 단점또한 같이 생기게 되지만, front의 코드 특성상 재작성될 확률이 크다 판단하였다.
