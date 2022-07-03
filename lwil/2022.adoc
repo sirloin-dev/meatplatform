@@ -505,3 +505,39 @@ https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
 ----
 + 
 내가 코드를 직접 짜지 않고 github copilot 을 사용하여 코드를 자동생성하더라도, 코드퀄리티나 보안은 `개인의 책임` 에 있다고 한다. 즉, 앞으로 코드를 작성할 때는 명확한 변수명 선언(클린코드)과 가능한 작은 단위의 함수 생성(클린아키텍쳐)의 중요성이 더 키질 것으로 생각된다. dart 도 지원이 된다면, 한번 사용해보고 싶다 !
+
+- hwan: 
++
+. AWS 의 네트워크 관련 설정은 대부분 낙장불입이라, 처음 만들때부터 잘 해야 한다. 개인적으로 매우 불편하다.
+
+. lwil: EC2 NAT instance 를 쓰려면 masquerade 설정만으로는 안 되고, AWS console 에서 networking > Change Source/Dest. Check 를 반드시 비활성화 해 줘야 한다.
++
+이것 때문에 또 삽질 2시간 했다.
++
+설정 제대로 되었나 확인하려면:
++
+[source, shell]
+----
+# 다음 명령 실행 결과가 1이어야 함
+$ cat /proc/sys/net/ipv4/ip_forward
+
+$ sudo iptables -nL POSTROUTING -t nat -v
+sudo iptables -nL POSTROUTING -t nat -v
+Chain POSTROUTING (policy ACCEPT 27 packets, 2222 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+   96  6529 MASQUERADE  all  --  *      eth0    0.0.0.0/0            0.0.0.0/0            /* NAT routing rule installed by fck-nat */
+----
+
+. `net-tools` 의 도구들은 이제 가급적 쓰지 말라고 하는데 아직까지 `iptables` 의 대체재인 `nftables` 는 사용법을 잘 모르겠다.
++
+[source, shell]
+----
+# NAT 규칙 추가
+$ iptables -t nat -A PREROUTING -p tcp -i eth0 --dport ${LOCAL_PORT} -j DNAT --to ${REMOTE_HOST}:${REMOTE_PORT}
+
+# NAT 규칙 확인
+$ iptables -t nat -L --line-numbers
+
+# NAT 규칙 삭제
+$ sudo iptables -t nat -D PREROUTING {rule-number-here}
+----
