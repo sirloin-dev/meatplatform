@@ -522,7 +522,6 @@ https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
 $ cat /proc/sys/net/ipv4/ip_forward
 
 $ sudo iptables -nL POSTROUTING -t nat -v
-sudo iptables -nL POSTROUTING -t nat -v
 Chain POSTROUTING (policy ACCEPT 27 packets, 2222 bytes)
  pkts bytes target     prot opt in     out     source               destination         
    96  6529 MASQUERADE  all  --  *      eth0    0.0.0.0/0            0.0.0.0/0            /* NAT routing rule installed by fck-nat */
