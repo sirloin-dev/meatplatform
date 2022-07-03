@@ -474,9 +474,9 @@ VPC 자동생성 기능을 쓰면:
 
 - youjin: AnimatedBuilder() -> 내가 원하는 위젯만 감싸서 애니메이션을 넣으려면, animation 레퍼런스를 넣어서 값을 조작해주는 부분의 위젯을 AnimatedBuilder로 감싸면 된다.
 
-- gon : kotlin의 suspend 함수는 default 파라미터로 지정할수없다
+- gon : kotlin의 suspend 함수는 default 파라미터로 지정할 수 없다.
 
--wongue: Flutter I/O Extended Korea 2022 발표중 클린 아키택처를 flutter package 에서 구현하는 방법을 알게되었다. +
+- wongue: Flutter I/O Extended Korea 2022 발표중 클린 아키택처를 flutter package 에서 구현하는 방법을 알게되었다. +
 https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
 
 [[section-202207]]
@@ -489,3 +489,13 @@ https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
 가능하면 materialState를 사용하는것 보다는 flutter core 에서 제공해주는 focus 위젯등을 사용해 직접 stateful 하게 위젯을 구현하는것이 더 좋은 방향인것 같다. + 
 직접 위젯의 상호작용을 구현해놓으면, 타 패키지의 의존성을 줄임 + 의도한 바 대로 위젯의 디자인을 구현하기 쉬움 + 차후 side effect 가 날 가능성이 적어지는 정도의 장점을 가진다. +
 물론 차후 상호작용을 담당하는 부분에 대한 코드가 위젯별로 파편화되어있어 유 보수가 진행되야 할 경우 비용이 올라간다는 단점또한 같이 생기게 되지만, front의 코드 특성상 재작성될 확률이 크다 판단하였다.
+
+- youjin: https://github.com/features/copilot[github copilot]이 진짜 나왔다. github copilot 은 코딩할 때 자동완성 스타일 제안을 제공하는 AI 페어 프로그래머이다. 유료라서 당장 사용하진 못하지만, vscode, intellJ, Android Studio 등 몇몇 IDE 환경에서 Extension 과 Plugin 형태로 제공해준다. 설치 후 도구 > github copilot > login to github 을 하면 승인요청을 할 수 있다. 특히 Python, JavaScript, TypeScript, Ruby, Go, C# 및 C++ 에서 잘 작동된다고 한다. 클래스를 생성하거나, 함수를 작성하려고 이름을 선언할 때, 코드의 컨텍스트와 스타일이 일치되는 코드를 회색라인으로 자동생성한다. 또는 자동생성코드를 원할때, 주석으로 아래와 같이 입력을 통해 실행시킬 수 있다. 내가 코드를 직접 짜지 않고 github copilot 을 사용하여 코드를 자동생성하더라도, 코드퀄리티나 보안은 개인의 책임에 있다고 한다. 즉, 앞으로 코드를 작성할 때는 명확한 변수명 선언(클린코드)과 가능한 작은 단위의 함수 생성(클린아키텍쳐)의 중요성이 더 키질 것으로 생각된다. dart 도 지원이 된다면, 한번 사용해보고 싶다 !
+[source, java]
+----
+// find all images without alternate text
+// and give them a red border
+void process () {
+	... // github copilot 이 주석명령을 알아듣고 알아서 코드를 생성시킴
+}
+----
