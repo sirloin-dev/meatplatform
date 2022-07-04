@@ -542,11 +542,14 @@ $ sudo iptables -t nat -D PREROUTING {rule-number-here}
 ----
 
 - gon : 코틀린에서 다음과 같은 mokito를 이용한 검증 부분을 짯는데 에러가 낫다
+
 ---
 then(mockRepo).should(times(1)).save(any())
 ---
+
 npe가 발생하였는데 이유를 알아보자 하니 any() 이 부분이 자바mokito를 사용하여 그렇다 (자바mokito는 any()는 null을 주입한다)
 그래서 다음과같은 모듈을 사용하여야한다
+
 ---
 then(mockRepo).should(times(1)).save(org.mockito.kotlin.any())
 ---
