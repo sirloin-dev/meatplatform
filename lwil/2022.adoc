@@ -548,7 +548,8 @@ $ sudo iptables -t nat -D PREROUTING {rule-number-here}
 then(mockRepo).should(times(1)).save(any())
 ---
 
-npe가 발생하였는데 이유를 알아보자 하니 any() 이 부분이 자바mokito를 사용하여 그렇다 (자바mokito는 any()는 null을 주입한다)
+npe가 발생하였는데 이유를 알아보자 하니 any() 이 부분이 자바mokito를 사용하여 그렇다 
+자바mokito는 any()는 null을 주입한다 save파리미터는 not null의 타입이라 에러가 발생하는것이다
 그래서 다음과같은 모듈을 사용하여야한다
 
 [source, kotlin]
