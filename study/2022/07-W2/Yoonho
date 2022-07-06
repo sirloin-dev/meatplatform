@@ -1,0 +1,14 @@
+    fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
+        var tail1 = m - 1
+        var tail2 = n - 1
+        var finished = m + n - 1
+        while (tail1 >= 0 && tail2 >= 0) {
+            nums1[finished--] = if (nums1[tail1] > nums2[tail2]) nums1[tail1--] else nums2[tail2--]
+        }
+        while (tail2 >= 0) {
+            nums1[finished--] = nums2[tail2--]
+        }
+    }
+    
+//Runtime: 176 ms, faster than 96.84% of Kotlin online submissions for Merge Sorted Array.
+//Memory Usage: 35.4 MB, less than 86.33% of Kotlin online submissions for Merge Sorted Array.
