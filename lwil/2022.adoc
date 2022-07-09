@@ -482,8 +482,8 @@ https://www.notion.so/flutter-5f6dd66df7e245079026f6e07d7c7258[참고 링크]
 [[section-202207]]
 == 2022년 7월
 
-[[section-202207-W1]]
-=== 2022년 7월 1주
+[[section-202207-W2]]
+=== 2022년 7월 2주
 
 - wongue: flutter 의 material 에서 제공해주는 MaterialStateColor와 FocusNode를 arg로 받는 Inkwell을 이용해 위젯을 구현하려고 시도했지만, material 에서 default로 세팅된 값이 너무 많아서 의도한 디자인 대로 위젯을 동작사키기가 힘든 단점이 있다. +
 가능하면 materialState를 사용하는것 보다는 flutter core 에서 제공해주는 focus 위젯등을 사용해 직접 stateful 하게 위젯을 구현하는것이 더 좋은 방향인것 같다. + 
@@ -556,3 +556,17 @@ npe가 발생하였는데 이유를 알아보자 하니 any() 이 부분이 자�
 ---
 then(mockRepo).should(times(1)).save(org.mockito.kotlin.any())
 ---
+
+[[section-202207-W3]]
+=== 2022년 7월 3주
+
+- hwan: firewall 뒤에 있어서 direct access 가 불가능한 host 에 local ssh tunnel 로 접근하는 법
++
+[source,shell]
+----
+ssh -NT -L ${LOCAL_ADDR}:${LOCAL_PORT}:${REMOTE_HOST}:${REMOTE_PORT} ${SSH_JUMPHOST_USER}@$${SSH_JUMPHOST}
+----
++
+이때 `REMOTE_HOST` 나 `REMOTE_PORT` 는 `SSH_JUMPHOST` 기준에서 보이는 IP 주소로, localhost 에서 보이지 않더라도 상관없다.
++
+이렇게 SSH Tunnel 을 만들면 외부에 공개되지 않은 private network 에도 접근할 수 있다.
