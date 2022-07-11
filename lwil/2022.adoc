@@ -578,3 +578,4 @@ jpa로 Kotlin JDSL Reactive도 사용이 가능하다
 https://github.com/line/kotlin-jdsl/blob/main/reactive-core/README.md
 
 지난주 영화 헤어질결심을 봤는데 강추드린다. 아가씨나 올드보이, 박쥐 등을 재미있게 보셧다면 강추
+- youjin : 이태원에 갔었는데 택시를 잡는 게 너무 어려워서 카카오택시 어플을 사용하는 것 보다 iM 택시가 조금 비싸더라도 잘 잡힌다. 이류를 물어보니 iM 택시 1500 대를 더 풀었다고 한다.
