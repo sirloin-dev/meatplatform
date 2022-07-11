@@ -570,3 +570,6 @@ ssh -NT -L ${LOCAL_ADDR}:${LOCAL_PORT}:${REMOTE_HOST}:${REMOTE_PORT} ${SSH_JUMPH
 이때 `REMOTE_HOST` 나 `REMOTE_PORT` 는 `SSH_JUMPHOST` 기준에서 보이는 IP 주소로, localhost 에서 보이지 않더라도 상관없다.
 +
 이렇게 SSH Tunnel 을 만들면 외부에 공개되지 않은 private network 에도 접근할 수 있다.
+
+
+- gon : 지난주 영화 헤어질결심을 봤는데 강추드린다. 아가씨나 올드보이, 박쥐 등을 재미있게 보셧다면 강추
