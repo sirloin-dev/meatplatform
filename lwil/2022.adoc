@@ -580,3 +580,8 @@ https://github.com/line/kotlin-jdsl/blob/main/reactive-core/README.md
 
 - youjin : 이태원에 갔었는데 택시를 잡는 게 너무 어려워서 카카오택시 어플을 사용하는 것 보다 iM 택시가 조금 비싸더라도 잘 잡힌다. 이류를 물어보니 iM 택시 1500 대를 더 풀었다고 한다. +
 - yoonho : 주말동안 탑건을 봤다. 예전 탑건을 보셨던분들이 무척 감명깊게 보셨다고 하는 말이 있는데 어떠한 관점일지.. 궁금했다. 영화는 좋았다.
+
+[[section-202207-W4]]
+=== 2022년 7월 4주
+
+- youjin: flutter provider 패키지를 만든 사람이 https://riverpod.dev/ko/docs/getting_started[riverpod] 이라는 데이터바인딩 프레임워크를 만들었다. (참고로 riverpod 는 provider 의 철자로 만들어진 단어이다.) 이는 provider 의 단점을 보완한다. `ProviderNotFoundException` 예외를 발생시키지 않고, `BuildContext` 없이 Provider를 수신할 수 있는 기능이 포함되어 있다.
