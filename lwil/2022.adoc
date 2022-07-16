@@ -585,3 +585,13 @@ https://github.com/line/kotlin-jdsl/blob/main/reactive-core/README.md
 === 2022년 7월 4주
 
 - youjin: flutter provider 패키지를 만든 사람이 https://riverpod.dev/ko/docs/getting_started[riverpod] 이라는 데이터바인딩 프레임워크를 만들었다. (참고로 riverpod 는 provider 의 철자로 만들어진 단어이다.) 이는 provider 의 단점을 보완한다. `ProviderNotFoundException` 예외를 발생시키지 않고, `BuildContext` 없이 Provider를 수신할 수 있는 기능이 포함되어 있다.
+
+- yoonho: +
+admin task를 진행하면서 commerce-api-core의 product domain에서 여러가지 enum class 를 만들고 수정을 해야했다.+
+from method에 유효하지 않은 값이 인입시 null 을 반환해야하는지, 에러를 발생시켜야하는지, 아니면 UNDEFINED 라는 element를 반환해야하는지에 따라 +
+admin 에서도 여러번의 수정을 거쳐야 했다. +
+객체지향 사실과 오해 초반부의 '객체지향 애플리케이션의 아름다움을 결정하는 것이 협력이라면 협력이얼마나 조화를 이루는지를 결정하는 것은 객체다.' 문단을 읽으면서 +
+이러한 수정을 거쳐야했던 기억이 떠올랐다. +
+우리가 만드는 어플리케이션 또한 작은 객체들의 협력의 모음으로 구성이되고, +
+각 객체가 어떻게 설계되는지에 따라 협력 또한 얼마나 잘 할수있는지가 결정된다. +
+라는 생각이 들었다.
