@@ -1,6 +1,12 @@
 /*
+ * DFS
+ *
  * Runtime: 196 ms, faster than 97.16% of Kotlin online submissions for Path Sum.
  * Memory Usage: 35.5 MB, less than 93.18% of Kotlin online submissions for Path Sum.
+ *
+ * BFS 풀이법: https://leetcode.com/problems/path-sum/discuss/1595806/112path-sum-iterative-bfs-c
+ *
+ * 다른 답들은 대부분 sum 을 더하는 방식 말고, 빼는 방식으로 
  */
 fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
     if (root == null) {
@@ -12,7 +18,6 @@ fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
 
 fun hasPathSumInternal(root: TreeNode, targetSum: Int, currentSum: Int): Boolean {
     if (root.left == null && root.right == null) {
-        val nextSum = currentSum + (root.`val`)
         return currentSum + (root.`val`) == targetSum
     }
 
