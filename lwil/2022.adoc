@@ -611,3 +611,67 @@ spring:
 ContainerDatabaseDriver 내부에서 container 를 자동 실행시키고 proxy 하는 기능이 있다.
 +
 참고 URL: https://github.com/testcontainers/testcontainers-java/blob/master/modules/jdbc/src/main/java/org/testcontainers/jdbc/ContainerDatabaseDriver.java#L124
+
+
+[[section-202207-W5]]
+=== 2022년 7월 5주
+
+- hwan: `autossh` 를 이용해 ssh tunnel 을 항상 서비스처럼 실행하도록 하는 법
++
+. 환경변수 파일을 만든다. `yourjumpsshserver` 는 적당한 문자열로 바꿔줄 것.
++
+[source,shell]
+----
+## 파일명: /etc/default/secure-tunnel@yourjumpsshserver
+
+TARGET=yourjumpsshserver
+LOCAL_ADDR=0.0.0.0
+LOCAL_PORT=22
+# port that will be use to ssh at remote server
+REMOTE_PORT=54322
+# change user as per remote server
+USERNAME=user
+# change SSH port used at jump server
+SSH_TARGET_PORT=22
+----
+
+. `systemd` 서비스 정의 파일을 만든다.
++
+[source,shell]
+----
+## 파일명: /etc/systemd/system/secure-tunnel@.service
+
+[Unit]
+Description=Setup a secure tunnel to %I
+After=network.target
+
+[Service]
+Environment="LOCAL_ADDR=localhost"
+EnvironmentFile=/etc/default/secure-tunnel@%i
+Environment="AUTOSSH_GATETIME=0"
+ExecStart=/usr/bin/autossh -M 0 -o "ExitOnForwardFailure=yes" -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -NR ${REMOTE_PORT}:${LOCAL_ADDR}:${LOCAL_PORT} -p ${SSH_TARGET_PORT} ${USERNAME}@${TARGET}
+
+# Restart every >2 seconds to avoid StartLimitInterval failure
+RestartSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+----
+
+. 서비스를 등록한다.
++
+[source,shell]
+----
+# systemctl enable secure-tunnel@.service && systemctl start secure-tunnel@.service
+----
+
+. service 동작 여부를 확인해 본다.
++
+[source,shell]
+----
+# systemctl status secure-tunnel@.service
+----
+
+
+
