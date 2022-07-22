@@ -663,14 +663,14 @@ WantedBy=multi-user.target
 +
 [source,shell]
 ----
-# systemctl enable secure-tunnel@.service && systemctl start secure-tunnel@.service
+# systemctl enable secure-tunnel@yourjumpsshserver.service && systemctl start secure-tunnel@yourjumpsshserver.service
 ----
 
 . service 동작 여부를 확인해 본다.
 +
 [source,shell]
 ----
-# systemctl status secure-tunnel@.service
+# systemctl status secure-tunnel@yourjumpsshserver.service
 ----
 
 
