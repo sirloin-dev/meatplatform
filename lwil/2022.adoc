@@ -679,3 +679,4 @@ WantedBy=multi-user.target
 따라서 flutter ui의 기능의 한계 또한 skia 엔진에 제한될 꺼라 생각되니, 앞으로 간단하게 skia 엔진을 알아볼 생각이다. +
 + flutter widget test에서 find.byType메소드로 넘겨쥬는 인자중, 제너릭을 받는 타입은 이를 명시하여야만 한다. +
 (ex find.byType(Radio<int>);)
+- gon: kotlin으로 jpa를 사용하던 도중 lazy로딩이 예상과 다르게 동작하였다 원인을 살펴보니 코틀린은 모든 클래스를 final로 상속불가로 만든다 하지만 jpa는 엔티티를 상속받아 프록시객체를 만들어 동작하는데 이부분에서 오는 차이때문이라고 생각된다. 그래서 entity어노테이션이 붙으면 상속가능하도록 설정하니 문제해결되었다.
