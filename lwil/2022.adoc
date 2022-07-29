@@ -690,3 +690,12 @@ WantedBy=multi-user.target
 +
 but 새로운 내용이 입력될 때마다 값이 매번 갱신되므로 값(이미 나온 UUID)를 한번 복사해주어야한다.
 
+
+[[section-202208]]
+== 2022년 8월
+
+[[section-202208-W1]]
+=== 2022년 8월 1주
+
+- hwan: Android studio 에서 Flutter project 를 열면 간혹 Logcat, Profiler 등이 안 뜨는 경우가 있어 굉장히 불편하다. 이 때는, File > Project Structure 메뉴에 진입한 후, Project Facet 에 Android 설정이 빠져있는건 아닌지 한번 확인해 보자. 간단한 설정인데 3주동안 못 찾아서 고생했다. ㅜㅜ
+
