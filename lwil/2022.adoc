@@ -702,3 +702,4 @@ but 새로운 내용이 입력될 때마다 값이 매번 갱신되므로 값(�
 - wongue: dart와 node.js 비슷한 특성을 공유한다. dart 의 병렬성을 정리한 김에 node.js 에서는 어떤 방식으로 구현했나 찾아봤는데, cluster 모듈을 사용해 멀티코어 프로그레밍을 구현 할 수 있다고 한다. +
 ++ 메모리를 공유하지 못하는걸 보아하니 thread 보다는 isolate 에 가까운것 같다.
 
+- gon: 젯브레인에서 인텔리제이를 이은 차세대 ide를 개발하고 있다 한다 https://www.jetbrains.com/ko-kr/fleet/?_ga=2.128332367.2134819592.1659250788-12276751.1658968519&_gac=1.224601576.1659250790.CjwKCAjwrZOXBhACEiwA0EoRD00otOS5qQT8mjf9oI1JvymbgaLOh4NsCWqJZiXaOlBGLoemRoBM3xoCTNAQAvD_BwE&_gl=1*1gl9j9d*_ga*MTIyNzY3NTEuMTY1ODk2ODUxOQ..*_ga_9J976DJZ68*MTY1OTI1MDc4OC42LjEuMTY1OTI1NDg0My41Mw
