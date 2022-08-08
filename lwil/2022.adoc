@@ -716,7 +716,7 @@ but 새로운 내용이 입력될 때마다 값이 매번 갱신되므로 값(�
 - hwan: AsciiDoc 은 MD 와 달리 Passthrough Block 라는 기능을 명시적으로 선언해야 HTML tag 를 삽입할 수 있다. 그렇지 않으면 HTML tag 는 전부 escape 된다.
 
 HTML 을 그냥 삽입할 수 있는 MD 대비 보안상 더 나은 모델인 것 같다.
-
++
 [source,asciidoc]
 ----
 ++++
