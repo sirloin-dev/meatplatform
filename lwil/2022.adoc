@@ -712,3 +712,17 @@ but 새로운 내용이 입력될 때마다 값이 매번 갱신되므로 값(�
 - wongue: flutter에서 UI를 위해 사용되는 Tree는 한 종류만 있지 않다는걸 알게되었다. +
 그 중, paint와 layout을 담당하는 트리가 있는데, 이러한 tree의 순회를 O(n)의 시간에 구현하기 위해 트리의 상위 노드는 자식 노드에 대해 아무런 정보도 들고 있지 않고, 이를 위해 BuildContext가 필요함을 알게되었다. +
 ++ await 으로 동기화 시키지 않은 비동기함수는 동작을 예상하기도, 이를 검증하기도 쉽지 않다는것을 느꼈다.
+
+- hwan: AsciiDoc 은 MD 와 달리 Passthrough Block 라는 기능을 명시적으로 선언해야 HTML tag 를 삽입할 수 있다. 그렇지 않으면 HTML tag 는 전부 escape 된다.
+
+HTML 을 그냥 삽입할 수 있는 MD 대비 보안상 더 나은 모델인 것 같다.
+
+[source,asciidoc]
+----
+++++
+<a download="example.txt" href="data:application/octet-stream;base64, ...">Download example.txt</a>
+++++
+----
+
+같은 형태로 활용 가능하다.
+
