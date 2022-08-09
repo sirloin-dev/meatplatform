@@ -741,5 +741,6 @@ values (17, '2A6270D93F724FCBB270BF66ABD75100');
     (unhex(replace(''2A6270D93F724FCBB270BF66ABD75100'',''-'','''')))
     ```
 이런식으로 uuid를 변환해야한다
-추가로 mysql 8부터 다음과 같은 함수가 지원된다 한다 UUID_TO_BIN
+추가로 mysql 8부터 UUID_TO_BIN 같은 함수가 지원된다 한다 
+mysql에서 해결하였으나 현재 h2에서 막혀있다
 
