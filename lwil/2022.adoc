@@ -732,15 +732,34 @@ HTML 을 그냥 삽입할 수 있는 MD 대비 보안상 더 나은 모델인 �
 [[section-202208-W3]]
 === 2022년 8월 3주
 - gon: sql에서 uuid를 직접 인서트할려고 다음과 같은 방법으로 진행하였다
-    ```
-    insert into someTbl(fk_id, uuid)
-values (17, '2A6270D93F724FCBB270BF66ABD75100');
-    ```
++
+[source,sql]
+----
+insert into someTbl(fk_id, uuid) values (17, '2A6270D93F724FCBB270BF66ABD75100');
+----
++
 하지만 에러가 발생하였다 원인을 살펴보니 uuid를 직접인서트해야할땐 
-    ```
-    (unhex(replace(''2A6270D93F724FCBB270BF66ABD75100'',''-'','''')))
-    ```
++
+[source,sql]
+----
+(unhex(replace(''2A6270D93F724FCBB270BF66ABD75100'',''-'','''')))
+----
++
 이런식으로 uuid를 변환해야한다
++
 추가로 mysql 8부터 UUID_TO_BIN 같은 함수가 지원된다 한다 
 mysql에서 해결하였으나 현재 h2에서 막혀있다
 
+- hwan: dart 에서 conditional import 하기
++
+[source,dart]
+----
+import '_file_downloader_native.dart'
+    if (dart.library.html) '_file_downloader_web.dart' as file_downloader;
+----
++
+근데 이 기능이 왜 dart language tour 에는 없는지 궁금하다. 아무튼 이렇게 하면 조건부 import 를 할 수 있다.
++
+https://github.com/dart-lang/sdk/issues/34262#issuecomment-416129832
++
+여기 보면 적용 범위가 매우 제한되어 있음을 확인할 수 있다. 그래서 공식 문서에는 안 나와 있나 보다.
