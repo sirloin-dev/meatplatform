@@ -780,3 +780,9 @@ https://github.com/dart-lang/sdk/issues/34262#issuecomment-416129832
 
 - youjin: 사람들이 하는 활동에는 최적으로 느끼는 각도가 있다고 한다. 업무,게임,독서 등은 108도, 영화,TV는 130도, 휴식,취침은 170도가 인체공학적인 자세각도이다. 바른 자세의 습관이 평생습관을 좌우할할테니 앞으로 바른 자세로 코딩을 하자.
 
+[[section-202209]]
+== 2022년 9월
+
+[[section-202209-W1]]
+=== 2022년 9월 1주
+- wongue: dart 는 내부적으로 Map 을 _LinkedHashMap Class 로 구현한다. - (추가예정)
