@@ -11,5 +11,5 @@ class Solution:
         return start
       
 
-# Runtime: 60 ms, faster than 14.50% of Python3 online submissions for First Bad Version.
+# Runtime: 24 ms, faster than 99.02% of Python3 online submissions for First Bad Version.
 # Memory Usage: 13.9 MB, less than 62.49% of Python3 online submissions for First Bad Version.
