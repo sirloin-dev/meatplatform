@@ -786,3 +786,75 @@ https://github.com/dart-lang/sdk/issues/34262#issuecomment-416129832
 [[section-202209-W1]]
 === 2022년 9월 1주
 - wongue: dart 는 내부적으로 Map 을 _LinkedHashMap Class 로 구현한다. - (추가예정)
+
+- hwan: Infra 를 이용한 Test 는 항상 `@SpringBootTest` 만 써서 하다보니 몰랐지만 `@SpringBootTest` 가 느린 환경에서 Test slice 를 적용할 경우 Repository 등을 내가 수동으로 등록해 줘야 하는 테스트 환경이 생기기 시작한다.
++
+특히 jpa 의 경우 spring-data-jpa + hibernate 가 JPA 의 전체인양 착각하고 있었는데, Test slice 환경에서는 EntityManager 를 저수준에서 직접 제어해야 하는 경우가 종종 있다. 가령, Read-only repository 를 테스트해야 하는 상황이라던지.
++
+Slice 환경에서 Test 를 작성하다 보면 Persistent context 와 Entity Lifecycle 을 왜 자세히 알아야 하는지 몸으로 체감할 수 있다.
++
+.System Under Test
+[source,kotlin]
+----
+interface ReadOnlyUserRepository {
+    fun findById(id: Long): User
+}
+
+interface UserRepository : ReadOnlyUserRepository {
+    fun save(user: User): User
+}
+----
++
+.UserRepository Test code
+[source,kotlin]
+----
+@SpringBootTest
+class RepositorySpec {
+    @Autowired
+    private lateinit var sut: UserRepository
+
+    @Test
+    fun `저장한 자료를 잘 찾아올 수 있다`() {
+        // given:
+        val data = randomUser()
+
+        // when:
+        val saved = sut.save(data)
+
+        // then:
+        val found = sut.findById(saved.id)
+
+        // expect:
+        assertThat(found, `is`(saved))
+    }
+}
+----
++
+.ReadOnlyUserRepository Test code
+[source,kotlin]
+----
+@SpringBootTest
+class RepositorySpec {
+    @Autowired
+    private lateinit var sut: ReadOnlyUserRepository
+
+    @Autowired
+    private lateinit var em: EntityManager
+
+    @Test
+    fun `저장한 자료를 잘 찾아올 수 있다`() {
+        // given:
+        val data = randomUser()
+
+        // when:
+        em.persist(data)
+        em.flush()
+
+        // then:
+        val found = sut.findById(data.id)
+
+        // expect:
+        assertThat(found, `is`(saved))
+    }
+}
+----
