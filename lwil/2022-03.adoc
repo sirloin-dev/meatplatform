@@ -1,3 +1,15 @@
+= 2022년 3분기 07월-09월 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+
 [[section-202207]]
 == 2022년 7월
 
