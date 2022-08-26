@@ -1,4 +1,4 @@
-= 2022년 LWIL(Last week I learnt) 모음
+= 2022년 2분기 03월-06월 LWIL(Last week I learnt) 모음
 // Metadata:
 :description: Last Week I Learnt
 :keywords: study, til, lwil
