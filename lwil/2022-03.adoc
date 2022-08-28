@@ -316,7 +316,9 @@ https://github.com/dart-lang/sdk/issues/34262#issuecomment-416129832
 
 [[section-202209-W1]]
 === 2022년 9월 1주
-- wongue: dart 는 내부적으로 Map 을 _LinkedHashMap Class 로 구현한다. - (추가예정)
+- wongue: dart 는 내부적으로 Map 을 https://api.dart.dev/be/175791/dart-collection/LinkedHashMap-class.html[_LinkedHashMap Class] 로 구현한다. +
+linkedHashmap은 hask table 과는 다르게, 입력된 키의 순서를 보장한다. +
+이러한 특성을 보장하기 위해, hashtable과 별개로 키의 입력 정보가 저장된 Doubly-Linked List 를 추가로 들고있기 때문에, 단순한 hash table(or dictionary) 에 비해 메모리를 더 소모하는 단점또한 가지고 있다.
 
 - hwan: Infra 를 이용한 Test 는 항상 `@SpringBootTest` 만 써서 하다보니 몰랐지만 `@SpringBootTest` 가 느린 환경에서 Test slice 를 적용할 경우 Repository 등을 내가 수동으로 등록해 줘야 하는 테스트 환경이 생기기 시작한다.
 +
