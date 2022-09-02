@@ -391,3 +391,18 @@ class RepositorySpec {
     }
 }
 ----
+
+[[section-202209-W2]]
+=== 2022년 9월 2주
+- wongue: dart 의 제너릭을 제대로 이해하지 못해서 1시간동안 삽질을 하며 알게 된 사실.
+
+----
+String testFuntion(String parm) => parm;
+
+class TestClass<String, T> {
+	String get testArg;
+	Function<String> testmethod() => testFunction(testArg);
+}
+----
+이거 신텍스 에러 난다. 왜냐면 제너릭의 타입 지정은 사용하는 측에서 해야하기 때문. +
+... 그러면 원시타입 관련해서는 예약어로 만들어주면 안됬을까.
