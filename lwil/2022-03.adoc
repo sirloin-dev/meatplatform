@@ -409,3 +409,5 @@ class TestClass<String, T> {
 이거 신텍스 에러 난다. 왜냐면 제너릭의 타입 지정은 사용하는 측에서 해야하기 때문. ... 그러면 원시타입 관련해서는 예약어로 만들어주면 안됬을까.
 
 - hwan: jpa 의 `@Embeddable` 안에 있는 `@Column` 은 적용 안된다. 또한 `@AttributeOverrides` 로 column 을 override 할 경우 @Lob 설정 등이 날아가기 때문에 조심해야 한다.
+
+- gon : 제주도의 날씨예보는 믿지 않는것이 좋다 기상예보가 맞은적이없다;
