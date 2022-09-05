@@ -415,6 +415,7 @@ class TestClass<String, T> {
 개인적은 맛보기 후기로는 이문제가 해결되지 않으면 FE의 메인기술이 되기가 힘들것으로 보인다
 
 - youjin: testParams 로 테스트를 검증하는 로직을 작성했는데, 이때 `Late Initial Error` 가 났다. 그때 해결방법은 `TestWidgetFlutterBinding.ensureInitialized()` 를 해주면 됐다.
+궁극적으로 이 에러가 난 이유는, test() 가 실행되는 순서때문이었는데, 먼저 late하게 변수가 선언되고(아직 할당이 되지 않은 채) setUp에서 할당을 바로 해줄꺼라고 기대하지만, 바로 expectTestParams() 함수가 실행이 된다. 그래서 late error 가 났던 것이다. `TestWidgetFlutterBinding.ensureInitialized()` 를 통해 초기화를 강제하니까 오류를 바로 잡을 수 있었다.
 +
 [source,dart]
 ----
