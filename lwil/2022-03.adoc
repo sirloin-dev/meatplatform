@@ -413,3 +413,30 @@ class TestClass<String, T> {
 - gon : 제주도의 날씨예보는 믿지 않는것이 좋다 4일동안 비100%였지만 비가안왔다 파도도 안높았다;
 기술 애기 : 코틀린/js로 개발시 라이브 뷰? 기능이 굉장히 느리게 작동한다 이유는 kotlin -> js로 컴파일을 거친다음 랜더링을 해야하기때문이다.
 개인적은 맛보기 후기로는 이문제가 해결되지 않으면 FE의 메인기술이 되기가 힘들것으로 보인다
+
+- youjin: testParams 로 테스트를 검증하는 로직을 작성했는데, 이때 `Late Initial Error` 가 났다. 그때 해결방법은 `TestWidgetFlutterBinding.ensureInitialized()` 를 해주면 됐다.
++
+[source,dart]
+----
+void main() {
+
+        group('', () {
+          late MockType mockType;
+          late Api api;
+          late RepositoryImpl repositoryImpl;
+
+          setUp(() {
+	    mockType = = MockType(true);
+            api = MockApi();
+            repositoryImpl =
+                RepositoryImpl.newInstance(mockType: mockType, api: api);
+          });
+	  
+	  ...
+	  void expectTestParams(){
+	  	test('', (){});
+	  }
+	  ...
+	  
+----
++
