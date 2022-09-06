@@ -24,7 +24,7 @@
        *  1) (null) a : 0, (null) dog  : 0   ->   { (a, 0) }        , { (dog, 0) }
        *  2) (null) b : 1, (null) cat  : 1   ->   { (a, 0), (b, 1) }, { (dog, 0), (cat, 1) }
        *  2) (1)    b : 2, (1)    cat  : 2   ->   { (a, 0), (b, 2) }, { (dog, 0), (cat, 2) }
-       *  3) (3)    a : 3, (null) fish : 3   ->   3 != null 이므로 terminate
+       *  3) (0)    a : 3, (null) fish : 3   ->   0 != null 이므로 terminate
        */
       words.forEachIndexed { i, word ->
           val p = pattern[i]
