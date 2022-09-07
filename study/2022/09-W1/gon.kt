@@ -1,4 +1,12 @@
-fun wordPattern(pattern: String, s: String): Boolean {
+class Solution {
+    @Test
+    fun expect(){
+        assertThat(wordPattern("abba", "dog cat cat dog"),`is`(true))
+        assertThat(wordPattern("abba", "dog cat cat fish"),`is`(false))
+        assertThat(wordPattern("abba", "cat dog dog dog"),`is`(false))
+        assertThat(wordPattern("abba", "dog dog dog dog"),`is`(false))
+    }
+    fun wordPattern(pattern: String, s: String): Boolean {
         val split =s.split(" ")
         val map = mutableMapOf<String,String>()
         for (i in pattern.indices){
@@ -16,5 +24,6 @@ fun wordPattern(pattern: String, s: String): Boolean {
         }
         return true
     }
+}
 
 // 오늘 발표인줄 모르고 바로 작성하느라 효율부분은 생각못하였습니다...
