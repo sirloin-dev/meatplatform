@@ -16,3 +16,5 @@ fun wordPattern(pattern: String, s: String): Boolean {
         }
         return true
     }
+
+// 오늘 발표인줄 모르고 바로 작성하느라 효율부분은 생각못하였습니다...
