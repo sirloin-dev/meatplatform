@@ -458,3 +458,58 @@ void main() {
 단순히 빠르기를 위함이라면 mysql의 memory db를 사용하는 방법도 있었지만 redis를 선택한 결정적 이유는 다음과같습니다. +
 `redis는 단일 쓰레드를 사용하여 분산 잠금이 필요없다 또한 Master - Slave의 구조로 되어있어 변경사항에대하여 동기화를 지원합니다`
 mysql의 memory의 경우 lock이 테이블단위로 수정이 일어나면 모든 요청이 대기해야합니다. 즉 분산잠금이 필요합니다.
+
+- hwan: 다음과 같은 값 객체가 있다고 하고,
++
+[source, kotlin]
+----
+data class OrderedValue(
+    val value: String,
+    val order: Int
+): Comparable<OrderedValue> {
+    override fun compareTo(other: OrderedValue): Int = this.order.compareTo(other.order)
+}
+----
++
+`OrderedValue` 를 담은 `Collection<OrderedValue>` 를 정렬된 Collection 으로 바꾸려면 
++
+. {empty}
++
+[source, kotlin]
+----
+Collection<OrderedValue>.toSortedSet()          // returns Set<OrderedValue>
+----
++
+vs
++
+. {empty}
++
+[source, kotlin]
+----
+Collection<OrderedValue>.toSet().ordered()      // returns List<OrderedValue>
+----
+
+둘 중 무엇을 써야 할까?
+
+둘 중 1 은 만약 order는 같고 value가 다른 collection 들이 있을 경우, order 기준으로 하나만 남긴다.
+
+따라서 이런 현상을 막으려면 모든 field 를 compare 시점에 활용하도록 구현해야 한다.
+
+참고로 TreeSet 의 JavaDoc 을 읽어보면 이런 구문이 있다.
+
+[source, java]
+----
+/*
+ * <p>Note that the ordering maintained by a set (whether or not an explicit
+ * comparator is provided) must be <i>consistent with equals</i> if it is to
+ * correctly implement the {@code Set} interface.  (See {@code Comparable}
+ * or {@code Comparator} for a precise definition of <i>consistent with
+ * equals</i>.)  This is so because the {@code Set} interface is defined in
+ * terms of the {@code equals} operation, but a {@code TreeSet} instance
+ * performs all element comparisons using its {@code compareTo} (or
+ * {@code compare}) method, so two elements that are deemed equal by this method
+ * are, from the standpoint of the set, equal.  The behavior of a set
+ * <i>is</i> well-defined even if its ordering is inconsistent with equals; it
+ * just fails to obey the general contract of the {@code Set} interface.
+ */
+----
