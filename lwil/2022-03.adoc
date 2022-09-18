@@ -513,3 +513,6 @@ Collection<OrderedValue>.toSet().ordered()      // returns List<OrderedValue>
  * just fails to obey the general contract of the {@code Set} interface.
  */
 ----
+-wongue: testing을 위해 unique 하면서 random한 문자열이 필요한 일이 생겼다. +
+처음에는 그리 어렵지 않을것이라 생각했지만, 두 조건을 모두 만족시키는 문자열을 생성하는 로직은 반복될수록 매우 무거운 연산이 필요하다는걸 알게됬다. +
+timestamp나 counter등을 사용해서 생성하는것이 최선일 듯 하다.
