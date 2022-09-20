@@ -513,3 +513,7 @@ timestamp나 counter등을 사용해서 생성하는것이 최선일 듯 하다.
 
 - youjin: 구글의 이스터에그를 발견했다. 크롬에서는 인터넷이 안될 때 뜨는 창에서 방향키로 공룡게임을 할 수 있다. + 
 flutter 가 제공해주는 material app `Scaffold` 네비게이션 하단 바를 클릭했을때 routes가 되지 않고 list의 index 의 위젯화면을 보여줄 뿐이다.
+
+[[section-202209-W5]]
+=== 2022년 9월 5주
+- youjin: https://www.similarweb.com/[similarweb] 사이트에서 url을 입력하면 해당 url의 트래픽을 볼 수 있다. 심지어 해당 url 에 구글 애즈를 등록해둔 상황이라면, 얼마만의 수익금을 받을 수 있는지 계산해 볼 수 있다. 우리 https://www.similarweb.com/website/bondaero.kr/#overview[bondaero] teaser 사이트를 검색해본 결과, 아직 총합 방문수가 5000건이 안되는 것으로 보였다. 그래도 점진적으로 방문수가 증가하고 있고 그래픽으로 볼 수 있다는 점이 꽤 편했다. 또한 생각보다 간단한 사이트들(공학용계산기 등)도 엄청난 트래픽 수를 가진다는 것을 알 수 있었다.
