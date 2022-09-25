@@ -520,3 +520,5 @@ flutter 가 제공해주는 material app `Scaffold` 네비게이션 하단 바�
 - gon: https://www.baeldung.com/kotlin/spring-boot-kotlin-coroutines 
 스프링weflux에서 코루틴을 활용하는 예제인데 코루틴을 이용하여 비동기를 처리할수있다. 웹플럭스의 너무 잦은 컨텍스트스위칭이 걱정된다거나 할때 좋을것같다
 일단 코드의 문법이 상당히 읽기 쉬워진다는 점만으로 매력적인 부분인것 같다.
+- wongue: 서초 1,2 동대 예비군을 다녀오면서 역시 서울이구나 싶었다. +
+ 장비가 이전에 전해들은것에 비해 상상 이상으로 좋아 많이 놀랐었다.
