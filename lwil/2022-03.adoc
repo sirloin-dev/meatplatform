@@ -544,6 +544,7 @@ flutter 가 제공해주는 material app `Scaffold` 네비게이션 하단 바�
   * fûmes : fusmes (latin fumus)
 
 파리 시청을 hôtel de ville 이라고 하는데 뜻이 너무 궁금해서 찾아봤더니 hostel of the village(town hall) 이라는 문자 그대로의 의미였었다... 또한 프랑스어가 영어에 끼친 영향이 정말 막대하다는 것도 막연하게만 알았는데 공부하면서 확실히 알게 되었다. 심지어 예시로 나온 단어들도 대부분 영어 단어와도 비슷하다.
+
 - yoonho: 소셜 로그인은 클라이언트가 제공받은 accessToken이나 authorization_code 를 이용한 요청을 통해 정당한 사용자가 로그인하는 것임을 검증할 수 있다. +
 애플 로그인은 이에 더해 클라이언트에 반환하는 jwt를 이용하여 +
 애플에서 제공하는 공개키 인증서를 통해 서명을 검증하는 것으로 로그인에 이용할 수도 있다.
