@@ -15,3 +15,13 @@
 
 [[section-202210-W1]]
 === 2022년 10월 1주
+
+- hwan: Compile-time DI framework 인 Dagger2 를 이용할 때의 주요 의사결정 기준
+
+1. `@Inject` 를 반드시 생성자에 붙여줘야 Dagger2 가 DI 를 위한 추가 코드를 만들어 준다.
+2. 직접 생성이 어려운 컴포넌트들을 별도로 생성하는 `@Module` 을 만든다. 가령, EhCache 의 `CacheManager.getInstance()` 같은 이용사례가 좋은 예가 될 듯.
+3. 구체 타입 대신 Interface 를 노출하고 싶다면 `@Provides` 메소드를 생성한다.
+4. Spring IoC 와 달리 `@Singleton` 이 기본이 아니므로, 잘 판단해서 `@Singleton` 을 붙여줘야 한다.
+5. `@Component` 는 흩어진 `@Module` 들을 한데 모으는 역할을 한다. 다만 이쯤 되면, 전체 DI graph 를 쉽게 알아볼 수 있는 수단을 마련해 둬야 유지보수에 어려움이 없다.
+6. Field level 에 `@Inject` 를 써도 좋지만, Spring 의 `@Autowired` 의 사례에서 보듯 묵시적인 의존성 선언은 프로그램 유지보수성을 크게 해친다. 가급적 `@Inject` 는 생성자에만 쓰도록 한다.
+7. Dagger2 는 현재까지는 Java 기반이기 때문에 kotlin/native 나 kotlin/js 에서는 활용할 수 없다. Kotlin multiplatform 에서 DI 를 쓰고싶다면 2022년 현재까지는 link:https://insert-koin.io/[Koin], link:https://github.com/kosi-libs/Kodein[Kodein] 같은 프레임워크를 써야 한다. 개인적으로는 Koin 이 좀 더 쓰기 쉬웠다.
