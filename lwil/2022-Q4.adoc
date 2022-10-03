@@ -27,3 +27,6 @@
 7. Dagger2 는 현재까지는 Java 기반이기 때문에 kotlin/native 나 kotlin/js 에서는 활용할 수 없다. Kotlin multiplatform 에서 DI 를 쓰고싶다면 2022년 현재까지는 link:https://insert-koin.io/[Koin], link:https://github.com/kosi-libs/Kodein[Kodein] 같은 프레임워크를 써야 한다. 개인적으로는 Koin 이 좀 더 쓰기 쉬웠다.
 
 - youjin: MSA 는 `MicroService Architecture` 이다. 처음 개념을 익혔을 때, 독립적으로 db를 분리한다는 점은 아키텍쳐 관점에서 좋은 점이라고 생각했다. 하지만 클라이언트와 네트워킹을 할 때, 비용이 커서 불리하지 않을까의문이 들었다. 하지만 이는 api gateway를 통해 보완할 수 있었다. 클라이언트에서 하나의 요청을 받고 서버에서는 여러 api 를 조합한 후 API gateway를 통해 하나로 보낼 수 있기 때문이다. 그 다음으로 의문은, 트랜잭션의 단위는 도메인에 따라 조합된 경우(의존, 혹은 순서가 있거나 없거나 등등)가 많은데, 이때마다 서로 독립적으로 분리된 db를 어떻게 join 시키는지 의문이 들었다. 이를 보완하기 위해서는 필요한 db들을 조합하여 readOnly한 db를 생성하고 이를 구독하면서 보완할 수 있었다. 하지만 이 방법을 단점은 구독하고 있기 때문에 구독후, 업데이트 시점에서 시간차가 확연히 있다는 점이다. server 쪽은 잘 모르는 분야였는데 우연히 공부하게 되면서 시야가 넓어진 느낌이다.
+
+- wongue: Js 에서도 Java나 Dart 와 같은 Steam API 가 정의되어있다는걸 알게되었다. 참고자료: link:https://developer.mozilla.org/en-US/docs/Web/API/Streams_API[mozilla_Stream] +
+Stream 은 굳이 대규모 Http 통신에만 국한되지 않고, 여러 함수형 프로그레밍에서 유용하게 사용될 수 있는 도구인데, 심지어 이미 만들어져 있는데 왜 이걸 이전에 듣지 못했을까 궁금하다.
