@@ -31,7 +31,7 @@
 - wongue: Js 에서도 Java나 Dart 와 같은 Steam API 가 정의되어있다는걸 알게되었다. 참고자료: link:https://developer.mozilla.org/en-US/docs/Web/API/Streams_API[mozilla_Stream] +
 Stream 은 굳이 대규모 Http 통신에만 국한되지 않고, 여러 함수형 프로그레밍에서 유용하게 사용될 수 있는 도구인데, 심지어 이미 만들어져 있는데 왜 이걸 이전에 듣지 못했을까 궁금하다.
 
-- yoonho: Martin Fowler 의 link:https://martinfowler.com/bliki/EvansClassification.html[EvansClassification] 을 읽고:+
+- yoonho: Martin Fowler 의 link:https://martinfowler.com/bliki/EvansClassification.html[EvansClassification] 을 읽고: +
 entity 는 고유성 가지는 객체이다. + 
 entity 의 동일성은 내부 속성 값에 좌우되지 않는다. +
 각각의 entity가 서로 다른 속성 값을 가지고 있다 하더라도 동일한 고유성을 나타낼 수 있다면, 그것은 동일한 entity라고 할 수 있다. +
