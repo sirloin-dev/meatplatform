@@ -38,3 +38,5 @@ entity 의 동일성은 내부 속성 값에 좌우되지 않는다. +
 value object 는 내부 속성 값에 따라 좌우된다. +
 각각의 value object 의 속성 값이 같으면, 그것은 같은 value object 라고 할 수 있다.
 
+- gon: redis의 java 진영 client 구현체중 하나인 redisson은 스핀락을 사용하지 않아 redis에 부담을 덜어준다. 스핀락은 매번 redis에 직접 호출하는 식이고 redisson은 pub/sub으로 lock을 구현한다 redis한테 lock을 걸어도되는 상황인지를 sub을 이용하여 판단하기때문에 요청의 횟수가 굉장히 줄어든다
+
