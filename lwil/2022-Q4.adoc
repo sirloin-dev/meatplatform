@@ -41,3 +41,10 @@ value object 는 내부 속성 값에 따라 좌우된다. +
 
 - gon: redis의 java 진영 client 구현체중 하나인 redisson은 스핀락을 사용하지 않아 redis에 부담을 덜어준다. 스핀락은 매번 redis에 직접 호출하는 식이고 redisson은 pub/sub으로 lock을 구현한다 redis한테 lock을 걸어도되는 상황인지를 sub을 이용하여 판단하기때문에 요청의 횟수가 굉장히 줄어든다
 
+[[section-202210-W2]]
+=== 2022년 10월 2주
+
+- wongue: link:https://i.imgur.com/oRJH7A0.jpg[string_type_in_JAVA] C와 JAVA의 문자열(ASCIZ)의 내부 구현이 어떠한 식으로 작성되었는지를 알게 되었다. +
+"\0" null char 를 찾기 전까진 문자열이 끝나는것을 알 수 없기 때문에, 문자열의 길이를 알기 위해서는 정말 직접 세 보는 방법 말고는 답이 없다.. +
+그렇기 때문에 자바에서는 문자열 자체를 immutable 하게 두고, 생성 시점에 length 를 파악해서 String 인스턴스의 내부에서 field 로 들고있는 듯 하다. +
+참고자료 : link:http://www.tcpschool.com/c/c_string_string[C의 문자열] +
