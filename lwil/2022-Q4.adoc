@@ -48,3 +48,13 @@ value object 는 내부 속성 값에 따라 좌우된다. +
 "\0" null char 를 찾기 전까진 문자열이 끝나는것을 알 수 없기 때문에, 문자열의 길이를 알기 위해서는 정말 직접 세 보는 방법 말고는 답이 없다.. +
 그렇기 때문에 자바에서는 문자열 자체를 immutable 하게 두고, 생성 시점에 length 를 파악해서 String 인스턴스의 내부에서 field 로 들고있는 듯 하다. +
 참고자료 : link:http://www.tcpschool.com/c/c_string_string[C의 문자열] +
+
+- hwan: Dart 에서는 empty collection literal 을 다음과 같이 표현한다.
++
+[source,dart]
+----
+{}    // unordered collection literal
+[]    // ordered collection literal
+----
++
+그래서 `[]` 는 `List` 에, `{}` 는 `Set`, `Map` 에 대응할 수 있다.
