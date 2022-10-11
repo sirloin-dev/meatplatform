@@ -74,4 +74,4 @@ println(apr1 in q1)
 ```
 날짜를 오퍼레이터로 비교하는 기능도 가능하다! 해당기능은 신규기능인지느 잘 모르겠다ㅎ
 
-- youjin: 텍스트를 이미지로 표현하는 open ai dall.e2[https://openai.com/dall-e-2/] 라는 프로그램이 있다.
+- youjin: 텍스트를 이미지로 표현하는 open ai link:https://openai.com/dall-e-2/[dall.e2] 라는 프로그램이 있다.
