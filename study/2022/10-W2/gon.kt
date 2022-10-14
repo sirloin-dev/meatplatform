@@ -10,3 +10,7 @@ class Solution {
         return -1
     }
 }
+/*
+Runtime: 490 ms, faster than 93.18% of Kotlin online submissions for Find the Town Judge.
+Memory Usage: 60.4 MB, less than 88.64% of Kotlin online submissions for Find the Town Judge.
+*/
