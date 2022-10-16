@@ -95,3 +95,9 @@ println(apr1 in q1)
 메소드의 이름이 비슷할 수 있으나, +
 내부의 기능은 다를 수 있기에 +
 의존성을 알아보지 않고 함부로 사용하면 큰일이 생길 수 있다는 것이다. +
+
+- wongue: first-class function. +
+함수형 프로그레밍 언어를 구현하기 위한 조건 중 하나로, 함수를 다른 변수들과 마찬가지로 first-class-cityzen 으로 취급하겠다는 개념이다. +
+이로서 고차함수를 프로그레밍 언어로 구현할 수 있다. ex) f(g(x)) == y(x, g())  link:https://en.wikipedia.org/wiki/First-class_function[first-class function] +
+당연히 이를 구현하는것은 쉽지 않다. funarg 문제로 알려진 부분을 해결하지 못하면, c 처럼 함수 포인터와 Delegate을 통하여 우회하여 구현해야 한다.   link:https://en.wikipedia.org/wiki/Funarg_problem[function arugment problem] +
+다행스럽게도 dart나 js에는 이 부분이 이미 잘 해결되어있으니 감사하면서 쓰도록 하자.
