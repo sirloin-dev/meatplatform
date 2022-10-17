@@ -107,3 +107,4 @@ println(apr1 in q1)
 +
 https://dev.mysql.com/doc/refman/8.0/en/innodb-auto-increment-handling.html
 
+- youjin: dart에서 AOT 컴파일러는 코드를 실행하는 런타임 환경에 "전달"되기 전에 코드를 컴파일하여 작동한다. 일반적으로 앱을 앱스토어나 사내 프로덕션 백엔드에 배포할 준비가 되었을 때 주로 사용한다.  link:https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30[Flutter: Don’t Fear the Garbage Collector]를 통해 건전한 Dart 유형 시스템을 적용하고 메모리를 관리하는 효율적인 Dart 런타임 내에서 실행한다.
