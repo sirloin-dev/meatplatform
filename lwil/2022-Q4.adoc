@@ -81,6 +81,7 @@ println(apr1 in q1)
 - gon : 도커를 실행해서 작업해야하는경우에  docker run -it 이런식의 작업을 많이 보게 되실겁니다
 여기서 it 옵션이란 두 옵션은 컨테이너를 종료하지 않은체로, 터미널의 입력을 계속해서 컨테이너로 전달하기 위해서 사용합니다.
 주로  쉘(shell)이나 CLI 도구에서 사용합니다
+
 - yoonho : + 
 제목: 곱빼기와 양많이는 다르다. +
 +
@@ -101,3 +102,8 @@ println(apr1 in q1)
 이로서 고차함수를 프로그레밍 언어로 구현할 수 있다. ex) f(g(x)) == y(x, g())  link:https://en.wikipedia.org/wiki/First-class_function[first-class function] +
 당연히 이를 구현하는것은 쉽지 않다. funarg 문제로 알려진 부분을 해결하지 못하면, c 처럼 함수 포인터와 Delegate을 통하여 우회하여 구현해야 한다.   link:https://en.wikipedia.org/wiki/Funarg_problem[function arugment problem] +
 다행스럽게도 dart나 js에는 이 부분이 이미 잘 해결되어있으니 감사하면서 쓰도록 하자.
+
+- hwan: autoincrement 를 PK 로 안 써도 문제가 없는가?? 문제없음. +
++
+https://dev.mysql.com/doc/refman/8.0/en/innodb-auto-increment-handling.html
+
