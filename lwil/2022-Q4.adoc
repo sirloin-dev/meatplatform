@@ -108,3 +108,11 @@ println(apr1 in q1)
 https://dev.mysql.com/doc/refman/8.0/en/innodb-auto-increment-handling.html
 
 - youjin: dart에서 AOT 컴파일러는 코드를 실행하는 런타임 환경에 "전달"되기 전에 코드를 컴파일하여 작동한다. 일반적으로 앱을 앱스토어나 사내 프로덕션 백엔드에 배포할 준비가 되었을 때 주로 사용한다.  link:https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30[Flutter: Don’t Fear the Garbage Collector]를 통해 건전한 Dart 유형 시스템을 적용하고 메모리를 관리하는 효율적인 Dart 런타임 내에서 실행한다.
+
+[[section-202210-W4]]
+=== 2022년 10월 4주
+- gon :  현재 api 서버의 구조는 DDD라고 보기엔 어려운것 같다
+가장큰 이유는 root 애그리게이트가 명확하지 않고
+해당 문제로 벌어지는 일들은 root안의 도메인모델들이 애그리게이트 단위를 넘나들게 된다
+아마 오픈이후에 BE 리펙토링을 해야한다면 현재 도메인모델과 root애그리게이트 단위를 분리하고 도메인 모델은 root 애그리게이트에 귀속되게 하고
+만약 다른 도메일 모델을 참조해야한다면 식별자를 통한 간접참조로 구현하는것이 좋아보인다 (해당부분은 최범균님의 DDD Start라는 책에서 해결법을 찾았다)
