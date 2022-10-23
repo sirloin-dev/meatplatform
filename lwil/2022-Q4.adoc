@@ -116,3 +116,9 @@ https://dev.mysql.com/doc/refman/8.0/en/innodb-auto-increment-handling.html
 해당 문제로 벌어지는 일들은 root안의 도메인모델들이 애그리게이트 단위를 넘나들게 된다 +
 아마 오픈이후에 BE 리펙토링을 해야한다면 현재 도메인모델과 root애그리게이트 단위를 분리하고 도메인 모델은 root 애그리게이트에 귀속되게 하고 +
 만약 다른 도메일 모델을 참조해야한다면 식별자를 통한 간접참조로 구현하는것이 좋아보인다 (해당부분은 최범균님의 DDD Start라는 책에서 해결법을 찾았다)
+
+image::https://i.imgur.com/jGUW4RS.png[RTO-RPO, 500]
+- wongue: 고가용성 시스템을 구축하기 위해서는 먼저 시스탬에서 목표하는 RPO: Recovery Point Objective, RPO: Recovery Time Objective 두 가지의 요소를 정의하여야 한다. + 
+이를 시간 / 분 / 실시간 중 어느정의 다운타임을 감수할지에 대하여 먼저 고려하고 그 뒤 그에 맞춰 복구전략을 수립할 수 있다. +
+ex) 복구전략 없음, BackUp and Restore, Active / Passive, Acitve / Active +
+Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
