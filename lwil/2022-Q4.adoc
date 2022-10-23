@@ -122,3 +122,6 @@ image::https://i.imgur.com/jGUW4RS.png[RTO-RPO, 500]
 이를 시간 / 분 / 실시간 중 어느정의 다운타임을 감수할지에 대하여 먼저 고려하고 그 뒤 그에 맞춰 복구전략을 수립할 수 있다. +
 ex) 복구전략 없음, BackUp and Restore, Active / Passive, Acitve / Active +
 Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
+
+- yoonho: dirty checking 은 객체에 변경이 발생했을 때 따로 persist 를 해주지 않아도 초기의 객체의 snapshot 과 변경 후의 객체를 비교하여 쓰기 지연 저장소에 변경된 쿼리를 넣어 놓기 때문에  flush 하는 순간 변경된 객체에 대한 쿼리가 나가도록 한다. 
+
