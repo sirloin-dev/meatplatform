@@ -125,3 +125,15 @@ Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
 
 - yoonho: dirty checking 은 객체에 변경이 발생했을 때 따로 persist 를 해주지 않아도 1차 캐시에서의 초기 객체의 snapshot 과 변경 후의 객체를 비교하여 쓰기 지연 저장소에 변경된 쿼리를 넣어 놓기 때문에  flush 하는 순간 변경된 객체에 대한 쿼리가 나가도록 한다. 
 
+[[section-202211-W1]]
+=== 2022년 11월 1주
+- hwan: Domain model/Aggregate 와 Persistence entity 와의 상관관계 정리
++
+> Aggregate - Entity 를 무리해서 1:1 로 두면 여러 부작용들이 발생한다!
++
+  * https://spring.io/blog/2018/09/24/spring-data-jdbc-references-and-aggregates
+  * Domain aggregate 을 구현한 Persistence entity 를 비즈니스 로직에 그대로 던져주면, Entity 를 lazy 등으로 구현한 경우 fetch, database transaction 같은 정보를 자료를 다루는 최종 시점까지 노출해야 함
+  * 프로젝트 규모가 간단할 때는 코드 중복처럼 보인다. 그래서 육각형 Architecture 에서 말하는 Port in / out 을 귀찮다고 구현 안하는 경우가 있다. 그런데 규모가 복잡해 지는 순간 대참사가 발생한다.
+
+
+
