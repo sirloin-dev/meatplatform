@@ -159,4 +159,6 @@ https://humble-tachometer-f77.notion.site/Procedural-Aninations-with-Math-3d1750
 기초 물리와, 선형대수로 설명되는 여러 개념들을 사용해 애니메이터의 작업을 추상화 할 수 있다는점이 매우 흥미로웠다.
 
 
-- yoonho: infra 에서 given 세팅을 한뒤 flush 를 해주어야한다. + 그렇지 않으면 실제로 쿼리가 나가지 않아서 실제로는 에러가 나는 경우에도 테스트가 통과하기도 한다.
+- yoonho: +
+infra 에서 테스트시 given 세팅을 한뒤 flush 를 해주어야한다. + 
+그렇지 않으면 실제로 쿼리가 나가지 않아서 실제로는 에러가 나는 경우에도 테스트가 통과하기도 한다.
