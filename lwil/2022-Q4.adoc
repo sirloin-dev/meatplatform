@@ -157,3 +157,6 @@ Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
 * 일요일에 쉬며, 이전에 조금 알아보다가 말았었던 절차적 애니메이션 생성에 관해 조금 더 공부해보았다.
 https://humble-tachometer-f77.notion.site/Procedural-Aninations-with-Math-3d1750e3190247ecb3a7a00adc2a96ef
 기초 물리와, 선형대수로 설명되는 여러 개념들을 사용해 애니메이터의 작업을 추상화 할 수 있다는점이 매우 흥미로웠다.
+
+
+- yoonho: infra 에서 given 세팅을 한뒤 flush 를 해주어야한다. + 그렇지 않으면 실제로 쿼리가 나가지 않아서 실제로는 에러가 나는 경우에도 테스트가 통과하기도 한다.
