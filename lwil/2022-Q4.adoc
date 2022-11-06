@@ -147,5 +147,8 @@ Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
  다만, 현재 bondearo app 의 vm 처럼 widget 을 벗어난 instance 가 상태를 저장하게 되면, 이부분을 관리할 책임은 사용자가 지게 된다. +
  아마 이러한 부분을 해소하기 위해 bloc 이 flutte 에 의존성을 가지나 싶다.
  
- 
+[[section-202211-W2]]
+=== 2022년 11월 2주
+- youjin: bottom modal 뒤에 있는 검고 투명도 있는 배경을 "Scrim" 이라고 부른다. 혹은 bottom modal 뒤, "딤처리를 한다"고도 한다. 소통에 용이한 용어를 알게 되었다.
++
 
