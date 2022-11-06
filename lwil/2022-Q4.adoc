@@ -152,3 +152,8 @@ Bondearo 또한 출시 이전에 이에 관련해 고려가 필요해 보인다.
 - youjin: bottom modal 뒤에 있는 검고 투명도 있는 배경을 "Scrim" 이라고 부른다. 혹은 bottom modal 뒤, "딤처리를 한다"고도 한다. 소통에 용이한 용어를 알게 되었다.
 +
 
+- wongue: +
+* 지난 한주간 DI 관련한 애로사항을 겪어 조금 조사해보니, 우리 팀 이외에도 flutter 의 DI를 조금 더 편하게 관리하고자 하는 수요는 많이 있는것 같다. https://pub.dev/packages/injectable + 
+* 일요일에 쉬며, 이전에 조금 알아보다가 말았었던 절차적 애니메이션 생성에 관해 조금 더 공부해보았다.
+https://humble-tachometer-f77.notion.site/Procedural-Aninations-with-Math-3d1750e3190247ecb3a7a00adc2a96ef
+기초 물리와, 선형대수로 설명되는 여러 개념들을 사용해 애니메이터의 작업을 추상화 할 수 있다는점이 매우 흥미로웠다.
