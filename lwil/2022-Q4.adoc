@@ -162,3 +162,51 @@ https://humble-tachometer-f77.notion.site/Procedural-Aninations-with-Math-3d1750
 - yoonho: +
 infra 에서 테스트시 given 세팅을 한뒤 flush 를 해주어야한다. + 
 그렇지 않으면 실제로 쿼리가 나가지 않아서 실제로는 에러가 나는 경우에도 테스트가 통과하기도 한다.
+
+
+- hwan: Date Audit 과 Soft Delete 를 좀더 쉽게 구현하기
++
+우리는 DateAuditable 과 SoftDeletable 을 이렇게 정의했는데
++
+[source,kotlin]
+----
+interface DateAuditable {
+    val createdAt: Instant
+
+    val updatedAt: Instant
+}
+
+interface SoftDeletable {
+    val deletedAt: Instant?
+
+    val isDeleted: Boolean
+        get() = deletedAt != null
+
+    fun delete(instant: Instant = Instant.now())
+}
+----
++
+생각해 보니 `SoftDeletable` 의 `deletedAt` 은 필요없다 왜냐면 `lastUpdated` + `isDeleted` 조합으로도 같은 결과를 낼 수 있으니까...
++
+이렇게.
++
+[source,kotlin]
+----
+interface SoftDeletable {
+    val isDeleted: Boolean
+
+    fun delete(instant: Instant = Instant.now())
+}
+
+class SoftDeletableMixin : SoftDeletable, DateAuditable {
+    override var isDeleted: Boolean = false
+    
+    override var createdAt: Instant = Instant.now()
+
+    override var updatedAt: Instant = Instant.now()
+
+    override fun delete(instant: Instant) {
+        this.isDeleted = true
+        this.updatedAt = instant
+    }
+}
