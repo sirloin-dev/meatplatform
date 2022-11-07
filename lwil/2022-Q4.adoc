@@ -210,3 +210,5 @@ class SoftDeletableMixin : SoftDeletable, DateAuditable {
         this.updatedAt = instant
     }
 }
+
+- gon : 코루틴의 io 디스페쳐는 기본적으로 64개의 쓰레드를 생성한다. 만약 64개 넘는 io 코루틴이 오면 별도의 배압큐를 이용하여 64개 넘을시에 쓰레드풀을 기다리느라 블로킹이 되는 경우를 해결하였다
