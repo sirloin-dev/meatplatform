@@ -240,7 +240,7 @@ java.lang.IncompatibleClassChangeError:
 원인은...
 +
 link:https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html[Oracle Java 문서] 에 의하면, Sealed class 들은 모두 compile time 에 확정해야 한다는 제약 사항이 있다.
-
++
 > They must be accessible by the sealed class at compile time.
-
++
 그런데 Proxy 는 runtime 에 생기는 클래스니까, jvm 이 이를 예상하지 못해 발생하는 것으로 추정한다.
