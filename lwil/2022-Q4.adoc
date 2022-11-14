@@ -228,3 +228,19 @@ patch: 리소스의 수정할 일부분만을 전송하여 수정한다.
 - wongue: jamstack 에서 2022 서베이 결과를 발표하였다. link:https://jamstack.org/survey/2022/[링크] +
 full stack 개발자의 비중 상승과, 개발자들의 리모트 근무에 대한 강렬한 열망이 눈에 띄는 조사결과였다. +
 아직 dart 와 flutter 에 대한 이야기는 잘 없는것이 조금 아쉬운 부분.
+
+- hwan: JPA 에서 @Entity @Inheritance 전략을 이용할 때, Parent type 을 kotlin sealed class 로 구현하면 이런 오류가 발생한다.
++
+[source, kotlin]
+----
+java.lang.IncompatibleClassChangeError: 
+  class SomeEntity$HibernateProxy$Haxe8K7d cannot inherit from sealed class SomeEntity
+----
++
+원인은...
++
+link:https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-interfaces.html[Oracle Java 문서] 에 의하면, Sealed class 들은 모두 compile time 에 확정해야 한다는 제약 사항이 있다.
+
+> They must be accessible by the sealed class at compile time.
+
+그런데 Proxy 는 runtime 에 생기는 클래스니까, jvm 이 이를 예상하지 못해 발생하는 것으로 추정한다.
