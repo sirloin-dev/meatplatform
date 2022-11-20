@@ -244,3 +244,11 @@ link:https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-inter
 > They must be accessible by the sealed class at compile time.
 +
 그런데 Proxy 는 runtime 에 생기는 클래스니까, jvm 이 이를 예상하지 못해 발생하는 것으로 추정한다.
+
+[[section-202211-W3]]
+=== 2022년 11월 4주
+- yoonho: JPA 는 find 메소드등을 통해 데이터를 불러오는 경우 엔티티를 상속한 프록시 객체가 반환된다. +
+해당 프록시 객체만 존재하는 상황에서는 어떠한 쿼리도 나가지 않으며, +
+내부의 특정 필드를 참조하는 시점에서 영속성 컨텍스트 내에서 데이터의 존재 여부를 체크를하고 없으면 쿼리를 내보낸다. +
+이러한 동작을 위해 엔티티 클래스는 상속이 가능해야한다. +
+(코틀린의 클래스는 기본적으로 final class 이기 때문에 open을 해주거나 도와주는 플러그인을 사용해야한다.)
