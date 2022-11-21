@@ -252,3 +252,52 @@ link:https://docs.oracle.com/en/java/javase/17/language/sealed-classes-and-inter
 내부의 특정 필드를 참조하는 시점에서 영속성 컨텍스트 내에서 데이터의 존재 여부를 체크를하고 없으면 쿼리를 내보낸다. +
 이러한 동작을 위해 엔티티 클래스는 상속이 가능해야한다. +
 (코틀린의 클래스는 기본적으로 final class 이기 때문에 open을 해주거나 도와주는 플러그인을 사용해야한다.)
+
+- hwan: Apple silicon 에서 mysql 을 docker 로 실행할 수 없는 경우 다음과 같은 스크립트로 해결할 수 있다.
++
+[source, shell]
+----
+DOCKER_IMAGE="mysql:8.0.28"
+ARCH=$(uname -m)
+if [ "$ARCH" == "arm64" ]; then
+  DOCKER_IMAGE="arm64v8/${DOCKER_IMAGE}-oracle"
+fi
+
+docker run --name ${CONTAINER_NAME} -e MYSQL_ROOT_PASSWORD="${ROOT_PASSWORD}" -p 13306:3306 -d $DOCKER_IMAGE
+----
++
+[source, kotlin]
+----
+const val MYSQL_IMAGE_NAME_X64 = "mysql:8.0.28"
+const val MYSQL_IMAGE_NAME_ARM64 = "arm64v8/$MYSQL_IMAGE_NAME_X64-oracle"
+
+val MYSQL_IMAGE_NAME: String by lazy {
+  System.getProperty("os.arch").run {
+    if (this == "aarch64") {
+      MYSQL_IMAGE_NAME_ARM64
+    } else {
+      MYSQL_IMAGE_NAME_X64
+    }
+  }
+}
+
+fun newMySqlTestContainer(
+  hostPort: Int,
+  databaseName: String,
+  username: String,
+  password: String
+) = MySQLContainer(
+  DockerImageName.parse(MYSQL_IMAGE_NAME).asCompatibleSubstituteFor("mysql")
+)
+  .withCreateContainerCmdModifier {
+      it.withHostConfig(
+          HostConfig().withPortBindings(
+              PortBinding(Ports.Binding.bindPort(hostPort), ExposedPort(3306))
+          )
+      )
+  }
+  .withReuse(true)
+  .withDatabaseName(databaseName)
+  .withUsername(username)
+  .withPassword(password)
+----
