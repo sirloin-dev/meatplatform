@@ -20,7 +20,7 @@
 Rive 에서 state 별로 init 에 애니메이션을 줄지, event 를 진행하는 setState 때 애니메이션을 시작할지, 혹은 controller 에 따라서도 애니메이션을 줄 수 있다는 점이 새롭고 재밌었다.
 
 [[section-202301-W2]]
-=== 2023년 1월 1주
+=== 2023년 1월 2주
 image::https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication/http-auth-sequence-diagram.png[500,500]
 - wongue: +
 MDN web docs 에서 설명하는 HTTP authorization flow 그림이다. +
@@ -30,3 +30,13 @@ base64 로 인코드 했지만 이는 평문이여서 https 통신을 이용하�
 ++ 역시 찾아보니 Digest_access_Authentication 이라는게 있었다.+ 
 https://en.wikipedia.org/wiki/Digest_access_authentication
 
+- hwan: Kotlin 에서 길이가 서로 같은 collection 을 돌면서 무언가를 해야 할 때는 `zip` 을 쓰면 편하다.
++
+[source,kotlin]
+----
+val list1 = listOf(1,2,3)
+val list2 = listOf(4,5,6)
+list1.zip(list2).forEach { (item1, item2) ->
+    println("$item1 : $item2")
+}
+----
