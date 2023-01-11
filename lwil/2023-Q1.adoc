@@ -46,3 +46,13 @@ list1.zip(list2).forEach { (item1, item2) ->
 
 - gon : Elixir라는 언어를 알게되었느데 굉장히 흥미롭다. 해당언어의 웹프레임워크인 Phoenix를 이용하여 client가 상태를 전혀 관리하지않고 상태를 오로지 서버에서 관리하는 웹을 구현하여 보여주는데 굉장히 흥미로웠다.
 Erlang의 내부구조덕분에  가능한것이라한다. Erlang의 내부구조는 코틀린의 코루틴이나 java의 파이버와 굉장히 유사한것 같다
+
+[[section-202301-W3]]
+=== 2023년 1월 3주
+- hwan: IntelliJ 에서 함수나 class 의 상세 구현을 보는 동작을 "Go to declaration" 이라고 한다. 그리고 만약 그 상세구현이 지금 편집중인 파일과 다른 파일에 있다면, Go to declaration 이 동작하면 새 탭이 열리며 내용을 보여준다.
++
+그런데 2022.3.1 업데이트에서 New UI 를 적용할 경우 이 Go to declaration 기능이 다르게 동작한다. Visual studio code 처럼 한 탭을 계속 재활용하는 방식으로 변경되어 버리는 것이다. 탭의 파일 이름을 보면 기울임체(italic) 으로 나오는게 바로 그 현상이다.
++
+10여년 가까이 쓰던 제품의 동작이 한순간에 바뀌니 적응도 안되고 매우 불편했었는데, 간단하게 설정을 바꿀 수 있었다. 바로:
++
+File > Settings > Editor > General > Editor tabs 에 진입한 뒤, Opening policy 항목의 "Enable preview tab" 항목의 체크를 비활성화 하면 된다.
