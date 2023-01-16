@@ -60,3 +60,10 @@ File > Settings > Editor > General > Editor tabs 에 진입한 뒤, Opening poli
 - wongue: https://pub.dev/packages/flutter_secure_storage 시큐어 스토리지를 지원하는 패키지가 있는걸 발견했다. +
  분명히 패키지가 제공하는 스토리지 클래스 내부에는 init 로직이 있을것임에도 불구하고, 사용하기 위해서 별도의 초기화 동작이 필요없고, +
  단순히 객체를 생성해 read, write 를 바로 할 수 있는 것을 보고 잘 짜여진 코드라는 생각이 들었다. +
+
+- yoonho: +
+core는 외부에 의존하지 않는다. +
+알고 있었고 그렇게 하고 있었던 것이었다. +
+지난주 알림톡 task를 진행하면서 직접적으로 의존성을 갖지는 않았지만 +
+의미적으로 core에서 외부 시스템을 의존하도록 만들었다가 수정한 적이 있었고, +
+core가 결국에는 외부에 의존하게 되었다는 것을 새삼 깨달았다.
