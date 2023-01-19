@@ -9,27 +9,27 @@ class Solution {
 
     private val intPool = pm + numberPool
 
-  fun myAtoi(s: String): Int {
+    fun myAtoi(s: String): Int {
         val n = StringBuffer()
         (s.takeIf { it.isNotBlank() }?.trim().takeIf { intPool.contains(it?.first()) }
             ?: return 0).let {
             var pmFlag = false
-            var afterStr = false
             run {
-                it.forEachIndexed { index, num ->
-                    if (num == '.') {
+                it.forEach { c ->
+                    if (c == '.') {
                         return@run
                     }
-                    if (pm.contains(num)) {
+                    if (pm.contains(c)) {
                         if (pmFlag || numberPool.contains(n.lastOrNull())) {
-                           return@run
+                            return@run
                         }
                         pmFlag = true
-                        n.append(num)
-                        return@forEachIndexed
+                        n.append(c)
+                        return@forEach
                     }
-                    if (numberPool.contains(num)) {
-                        n.append(num)
+
+                    if (numberPool.contains(c)) {
+                        n.append(c)
                     } else {
                         if (pmFlag || numberPool.contains(n.lastOrNull())) {
                             return@run
