@@ -79,3 +79,6 @@ core가 결국에는 외부에 의존하게 되었다는 것을 새삼 깨달았
 pm.environment.set("accessToken", pm.response.json().accessToken);
 pm.environment.set("refreshToken", pm.response.json().refreshToken);
 ```
+- wongue: 이번에 알게 된 사실인데, 게임의 UI를 웹 뷰를 사용해 구현을 하는 경우가 있다고 한다. +
+자체 앤진의 UI 프레임워크를 사용하는것에 비해 가지는 이점은, 배포가 스토어에서 자유롭다는것과 web 생태계의 패키지를 사용 할 수 있다는 점이다. +
+이 장점이 개발자 팀을 서버, 클라이언트, UI 웹뷰 개발자 로 나눠야 할 만큼 큰지 궁금하다.
