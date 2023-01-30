@@ -71,8 +71,8 @@ core가 결국에는 외부에 의존하게 되었다는 것을 새삼 깨달았
 - gon: 메모리를 공부하다보면 cpu register에 관한 설명이 빠진글도 있고 있는 글도있는데 이유를 살펴보니 먼저 우리가 만드는 user mode에서는 cpu의 레지스터를 관리 할 수 없다. +
 보통 cpu -> cpu cache 만 말하는데 엄밀히 애기하자면 중간에 register가 있다
 
-[[section-202301-W4]]
-=== 2023년 1월 4주
+[[section-202301-W5]]
+=== 2023년 1월 5주
 - youjin: 포스트맨에서 Authorization 을 계속 갱신하고 싶은 경우엔, Postman의 환경변수에 accessToken과, refreshToken 을 저장하고, 토큰을 받는 api를 호출하면 갱신해가면서 사용할 수 있다.
 아래는 Postman의 tests 환경변수에 accessToken과, refreshToken 을 저장하는 코드이다.
 ```shell
@@ -83,5 +83,9 @@ pm.environment.set("refreshToken", pm.response.json().refreshToken);
 자체 앤진의 UI 프레임워크를 사용하는것에 비해 가지는 이점은, 배포가 스토어에서 자유롭다는것과 web 생태계의 패키지를 사용 할 수 있다는 점이다. +
 이 장점이 개발자 팀을 서버, 클라이언트, UI 웹뷰 개발자 로 나눠야 할 만큼 큰지 궁금하다.
 
-- gon : 내가 네이버와 통신을 한다 가정하였을때 통신중 Frame 단위의 헤더의 address는 네이버의 mac address인줄 알았으나 게이트웨이의 mac address라고 한다. +
-사실 조금만 더 생각해보면 되는데 Frame은 L2계층인데 네이버에 통신할려면 라우팅을위해 L3이상까지 가야하기때문이다.
+- hwan: curl 로 jenkins task 를 실행하는 법
+  * https://blog.leocat.kr/notes/2019/06/21/jenkins-remote-triggering-without-authentication
+  * https://gist.github.com/janpapenbrock/084cb9c94af5f2759062b0494430dbbb
+
+물론 jenkins 를 외부에 노출한 환경에서는 이런 설정을 매우 조심해야겠지...
+
