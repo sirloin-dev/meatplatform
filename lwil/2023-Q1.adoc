@@ -89,3 +89,19 @@ pm.environment.set("refreshToken", pm.response.json().refreshToken);
 
 물론 jenkins 를 외부에 노출한 환경에서는 이런 설정을 매우 조심해야겠지...
 
+[[section-202302-W1]]
+=== 2023년 2월 1주
+
+- hwan: test 에서 time assert 할 때 일정 시간내의 오차 허용하기
+
+[source,kotlin]
+----
+// Min: given 시간의 소숫점 첫째자리 값(밀리초 100단위), Max: min + 100ms (전체적으로 0.1초 내외의 오차만 허용)
+val toSeconds = timestamp.truncateToSeconds()
+val millis = (timestamp.toEpochMilli() - toSeconds.toEpochMilli()) / 100L
+val min = toSeconds.plusMillis(millis * 100L)
+val max = min.plusMillis(100L)
+
+return timestamp >= min && timestamp < max
+----
+
