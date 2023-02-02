@@ -108,3 +108,9 @@ val max = min.plusMillis(100L)
 return timestamp >= min && timestamp < max
 ----
 
+
+[[section-202302-W2]]
+=== 2023년 2월 2주
+
+- youjin: Brave browser 를 활용하게 되면, youtube 계정이 프리미엄이 아니어도 광고를 제외하고 볼 수 있다는 장점이 있다.
+그게 가능한 이유는 Brave 는 web3 의 장점을 기반으로 만들어진 브라우저이기 때문에 사용자성 광고를 제외해주기 때문이다. 하지만, 구글미트 등을 사용할 때, 카메라를 허용해도 사용할 수 없었다.
