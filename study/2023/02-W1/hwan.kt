@@ -10,13 +10,15 @@ import java.util.stream.Stream
 @SmallTest
 class Solution {
     @ParameterizedTest
-    @MethodSource("args")
+    @MethodSource("testArgs")
     fun runTest(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int, expected: Int) {
         findCheapestPrice(n, flights, src, dst, k) shouldBe expected
     }
 
-    // Runtime 205ms, Beats 96.36%
-    // Memory 37 MiB, Beats 80.97%
+    /*
+     * Runtime 205ms, Beats 96.36%
+     * Memory  37MiB, Beats 80.97%
+     */
     fun findCheapestPrice(n: Int, flights: Array<IntArray>, src: Int, dst: Int, k: Int): Int {
         // 최저가 경로 방문 기억용
         val visits = IntArray(n).apply {
@@ -69,7 +71,7 @@ class Solution {
 
     companion object {
         @JvmStatic
-        fun args(): Stream<Arguments> = Stream.of(
+        fun testArgs(): Stream<Arguments> = Stream.of(
             Arguments.of(
                 /* n */        4,
                 /* flights */  arrayOf(
