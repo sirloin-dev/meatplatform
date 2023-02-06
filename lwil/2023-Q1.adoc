@@ -187,3 +187,6 @@ return timestamp >= min && timestamp < max
 개념적 정리르 ㄹ보면 web서버는 정적 페이지를 다룬다는 개념이 좀 더 강하고 was는 동적 페이지를 담당하는 느낌이 강하다.
 
 
+- wongue: 주말에 gettingStart of Spring 문서를 일고 서버를 띄워봤다. +
+pakage Import 관련해서 많은 이슈를 겪었는데, 문서가 최신화 되지 않은듯 싶었다. + 
+어노테이션 기반으로 프레임워크 클래스를 작성하는게 신기했었다.
