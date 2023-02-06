@@ -115,4 +115,73 @@ return timestamp >= min && timestamp < max
 - youjin: Brave browser 를 활용하게 되면, youtube 계정이 프리미엄이 아니어도 광고를 제외하고 볼 수 있다는 장점이 있다.
 그게 가능한 이유는 Brave 는 web3 의 장점을 기반으로 만들어진 브라우저이기 때문에 사용자성 광고를 제외해주기 때문이다. 하지만, 구글미트 등을 사용할 때, 카메라를 허용해도 사용할 수 없었다.
 
-- yoonho: 로직을 만들때 시간복잡도를 고려하자. 생각만하고 머리속 한쪽으로 놓아두고 보니 O(n)으로도 해결할 수 있는 것을 O(n^2)등의 코드를 만들고 있었다.
+- hwan: 영어에는 `-duc-` 라는 word root 를 포함한 단어가 꽤 자주 보인다. 이는 인도유럽어 `-deuk-` 이 라틴어 `dux` 으로 변형된 말로, *지도하다*, *지도자*, *결과를 내다*, *무언가를 가져가다*, 라는 뜻이라고 한다. 아무튼 조사해 보니 꽤 많은 단어가 있었다. 
++
+
+[cols="1,3,1"]
+|===
+| 영단어 | 단어 형성 | 뜻
+
+| abduct
+| *ab-*: 먼 곳(away) -> ab + duct
+| 유괴, 납치
+
+| adduce
+| *ad-*: 어딘가로(towards) -> ad + duce
+| 이유, 증거를 제시하다
+
+| aqueduct
+| *aqua*: 물(water) -> aque + duct
+| (고대 로마의) 송수로
+
+| conduce
+| *con-*: 함께(together) -> con + duce
+| 좋은 결과를 내다
+
+| deduce
+| *de-*: ..의(from) -> de + duce
+| 추론하다, 연역법
+
+| duct
+|
+| (배)관, (도)관, 물체의 연결 (duct tape)
+
+| duke
+|
+| 공국, 소국의 왕, 공작, 대공, 황태자
+
+| educate
+| *e-*: 끄집어내다(out) -> e + duc + ate = 끄집어내 이끌다
+| 교육
+
+| induce
+| *-in-*: ..로부터(in) -> in + duce
+| 추론하다, 귀납법
+
+| introduce
+| *intro-*: ...의 내부(intro) -> intro + duce = 단체의 내부로 이끌다
+| 소개하다
+
+| misconduct
+| *mis-*: 나쁜(bad), *con-*: 함께(together) -> mis + conduct
+| 비행(非行), 집권남용
+
+| produce
+| *pro-*: 앞으로(forth) -> pro + duce = 미리 무언가를 가져가다
+| (제품을) 생산하다
+
+| reduce
+| *re-*: 다시(again), 뒤로(back) -> re + duce = 나아감을 되돌리다
+| 줄이다
+
+| seduce
+| *se-*: 길을 잃다(astray), 다른 방향(aside) -> se + duce
+| (성적으로) 유혹하다, 남을 꾀다/홀리다
+
+| subduce
+| *sub-*: 아래로(below) -> sub + duce
+| 줄이다, 제거하다
+|===
+
+
+
