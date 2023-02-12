@@ -190,5 +190,13 @@ return timestamp >= min && timestamp < max
 
 
 - wongue: 주말에 gettingStart of Spring 문서를 일고 서버를 띄워봤다. +
-pakage Import 관련해서 많은 이슈를 겪었는데, 문서가 최신화 되지 않은듯 싶었다. + 
+pakage Import 관련해서 많은 이슈를 겪었는데, 문서가 최신화 되지 않은듯 싶었다.(내 착각이였다.) + 
 어노테이션 기반으로 프레임워크 클래스를 작성하는게 신기했었다.
+
+[[section-202302-W3]]
+=== 2023년 2월 3주
+
+- wongue: 지난주에 Dart 의 Json serializable 관련해 많은 고민을 해봤다. +
+패키지를 사용하는것을 고려해보기도 하고, 혹시 dart:mirror 를 사용해볼 수는 없을까 관련해서도 조사해보았지만, +
+flutter 를 통해 설치한 dart SDK 안에는 에초에 mirror 패키지가 포함되지 않는다는것을 발견했다. +
+결론은, 리플렉션을 활용하지 않고서는 파싱로직의 일반화는 불가능하다. +
