@@ -201,6 +201,6 @@ pakage Import 관련해서 많은 이슈를 겪었는데, 문서가 최신화 �
 flutter 를 통해 설치한 dart SDK 안에는 에초에 mirror 패키지가 포함되지 않는다는것을 발견했다. +
 결론은, 리플렉션을 활용하지 않고서는 파싱로직의 일반화는 불가능하다. +
 
-- `KClass` 에는 `javaObjectType` 라는 extension 이 있는데 boxed primitive type 의 클래스를 얻기 위해 사용한다. +
+- hwan: `KClass` 에는 `javaObjectType` 라는 extension 이 있는데 boxed primitive type 의 클래스를 얻기 위해 사용한다. +
 `Long::class.java` (unboxed Long class -> long[].class 같은 경우에서만 활용, long.class 는 없음) +
 `Long::class.javaObjectType` (boxed Long class -> Long.class 또는 Long[].class 의 경우에 활용)
