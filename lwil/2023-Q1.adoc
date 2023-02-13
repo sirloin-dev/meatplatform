@@ -215,5 +215,5 @@ flutter 를 통해 설치한 dart SDK 안에는 에초에 mirror 패키지가 �
 
 - youjin: 저번주에 흩어져있는 에러들과, 서로 정의를 달리한 에러 관련해서 고민을 가졌다. +
 Android, iOS 에서 에러를 캐치해 낼 수 있는 sentry[https://docs.sentry.io/platforms/flutter/] 라는 게 있다. +
-flutter 도 지원을 해주고 있기 때문에 이를 활용해본다면, 에러 핸들링에 있어서 생산성이 높아질 것 같다.
+flutter 도 지원을 해주고 있기 때문에 이를 활용해본다면, 에러 핸들링에 있어서 생산성이 높아질 것 같다. +
 더불어, firebase crashlytics[https://firebase.google.com/docs/crashlytics] 추천받았다.
