@@ -204,3 +204,8 @@ flutter 를 통해 설치한 dart SDK 안에는 에초에 mirror 패키지가 �
 - hwan: `KClass` 에는 `javaObjectType` 라는 extension 이 있는데 boxed primitive type 의 클래스를 얻기 위해 사용한다. +
 `Long::class.java` (unboxed Long class -> long[].class 같은 경우에서만 활용, long.class 는 없음) +
 `Long::class.javaObjectType` (boxed Long class -> Long.class 또는 Long[].class 의 경우에 활용)
+
+- yoonho: jpa entity를 위한 기능 중에 공통으로 매핑하는 필드를 따로 분리해서 만든 entity를 상속받아서 쓸 수 있게하는 +
+@mappedSuperclass 라는 것이 있다. +
+우리는 현재 날짜 관련 인터페이스를 구현해서 entity가 구현하는 방법으로 사용하고 있는데 +
+날짜를 포함해서 id같은 공통 필드를 따로 분리한 entity를 만들어도 되지 않을까 하는 생각이 들었다.
