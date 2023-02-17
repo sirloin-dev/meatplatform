@@ -1,0 +1,16 @@
+= Algorithm study 2023-02-W1
+// Metadata:
+:description: 
+:keywords: algorithm, study, leetcode
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+Leetcode top 100 문제들을 함께 공부해 봅시다.
+
+https://leetcode.com/problems/daily-temperatures/
+
+O(N²) 로 풀면 안 됩니다! O(NlogN) 미만으로 푸는 방법을 고민해 봅시다!
