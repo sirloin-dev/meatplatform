@@ -217,3 +217,14 @@ flutter 를 통해 설치한 dart SDK 안에는 에초에 mirror 패키지가 �
 Android, iOS 에서 에러를 캐치해 낼 수 있는 sentry[https://docs.sentry.io/platforms/flutter/] 라는 게 있다. +
 flutter 도 지원을 해주고 있기 때문에 이를 활용해본다면, 에러 핸들링에 있어서 생산성이 높아질 것 같다. +
 더불어, firebase crashlytics[https://firebase.google.com/docs/crashlytics] 추천받았다.
+
+[[section-202302-W4]]
+=== 2023년 2월 4주
+
+- wongue: Event queue와 UI Loop는 비슷한 개념이여서 흔히들 오용하거나 잘못 언급되는 일이 잦다. +
+흔히 클라이언트 프로그렘의 인터페이스 표시, 데이터 모델 수정, 네트워크 통신"요청", 유저 입력에 반응을 하는 주체는 Event queue가 아닌 UI Loop가 그 대상이다. +
+Event queue는 UI Loop가 발생한 이벤트의 처리 순서를 기록하기 위해 사용하는 queue 로 이루어진 버퍼라고 이해하는것이 맞다. +
++ event queue가 생긴 이유는 UI thread 라는 개념과도 깊은 연관이 있다. +
+현대 클라이언트 프로그램은 대부분 GUI를 지원하고, 이 GUI를 그리기 위해선 UI를 그리는 매인 스레드인 UI thread라는 개념이 필요하게 된다. +
+이러한 main thread 라는 개념이 희박하거나 없는 서버에서는 굳이 하나의 쓰래드를 고집할 필요가 없으므로, 비동기 처리를위해 여러개의 쓰래드를 사용하는일이 일반적이다 +
+그렇기 때문에 자바 기반 언어에서는 JS에서 적극적으로 활용되는 async, awiat 키워드가 지원되지 않는것이다.
