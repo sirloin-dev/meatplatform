@@ -238,9 +238,10 @@ logger.error("message : ${e.getMessage()}") +
 null 값이 들어오게 되면 예외가 발생할 수 있기 때문이다. +
 그리고 로그 레벨과 관계 없이 문자열 연산은 무조건 진행되기 때문에 효율적이지 못하다.
 
-- youjin: js 에는 문자열을 계산해주는 method 가 있다.. + 
-console.log(eval('2 + 2') === eval('4')); + 
-Expected output: true + 
+- youjin: js 에는 String을 Javascript로 변환해주는 method 가 있다. + 
+console.log(eval('2 + 2') === eval('4')); Expected output: true + 
+eval('alert("hello")'); +
+하지만, 원격 코드 실행의 위험으로 인해 금기시 되었다. +
 
 - hwan: 실 기기에서 동작하는 iOS 앱의 실행로그를 직접 보는 방법. link:https://developer.apple.com/forums/tags/instruments[Instruments] 앱을 개발 장비에 설치한 뒤 activity log 를 보면 된다.
 
