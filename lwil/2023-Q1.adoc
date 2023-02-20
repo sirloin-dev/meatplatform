@@ -240,4 +240,4 @@ null 값이 들어오게 되면 예외가 발생할 수 있기 때문이다. +
 
 - youjin: js 에는 문자열을 계산해주는 method 가 있다.. + 
 console.log(eval('2 + 2') === eval('4')); + 
-// Expected output: true + 
+Expected output: true + 
