@@ -241,3 +241,7 @@ null 값이 들어오게 되면 예외가 발생할 수 있기 때문이다. +
 - youjin: js 에는 문자열을 계산해주는 method 가 있다.. + 
 console.log(eval('2 + 2') === eval('4')); + 
 Expected output: true + 
+
+- hwan: 실 기기에서 동작하는 iOS 앱의 실행로그를 직접 보는 방법. link:https://developer.apple.com/forums/tags/instruments[Instruments] 앱을 개발 장비에 설치한 뒤 activity log 를 보면 된다.
+
+
