@@ -237,3 +237,7 @@ logger.error("message : ${e.getMessage()}") +
 그이유는 후자의 방법은 내부적으로 String Builder를 생성하여 매번 append 를 해주어야하고 마지막에는 가비지 컬렉션의 대상이 되며, +
 null 값이 들어오게 되면 예외가 발생할 수 있기 때문이다. +
 그리고 로그 레벨과 관계 없이 문자열 연산은 무조건 진행되기 때문에 효율적이지 못하다.
+
+- youjin: js 에는 문자열을 계산해주는 method 가 있다.. + 
+console.log(eval('2 + 2') === eval('4')); + 
+// Expected output: true + 
