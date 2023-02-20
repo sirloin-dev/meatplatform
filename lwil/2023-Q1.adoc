@@ -244,4 +244,7 @@ Expected output: true +
 
 - hwan: 실 기기에서 동작하는 iOS 앱의 실행로그를 직접 보는 방법. link:https://developer.apple.com/forums/tags/instruments[Instruments] 앱을 개발 장비에 설치한 뒤 activity log 를 보면 된다.
 
+- gon: 쓰레드풀이나 이벤트루프 형식의 패턴을 공부하다보면 spmc 자료구조라는 키워드를 만나게된다 +
+single producer multi consumer 이라는 뜻인데 task stealing 알고리즘과 많이 쓰인다 +
+worker에서 일이없다면 다른 worker의 작업큐에서 task를 뺏는다
 
