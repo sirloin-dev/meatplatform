@@ -257,7 +257,7 @@ worker에서 일이없다면 다른 worker의 작업큐에서 task를 뺏는다
 - youjin: +
 1. 디자인 전공생 새내기 땐, 선배들이 일러스트레이터로 ppt 자료 만드는게 멋있었는데 이젠 그걸 코드로 만들 수 있다. link:https://marp.app/[Marp] 를 통해서 md 파일을 ppt 형식으로 작성할 수 있다. +
 2. 앱에서 사용자의 입력을 받는 모든 이벤트들은, "lp(논리적 해상도)"가 아닌 하드웨어의 "물리적 입력"을 기반으로 앱 내부에서 터치 및 포인터 이벤트를 감지하고 처리한다. 그 이후, 앱에서는 논리적 해상도를 기반으로 실제로 사용자에게 받은 물리적 입력을 가상 좌표로 변환하여 사용된다. +
-플러터에서는 `GestureDetector`로 이벤트를 수신받는데, `MediaQuery` 가 `BuildContext` 를 받아 물리적 입력을 논리적 입력으로 변환해준다.
+플러터에서는 `GestureDetector` 로 이벤트를 수신받는데, `MediaQuery` 가 `BuildContext` 를 받아 물리적 입력을 논리적 입력으로 변환해준다.
 ```dart
 class MyWidget extends StatelessWidget {
   @override
