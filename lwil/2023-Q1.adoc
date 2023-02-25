@@ -300,3 +300,56 @@ class MyWidget extends StatelessWidget {
   }
 }
 ```
+
+- hwan: gradle 을 이용한 프로젝트를 macOS 에서 운영하는 Jenkins 에서 빌드할 때 주의점
++
+시스템 자동 업데이트 이후 재부팅 일어나면, 알 수 없는 이유로 시스템 로케일이 원래 설정과 달라지는 경우가 간혹 있다. 예를 들어,
++
+.시스템 업데이트 이전
+[source,shell]
+----
+$ locale
+LANG="en_GB.UTF-8"
+LC_COLLATE="en_GB.UTF-8"
+LC_CTYPE="en_GB.UTF-8"
+LC_MESSAGES="en_GB.UTF-8"
+LC_MONETARY="en_GB.UTF-8"
+LC_NUMERIC="en_GB.UTF-8"
+LC_TIME="en_GB.UTF-8"
+LC_ALL="en_GB.UTF-8"
+----
++
+.시스템 업데이트 이후
+[source,shell]
+----
+$ locale
+LANG=                       # 정보 소실
+LC_COLLATE="en_GB.UTF-8"
+LC_CTYPE="en_GB.UTF-8"
+LC_MESSAGES="en_GB.UTF-8"
+LC_MONETARY="en_GB.UTF-8"
+LC_NUMERIC="en_GB.UTF-8"
+LC_TIME="en_GB.UTF-8"
+LC_ALL=                     # 정보 소실
+----
++
+처럼 Locale 정보가 달라지는 경우가 생긴다. 원인은 알 수 없으나 이 때문에 gradle 의 `processResources` task 가 캐릭터 인코딩 오류로 인해 정상 동작하지 않는 경우가 간혹 발생한다. 특히 copy 나 read 단계에서 문제가 없다면, 실 서비스 배포 이후에나 문제를 알 수 있기 때문에 alpha 단계가 없거나, manual test coverage 가 낮은 경우 잠재 오류를 탐지해 내기가 쉽지 않다.
++
+이를 방지하려면:
++
+. `gradle.properties` 에 다음 옵션을 명시
++
+[source,shell]
+----
+org.gradle.jvmargs=-Dfile.encoding=UTF-8
+----
++
+. jenkins 시스템 설정에 다음 환경 변수를 추가 (시스템의 환경 설정 변수와는 별개로 추가하는 편이 좋음)
++
+[source,shell]
+----
+LANG="en_GB.UTF-8"      # 앞쪽의 로케일은 캐릭터셋과 무관하지만 가급적 실 서버의 로케일과 맞추는 편이 좋음
+LC_ALL="en_GB.UTF-8"
+LANGUATE="en_GB.UTF-8"
+----
+
