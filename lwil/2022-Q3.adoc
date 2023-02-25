@@ -408,9 +408,9 @@ class TestClass<String, T> {
 +
 이거 신텍스 에러 난다. 왜냐면 제너릭의 타입 지정은 사용하는 측에서 해야하기 때문. ... 그러면 원시타입 관련해서는 예약어로 만들어주면 안됬을까.
 
-- hwan: jpa 의 `@Embeddable` 안에 있는 `@Column` 은 적용 안된다. 또한 `@AttributeOverrides` 로 column 을 override 할 경우 @Lob 설정 등이 날아가기 때문에 조심해야 한다.
+- hwan: jpa 의 `@Embeddable` 안에 있는 `@Column` 은 적용 안된다.
 +
-link:https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/AttributeOverride.html[@AttributeOverride] 나 link:https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/AssociationOverrides.html[@AssociationOverrides] 를 이용해 해결할 수 있다.
+또한 link:https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/AttributeOverride.html[`@AttributeOverride`] 나 link:https://docs.jboss.org/hibernate/jpa/2.1/api/javax/persistence/AssociationOverrides.html[`@AssociationOverrides`] 를 이용해 해결할 경우 @Lob 설정 등이 날아가기 때문에 조심해야 한다.
 
 - gon : 제주도의 날씨예보는 믿지 않는것이 좋다 4일동안 비100%였지만 비가안왔다 파도도 안높았다;
 기술 애기 : 코틀린/js로 개발시 라이브 뷰? 기능이 굉장히 느리게 작동한다 이유는 kotlin -> js로 컴파일을 거친다음 랜더링을 해야하기때문이다.
