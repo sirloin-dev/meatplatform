@@ -353,3 +353,10 @@ LC_ALL="en_GB.UTF-8"
 LANGUATE="en_GB.UTF-8"
 ----
 
+- yoonho: 양방향 연관 관계인 경우 mappedBy가 설정된 쪽은 ReadOnly 라고 알고 있었는데 아니었다. +
+ mappedBy 설정 유무와 cascade 는 관련이 없었고, +
+ hibernate 문서에서도 mappedBy 가 cascade 에 영향을 준다는 이야기는 찾지 못했다. +
+ OneToMany 혹은 ManyToOne 단방향 연관관계가 각각 사용되는 경우에 OneToMany 에서는 생성된 매핑테이블에서 fk 설정(https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#associations-one-to-many) +
+ ManyToOne 에서는 Many 측에서 fk 설정(https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#associations-many-to-one) +
+ 이기 때문에 양방향 연관 관계인 경우에는 어느 쪽이 연관 관계의 주인으로서 fk가 있어야하는지 확실해야하기 때문이라는 생각이 들었다.
+ 
