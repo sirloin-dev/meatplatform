@@ -367,12 +367,12 @@ LANGUATE="en_GB.UTF-8"
 
 - youjin: flutter 에서는 `RichText` 위젯과 `Text.rich` 가 모두 `List<TextSpan>` 를 children 으로 가지지만, 이는 폰트 크기에 따른 차이가 있다. +
 ```dart
- RichText( // 폰트 크기 고정
+             RichText(      // 폰트 크기 고정
              text: TextSpan(
                children: styledSpans,
                 ),
               ), 
-             Text.rich( // 시스템 폰트 크기에 따라 가변
+             Text.rich(     // 시스템 폰트 크기에 따라 가변
                TextSpan(
                 children: styledSpans,
               ))
