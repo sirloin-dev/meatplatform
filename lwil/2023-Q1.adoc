@@ -360,3 +360,19 @@ LANGUATE="en_GB.UTF-8"
  ManyToOne 에서는 Many 측에서 fk 설정(https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#associations-many-to-one) +
  이기 때문에 양방향 연관 관계에서 mappedBy의 의미는 어느 쪽이 연관 관계의 주인으로서 fk가 있어야하는지 확실히 하기 위한 것이라는 생각을 하였다.
  
+ 
+ [[section-202303-W2]]
+=== 2023년 3월 2주
+
+ - youjin: flutter 에서는 `RichText` 위젯과 `Text.rich` 가 모두 `List<TextSpan>` 를 children 으로 가지지만, 이는 폰트 크기에 따른 차이가 있다.
+ ```dart
+            RichText( // 폰트 크기 고정
+             text: TextSpan(
+               children: styledSpans,
+                ),
+              ), 
+             Text.rich( // 시스템 폰트 크기에 따라 가변
+               TextSpan(
+                children: styledSpans,
+              ))
+```
