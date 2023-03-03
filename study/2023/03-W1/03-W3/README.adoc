@@ -1,0 +1,16 @@
+= Algorithm study 2023-03-W3
+// Metadata:
+:description: 
+:keywords: algorithm, study, leetcode
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+Leetcode top 100 문제들을 함께 공부해 봅시다.
+
+https://leetcode.com/problems/top-k-frequent-elements/
+
+문제의 힌트와 제약사항을 엄격하게 지키면서 해결해 봅시다.
