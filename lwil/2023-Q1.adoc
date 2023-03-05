@@ -389,3 +389,12 @@ ex 데이터가 1000개 있다 가정하여본다 +
 그런데 실제로 개발할때 redis 클러스터를 사용하더라도 몇번 redis 저장소로 호출하여줘 라고 하지않는다 + 
 이유는 redis측에서 언어별로 권장하는 redis클라이언트 라이브러리에 있다. +
 위의 333번의 데이터를 2번 저장소에 요청을 하게되면 redis는 해당 데이터가 저장되어있는 (예시의 경우 1번) redis url을 주고 redis client 라이브러리에서 알아서 응답온 url에 다시 호출하여 값을 가져온다.
+
+- hwan: cygwin 환경에서 기본 shell 을 변경하는 법: `/etc/nsswitch.conf` 를 아래와 같이 수정
++
+[source, shell]
+----
+db_shell: /usr/bin/zsh
+----
++
+`/etc/passwd` 를 만드는 방식은 cygwin 에서 별로 link:https://cygwin.com/cygwin-ug-net/mkpasswd.html#mkpasswd-desc[권장하는 방법이 아니]라고 한다.
