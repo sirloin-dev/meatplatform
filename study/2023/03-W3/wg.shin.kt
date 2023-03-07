@@ -38,3 +38,42 @@ class Solution {
         return temp.map { it.key }.toIntArray()
     }
 }
+
+/*
+문제의 조건 중, 정답이 반드시 유일하다는 부분을 이용하면 O(n) 의 코드를 작성 가능하다.
+[...ans, ...buket[i]].size > k 일 케이스가 없다.
+만약 존재한다면, 답은 유일하지 못하다.
+
+Runtime 269 ms | Memory 40.9 MB
+Beats   88.77% | Beats  68.15%
+*/
+
+class Solution {
+    fun topKFrequent(nums: IntArray, k: Int): IntArray {
+        val frequencyMap: MutableMap<Int, Int> = mutableMapOf()
+        val buket = arrayOfNulls<ArrayList<Int>>(nums.size + 1);
+        for (num in nums) {
+            if (!frequencyMap.contains(num)) {
+                frequencyMap[num] = 1
+                continue
+            }
+            frequencyMap[num] = frequencyMap[num]!! + 1
+        }
+        for (key in frequencyMap.keys) {
+            val frequency = frequencyMap[key];
+            if (buket[frequency!!] == null) {
+                buket[frequency] = ArrayList<Int>()
+            }
+            buket[frequency]!!.add(key);
+        }
+
+        val ans = ArrayList<Int>()
+        var idx = buket.size -1;
+        
+        while (ans.size < k && idx > 0) {
+            buket[idx]?.let { ans.addAll(it) }
+            idx--
+        }
+        return  ans.toIntArray()
+    }
+}
