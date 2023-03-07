@@ -12,10 +12,6 @@ internal class Pair(val key: Int, val value: Int) : Comparable<Pair> {
     override fun compareTo(other: Pair): Int {
         return value - other.value
     }
-
-    override fun toString(): String {
-        return "{${key} : ${value}}"
-    }
 }
 
 class Solution {
