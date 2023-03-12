@@ -362,8 +362,8 @@ LANGUATE="en_GB.UTF-8"
  
  
 
-[[section-202303-W2]]
-=== 2023년 3월 2주
+[[section-202303-W1]]
+=== 2023년 3월 1주
 
 - youjin: flutter 에서는 `RichText` 위젯과 `Text.rich` 가 모두 `List<TextSpan>` 를 children 으로 가지지만, 이는 폰트 크기에 따른 차이가 있다. +
 ```dart
@@ -407,3 +407,51 @@ db_shell: /usr/bin/zsh
  slf4j 는 말 그대로 Simple logging facade for Java, 자바 생태계 애플리케이션의 로깅 파사드 인터페이스를 제공해주는 라이브러리다. +
  logback 은 그 인터페이스의 구현체가 되는데, 역시 역사가 있는 생태계여서 그런지 독립적인 두개의 패키지 간에서도 디자인 패턴이 적용된다는 점이 꽤나 신기했다. +
  ++ 자바의 생태계를 보다 보면, 왜 Dart 의 패키지 인터페이스가 이러한 형식으로 구현되었는지에 대한 인사이트를 얻게되는것 같다.
+
+
+[[section-202303-W2]]
+=== 2023년 3월 2주
+
+- hwan: kotlin 에서 `BigDecimal` 을 이용할 때의 주의점
++
+Kotlin 은 `Comparator` 를 구현한 객체에 `>=`, `<=`, `>`, `<` 같은 operator 를 지원한다. 이 때문에, 다음과 같은 비교가 가능하다.
++
+[source, kotlin]
+----
+BigDecimal("5.10") >= BigDecimal("5.11")                // false
+
+// Java code:
+BigDecimal("5.10").compareTo(BigDecimal("5.11")) > 0    // false
+----
++
+위에서 보다시피 `compareTo` 를 이용한 비교보다 수학 부등호 형태로 표현한 비교 연산자를 사용한 코드가 우리에게는 훨씬 더 친숙하다. 그런데 조심해야 할 점이 있다. 바로 다음의 경우인데:
++
+[source, kotlin]
+----
+BigDecimal("0.0") == BigDecimal.ZERO        // false
+BigDecimal("0.00") == BigDecimal.ZERO         // false
+----
++
+얼핏 보기에 무슨 문제인가 싶은 코드지만 `BigDecimal.ZERO`, `BigDecimal("0.0")`, `BigDecimal("0.00")` 의 숫자 성질은 각각:
++
+[cols="1,1,1,1"]
+|===
+|숫자|유효숫자갯수|Precision|Scale
+
+|BigDecimal("0.0")
+|1
+|1
+|1
+
+|BigDecimal("0.00")
+|1
+|1
+|2
+|=== 
+에서 보듯 Precion, Scale 이 다르기 때문에 서로 같지 않다. `==` 는 `equals` 로 동작하기 때문이다. 그런데 다른 비교 연산자들은 `compareTo` 로 동작하기 때문에 BigDecimal 을 비교하는 로직에서 `==` 이 `compareTo` 처럼 비교하기를 기대하고 코딩하는 경우가 왕왕 있는데 자칫 큰 문제가 될 수 있다. 따라서, *어떤 `BigDecimal` 값이 특정 `BigDecimal` 값과 같다고 볼 수 있나?* 라는 비교를 수행하는 곳에서는 `==` 대신 `A.compareTo(B) == 0` 같은 고전적인 비교 방법을 사용해야 오류를 방지할 수 있다. 혹은 다음과 같은 extension function 을 정의하는 것도 좋을 것 같다.
++
+[source, kotlin]
+----
+infix fun BigDecimal.isCloseTo(other: BigDecimal): Boolean =
+    this.compareTo(other) == 0
+----
