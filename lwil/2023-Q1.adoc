@@ -428,7 +428,7 @@ BigDecimal("5.10").compareTo(BigDecimal("5.11")) > 0    // false
 +
 [source, kotlin]
 ----
-BigDecimal("0.0") == BigDecimal.ZERO        // false
+BigDecimal("0.0") == BigDecimal.ZERO          // false
 BigDecimal("0.00") == BigDecimal.ZERO         // false
 ----
 +
@@ -453,7 +453,7 @@ BigDecimal("0.00") == BigDecimal.ZERO         // false
 |1
 |2
 |=== 
-에서 보듯 Precion, Scale 이 다르기 때문에 서로 같지 않다. `==` 는 `equals` 로 동작하기 때문이다. 그런데 다른 비교 연산자들은 `compareTo` 로 동작하기 때문에 BigDecimal 을 비교하는 로직에서 `==` 이 `compareTo` 처럼 비교하기를 기대하고 코딩하는 경우가 왕왕 있는데 자칫 큰 문제가 될 수 있다. 따라서, *어떤 `BigDecimal` 값이 특정 `BigDecimal` 값과 같다고 볼 수 있나?* 라는 비교를 수행하는 곳에서는 `==` 대신 `A.compareTo(B) == 0` 같은 고전적인 비교 방법을 사용해야 오류를 방지할 수 있다. 혹은 다음과 같은 extension function 을 정의하는 것도 좋을 것 같다.
+에서 보듯 Precion, Scale 이 다르기 때문에 서로 같지 않다. `==` 는 `equals` 로 동작하기 때문이다. 그런데 다른 비교 연산자들은 `compareTo` 로 동작하기 때문에 BigDecimal 을 비교하는 로직에서 `==` 이 `compareTo` 처럼 비교하기를 기대하고 코딩하는 경우가 왕왕 있다. 그리고 테스트로 이를 걸러내지 못하면 자칫 큰 문제가 될 수 있다. 따라서, *어떤 `BigDecimal` 값이 특정 `BigDecimal` 값과 같다고 볼 수 있나?* 라는 비교를 수행하는 곳에서는 `==` 대신 `A.compareTo(B) == 0` 같은 고전적인 비교 방법을 사용해야 오류를 방지할 수 있다. 혹은 다음과 같은 extension function 을 정의하는 것도 좋을 것 같다.
 +
 [source, kotlin]
 ----
