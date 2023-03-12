@@ -460,3 +460,5 @@ BigDecimal("0.00") == BigDecimal.ZERO         // false
 infix fun BigDecimal.isCloseTo(other: BigDecimal): Boolean =
     this.compareTo(other) == 0
 ----
+
+- wongue: gpt-4 가 오늘 16일 발표예정이다. text to video 를 지원하는 멀티모달 기능이 추가될 예정이라 한다.
