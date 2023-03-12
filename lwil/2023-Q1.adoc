@@ -438,12 +438,17 @@ BigDecimal("0.00") == BigDecimal.ZERO         // false
 |===
 |숫자|유효숫자갯수|Precision|Scale
 
-|BigDecimal("0.0")
+|`BigDecimal.ZERO`
+|1
+|1
+|0
+
+|`BigDecimal("0.0")`
 |1
 |1
 |1
 
-|BigDecimal("0.00")
+|`BigDecimal("0.00")`
 |1
 |1
 |2
