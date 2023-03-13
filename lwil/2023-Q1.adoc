@@ -462,3 +462,7 @@ infix fun BigDecimal.isCloseTo(other: BigDecimal): Boolean =
 ----
 
 - wongue: gpt-4 가 오늘 16일 발표예정이다. text to video 를 지원하는 멀티모달 기능이 추가될 예정이라 한다.
+- yoonho: response 타입에서 인터페이스를 사용할 수 없다. +
+그렇기에 sealed클래스로 구현된 도메인을 분기처리하여 별도의 필드에 할당하였는데 +
+인터페이스가 아닌 클래스를 상속받은 response 타입을 별도로 만들면 하나의 배열안에
+여러 타입을 넣어 직열화할 수 있다는 것을 알았다.
