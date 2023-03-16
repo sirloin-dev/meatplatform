@@ -17,7 +17,7 @@ class Solution {
                 counter[it] = counter.getOrDefault(it , 0) + 1
             }
 
-            val min = counter.values.sortedByDescending { it }.take(k).minOf { it }
+            val min = counter.values.sortedByDescending { it }.take(k).minOf { it } // 답변이 고유하다는것 보장된다는것을 못봐서 작성하였다
             return counter.entries.filter { it.value >= min }.map { it.key }.toIntArray()
         }
 
