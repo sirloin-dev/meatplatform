@@ -19,7 +19,10 @@ class Solution {
         }
 
         return frequencies.entries                // O(1)
-            .sortedByDescending { e -> e.value }  // O(N LogN)
+            .sortedByDescending { e -> e.value }  // kotlin/jvm 에서는 jvm 17 기준으로 Dual Pivot Quicksort 에 의해 O(N logN)
+                                                  // kotlin/jvm: https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/src/generated/_ArraysJvm.kt#L2556
+                                                  //             https://github.com/openjdk/jdk17u/blob/master/src/java.base/share/classes/java/util/Arrays.java#L99
+                                                  // kotlin/js 및 kotlin/native 에서는 Merge Sort 에 의해 O(N logN) 
             .take(k)                              // O(k)
             .map { it.key }                       // O(k)
             .toIntArray()                         // O(k)
