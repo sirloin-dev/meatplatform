@@ -1,4 +1,13 @@
-   class Solution {
+// Runtime
+// 264 ms
+// Beats
+// 91.18%
+
+// Memory
+// 40.9 MB
+// Beats
+// 62.81%  
+class Solution {
 
         fun topKFrequent(nums: IntArray, k: Int): IntArray {
             val counter : MutableMap<Int,Int> = mutableMapOf()
