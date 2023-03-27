@@ -520,3 +520,6 @@ http 요청-응답 모델을 따르지 않기 때문에 데이터 전송에 있�
 1달, 1년의 길이는 view 의 기준 시점으로부터 매번 달라지기 때문이다.
 
 - gon : 코틀린 코루틴에서 limitedParalleism API는 추가적인 Thread나 리소스를 사용하지 않고 기존 Dispatcher를 이용하여 동작하며 요청되는 Task나 코루틴을 제한(limit)할수 있다.
+
+- wongue: flutter 의 lifeCycle 은 사실 multi platform 간 uni-form 하지 않다. +
+특히 앱이 백그라운드로 넘어갔다가 다시 resume 될 때 IOS 와 android 는 다른 동작을 수행한다.
