@@ -518,3 +518,5 @@ http 요청-응답 모델을 따르지 않기 때문에 데이터 전송에 있�
 
 - hwan: `java.util.time.Instant.plus(long amountToAdd, TemporalUnit unit)` 가 `MONTH`, `YEARS` 단위를 지원하지 않는 이유는, +
 1달, 1년의 길이는 view 의 기준 시점으로부터 매번 달라지기 때문이다.
+
+- gon : 코틀린 코루틴에서 limitedParalleism API는 추가적인 Thread나 리소스를 사용하지 않고 기존 Dispatcher를 이용하여 동작하며 요청되는 Task나 코루틴을 제한(limit)할수 있다.
