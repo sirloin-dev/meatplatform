@@ -1,0 +1,17 @@
+= 2023년 2분기 04월-06월 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[section-202304]]
+== 2023년 4월
+
+[[section-202304-W1]]
+=== 2023년 4월 1주
+- youjin: Flutter 에서 go-router 를 개인프로젝트에 도입해보았다. 생각보다 오래걸리진 않았지만, 본대로 플랫폼에 도입하게 된다면 해당하는 스크린들이 많아서 시간이 꽤 걸릴것으로 예상한다. 
