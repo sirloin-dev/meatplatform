@@ -20,3 +20,17 @@
 즐거움은 멀리있지 않다. +
 만발한 벚꽃과 사람이 가득한 여의도 벚꽃 축제보다 +
 집 앞의 핀 벚꽃 나무 한 그루의 잔잔힘이 더 큰 의미를 안겨줄수 있다.
+
+- hwan: Kotlin 의 `Iterable<T>.first` 와 `Iterable<T>.single` extension function 의 차이 +
++
+* `first` 는 여러개의 T 들 중 제일 먼저 나오는 한개만을 찾겠다는 의미
+* `single` 은 여러개의 Iterable 로 감싸져 있는 T 의 갯수는 오직 하나여야 하며 그 하나만을 가져오겠다는 의미
++
+즉, 이런 문맥의 코드에서는 `first` 보다 `single` 이 문맥상 더 올바르다.
++
+[source, kotlin]
+----
+fun save(tag: ProductTag): ProductTag = saveAll(listOf(tag)).single()   // first 대신 single
+
+fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
+----
