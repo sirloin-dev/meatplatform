@@ -46,7 +46,7 @@ fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
 [[section-202304-W2]]
 === 2023년 4월 2주
 - wongue: Flutter 의 정체성은 "강력한 크로스 플랫폼 UI Framework"이다. +
-즉, Flutter 의 한계또한 "크로스 플랫폼 UI Framework" 이라는 정체성에서 정해지게 된다.+
+즉, Flutter 의 한계또한 "크로스 플랫폼 UI Framework" 이라는 정체성에서 정해지게 된다. +
 하드웨어에 밀접한 기능, OS 의 강력한 권한을 이용해야하는 기능, UI 가 없는 Background 에서 수행되어야 하는 기능 등을 개발할때는 Flutter 는 큰 도움이 되기 힘들다. +
 결국 실행되는 환경에 따른 각각의 네이티브 로직이 들어서야 할 필요성이 있는데, +
 아직 다룰 수 있는 기술 스텍이 Flutter 밖에 없는 나는 UI 개발자라고는 할 수 있지만, "클라이언트 개발자" 로서는 반쪽짜리가 아닌가 싶다. +
