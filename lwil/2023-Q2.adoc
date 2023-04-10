@@ -62,3 +62,67 @@ fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
 - gon : 코드 품질이 사업에 영향을 담은 유튜브 영상이 있어서 가져왔다
 https://www.youtube.com/watch?v=lcvZ9kBn2_M
 결론은 코드 품질은 결국엔 더 빠른 개발, 더 적은 결함을 만들어준다고 한다
+
+- hwan: Jackson 에서 Request/Response 를 아래처럼 정의할 경우, Optional 이 { "present": "VALUE" } 처럼 직렬 / 역직렬화 되지 않고 그 안의 값만 알아서 잘 들어가는 사례를 발견함
+이를 이용해 Typed language 에서 구현하기 까다로운 HTTP GET / PATCH 를 그나마 쉽게 구현할 수 있다.
++
+예를 들어 아래와 같은 Request 를
++
+[source,kotlin]
+----
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonDeserialize
+class EditUserRequest : EditUserUseCase.Message {
+    @get:JsonProperty
+    @get:JsonPropertyDescription(DESC_NAME)
+    override var name: Optional<String>? = null
+
+    /** 생략시 업데이트 하지 않습니다. null 입력 불가능. */
+    @get:JsonProperty
+    @get:JsonPropertyDescription(DESC_AGE)
+    override var age: Optional<Int>? = null
+
+    /**  생략시 업데이트 하지 않습니다. null 입력 가능. */
+    @get:JsonProperty
+    @get:JsonPropertyDescription(DESC_ADDRESS)
+    override var address: Optional<String>? = null
+}
+----
++
+Wire 로 아래처럼 보낼 경우:
++
+[source,shell]
+----
+Request method:	PATCH
+Request URI:    http://localhost:32807/api/v1/user/a2e1cfb3-896c-4366-9c0d-fcaf57ca5543
+Proxy:          <none>
+Request params: <none>
+Query params:   <none>
+Form params:    <none>
+Path params:    <none>
+Headers:        Content-Type=application/json
+Cookies:        <none>
+Multiparts:     <none>
+Body:
+{
+    "age": 33,
+    "address": null
+}
+----
++
+로직에서 확인하는 값은 다음과 같다.
++
+[source,shell]
+----
+instance of EditUserRequest {
+  name : null
+  age : Optional[33]
+  address: Optional.empty
+}
+----
++
+즉 field 를 Optional 로 감싼 request 를 만났을 경우, field 가 null 이라면 생략된 필드(undefined) 이므로 업데이트 대상에서 배제, optional 을 꺼낸 값의 null 허용여부는 Request handler 에서 직접 처리하는 식으로 GET/PATCH 상황에서의 undefined 를 흉내낼 수 있다.
++
+link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/main/java/com/fasterxml/jackson/datatype/jdk8[Jackson Optional Serializer/Deserializer]
++
+아마 Response 에서도 같은 원리로 동작할 것으로 예상된다.
