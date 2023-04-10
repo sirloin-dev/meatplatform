@@ -63,8 +63,7 @@ fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
 https://www.youtube.com/watch?v=lcvZ9kBn2_M
 결론은 코드 품질은 결국엔 더 빠른 개발, 더 적은 결함을 만들어준다고 한다
 
-- hwan: Jackson 에서 Request/Response 를 아래처럼 정의할 경우, Optional 이 { "present": "VALUE" } 처럼 직렬 / 역직렬화 되지 않고 그 안의 값만 알아서 잘 들어가는 사례를 발견함
-이를 이용해 Typed language 에서 구현하기 까다로운 HTTP GET / PATCH 를 그나마 쉽게 구현할 수 있다.
+- hwan: Jackson 에서 Request/Response 를 아래처럼 정의할 경우, `Optional` 이 `{ "present": "VALUE" }` 처럼 직렬 / 역직렬화 되지 않고 그 안의 값만 알아서 잘 들어가는 사례를 발견함. 이를 이용해 Typed language 에서 구현하기 까다로운 HTTP GET / PATCH 를 그나마 쉽게 구현할 수 있다.
 +
 예를 들어 아래와 같은 Request 를
 +
