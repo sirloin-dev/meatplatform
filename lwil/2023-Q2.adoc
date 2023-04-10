@@ -58,3 +58,7 @@ fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
     HanwooMediaDto thumbNailDto = mediaDtoList.firstWhere((ele) => ele.productImageType == ProductImageTypeDTO.MAIN,
         orElse: () => HanwooMediaDto.whenReceivedNull());
 ```
+
+- gon : 코드 품질이 사업에 영향을 담은 유튜브 영상이 있어서 가져왔다
+https://www.youtube.com/watch?v=lcvZ9kBn2_M
+결론은 코드 품질은 결국엔 더 빠른 개발, 더 적은 결함을 만들어준다고 한다
