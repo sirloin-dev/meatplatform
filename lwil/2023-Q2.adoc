@@ -51,4 +51,10 @@ fun saveAll(tags: Collection<ProductTag>): List<ProductTag>
 결국 실행되는 환경에 따른 각각의 네이티브 로직이 들어서야 할 필요성이 있는데, +
 아직 다룰 수 있는 기술 스텍이 Flutter 밖에 없는 나는 UI 개발자라고는 할 수 있지만, "클라이언트 개발자" 로서는 반쪽짜리가 아닌가 싶다. +
 진정한 "크로스 플랫폼 클라이언트 전문가" 가 되기 위해선, 적어도 IOS, Android, Web 세 네이티브 환경에 대한 많은 경험과 지식이 동반되어야 하는게 아닐까.
-- youjin: dart 에서는 같은 enum 타입의 value인지 비교하는 구문에서 컴파일러가 다른 타입과 비교하는지, 미리 잡아주지 않는다.
+- youjin: dart 에서는 같은 enum 타입의 value인지 비교하는 구문에서 컴파일러가 다른 타입과 비교하는지, 미리 잡아주지 않는다. +
+```dart
+  // ele.productImageType 이 ProductImageTypeDTO 이었지만, ProductImageType 으로 같은지 비교하고 있었다.
+  // 하지만 컴파일타임에서 알수가 없고, false가 나올 것이기 때문에, orElse 구문을 항상 타고 있었다.
+    HanwooMediaDto thumbNailDto = mediaDtoList.firstWhere((ele) => ele.productImageType == ProductImageTypeDTO.MAIN,
+        orElse: () => HanwooMediaDto.whenReceivedNull());
+```
