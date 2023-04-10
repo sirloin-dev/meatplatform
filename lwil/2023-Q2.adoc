@@ -120,7 +120,7 @@ instance of EditUserRequest {
 }
 ----
 +
-즉 field 를 Optional 로 감싼 request 를 만났을 경우, field 가 null 이라면 생략된 필드(undefined) 이므로 업데이트 대상에서 배제, optional 을 꺼낸 값의 null 허용여부는 Request handler 에서 직접 처리하는 식으로 GET/PATCH 상황에서의 undefined 를 흉내낼 수 있다.
+즉 field 를 `Optional` 로 감싼 request 를 만났을 경우, field 가 `null` 이라면 생략된 필드(`undefined`) 이므로 업데이트 대상에서 배제, `Optional` 을 꺼낸 값의 `null` 허용여부는 Request handler 에서 직접 처리하는 식으로 GET/PATCH 상황에서의 `undefined` 를 흉내낼 수 있다.
 +
 link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/main/java/com/fasterxml/jackson/datatype/jdk8[Jackson Optional Serializer/Deserializer]
 +
