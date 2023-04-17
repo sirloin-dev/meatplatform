@@ -129,3 +129,6 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
 [[section-202304-W3]]
 === 2023년 4월 3주
 - youjin: hash 값을 사용하는 Collection(HashMap, HashSet, HashTable)은 객체가 논리적으로 같은지 비교할 때, hashCode 메서드의 리턴 값이 우선 일치하고 equals 메서드의 리턴 값이 true여야 논리적으로 같은 객체라고 판단한다. 따라서, equals와 hashCode는 항상 같이 재정의해주는 것이 좋다.
+
+- wongue: 주말에 flame 이라는 Flutter base 2D-engin 을 만져봤는데, 이 엔진의 주요 기능은 여러 그림을 담은 이미지를 분기별로 잘 잘라 주고, 충돌 감지를 제공해준다. +
+퍼포먼스 떄문인지, 제공되는 api interface 가 상당히 저수준이여서 신선했다.
