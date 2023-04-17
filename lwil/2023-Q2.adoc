@@ -125,3 +125,7 @@ instance of EditUserRequest {
 link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/main/java/com/fasterxml/jackson/datatype/jdk8[Jackson Optional Serializer/Deserializer]
 +
 아마 Response 에서도 같은 원리로 동작할 것으로 예상된다.
+
+[[section-202304-W3]]
+=== 2023년 4월 3주
+- youjin: hash 값을 사용하는 Collection(HashMap, HashSet, HashTable)은 객체가 논리적으로 같은지 비교할 때, hashCode 메서드의 리턴 값이 우선 일치하고 equals 메서드의 리턴 값이 true여야 논리적으로 같은 객체라고 판단한다. 따라서, equals와 hashCode는 항상 같이 재정의해주는 것이 좋다.
