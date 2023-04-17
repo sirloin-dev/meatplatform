@@ -142,3 +142,6 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
   * 은행 종류가 한두개가 아니기 때문에 이 경우 payment gate(PG) 서비스를 이용하는 편이 정신건강에 이롭다.
   * 그런데 PG 서비스도 종류가 여러개다. 이미 추상화를 한단계 거친 PG 들을 다시 추상화 하는 일이 필요하다.
   * 즉 무통장 입금은 생각해야 할 요소들이 다양하고, 비동기로 동작하는 요소들이 잘 맞물리도록 동기화를 맞추는 일이 필요해서 어렵다.
+  
+ - gon : 네크워크를 공부하다가 ios 운영체제가 나왔다. 제가 아는 ios 운영체제는 애플에서 만든 os인데 네트워크에서 갑자기 왜 나오나 했다. + 
+ 좀더 알아보니 Internetworking Operating System(IOS)의 약자이며 네트워크 장비 업체로 유명한 시스코 장비의 네트워크 운영체제 소프트웨어입니다
