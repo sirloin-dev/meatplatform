@@ -145,3 +145,7 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
   
  - gon : 네크워크를 공부하다가 ios 운영체제가 나왔다. 제가 아는 ios 운영체제는 애플에서 만든 os인데 네트워크에서 갑자기 왜 나오나 했다. + 
  좀더 알아보니 Internetworking Operating System(IOS)의 약자이며 네트워크 장비 업체로 유명한 시스코 장비의 네트워크 운영체제 소프트웨어입니다
+
+[[section-202304-W4]]
+=== 2023년 4월 4주
+- hwan: Exception 이 비싼 operation 인 이유: stack trace 를 모두 기억해야 하기 때문에 그렇다. 참고로 C++ 에서도 exception 은 비싸다. link:https://www.baeldung.com/java-exceptions-performance[참고자료]
