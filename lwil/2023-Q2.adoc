@@ -155,3 +155,5 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
 - hwan: 5월 1일은 근로자의 날이다. 전 세계적으로 May Day 라고 해서 모든 근로자들이 기념하는 날이기도 하다. 그런데 특이하게 미국은 5월 1일이 아니라 9월 4일을 link:https://en.wikipedia.org/wiki/Labor_Day[Labor Day] 라고 기념한다고 한다.
 - gon: auto increment를 pk로 사용하는 경우가 있다. id라고 지칭하겠습니다. id가 BigInt에서 Int로 바꾸면 데이터가 절약되고 특히 pk컬럼이라 인덱스를 만드는데도 데이터가 절약된다 한다.
 만약 21억건이 안넘을 예정의 데이터라면 int로 사용하는게 더 db 효율화에 좋을것 같다는 생각이 든다.
+- wongue: 연휴에 토스의 FE 개발자 분들과 3시간정도 커피챗을 진행했다. 문화나 서비스의 내부사정들을 들을 수 있는 좋은 기회였다. +
+토스 BE 팀의 주장으로는, 최저가 공동구매의 단가는 진짜로 최저가라고 한다. +
