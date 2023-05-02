@@ -149,3 +149,7 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
 [[section-202304-W4]]
 === 2023년 4월 4주
 - hwan: Exception 이 비싼 operation 인 이유: stack trace 를 모두 기억해야 하기 때문에 그렇다. 참고로 C++ 에서도 exception 은 비싸다. link:https://www.baeldung.com/java-exceptions-performance[참고자료]
+
+[[section-202305-W1]]
+=== 2023년 5월 1주
+- hwan: 5월 1일은 근로자의 날이다. 전 세계적으로 May Day 라고 해서 모든 근로자들이 기념하는 날이기도 하다. 그런데 특이하게 미국은 5월 1일이 아니라 9월 4일을 link:https://en.wikipedia.org/wiki/Labor_Day[Labor Day] 라고 기념한다고 한다.
