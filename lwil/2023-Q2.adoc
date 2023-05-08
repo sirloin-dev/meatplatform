@@ -164,3 +164,6 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
 [[section-202305-W2]]
 === 2023년 5월 2주
 -  youjin: socket 은 어플리케이션 계층과 전송 계층 사이에 위치하고 있다. 그래서 채팅앱 같은 경우, 각자의 채팅앱에 소켓으로 통신을 하고 채팅앱 자체는 외부 네트워크와 정보를 주고 받지 않는다고 한다. 즉, 소켓을 창구로 통신을 주고받는 것이다.
+
+- wongue: Dart 의 cross-platform 케어 로직중에서, 다른 OS 의 경우 Navite Method Channel 을 정의 하고 이를 호출하는 방식으로 구현되는데, + 
+JS 만 유독 특별하게 Package:js.dart 로 다뤄지는 이유는 Dart 언어의 역사와도 연관이 있다.
