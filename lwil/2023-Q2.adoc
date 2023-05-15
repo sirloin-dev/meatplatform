@@ -171,4 +171,7 @@ JS 만 유독 특별하게 Package:js.dart 로 다뤄지는 이유는 Dart 언�
 [[section-202305-W3]]
 === 2023년 5월 3주
 - wongue: google I/O 에서 flutter 3.10 버전을 발표했다. +
-내부적으로 skia engine 에서 Impeller engine 으로 교체하였다는데, 이는 최근 웹 브라우저의 open GL exodus 와 동일한 방향성을 가지는 변화라고 이해할 수 있다.
+내부적으로 UI draw 시 사용하는 엔진을, skia engine 에서 Impeller engine 으로 교체하였다는데 +
+Impeller 엔진의 특징은 Vulkan 이나 Metal 에서 사용하는것과 같은 같은 최신 하드웨어 가속 API 를 사용할 수 있다는 특장점을 가지고 있다. +
+(주의: Vulkan 이나, Metal 에 의존한다는것이 아니다. https://docs.flutter.dev/perf/impeller) +
+이는 최근 웹 크롬의 open GPU와 동일한 방향성을 가지는 변화라고 이해할 수 있다. + 
