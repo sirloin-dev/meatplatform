@@ -167,3 +167,8 @@ link:https://github.com/FasterXML/jackson-modules-java8/tree/2.15/datatypes/src/
 
 - wongue: Dart 의 cross-platform 케어 로직중에서, 다른 OS 의 경우 Navite Method Channel 을 정의 하고 이를 호출하는 방식으로 구현되는데, + 
 JS 만 유독 특별하게 Package:js.dart 로 다뤄지는 이유는 Dart 언어의 역사와도 연관이 있다.
+
+[[section-202305-W3]]
+=== 2023년 5월 3주
+- wongue: google I/O 에서 flutter 3.10 버전을 발표했다. +
+내부적으로 skia engine 에서 Impeller engine 으로 교체하였다는데, 이는 최근 웹 브라우저의 open GL exodus 와 동일한 방향성을 가지는 변화라고 이해할 수 있다.
