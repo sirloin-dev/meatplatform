@@ -182,10 +182,6 @@ Impeller 엔진의 특징은 Vulkan 이나 Metal 에서 사용하는것과 같�
 jpa에서 key라고만 입력하게되면 예약어로 처리되어 문법오류가 발생한다. 이경우 ``으로 감싸면 된다 +
 @Column(name = "`key`") 처럼 쓰면 된다
 
-- youjin: flutter 3.10 이 발표되면서, deprecated 된 API 가 몇몇 있다. 실제로 Android Studio Flamingo 로 업데이트한 후, flutter run 을 하려고 하면 오류가 발생했다. 이유는 Android Studio Flamingo는 java SDK 를 11에서 17로 업데이트를 하기 때문에 7.3 보다 높은 Gradle 버전은 실행할 수 없기 때문이다. 이를 해결하기 위해서는 java SDK 와 Gradle 버전간의 호환성때문인지 확인하기 위해서 `flutter analyze --suggestions`로 맞춰주어야한다. 이는 직접 `flutter doctor`를 실행해보면서 문제점을 확인해볼 수 있다. 
-https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-guide +
-또한, Xcode에서 ios 기기를 무선으로 페어링하고 핫리로드와 디버깅까지 가능하다. 이는 금주에 확인해볼 예정이다. 
-
 [[section-202305-W4]]
 === 2023년 5월 4주
 - hwan: jpa 에서 아래와 같은 패턴의 'business key 기반 삭제' 로직의 경우
@@ -223,3 +219,7 @@ deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한
   다차원 배열의 각 차원에 접근하는 색인 변수병을 i, j, k 로 선언하는 경우를 보면 알 수 있다. +
   이는 평면좌표계의 각 unit vector, 혹은 사원수(quaternion) 의 각 허수 unit 의 의미를 가지고 있다. +
   이러한 의미를 가지고 있는 이유는, 사원수의 각 허수 유닛들은 그 정의로부터 직교성을 보장받기 때문에, 직교(내적의 결과가 0 인)하는 다차원의 각 기저(basis) 로 사용하기 용이하기 때문이다.
+
+- youjin: flutter 3.10 이 발표되면서, deprecated 된 API 가 몇몇 있다. 실제로 Android Studio Flamingo 로 업데이트한 후, flutter run 을 하려고 하면 오류가 발생했다. 이유는 Android Studio Flamingo는 java SDK 를 11에서 17로 업데이트를 하기 때문에 7.3 보다 높은 Gradle 버전은 실행할 수 없기 때문이다. 이를 해결하기 위해서는 java SDK 와 Gradle 버전간의 호환성때문인지 확인하기 위해서 `flutter analyze --suggestions`로 맞춰주어야한다. 이는 직접 `flutter doctor`를 실행해보면서 문제점을 확인해볼 수 있다. 
+https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-guide +
+또한, Xcode에서 ios 기기를 무선으로 페어링하고 핫리로드와 디버깅까지 가능하다. 이는 금주에 확인해볼 예정이다. 
