@@ -224,3 +224,11 @@ deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한
 - youjin: flutter 3.10 이 발표되면서, deprecated 된 API 가 몇몇 있다. 실제로 Android Studio Flamingo 로 업데이트한 후, flutter run 을 하려고 하면 오류가 발생했다. 이유는 Android Studio Flamingo는 java SDK 를 11에서 17로 업데이트를 하기 때문에 7.3 보다 높은 Gradle 버전은 실행할 수 없기 때문이다. 이를 해결하기 위해서는 java SDK 와 Gradle 버전간의 호환성때문인지 확인하기 위해서 `flutter analyze --suggestions`로 맞춰주어야한다. 이는 직접 `flutter doctor`를 실행해보면서 문제점을 확인해볼 수 있다. 
 https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-guide +
 또한, Xcode에서 ios 기기를 무선으로 페어링하고 핫리로드와 디버깅까지 가능하다. 이는 금주에 확인해볼 예정이다. 
+
+
+- gon : 자바의 nio에는 버퍼라는 개념이 있다. +
+이 버퍼는 다이렉트 버퍼와 논다이렉트 버퍼로 나뉘어 지는데 + 
+다이렉트 버퍼는 os의 메모리에 직접 활용하는것이고 논 다이렉트 버퍼는 jvm내부의 버퍼를 사용한다. + 
+다이렉트 버퍼가 복사를 한번 덜 해도 되니 더 빠를것 같지만 실제로 아닌경우도 많다 +
+이유는 os의 버퍼를 직접사용하다보니 메모리 할당에 있어 굉장히 느리기 때문 +
+정리하자면 자주 생성하고 닫아야한다면 논다이렉트 메모리가 좋고 한번 생성하고 오래 사용 or 재사용할것이라면 다이렉트 버퍼가 좋다
