@@ -192,21 +192,24 @@ https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-
 +
 [source, kotlin]
 ----
-@Transactional
-override fun deleteAllByBusinessKeys(keys: Collection<UUID>) {
-    /*
-     * AdminProductJPAEntity 는 ProductJPAEntity 의 PK 를 공유하고 있기 때문에
-     * ProductJPAEntity 만 삭제하면 된다.
-     *
-     * Table 물리 구조를 알아야 하는 구현이라 좋지 않지만... 방법이 없다.
-     */
-    val productIds = productDao.findAllByBusinessKeys(keys)
-        .map { it.productId }
-        ?: return
+@Repository
+internal class ProductAdministrationRepository {
+    @Transactional
+    override fun deleteAllByBusinessKeys(keys: Collection<UUID>) {
+        /*
+         * AdminProductJPAEntity 는 ProductJPAEntity 의 PK 를 공유하고 있기 때문에
+         * ProductJPAEntity 만 삭제하면 된다.
+         *
+         * Table 물리 구조를 알아야 하는 구현이라 좋지 않지만... 방법이 없다.
+         */
+        val productIds = productDao.findAllByBusinessKeys(keys)
+            .map { it.productId }
+            ?: return
 
-    productDao.deleteAllByIds(productIds)
+        productDao.deleteAllByIds(productIds)
+    }
 }
 ----
 +
-deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한 CRUDJpaRepository findById -> 1차 cache hit.
+deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한 `CRUDJpaRepository.findById` 호출 -> 1차 cache hit.
 실제 삭제는 `void delete(T entity)` 호출로 인해 발생한다. 즉, 삭제 구현할땐 가급적 id 기반보다는 entity 자체를 지우도록 하는게 좋겠다.
