@@ -185,3 +185,27 @@ jpa에서 key라고만 입력하게되면 예약어로 처리되어 문법오류
 - youjin: flutter 3.10 이 발표되면서, deprecated 된 API 가 몇몇 있다. 실제로 Android Studio Flamingo 로 업데이트한 후, flutter run 을 하려고 하면 오류가 발생했다. 이유는 Android Studio Flamingo는 java SDK 를 11에서 17로 업데이트를 하기 때문에 7.3 보다 높은 Gradle 버전은 실행할 수 없기 때문이다. 이를 해결하기 위해서는 java SDK 와 Gradle 버전간의 호환성때문인지 확인하기 위해서 `flutter analyze --suggestions`로 맞춰주어야한다. 이는 직접 `flutter doctor`를 실행해보면서 문제점을 확인해볼 수 있다. 
 https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-guide +
 또한, Xcode에서 ios 기기를 무선으로 페어링하고 핫리로드와 디버깅까지 가능하다. 이는 금주에 확인해볼 예정이다. 
+
+[[section-202305-W4]]
+=== 2023년 5월 4주
+- hwan: jpa 에서 아래와 같은 패턴의 'business key 기반 삭제' 로직의 경우
+
+```
+@Transactional
+override fun deleteAllByBusinessKeys(keys: Collection<UUID>) {
+    /*
+     * AdminProductJPAEntity 는 ProductJPAEntity 의 PK 를 공유하고 있기 때문에
+     * ProductJPAEntity 만 삭제하면 된다.
+     *
+     * Table 물리 구조를 알아야 하는 구현이라 좋지 않지만... 방법이 없다.
+     */
+    val productIds = productDao.findAllByBusinessKeys(keys)
+        .map { it.productId }
+        ?: return
+
+    productDao.deleteAllByIds(productIds)
+}
+```
+
+deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한 CRUDJpaRepository findById -> 1차 cache hit.
+실제 삭제는 `void delete(T entity)` 호출로 인해 발생한다. 즉, 삭제 구현할땐 가급적 id 기반보다는 entity 자체를 지우도록 하는게 좋겠다.
