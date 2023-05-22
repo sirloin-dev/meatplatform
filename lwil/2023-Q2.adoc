@@ -213,3 +213,13 @@ internal class ProductAdministrationRepository {
 +
 deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한 `CRUDJpaRepository.findById` 호출 -> 1차 cache hit.
 실제 삭제는 `void delete(T entity)` 호출로 인해 발생한다. 즉, 삭제 구현할땐 가급적 id 기반보다는 entity 자체를 지우도록 하는게 좋겠다.
+
+- wongue: +
+ ```final Array<Int> N = [1,2,3];
+  final int i = 0;
+  final node = N[i];``` +
+  흔히 배열의 index 에 접근하는 변수명을 관습적으로 'i' 로 작성하는 문화가 있다. + 
+  이 때, i 의 의미에는 사실 index 뿐만이 아닌, "imaginary" 의 뜻도 있다. +
+  다차원 배열의 각 차원에 접근하는 색인 변수병을 i, j, k 로 선언하는 경우를 보면 알 수 있다. +
+  이는 평면좌표계의 각 unit vector, 혹은 사원수(quaternion) 의 각 허수 unit 의 의미를 가지고 있다. +
+  이러한 의미를 가지고 있는 이유는, 사원수의 각 허수 유닛들은 그 정의로부터 직교성을 보장받기 때문에, 직교(내적의 결과가 0 인)하는 다차원의 각 기저(basis) 로 사용하기 용이하기 때문이다.
