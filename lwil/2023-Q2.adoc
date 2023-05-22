@@ -189,8 +189,9 @@ https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-
 [[section-202305-W4]]
 === 2023년 5월 4주
 - hwan: jpa 에서 아래와 같은 패턴의 'business key 기반 삭제' 로직의 경우
-
-```
++
+[source, kotlin]
+----
 @Transactional
 override fun deleteAllByBusinessKeys(keys: Collection<UUID>) {
     /*
@@ -205,7 +206,7 @@ override fun deleteAllByBusinessKeys(keys: Collection<UUID>) {
 
     productDao.deleteAllByIds(productIds)
 }
-```
-
+----
++
 deleteAllById 가 통과하는 이유 -> `map { it.productId }` 참조로 인한 CRUDJpaRepository findById -> 1차 cache hit.
 실제 삭제는 `void delete(T entity)` 호출로 인해 발생한다. 즉, 삭제 구현할땐 가급적 id 기반보다는 entity 자체를 지우도록 하는게 좋겠다.
