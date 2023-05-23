@@ -232,3 +232,74 @@ https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-
 다이렉트 버퍼가 복사를 한번 덜 해도 되니 더 빠를것 같지만 실제로 아닌경우도 많다 +
 이유는 os의 버퍼를 직접사용하다보니 메모리 할당에 있어 굉장히 느리기 때문 +
 정리하자면 자주 생성하고 닫아야한다면 논다이렉트 메모리가 좋고 한번 생성하고 오래 사용 or 재사용할것이라면 다이렉트 버퍼가 좋다
+
+[[section-202305-W5]]
+== 2023년 5월 5주
+- hwan: FK 가 있는 TABLE 생성시
++
+[source, sql]
+----
+CREATE TABLE IF NOT EXISTS `bridge_table_a_table_b`
+(
+    `id_table_a`  BINARY(16)  NOT NULL,
+    `id_table_b`  BINARY(16)  NOT NULL,
+    /* ... */
+
+    PRIMARY KEY (`id_table_a`, `id_table_b`),
+
+    CONSTRAINT `fk_bridge_table_a_table_b_a` FOREIGN KEY (`id_table_a`) REFERENCES `table_a` (`id`),
+    CONSTRAINT `fk_bridge_table_a_table_b_b` FOREIGN KEY (`id_table_b`) REFERENCES `table_b` (`id`)
+);
+----
++
+이런 에러가 발생하는 경우는
++
+[source, shell]
+----
+[HY000][1005] (conn=233227) Can't create table `your_database`.`your_table` (errno: 150 "Foreign key constraint is incorrectly formed")
+----
++
+FK 로 지정한 데이터 타입이 원 테이블의 PK 와 다른 경우가 대부분이다.
++
+그러나, 드물지만 캐릭터셋이 다른 경우에도 발생할 수 있음. 이 때는 현재 커넥션과, FK 대상되는 테이블의 캐릭터셋 불일치가 있는지 점검 필요
++
+따라서 테이블을 만들 때 아래처럼 CHARACTER SET 정보와 COLLATION 정보를 추가로 기입해 주면 문제를 해결할 수 있다.
++
+[source, sql]
+----
+
+CREATE TABLE IF NOT EXISTS `bridge_table_a_table_b`
+(
+    `id_table_a`  BINARY(16)  NOT NULL,
+    `id_table_b`  BINARY(16)  NOT NULL,
+    /* ... */
+
+    PRIMARY KEY (`id_table_a`, `id_table_b`),
+
+    CONSTRAINT `fk_bridge_table_a_table_b_a` FOREIGN KEY (`id_table_a`) REFERENCES `table_a` (`id`),
+    CONSTRAINT `fk_bridge_table_a_table_b_b` FOREIGN KEY (`id_table_b`) REFERENCES `table_b` (`id`)
+) CHARACTER SET 'utf8mb4'
+    COLLATE 'utf8mb4_unicode_520_ci';
+----
++
+* 대상 테이블의 COLLATION 확인:
++
+[source, sql]
+----
+SHOW TABLE STATUS LIKE 'table_a';
+----
++
+* 현재 연결의 COLLATION 확인:
++
+[source, sql]
+----
+SHOW VARIABLES LIKE "collation_%";
+----
++
+* COLLATION 에 대응하는 CHARACTER SET 확인(mariadb 10):
++
+[source, sql]
+----
+SELECT * FROM `information_schema`.`COLLATION_CHARACTER_SET_APPLICABILITY` WHERE `COLLATION_NAME` = 'utf8mb4_unicode_520_ci';
+----
+
