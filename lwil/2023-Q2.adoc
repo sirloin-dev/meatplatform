@@ -234,7 +234,7 @@ https://docs.flutter.dev/release/breaking-changes/android-java-gradle-migration-
 정리하자면 자주 생성하고 닫아야한다면 논다이렉트 메모리가 좋고 한번 생성하고 오래 사용 or 재사용할것이라면 다이렉트 버퍼가 좋다
 
 [[section-202305-W5]]
-== 2023년 5월 5주
+=== 2023년 5월 5주
 - hwan: FK 가 있는 TABLE 생성시
 +
 [source, sql]
