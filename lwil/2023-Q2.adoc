@@ -303,3 +303,5 @@ SHOW VARIABLES LIKE "collation_%";
 SELECT * FROM `information_schema`.`COLLATION_CHARACTER_SET_APPLICABILITY` WHERE `COLLATION_NAME` = 'utf8mb4_unicode_520_ci';
 ----
 
+- wongue: 클래스 설계는 충분한 시간을 투자할만한 가치가 있는 일이다. +
+확장성을 고려하지 않은 구조는, 후에 엄청난 후폭풍을 몰고 올 수 있다...
