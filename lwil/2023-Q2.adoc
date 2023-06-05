@@ -305,3 +305,18 @@ SELECT * FROM `information_schema`.`COLLATION_CHARACTER_SET_APPLICABILITY` WHERE
 
 - wongue: 클래스 설계는 충분한 시간을 투자할만한 가치가 있는 일이다. +
 확장성을 고려하지 않은 구조는, 후에 엄청난 후폭풍을 몰고 올 수 있다...
+
+[[section-202306-W2]]
+=== 2023년 6월 2주
+- hwan: mac/linux 에서 utf-8 encoding 으로 만든 csv 파일이 windows 에서 이상하게 보인다면 파일 제일 앞쪽에 BOM 을 추가하면 된다. 특히 MS Excel app 에서 이런 현상이 잦다.
++
+[source, kotlin]
+----
+val bw: BufferedWriter = ...
+bw.write(0xFEFF);
+
+val sb: StringBuffer = ...
+sb.append(0xFEFF);
+----
++
+UTF-8 BOM 은 `EFBBBF` 다. 그런데 소스 코드에는 `FEFF` 라고 나온다. link:https://stackoverflow.com/questions/54247407/why-utf-8-bom-bytes-efbbbf-can-be-replaced-by-ufeff[그 이유] 를 알아보자.
