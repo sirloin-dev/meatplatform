@@ -424,8 +424,10 @@ class SomeWebMvcConfig(): WebMvcConfigurer, ApplicationListener<ApplicationReady
 .coupon
 [#img-coupon,link=https://github.com/sirloin-dev/meatplatform/blob/master/lwil/mobile_app_coupon.jpg]
 image::mobile_app_coupon.jpg[Coupon, 300, 680]
++
+
 - wongue: python3.0 의 superSet 인 mojo 라는 언어는 특이하게도 확장자에 .🔥(U+1F525) 을 지원한다.
 
--gon: 코틀린의 에러체계에 checkedException이 없는 이유를 알게되었다. 코틀린 공식문서에선 대부분의 checkedException을 runtime exception을 rethrow 하는 경우도 많고 무시하는 경우도 많다 한다. +
+- gon: 코틀린의 에러체계에 checkedException이 없는 이유를 알게되었다. 코틀린 공식문서에선 대부분의 checkedException을 runtime exception을 rethrow 하는 경우도 많고 무시하는 경우도 많다 한다. +
 위의 이유로 가독성들을 고려하여 없앴다고 한다... + 
 예상되는 예외나 꼭 처리해야하는 예외를 강제하는데 좋은 방법이라 생각되었는데 안되어서 아쉽다
