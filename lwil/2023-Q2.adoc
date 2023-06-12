@@ -323,9 +323,9 @@ UTF-8 BOM 은 `EFBBBF` 다. 그런데 소스 코드에는 `FEFF` 라고 나온�
 
 [[section-202306-W3]]
 === 2023년 6월 3주
-- hwan: Spring Security 를 쓰면서 `@EnableWebSecurity` 어노테이션을 사용한 상태에서, 만약 우리의 Custom authentication 이 link:https://github.com/spring-projects/spring-security/blob/main/core/src/main/java/org/springframework/security/core/Authentication.java[`org.springframework.security.core.Authentication`] 을 구현하고 있다면 `@Controller` 또는 `@RestController` 의 method 에 argument 로 주입할 수 있다.
+- hwan: Spring Security 의 `@EnableWebSecurity` 어노테이션을 사용한 상태에서, 만약 우리의 Custom authentication 이 link:https://github.com/spring-projects/spring-security/blob/main/core/src/main/java/org/springframework/security/core/Authentication.java[`org.springframework.security.core.Authentication`] 을 구현하고 있다면 `@Controller` 또는 `@RestController` 의 method 에 argument 로 주입할 수 있다.
 +
-그 이유는 link:https://github.com/spring-projects/spring-framework/blob/main/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/method/annotation/ServletRequestMethodArgumentResolver.java[ServletRequestMethodArgumentResolver] 라는 클래스가 역할을 대신 해 주고 있기 때문이다. 그런데, 정작 이 때문에 다음과 같은 클래스가 동작하지 않는 사태가 발생한다.
+그 이유는 link:https://github.com/spring-projects/spring-framework/blob/main/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/method/annotation/ServletRequestMethodArgumentResolver.java[`ServletRequestMethodArgumentResolver`] 라는 클래스가 역할을 대신 해 주고 있기 때문이다. 그런데, 정작 이 때문에 다음과 같은 클래스가 동작하지 않는다.
 +
 [source, kotlin]
 ----
@@ -373,7 +373,7 @@ internal class SomeWebMvcConfig : WebMvcConfigurer {
  */
 ----
 +
-따라서 이를 해결하려면 `org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter`` 를 빈등록 하고 `HandlerMethodArgumentResolver` 과정을 직접 제어하면 된다. 하지만 단순히  순서만 바꾸는게 목적이라면 아래 방법을 이용하면 된다.
+따라서 이를 해결하려면 `org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter` 를 빈등록 하고 `HandlerMethodArgumentResolver` 과정을 직접 제어하면 된다. 하지만 단순히  순서만 바꾸는게 목적이라면 아래 방법을 이용하면 된다.
 +
 [source, kotlin]
 ----
