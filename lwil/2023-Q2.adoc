@@ -384,10 +384,9 @@ class SomeWebMvcConfig() : DelegatingWebMvcConfiguration() {
     private lateinit var adapter: RequestMappingHandlerAdapter
 
     @PostConstruct
-    fun prioritizeCustomArgumentMethodHandlers() {
-        val oldArgResolvers = adapter.argumentResolvers
-
-        val custromArgResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
+    fun rebalanceArgumentMethodHandlers() {
+        val oldArgResolvers = adapter.argumentResolvers ?: emptyList()
+        val customArgResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
             add(SomeAuthenticationResolver())
         }
 
@@ -408,12 +407,12 @@ class SomeWebMvcConfig(): WebMvcConfigurer, ApplicationListener<ApplicationReady
 
     override fun onApplicationEvent(event: ApplicationReadyEvent) {
         event.applicationContext.getBean(RequestMappingHandlerAdapter::class.java).apply {
-            val oldArgumentResolvers = argumentResolvers ?: emptyList()
-            val customArgumentResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
+            val oldArgResolvers = argumentResolvers ?: emptyList()
+            val customArgResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
                 add(SomeAuthenticationResolver())
             }
 
-            this.argumentResolvers = customArgumentResolvers + oldArgumentResolvers
+            this.argumentResolvers = customArgResolvers + oldArgResolvers
         }
     }
 }
