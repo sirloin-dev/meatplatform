@@ -320,3 +320,101 @@ sb.append(0xFEFF);
 ----
 +
 UTF-8 BOM 은 `EFBBBF` 다. 그런데 소스 코드에는 `FEFF` 라고 나온다. link:https://stackoverflow.com/questions/54247407/why-utf-8-bom-bytes-efbbbf-can-be-replaced-by-ufeff[그 이유] 를 알아보자.
+
+[[section-202306-W3]]
+=== 2023년 6월 3주
+- hwan: Spring Security 를 쓰면서 `@EnableWebSecurity` 어노테이션을 사용한 상태에서, 만약 우리의 Custom authentication 이 link:https://github.com/spring-projects/spring-security/blob/main/core/src/main/java/org/springframework/security/core/Authentication.java[`org.springframework.security.core.Authentication`] 을 구현하고 있다면 `@Controller` 또는 `@RestController` 의 method 에 argument 로 주입할 수 있다.
++
+그 이유는 link:https://github.com/spring-projects/spring-framework/blob/main/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/method/annotation/ServletRequestMethodArgumentResolver.java[ServletRequestMethodArgumentResolver] 라는 클래스가 역할을 대신 해 주고 있기 때문이다. 그런데, 정작 이 때문에 다음과 같은 클래스가 동작하지 않는 사태가 발생한다.
++
+[source, kotlin]
+----
+class SomeAuthentication : Authentication
+
+internal class SomeAuthenticationResolver : HandlerMethodArgumentResolver {
+    override fun resolveArgument(
+        parameter: MethodParameter,
+        mavContainer: ModelAndViewContainer?,
+        webRequest: NativeWebRequest,
+        binderFactory: WebDataBinderFactory?
+    ): SomeAuthentication? {
+
+    }
+
+    override fun supportsParameter(parameter: MethodParameter) =
+        parameter.parameterType == SomeAuthentication::class.java
+
+}
+----
++
+왜냐하면 아래처럼 우리의 `HandlerMethodArgumentResolver` 를 등록해 준다 하더라도 실제로는 순서가 뒤쪽으로 한참 밀리기 때문이다.
++
+[source, kotlin]
+----
+@Configuration
+@EnableWebSecurity
+internal class SomeWebMvcConfig : WebMvcConfigurer {
+    override fun addArgumentResolvers(argResolvers: MutableList<HandlerMethodArgumentResolver>) {
+        argResolvers.add(SomeAuthenticationResolver())
+    }
+}
+----
++
+심지어 `addArgumentResolvers` 의 설명을 읽어보면, 인자로 받는 `MutableList<HandlerMethodArgumentResolver>` 는 비어있다고 한다. 
++
+[quote,org.springframework.web.servlet.config.annotation.WebMvcConfigurer.java#L150]
+----
+/**
+ * Add resolvers to support custom controller method argument types.
+ * <p>This does not override the built-in support for resolving handler
+ * method arguments. To customize the built-in support for argument
+ * resolution, configure {@link RequestMappingHandlerAdapter} directly.
+ * @param resolvers initially an empty list
+ */
+----
++
+따라서 이를 해결하려면 `org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter`` 를 빈등록 하고 `HandlerMethodArgumentResolver` 과정을 직접 제어하면 된다. 하지만 단순히  순서만 바꾸는게 목적이라면 아래 방법을 이용하면 된다.
++
+[source, kotlin]
+----
+@Configuration
+class SomeWebMvcConfig() : DelegatingWebMvcConfiguration() {
+    // 이유는 모르지만 Constructor argument 로 선언하면 순환 참조로 인한 App 초기화 실패 오류 발생
+    @Autowired
+    private lateinit var adapter: RequestMappingHandlerAdapter
+
+    @PostConstruct
+    fun prioritizeCustomArgumentMethodHandlers() {
+        val oldArgResolvers = adapter.argumentResolvers
+
+        val custromArgResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
+            add(SomeAuthenticationResolver())
+        }
+
+        adapter.argumentResolvers = customArgResolvers + oldArgResolvers
+    }
+}
+----
++
+또는 `ApplicationContext` event 를 이용한 방법도 있다.
++
+[source, kotlin]
+----
+@Configuration
+class SomeWebMvcConfig(): WebMvcConfigurer, ApplicationListener<ApplicationReadyEvent> {
+//    override fun addArgumentResolvers(argResolvers: MutableList<HandlerMethodArgumentResolver>) {
+//        argResolvers.add(SomeAuthenticationResolver())
+//    }
+
+    override fun onApplicationEvent(event: ApplicationReadyEvent) {
+        event.applicationContext.getBean(RequestMappingHandlerAdapter::class.java).apply {
+            val oldArgumentResolvers = argumentResolvers ?: emptyList()
+            val customArgumentResolvers = ArrayList<HandlerMethodArgumentResolver>().apply {
+                add(SomeAuthenticationResolver())
+            }
+
+            this.argumentResolvers = customArgumentResolvers + oldArgumentResolvers
+        }
+    }
+}
+----
