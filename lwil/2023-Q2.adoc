@@ -455,3 +455,8 @@ log.trace("Dates: {}, {}, {}", date1, date2, date3)
 default는 false다. 따라서 lru를 구현하기 위해서는 accessOrder를 true로 줘야한다.
 
 - youjin: flutter GestureDetector 위젯은 InkWell 위젯과 다르게, 클릭시 물결효과가 없을 뿐만 아니라, child 가 있을 때, 해당 범위 내에서 이벤트를 받는다. 하지만 child 범위를 벗어난 투명한 부분은 이벤트를 수신하지 못해서 클릭했을 때도 아무런 일이 일어나지 않는다. 이를 해결하기 위해서는 behavior: HitTestBehavior.opaque, 옵션을 주면 되는데, enum HitTestBehavior 의 opaque  불투명 한 대상은 hit test에 의해 hit 될 수 있으므로 둘 다 해당 범위 내에서 이벤트를 수신하고 시각적으로 뒤에 있는 대상도 이벤트를 수신하지 못하도록 한다.
+
+- wongue: dart 의 set equality 를 검사하는 방법. +
+'package:flutter/foundation.dart' 의 setEqauls 를 사용하던지, O(n) 으로 선형순회로 모든 elements 들이 동등한지 검사하는 방법 밖에 없다. +
+따라서 class 안에 field 의 타입이 Set<T> 일 경우 bool operator == 을 override 하기 어려워지는데, Equatable 에서 다행이 귀찮은부분을 알아서 잘 해결해주고 있다. +
+link:https://gist.github.com/WongueShin/a61e5937f3af662578a44b677d54ebf1
