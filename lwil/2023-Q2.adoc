@@ -448,8 +448,10 @@ log.trace("Dates: {}, {}, {}", date1, date2, date3)
 +
 이전에는 동기 유발이 안되니 설명을 해도 상대방에게 접수시키기 힘들었다면, 이제는 경고가 왜 뜨냐는 의문만 가진다면 답을 해 줄 수 있게 되어 마음에 드는 업데이트다.
 
--gon : java에 lru 캐쉬 구현을 위해 검색하면 LinkedHashMap을 이용해서 많이 추천한다. +
+- gon : java에 lru 캐쉬 구현을 위해 검색하면 LinkedHashMap을 이용해서 많이 추천한다. +
 그런데 생각을 해보면 LinkedHashMap은 입력에 따라 연결이 유지되는데 lru는 조회도 접근으로 계산해서 순서를 바꾼다 + 
 그럼 어떻게 LinkedHashMap으로 lru를 구현한다 하는걸까? +
 그 이유는 accessOrder라는 내부 변수에 있다. 해당 변수가 true면 접근에 따른 연결모드로 fasle면 입력에만 연결을 수정한다. + 
 default는 false다. 따라서 lru를 구현하기 위해서는 accessOrder를 true로 줘야한다.
+
+- youjin: flutter GestureDetector 위젯은 InkWell 위젯과 다르게, 클릭시 물결효과가 없을 뿐만 아니라, child 가 있을 때, 해당 범위 내에서 이벤트를 받는다. 하지만 child 범위를 벗어난 투명한 부분은 이벤트를 수신하지 못해서 클릭했을 때도 아무런 일이 일어나지 않는다. 이를 해결하기 위해서는 behavior: HitTestBehavior.opaque, 옵션을 주면 되는데, enum HitTestBehavior 의 opaque  불투명 한 대상은 hit test에 의해 hit 될 수 있으므로 둘 다 해당 범위 내에서 이벤트를 수신하고 시각적으로 뒤에 있는 대상도 이벤트를 수신하지 못하도록 한다.
