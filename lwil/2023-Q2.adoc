@@ -464,3 +464,21 @@ link:https://gist.github.com/WongueShin/a61e5937f3af662578a44b677d54ebf1
 [[section-202306-W5]]
 === 2023년 6월 5주
 - youjin: webAssembly 를 사용하기 위해서는 Emscripten sdk 를 설치해야한다. 하지만 터미널을 껐다킬 때마다 재설치를 해야한다. 아직까지 웹어셈블리어는 직접 웹사이트를 조작하는 것이 아니라 자바스크립트에서 모듈처럼 불러와서 그 기능만을 사용하게 되어 있다.
+
+- hwan: Kotlin 의 `in` 키워드는 `Collection.contains` 에 대응한다. 그래서 다음과 같은 표현에 사용할 수 있다.
++
+[source, kotlin]
+----
+// number 는 주어고, 대상 list 인 [1, .., 10] 는 목적어. 이 사실을 고려해서 다음 코드를 읽으면:
+val number = randomInt(1, 11)
+
+// number 가 [1, .., 10] 에 포함되어 있는지
+val isInRange = (number in (1..10).toList())
+
+vs.
+
+// [1, .., 10] 이 number 를 포함하는지
+val isInRange = (1..10).toList().contains(number)
+----
++
+아래쪽 표현은 주어와 목적어를 바꿔, 피동형으로 같은 목적을 설명한다. 하지만 우리는 일반적으로 주어를 중심으로 어떤 개념을 설명하기 마련이다. 따라서 이런 사례의 경우에는 `contains` method 보다는 `in` keyword 를 쓰는 편이 좀 더 낫다고 할 수 있다.
