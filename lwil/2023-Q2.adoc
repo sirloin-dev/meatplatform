@@ -460,3 +460,7 @@ default는 false다. 따라서 lru를 구현하기 위해서는 accessOrder를 t
 'package:flutter/foundation.dart' 의 setEqauls 를 사용하던지, O(n) 으로 선형순회로 모든 elements 들이 동등한지 검사하는 방법 밖에 없다. +
 따라서 class 안에 field 의 타입이 Set<T> 일 경우 bool operator == 을 override 하기 어려워지는데, Equatable 에서 다행이 귀찮은부분을 알아서 잘 해결해주고 있다. +
 link:https://gist.github.com/WongueShin/a61e5937f3af662578a44b677d54ebf1
+
+[[section-202306-W5]]
+=== 2023년 6월 5주
+- youjin: webAssembly 를 사용하기 위해서는 Emscripten sdk 를 설치해야한다. 하지만 터미널을 껐다킬 때마다 재설치를 해야한다. 아직까지 웹어셈블리어는 직접 웹사이트를 조작하는 것이 아니라 자바스크립트에서 모듈처럼 불러와서 그 기능만을 사용하게 되어 있다.
