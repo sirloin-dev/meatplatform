@@ -484,3 +484,8 @@ val isInRange = (1..10).toList().contains(number)
 아래쪽 표현은 주어와 목적어를 바꿔, 피동형으로 같은 목적을 설명한다. 하지만 우리는 일반적으로 주어를 중심으로 어떤 개념을 설명하기 마련이다. 따라서 이런 사례의 경우에는 `contains` method 보다는 `in` keyword 를 쓰는 편이 좀 더 낫다고 할 수 있다.
 
 - gon : 레디스의 파이프라이닝도 HOL문제가 있다. 또한 첫번째 요청이 실패하면 그 뒤 모든 요청을 실패처리 한다. 따라서 레디스의 파이프라이닝을 적용할때는 해당 부분을 주의하며 적용해야한다.
+
+- wongue: Stream 에서 "아무일도 일어나지 않는다." 라는 요구 조건을 검증하는 방법은, + 
+적당한 시간을 기다린 이후, Steram 을 닫은 뒤 그 동안 emit 한 결과를 찾는 방식으로 검증이 가능하다. +
+++ Dart 의 Recode 에 namdedParmas 을 사용할 수 있다. +
+ex) typedef SomeRecodes = ({required ValueTypeA aValue, required ValueTypeB bValue});
