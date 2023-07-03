@@ -1,0 +1,17 @@
+= 2023년 3분기 07월-09월 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[section-202307]]
+== 2023년 7월
+
+[[section-202307-W1]]
+=== 2023년 7월 1주
+- hwan: JPA 에서 Shared PK 를 `@Id` 처럼 쓰려면 `@IdClass` 를 쓸 수 있다. `@EmbeddedId` 도 쓰는데 각각 장단점이 있다. 물리적인 DB Table 관점에서는 `@IdClass` 가 좀 더 낫고, 의미론적인 관점에서는 `@EmbeddedId` 가 좀 더 낫다.
