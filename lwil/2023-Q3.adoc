@@ -34,3 +34,6 @@
 - wongue: Dart 의 Recode 의 extention 중에는 (Future<T1>, ... , Future<T10) 으로만 이루어진 Recode 에 한해 wait method 를 제공해준다. +
 ++ window 의 블루스크린이 'blue' 인 이유는 특별한 의도가 담겨있다기 보단 그 당시 작업자의 펌웨어 화면색을 그대로 따라갔다고 한다. +
 출처: https://www.youtube.com/watch?v=KgqJJECQQH0
+
+- gon: mysql에서 레코드 하나당 관리하는 저장 용량의 크기가  65,535 바이트 라고 한다.
+그래서 varchar 타입으로 10000의 크기로 7개를 만들면 에러가 발생한다
