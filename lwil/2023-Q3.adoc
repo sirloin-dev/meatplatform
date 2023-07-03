@@ -30,3 +30,7 @@
 주인공이 ‘관찰자(Observer)’라면, 내가 받고 싶은 정보만 주체에서 꺼내오는 PULL 하고 싶어한다. (이기적 요인)
 +
 하지만, 주로 코드를 작성할 때, 옵저버패턴은 주체는 하나이고 관찰자가 N개인 상황이기 때문에, 관찰자의 편의로 PULL 받아오는 패턴이 일반적으로 좋은 패턴이라고 칭한다.
+
+- wongue: Dart 의 Recode 의 extention 중에는 (Future<T1>, ... , Future<T10) 으로만 이루어진 Recode 에 한해 wait method 를 제공해준다. +
+++ window 의 블루스크린이 'blue' 인 이유는 특별한 의도가 담겨있다기 보단 그 당시 작업자의 펌웨어 화면색을 그대로 따라갔다고 한다. +
+출처: https://www.youtube.com/watch?v=KgqJJECQQH0
