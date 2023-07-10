@@ -15,14 +15,16 @@
 [[section-202307-W1]]
 === 2023년 7월 1주
 - hwan: JPA 에서 Shared PK 를 `@Id` 처럼 쓰려면 `@IdClass` 를 쓸 수 있다. `@EmbeddedId` 도 쓰는데 각각 장단점이 있다. 물리적인 DB Table 관점에서는 `@IdClass` 가 좀 더 낫고, 의미론적인 관점에서는 `@EmbeddedId` 가 좀 더 낫다.
+
 - youjin: dart 에서 interface class 에 메소드를 적으려면, 무조건 body block 을 작성해야한다.
 +
-```dart
+[source, dart]
+----
   interface class FlyBehavior {
     // void fly();
     void fly(){ }
   }
-```
+----
 +
 옵저버 패턴을 활용할 때, ‘주인공’이 누구냐에 따라 이기적인 요인이 작용된다.
 즉, 주체(Subject)가 있고 관찰자(Observer)가 있을 때, 
@@ -37,3 +39,26 @@
 
 - gon: mysql에서 레코드 하나당 관리하는 저장 용량의 크기가  65,535 바이트 라고 한다.
 그래서 varchar 타입으로 10000의 크기로 7개를 만들면 에러가 발생한다
+
+[[section-202307-W2]]
+=== 2023년 7월 2주
+- hwan: spring-data 이용시 두 개 이상의 `DataSource` 및 `TransactionManager` 를 쓸 경우, `@Transactional` 에 `transactionManager` 속성을 다음과 같이 지정해 주지 않으면 오류가 발생한다. +
++
+[source, kotlin]
+----
+@Transactional(transactionManager = "someTransactionManager")
+----
++
+다만 매번 Transaction manager 를 지정하는 것이 번거로울 수 있고 또한 Infrastructure Service Logic 이 특정 DataSource 를 대상으로만 동작해야 한다는 전제가 깔려 있는 경우가 있을 때도 많다. 이런 경우에는, 기본 TransactionManager 를 지정해 줄 수 있다. +
++
+[source, kotlin]
+----
+@Configuration
+internal class DefaultTransactionManager(
+    private val applicationContext: ApplicationContext
+): TransactionManagementConfigurer {
+    @Bean
+    override fun annotationDrivenTransactionManager(): TransactionManager =
+        applicationContext.getBean(SomeTransactionManager.NAME) as TransactionManager
+}
+----
