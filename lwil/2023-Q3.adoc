@@ -62,3 +62,4 @@ internal class DefaultTransactionManager(
         applicationContext.getBean(SomeTransactionManager.NAME) as TransactionManager
 }
 ----
+- youjin: 저번주에 확인했었던 `interface class` 의 경우, 바디에 block 을 사용하고 싶지 않다면, `abstract interface class` 라고 작성하면 된다.
