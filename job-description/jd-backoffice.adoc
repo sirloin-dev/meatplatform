@@ -1,0 +1,97 @@
+= 백오피스 개발자
+// Metadata:
+:description: jd-backoffice
+:keywords: Sir.LOIN, bondaero, jd-backoffice, hiring
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[jd-backoffice-engineer]]
+== 백오피스 개발자
+
+저희는 연차보다는 후보자님의 역량에 따라 Seniority 를 부여합니다. 
+
+경력이 짧다고 후보자님을 주니어 취급하는 현 직장에 지치셨다면, 지금 바로 지원해보세요!
+
+백오피스 개발 업무에서는 Frontend 와 Backend 를 모두 경험할 수 있습니다. 그만큼 업무량은 많지만, 압축 성장을 원하시는 분께 어울리는 직무라 자신합니다!
+
+link:hiring-notice.adoc[채용 공고 바로가기]
+
+[[jd-backoffice-you-will]]
+=== 주요 업무
+
+* 본대로 서비스용 HTTP API 및 Database 구축
+* 군포 SSPC 와의 실시간 통신 지원, 상품 입고처리를 위한 Admin API 개발
+* 본대로 서비스 운영을 위한 Admin Backend 및 Frontend 개발
+* 본대로 서비스 지표분석을 위한 데이터 파이프라인 구축
+* 지속적 빌드 및 통합을 위한 CI 서버 운영
+
+[[jd-backoffice-what-you-get]]
+=== 어떤 성장을 기대할 수 있을까요?
+
+* given-when-then 으로 문제와 기대값을 정의하는 전략적 사고
+* 테스트 주도 개발의 효율성과 중요성
+* 도메인 중심의 시스템 설계 및 사고 능력
+* 한 벌의 코드로 여러 플랫폼용 앱을 동시에 만들 수 있는 능력
+* Polyglot programmer
+* UI Application 테스트 자동화
+* 운영 환경에 따른 Test scale 설계 및 구현
+* 저수준 네트워크 통신부터 고수준 개념 처리까지의 Architecture 경험
+* 클라우드 서비스 운영 및 이용량, 비용 계획 능력
+* 일일 약 2만건 내외의 실시간 데이터 처리
+* 비동기로 이뤄지는 결제 전처리 및 후처리 능력
+* 고효율, 고품질의 2D Image 처리 및 재활용 기술
+* Modular Monolithic Architecture
+
+[[jd-backoffice-tech-stack]]
+=== 기술 스택
+
+* API / Admin Server
+  - Spring Boot 2.7 (Kotlin, Groovy Script)
+  - Spring data JPA, Spring Data redis, Spring AMQP, Spring Security
+  - JUnit 5, Spock Framework
+
+* Admin Frontend
+  - Flutter 3.0
+  - BLOC
+  - flutter test, widget test
+
+* Infrastructure
+  - AWS 서비스 다수
+  - Google Firebase 서비스 다수
+  - MariaDB, MongoDB, Redis
+  - RabbitMQ, Kafka
+  - Docker
+
+* (CI)
+  - Jenkins
+  - (Bash 호환) Shell Script
+
+[[jd-backoffice-you-have]]
+=== 자격 요건
+
+* 학력 무관
+* ts/nodejs, python, java 8 이상, kotlin, swift 중 하나 이상의 언어를 가지고 Backend 또는 Frontend 를 2년 이상 개발을 진행한 경험이 있는 분
+* 페어 프로그래밍 및 코드 리뷰에 거부감이 없고 테스트 코드 작성의 필요성을 알고 있으신 분
+* 고객 경험이 중심이라는 생각으로 기술 스택 전환에 대해 유연한 사고를 하실 수 있는 분
+* 관계형 데이터베이스 이용 및 데이터 설계 능력이 있으신 분
+* 사소한 문제도 '왜?' 라는 질문을 끊임없이 던지고, 탐구하기를 즐기는 분
+* 4년제 컴퓨터 공학과 수준의 전산 기본 소양을 갖춘 분
+
+[[jd-backoffice-you-exceptional]]
+=== 우대 사항
+
+* CI / CD 경험이 있으신 분
+* TDD(Test Driven Development) 방법론을 바탕으로 백엔드 개발 프로젝트를 진행해본 경험이 있으신 분
+* B2B 고객을 대상으로 한 프로젝트 개발 경험이 있으신 분
+* ruby, dart, scala, rust, go, haskell 등 대한민국 내의 비주류 언어를 경험해 보신 분
+* unity3d, Xamarin 등의 cross platform 경험, C# 경험자 우대
+* k8s / docker 사용 경험이 있으신 분
+* noSQL 사용 경험이 있으신 분
+* jvm 및 spring 기술백서를 완독하신 분
+* 모바일 네트워크의 동작 원리를 자세하게 설명하실 수 있는 분
+* 컴퓨터가 소숫점 계산을 잘 못하는 이유를 상세하게 설명하실 수 있는 분
+* java 9 의 module 또는 gradle module 기능에 능숙하신 분
