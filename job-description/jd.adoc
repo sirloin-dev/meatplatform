@@ -99,3 +99,4 @@
 
 * link:jd-backend.adoc[백엔드 개발자]
 * link:jd-frontend.adoc[프론트엔드 개발자]
+* link:jd-backoffice.adoc[백오피스(Admin) 개발자]
