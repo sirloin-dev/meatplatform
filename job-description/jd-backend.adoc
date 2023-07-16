@@ -1,7 +1,7 @@
 = 백엔드 개발자
 // Metadata:
 :description: jd-backend
-:keywords: Sir.LOIN, platform, jd-backend, hiring
+:keywords: Sir.LOIN, bondaero, jd-backend, hiring
 // Settings:
 :doctype: book
 :toc: left
@@ -21,9 +21,43 @@ link:hiring-notice.adoc[채용 공고 바로가기]
 [[jd-backend-you-will]]
 === 주요 업무
 
-* 육쟁이청년들 서비스(육류 도매 플랫폼 서비스) 서버 및 DB 구축
-* 육쟁이청년들 서비스 분석을 위한 데이터 파이프라인 구축
-* 육쟁이청년들 서비스 운영을 위한 Admin 개발 및 구축
+* 본대로 서비스용 HTTP API 및 Database 구축
+* 군포 SSPC 와의 실시간 통신 지원, 상품 입고처리를 위한 Admin API 개발
+* 본대로 서비스 운영을 위한 Admin Frontend 용 API 개발
+
+[[jd-backend-what-you-get]]
+=== 어떤 성장을 기대할 수 있을까요?
+
+* given-when-then 으로 문제와 기대값을 정의하는 전략적 사고
+* 테스트 주도 개발의 효율성과 중요성
+* 도메인 중심의 시스템 설계 및 사고 능력
+* Kotlin 을 이용한 고효율 코딩 능력
+* 운영 환경에 따른 Test scale 설계 및 구현
+* Code quality 의 정량적 지표화
+* 저수준 네트워크 통신부터 고수준 개념 처리까지의 Architecture 경험
+* 클라우드 서비스 운영 및 이용량, 비용 계획 능력
+* 일일 약 2만건 내외의 실시간 데이터 처리
+* 비동기로 이뤄지는 결제 전처리 및 후처리 능력
+* Modular Monolithic Architecture
+
+[[jd-backend-tech-stack]]
+=== 기술 스택
+
+* API / Admin Server
+  - Spring Boot 2.7 (Kotlin, Groovy Script)
+  - Spring data JPA, Spring Data redis, Spring AMQP, Spring Security
+  - JUnit 5, Spock Framework
+
+* Infrastructure
+  - AWS 서비스 다수
+  - Google Firebase 서비스 다수
+  - MariaDB, MongoDB, Redis
+  - RabbitMQ, Kafka
+  - Docker
+
+* (CI)
+  - Jenkins
+  - (Bash 호환) Shell Script
 
 [[jd-backend-you-have]]
 === 자격 요건
@@ -42,7 +76,6 @@ link:hiring-notice.adoc[채용 공고 바로가기]
 * CI / CD 경험이 있으신 분
 * TDD(Test Driven Development) 방법론을 바탕으로 백엔드 개발 프로젝트를 진행해본 경험이 있으신 분
 * B2B 고객을 대상으로 한 프로젝트 개발 경험이 있으신 분
-* 웹 또는 모바일 클라이언트 개발 경험ruby, dart, scala, rust, go 등의 언어를 경험해 보신 분
 * k8s / docker 사용 경험이 있으신 분
 * noSQL 사용 경험이 있으신 분
 * jvm 및 spring 기술백서를 완독하신 분
