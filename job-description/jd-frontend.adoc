@@ -1,7 +1,7 @@
 = 프론트엔드 개발자
 // Metadata:
 :description: jd-frontend
-:keywords: Sir.LOIN, platform, jd-frontend, hiring
+:keywords: Sir.LOIN, bondaero, jd-frontend, hiring
 // Settings:
 :doctype: book
 :toc: left
@@ -21,9 +21,42 @@ link:hiring-notice.adoc[채용 공고 바로가기]
 [[jd-frontend-you-will]]
 === 주요 업무
 
-* 육쟁이청년들 서비스(육류 도매 플랫폼 서비스) 모바일 웹페이지 구축
-* 육쟁이청년들 서비스 모바일 앱 개발(크로스 플랫폼 이용)
-* 육쟁이청년들 서비스 운영을 위한 Admin 개발 및 구축
+* 본대로 서비스 모바일 앱 개발
+* 본대로 서비스 웹 페이지 개발
+* 본대로 운영을 위한 Admin Frontend 개발
+
+[[jd-frontend-what-you-get]]
+=== 어떤 성장을 기대할 수 있을까요?
+
+* given-when-then 으로 문제와 기대값을 정의하는 전략적 사고
+* 테스트 주도 개발의 효율성과 중요성
+* 도메인 중심의 시스템 설계 및 사고 능력
+* 한 벌의 코드로 여러 플랫폼용 앱을 동시에 만들 수 있는 능력
+* 운영 환경에 따른 Test scale 설계 및 구현
+* Code quality 의 정량적 지표화
+* UI Application 테스트 자동화
+* 저수준 네트워크 통신부터 고수준 개념 처리까지의 Architecture 경험
+* Network call 을 효율적으로 제어하기 위한 Scheduler 구현 전략
+* 고효율, 고품질의 2D Image 처리 및 재활용 기술
+* Modular Monolithic Architecture
+
+[[jd-frontend-tech-stack]]
+=== 기술 스택
+
+* 본대로 앱
+  - Flutter 3.0
+  - BLOC
+  - flutter test, widget test
+
+* Platform native
+  - (Android) Kotlin
+  - (iOS) Swift
+  - (Web) Typescript
+  - (Windows) C++
+
+* (CI)
+  - Jenkins
+  - (Bash 호환) Shell Script
 
 [[jd-frontend-you-have]]
 === 자격 요건
@@ -43,7 +76,6 @@ link:hiring-notice.adoc[채용 공고 바로가기]
 * CI / CD 경험이 있으신 분
 * TDD(Test Driven Development) 방법론을 바탕으로 백엔드 개발 프로젝트를 진행해본 경험이 있으신 분
 * B2B 고객을 대상으로 한 프로젝트 개발 경험이 있으신 분
-* 웹 또는 모바일 클라이언트 개발 경험ruby, dart, scala, rust, go 등의 언어를 경험해 보신 분
 * k8s / docker 사용 경험이 있으신 분
 * noSQL 사용 경험이 있으신 분
 * jvm 및 spring 기술백서를 완독하신 분
