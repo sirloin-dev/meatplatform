@@ -1,3 +1,14 @@
+= 본대로 서비스 소개
+// Metadata:
+:description: jd-bondaero
+:keywords: Sir.LOIN, bondaero
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
 [[we-are-hiring]]
 == 동료를 찾습니다.
 본대로 서비스를 함께 만들어 가실 분을 찾습니다.
