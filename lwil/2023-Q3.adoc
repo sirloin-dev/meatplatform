@@ -74,3 +74,6 @@ import java.net.UrlEncoder
 
 fun String.urlEncode() = URLEncoder.encode(this, StandardCharsets.UTF_8.toString())
 ----
+
+gon: 리눅스에서는 어플리케이션에서 접근 할 수 있는 경로를 제공하기위해 시스템 콜의 경로를 파일디스크립션이라는 형태로 추상화를 제공한다.
+그래서 tcp/ip 같은 네트워크도 보면 fd형태로 접속정보를 관리한다.
