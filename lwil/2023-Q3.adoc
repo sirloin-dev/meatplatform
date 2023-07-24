@@ -105,3 +105,7 @@ fun String.urlEncode() = URLEncoder.encode(this, StandardCharsets.UTF_8.toString
 ----
 +
 AWS 가 이런 방법을 문서로 딱히 제공하지 않는 이유: S3 에 접근하는 트래픽마다 비용이 발생하기 때문에, 접근 횟수가 비정상적으로 많거나 큰 파일을 누구나 접근하게 허용할 경우 네트워크 사용 비용이 기하급수적으로 늘어나기 때문. 따라서 Bucket 을 public open 할 때는, CDN 설정을 추가로 고려해 보는 편이 좋다. AWS 의 CloudFront, Azure CDN, Akamai, Cloudflare 같은 서비스가 대표적인 CDN 서비스라고 할 수 있다.
+
+gon: 이번 재시도 관련 함수를 짜면서 배운것이 있다.
+제너럴한 인터페이스나 기능을 만들땐 최대한 기능이 단순하며 보편적이어야한다 
+필요한 조건은 함수로 받아서 작업해서 함수를 호출하는 쪽에서 조건을 제어하게 해주자
