@@ -154,8 +154,6 @@ Logscale 로 그 세기를 인식하는데, 간단히 설명하면, 밝기(조�
 
 [[section-202308-W2]]
 === 2023년 8월 2주
-- sb: asdfasdfsadfasdf
-
 - hwan: Spring Boot 의 Test 실행속도를 향상시키려면 test slice 를 구성하는 편이 좋다. 그리고 JPA Repository 로직만을 테스트하는 `@DataJpaTest` 어노테이션은 데이터베이스 계층을 쓸 수 있는 bean 들만 로드할 수 있는 고마운 기능이다. 그런데, 다음과 같은 설정에서 테스트를 실행시키면:
 +
 .실제 로직:
