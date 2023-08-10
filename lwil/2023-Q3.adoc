@@ -151,3 +151,58 @@ Logscale 로 그 세기를 인식하는데, 간단히 설명하면, 밝기(조�
 
 - wongue: 원인 미상의 이유로 dart analysis server 가 재귀호출을 하며 뻗어버리는 현상이 발생 할 때가 있다. +
 이때 ~/.dartserver dir 전체를 날려버리고 인텔리제이를 재시작하면 해결할 수 있다.
+
+[[section-202308-W2]]
+=== 2023년 8월 2주
+- sb: asdfasdfsadfasdf
+
+- hwan: Spring Boot 의 Test 실행속도를 향상시키려면 test slice 를 구성하는 편이 좋다. 그리고 JPA Repository 로직만을 테스트하는 `@DataJpaTest` 어노테이션은 데이터베이스 계층을 쓸 수 있는 bean 들만 로드할 수 있는 고마운 기능이다. 그런데, 다음과 같은 설정에서 테스트를 실행시키면:
++
+.실제 로직:
+[source, kotlin]
+----
+package com.bondaero.infra.jpa
+
+@Repository
+internal interface MyEntityJpaDao : JpaRepository<MyEntity, UUID>
+----
++
+.테스트:
+[source, kotlin]
+----
+package testcase.medium
+
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    // 환경설정에서 지정한 DB 에서 테스트 실행
+@MediumTest
+internal class JpaMediumTestBase
+
+internal class MyEntityJpaDaoSpec(
+    @Autowired
+    private val sut: MyEntityJpaDao
+): JpaMediumTestBase()
+----
++
+이런 오류가 난다:
++
+[source, shell]
+----
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sut' defined in file [/home/hwan/git/myproject/build/classes/kotlin/test/testcase/medium/MyEntityJpaDaoSpec.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.bondaero.infra.jpa.MyEntityJpaDao' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+----
++
+왜냐하면 `JpaRepository` 인터페이스를 실제로 실행할 구현체 - 이 사례에서는 `org.springframework.data.jpa.repository.support.SimpleJpaRepository` - 를 bean 으로 만들 방법을 제공하지 않았기 때문이다.
++
+따라서 이 문제는 다음과 같이 `@EnableJpaRepositories` 어노테이션을 붙여줘야 해결할 수 있다.
++
+.해결방법:
+[source, kotlin]
+----
+@DataJpaTest
+@EnableJpaRepositories
+@EntityScan
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    // 환경설정에서 지정한 DB 에서 테스트 실행
+@MediumTest
+internal class JpaMediumTestBase
+----
++
+가급적 `@DataJpaTest` 는 `@EnableJpaRepositories` 와, `@EntityScan` 를 달고 다닌다고 생각하는 편이 좋겠다.
