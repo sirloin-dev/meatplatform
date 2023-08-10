@@ -198,8 +198,8 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
 [source, kotlin]
 ----
 @DataJpaTest
-@EnableJpaRepositories
-@EntityScan
+@EnableJpaRepositories    // JpaRepository 들을 전부 Proxy 로 생성후 Bean 으로 등록합니다.
+@EntityScan               // JPA EntityManager 에 @Entity 들을 'Managed Type' 으로 등록합니다. 
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    // 환경설정에서 지정한 DB 에서 테스트 실행
 @MediumTest
 internal class JpaMediumTestBase
