@@ -209,3 +209,9 @@ internal class JpaMediumTestBase
 List<type>은 const type* 로 표현할 수 있다. type 이 뭔지 알고있으면, 첫번째 메모리주소 이후 그 사이즈만큼 뒤로가며 읽을수 있기 때문. +
 따라서, String => const char* 로 표현될 수 있고, List<String> => String* 으로 표현이 가능하기때문에, +
 List<String> => List<const char*> => const char* const* 가 되는것. 
+
+- jaewon: 안녕하세요, 김재원입니다. 앞으로 잘 부탁드리겠습니다! 🙏
++
+이번에 본대로 클라이언트 프로젝트를 통해 Monorepo를 처음 경험해 보는 건데, Monorepo 자체도 신기했지만 Melos라는 도구도 꽤 생소했습니다. 빨리 익숙해져 봐야겠다는 생각이 듭니다.
++
+요즘 <The Bear>라는 드라마를 보고 있는데, 동네 햄버거집을 물려받은 젊은 미쉐린 스타 쉐프가 우여곡절을 겪으며 식당을 지켜내는 내용입니다. 주방 특유의 군기나 텃세, 스트레스 같은 걸 하이퍼 리얼리즘 수준으로 담아내서 흥미롭게 보고 있어요.
