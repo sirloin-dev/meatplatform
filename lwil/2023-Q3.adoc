@@ -204,3 +204,8 @@ internal class JpaMediumTestBase
 ----
 +
 가급적 `@DataJpaTest` 는 `@EnableJpaRepositories` 와, `@EntityScan` 를 달고 다닌다고 생각하는 편이 좋겠다.
++
+- wongue: C 에서 List<String> 을 표현하는 방법. +
+List<type>은 const type* 로 표현할 수 있다. type 이 뭔지 알고있으면, 첫번째 메모리주소 이후 그 사이즈만큼 뒤로가며 읽을수 있기 때문. +
+따라서, String => const char* 로 표현될 수 있고, List<String> => String* 으로 표현이 가능하기때문에, +
+List<String> => List<const char*> => const char* const* 가 되는것. 
