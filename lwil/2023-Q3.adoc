@@ -136,8 +136,8 @@ Logscale 로 그 세기를 인식하는데, 간단히 설명하면, 밝기(조�
 멀티스레드에서 openGL 함수를 호출하는순간 어플리케이션이 죽어버린다고 한다. +
 이유는 gl 이 만들어질 시절, 멀티스레드 라는 개념이 모호해서...
 
-[[section-202308-W1]]
-=== 2023년 8월 1주
+[[section-202308-W2]]
+=== 2023년 8월 2주
 - hwan: Kotlin 의 `data class` 에는 `copy` 라는 복사 생성자가 있다. 여기서 주의할 점은 이 복사 생성자는 *shallow copy*, 즉 값이 아니라 참조만을 복사한다는 것이다. 이 때문에 복사로 새로운 객체를 만들었다고 해서 참조형 자료를 수정하면 원본 자료도 함께 수정되는 일이 벌어질 수 있으니 조심해야 한다. 혼란을 피하려면 data class 에는 가급적 immutable value 들만 담는 편이 좋다.
 
 - gon: 만약 여러 도메인을 수정해야할 일이 있다면 어떤 방식으로 레이어를 구분하여 아키텍쳐를 가져가야할까?
@@ -152,8 +152,8 @@ Logscale 로 그 세기를 인식하는데, 간단히 설명하면, 밝기(조�
 - wongue: 원인 미상의 이유로 dart analysis server 가 재귀호출을 하며 뻗어버리는 현상이 발생 할 때가 있다. +
 이때 ~/.dartserver dir 전체를 날려버리고 인텔리제이를 재시작하면 해결할 수 있다.
 
-[[section-202308-W2]]
-=== 2023년 8월 2주
+[[section-202308-W3]]
+=== 2023년 8월 3주
 - hwan: Spring Boot 의 Test 실행속도를 향상시키려면 test slice 를 구성하는 편이 좋다. 그리고 JPA Repository 로직만을 테스트하는 `@DataJpaTest` 어노테이션은 데이터베이스 계층을 쓸 수 있는 bean 들만 로드할 수 있는 고마운 기능이다. 그런데, 다음과 같은 설정에서 테스트를 실행시키면:
 +
 .실제 로직:
@@ -216,8 +216,8 @@ List<String> => List<const char*> => const char* const* 가 되는것.
 +
 요즘 <The Bear>라는 드라마를 보고 있는데, 동네 햄버거집을 물려받은 젊은 미쉐린 스타 쉐프가 우여곡절을 겪으며 식당을 지켜내는 내용입니다. 주방 특유의 군기나 텃세, 스트레스 같은 걸 하이퍼 리얼리즘 수준으로 담아내서 흥미롭게 보고 있어요.
 
-[[section-202308-W3]]
-=== 2023년 8월 3주
+[[section-202308-W4]]
+=== 2023년 8월 4주
 - hwan: 최현우 마술쇼를 보고 왔다. 마술에 사용하는 트릭을 미스디렉션(misdirection) 이라고 하는데, 관객의 주의를 다른 곳으로 이끄는 일종의 속임수다. 물론 관객은 마술사의 트릭을 간파하려 눈을 부릅뜨고 보지만, 마술사도 당연히 그에 대한 대비가 되어 있다. 그런데 마술의 근본원리가 단순한 속임수 싸움이 아니라 미스디렉션이라는 용어까지 써 가며 설명하는 이유가 있다. 바로, 관객이 속는다는 사실도 눈치채지 못하도록 주의를 돌려야 하는데 여기에는 고도의 심리학, 광학, 시지각학, 수학, 물리학 원리가 필요하다고 한다. 즉, 정말 훌륭한 마술사는 머리가 좋을 수 밖에 없다는 사실. '알고도 당한다' 는 말이 딱 어울린다고 할 수 밖에 없다. 물론, 그 당한다는 것이 시청각적 즐거움이기에 사람들은 마술에 열광하는 것일 테고.
 
 - wongue: dart 는 protected 를 keyword 가 아닌 annotation 으로 구현한다. +
@@ -245,3 +245,65 @@ DI (Dependency Injection)::
 필요로 하는 객체들을 직접 찾거나 생성하지 않고, “외부에서 넣어주는” 방식
 +
 _(‘매개변수를 갖는 생성자’와 같이)_ 사용할 서비스들을 외부에서 넣어줌으로써 해당 서비스들과의 의존 관계를 설정하게 되며, 이러한 방식으로 DI Container를 구성하면 Service Locator의 역할을 대신할 수 있다.
+
+[[section-202308-W5]]
+=== 2023년 8월 5주
+- hwan: Spring 에서의 `@Async` 와 `@Scheduled` 에 대한 오해와 진실
++
+`@Async` 에는 argument 를 붙일 수 있고 `@Scheduled` 에는 argument 를 붙일 수 없다. 그렇다면 다음 사례에서는 어떤 일이 일어날까?
+[source, kotlin]
+----
+@Async
+@Scheduled(cron = "0/60 * * * * *") // 매분마다 실행
+fun onTriggered(myBean: MyBean) {
+}
+----
++
+.실행 결과:
+[source, kotlin]
+----
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'idleTimeLargeBatchScheduler' defined in file [/home/hwan/myproject/build/classes/kotlin/main/com/bondaero/scheduler/MyScheduler.class]: Initialization of bean failed; nested exception is java.lang.IllegalStateException: Encountered invalid @Scheduled method 'onTriggered': Only no-arg methods may be annotated with @Scheduled
+----
++
+안된다. `@Scheduled` 의 제한 때문이다. Proxy 생성 규칙을 생각해 본다면... `@Async` 를 `@Scheduled` 로 감싸건 혹은 반대가 됐건 아무튼 `@Scheduled` 를 해석하는 순간 parameter 를 가진 method 는 불가능하다는 예외가 발생할 것이다.
++
+그렇다면 다음으로 드는 의문은, '그렇다면 공식 문서에는 딱히 없지만 `@Scheduled` 와 `@Async` 를 같이 쓰는건 문제가 없나?' 일 것이다. 
++
+[source, kotlin]
+----
+@Async
+@Scheduled(cron = "0/60 * * * * *") // 매분마다 실행
+fun onTriggered() {
+    log.info("Job start...")
+    log.info("Job finished")
+}
+----
++
+.실행 결과:
+----
+2022-12-31 00:00:00.235 INFO  1563449 [       task-3805] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:00:00.243 INFO  1563449 [       task-3805] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:01:00.001 INFO  1563449 [       task-3806] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:01:00.007 INFO  1563449 [       task-3806] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:02:00.000 INFO  1563449 [       task-3807] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:02:00.006 INFO  1563449 [       task-3807] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:03:00.001 INFO  1563449 [       task-3808] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:03:00.006 INFO  1563449 [       task-3808] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:04:00.000 INFO  1563449 [       task-3809] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:04:00.007 INFO  1563449 [       task-3809] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:05:00.000 INFO  1563449 [       task-3810] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:05:00.007 INFO  1563449 [       task-3810] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:06:00.001 INFO  1563449 [       task-3811] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:06:00.006 INFO  1563449 [       task-3811] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:07:00.000 INFO  1563449 [       task-3812] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:07:00.006 INFO  1563449 [       task-3812] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:08:00.001 INFO  1563449 [       task-3813] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:08:00.006 INFO  1563449 [       task-3813] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:09:00.000 INFO  1563449 [       task-3814] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:09:00.005 INFO  1563449 [       task-3814] c.b.h.a.s.MyScheduler   : Job finished
+2022-12-31 00:10:00.001 INFO  1563449 [       task-3815] c.b.h.a.s.MyScheduler   : Job start...
+2022-12-31 00:10:00.005 INFO  1563449 [       task-3815] c.b.h.a.s.MyScheduler   : Job finished
+----
++
+로그를 보면 딱히 문제 없는 것 같다. `@Async` 에 할당된 기본 Thread Scheduler 인 org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler 가 Thread 를 계속 생성하며 `@Scheduled` 작업을 반복 실행하는 것을 확인할 수 있다.
+
