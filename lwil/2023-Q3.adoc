@@ -248,9 +248,10 @@ _(‘매개변수를 갖는 생성자’와 같이)_ 사용할 서비스들을 �
 
 [[section-202308-W5]]
 === 2023년 8월 5주
-- hwan: Spring 에서의 `@Async` 와 `@Scheduled` 에 대한 오해와 진실
+- hwan: Spring 에서의 `@Async` 와 `@Scheduled` 에 대한 오해와 진실 (link:https://docs.spring.io/spring-framework/reference/integration/scheduling.html#scheduling-annotation-support-async[공식 문서])
 +
 `@Async` 에는 argument 를 붙일 수 있고 `@Scheduled` 에는 argument 를 붙일 수 없다. 그렇다면 다음 사례에서는 어떤 일이 일어날까?
++
 [source, kotlin]
 ----
 @Async
@@ -306,4 +307,3 @@ fun onTriggered() {
 ----
 +
 로그를 보면 딱히 문제 없는 것 같다. `@Async` 에 할당된 기본 Thread Scheduler 인 org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler 가 Thread 를 계속 생성하며 `@Scheduled` 작업을 반복 실행하는 것을 확인할 수 있다.
-
