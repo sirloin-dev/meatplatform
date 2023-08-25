@@ -281,6 +281,7 @@ fun onTriggered() {
 ----
 +
 .실행 결과:
+[source, shell]
 ----
 2022-12-31 00:00:00.235 INFO  1563449 [       task-3805] c.b.h.a.s.MyScheduler   : Job start...
 2022-12-31 00:00:00.243 INFO  1563449 [       task-3805] c.b.h.a.s.MyScheduler   : Job finished
