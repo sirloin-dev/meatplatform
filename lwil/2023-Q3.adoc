@@ -308,3 +308,7 @@ fun onTriggered() {
 ----
 +
 로그를 보면 딱히 문제 없는 것 같다. `@Async` 에 할당된 기본 Thread Scheduler 인 org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler 가 Thread 를 계속 생성하며 `@Scheduled` 작업을 반복 실행하는 것을 확인할 수 있다.
+
+- jaewon: Dart에서 `hashCode`와 `==` 연산자가 무엇을 의미하며, 어떤 관계를 갖는지에 대해 학습했습니다.
++
+`hashCode`는 각각의 객체가 참조하는 주솟값을 정수 형태로 제공하는 속성으로, 애플리케이션이 실행되는 동안에는 특정 객체의 `hashCode`를 여러 번 호출하더라도 같은 값이 반환되어야 합니다. 이때, 똑같은 `hashCode`를 갖는 객체들은 `==` 연산자에 의해 동일한 객체로 판단되며, 내용이 같더라도 `hashCode`가 다르면 동일하지 않은 객체로 판단됩니다.
