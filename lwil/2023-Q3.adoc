@@ -351,3 +351,6 @@ H2Database JAR 를 로드한 Classpath 에 위치시켜 주면 된다. +
 
 - wongue: 실무에서 종종 쓸만한 괜찮은 프로그램을 발견했다. 특히 Flutter Test 패키지 때문에 text compare 는 매우 자주 사용할것 같다. +
   https://devtoys.app/ +
+
+- gon: 주말에 새로운 스프링 프로젝트를 하나 알게 되었다.
+https://www.baeldung.com/spring-modulith 인데 모놀리식 서버를 구현하는데 지원하는 스프링 프로젝트이다. 
