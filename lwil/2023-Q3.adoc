@@ -347,4 +347,7 @@ class H2Function {
 }
 ----
 +
-H2Database JAR 를 로드한 Classpath 에 위치시켜 주면 된다.
+H2Database JAR 를 로드한 Classpath 에 위치시켜 주면 된다. +
+
+- wongue: 실무에서 종종 쓸만한 괜찮은 프로그램을 발견했다. 특히 Flutter Test 패키지 때문에 text compare 는 매우 자주 사용할것 같다. +
+  https://devtoys.app/ +
