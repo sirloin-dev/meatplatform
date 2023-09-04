@@ -318,3 +318,34 @@ fun onTriggered() {
 - gon: ThreadPoolTaskExecutor를 보면 prestartAllCoreThreads라는 필드가 있습니다. 
 기본적으로는 false라서 ThreadPoolTaskExecutor를 생성하면 core 쓰레드는 1개만 생성되서 실행됩니다.
 true로 설정해서 ThreadPoolTaskExecutor를 생성하면 처음 설정한 core pool size만큼 core쓰레드를 생성합니다.
+
+[[section-202309-W1]]
+=== 2023년 8월 5주
+- hwan: MYSQL 의 `IF(condition, trueValue, falseValue)`` 함수가 H2Database 에서 없어 Medium Test 가 어려울 때:
++
+. `CASE WHEN condition THEN trueValue ELSE falseValue END;` 로 변경하기
+. Bridge 구현:
++
+다음의 SQL 을 H2 Console 에서 실행하고,
++
+[source, sql]
+----
+CREATE ALIAS IF NOT EXISTS HEX FOR "com.example.test.common.h2.H2Function.IF";
+----
++
+이런 adapter logic 을 작성해 준 뒤
++
+[source, kotlin]
+----
+package com.example.test.common.h2;
+
+class H2Function {
+    companion object {
+        @JvmStatic
+        fun IF(condition: String, trueValue: String, falseValue: String): String {}
+    }
+}
+----
++
+H2Database JAR 를 로드한 Classpath 에 위치시켜 주면 된다.
+
