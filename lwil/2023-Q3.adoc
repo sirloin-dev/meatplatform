@@ -424,3 +424,44 @@ BEGIN
     SET @userId = @userId + 1
 END
 ----
+
+- jaewon: Form에 대한 상태 관리 업무를 맡으면서 **Equatable이라는 패키지**를 처음 접했습니다.
++
+아직은 JavaScript에 훨씬 익숙한 입장이라 상태 관리를 위해 클래스를 새로 만들거나, 상태 변경에 쓰기 위해 `copyWith` 메소드를 일일이 구현해야 하는 게 번거롭긴 하지만, 이 패키지를 활용하면 상태(객체)를 정의하는 것도 간단해지고, ``hashCode``와 `==` 연산자의 재정의가 자동화되어 있기 때문에 상태 변경 여부를 파악하는 것도 편해지는 것 같습니다.
++
+Equatable 패키지의 기본적인 원리는 아래와 같았습니다. (link:https://pub.dev/packages/equatable[출처])
++
+[source, dart]
+----
+// Without Equatable
+class Person {
+  const Person(this.name);
+
+  final String name;
+
+  @override
+  bool operator ==(Object other) =>
+    identical(this, other) ||
+    other is Person &&
+    runtimeType == other.runtimeType &&
+    name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
+}
+----
++
+[source, dart]
+----
+// With Equatable
+import 'package:equatable/equatable.dart';
+
+class Person extends Equatable {
+  const Person(this.name);
+
+  final String name;
+
+  @override
+  List<Object> get props => [name];
+}
+----
