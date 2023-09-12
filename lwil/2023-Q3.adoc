@@ -359,9 +359,68 @@ https://www.baeldung.com/spring-modulith 인데 모놀리식 서버를 구현하
 
 [[section-202309-W2]]
 === 2023년 9월 2주
-gon: 기술적인 애기는 아니지만 굉장히 감명갚게 읽은 책이 두권어서 소개시켜드릴겸 lwil에 적습니다.
-- 금리의 역습: 금리는 어떻게 부의 질서를 뒤흔드는가
-- 돈을 찍어내는 제왕, 연준
+- gon: 기술적인 애기는 아니지만 굉장히 감명갚게 읽은 책이 두권어서 소개시켜드릴겸 lwil에 적습니다.
+  * 금리의 역습: 금리는 어떻게 부의 질서를 뒤흔드는가
+  * 돈을 찍어내는 제왕, 연준
 사실 책의 내용을 잘 이해 못한것 같지만 경제를 새로 바로 볼수 있다는 점에서 굉장히 재미있엇습니다.
 
-wongue: Flutter 의 Timer Class 의 정밀도는 micro sec 단위로는 그리 정밀하지 못하다.
+- wongue: Flutter 의 Timer Class 의 정밀도는 micro sec 단위로는 그리 정밀하지 못하다.
+
+- hwan: 서로 다른 두개의 Table 이 관계를 맺고 있을 때 테이블 A(`users`) 로부터 테이블 B(`users_personal_config`) 로 값을 복사하는 법:
++
+[source, sql]
+----
+CREATE TABLE `users`
+(
+    `seq`       BIGINT      NOT NULL AUTO_INCREMENT UNIQUE,
+    `id`        BINARY(16)  NOT NULL PRIMARY KEY,
+    `nickname`  VARCHAR(32) NOT NULL UNIQUE
+);
+
+CREATE TABLE `users_personal_config`
+(
+    `users_seq`     BIGINT      UNIQUE,
+    `users_id`      BINARY(16)  NOT NULL,
+    `new_nickname`  VARCHAR(32) NOT NULL
+
+    CONSTRAINT `uk_users_personal_config_users_seq` FOREIGN KEY (`users_seq`)
+        REFERENCES `users` (`seq`)
+    CONSTRAINT `fk_users_personal_config_users_id` FOREIGN KEY (`users_id`)
+        REFERENCES `users` (`id`)
+        ON DELETE CASCADE
+)
+----
++
+여기서 `users` 테이블의 `nickname` 컬럼을 `users_personal_config` 테이블의 `new_nickname` 컬럼 값으로 copy 하되,
+'users_id' 로 서로 연결한 레코드의 값을 복사하는, 즉 자기 자신의 값으로 복사하려면 다음과 같은 Query 를 작성하면 된다.
++
+[source, sql]
+----
+UPDATE `users_personal_config` upc
+    JOIN `users` u ON upc.`users_id` = u.`id`
+SET upc.`new_nickname`      = u.`nickname`
+WHERE u.`id` IN (?)
+----
++
+다음처럼 복잡하게 FOR EACH 를 작성하는 것 보다 훨씬 더 직관적이다. 어렵게 생각하지 말자!
++
+[source, sql]
+----
+DECLARE @userId BIGINT
+DECLARE @nickname DATETIME
+
+SET @userId = ?
+
+WHILE @userId <= ?
+BEGIN
+    SELECT @nickname = `nickname`
+    FROM `user`
+    WHERE `id` = @userId
+
+    UPDATE `users_personal_config`
+    SET `new_nickname` = @nickname
+    WHERE `users_id` = @userId
+
+    SET @userId = @userId + 1
+END
+----
