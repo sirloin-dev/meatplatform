@@ -379,15 +379,15 @@ CREATE TABLE `users`
 
 CREATE TABLE `users_personal_config`
 (
-    `users_seq`     BIGINT      UNIQUE,
+    `users_seq`     BIGINT      NOT NULL UNIQUE,
     `users_id`      BINARY(16)  NOT NULL,
     `new_nickname`  VARCHAR(32) NOT NULL
 
-    CONSTRAINT `uk_users_personal_config_users_seq` FOREIGN KEY (`users_seq`)
-        REFERENCES `users` (`seq`)
-    CONSTRAINT `fk_users_personal_config_users_id` FOREIGN KEY (`users_id`)
+    PRIMARY KEY (`users_id`)
         REFERENCES `users` (`id`)
         ON DELETE CASCADE
+    CONSTRAINT `fk_users_personal_config_users_seq` FOREIGN KEY (`users_seq`)
+        REFERENCES `users` (`seq`)
 )
 ----
 +
