@@ -520,3 +520,6 @@ val result = divider.divide(num1, num2)
 그리고 이를 편리하게 하려면 org.mockito.kotlin:mockito-kotlin 라이브러리를 쓰는 편이 좋다. 기존 mockito 의 `org.mockito.ArgumentMatchers.eq` 는 Java 기준이라 Kotlin 에서 쓰면 Null value exception 이 발생한다.
 +
 물론 Null value exception 문제는 회피방법이 어렵지 않기 때문에 라이브러리 없이 해결하는 방법도 가능하지만 matcher 를 일일히 구현해 주는 일은 매우 번거롭다. 하지만 mockito-kotlin 라이브러리는 그 귀찮은 일을 우리 대신 해 준다.
+
+-wongue: 'dart:io' 패키지를 활용하면, 간단한 codegen scrtip를 작성하기 쉽다. +
+추후 본대로의 빌드 스크립트를 jshell 에서 dart 로 대체하는것도 고려해봄직 한것 같다.
