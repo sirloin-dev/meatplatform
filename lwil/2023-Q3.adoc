@@ -465,3 +465,54 @@ class Person extends Equatable {
   List<Object> get props => [name];
 }
 ----
+
+[[section-202309-W3]]
+=== 2023년 9월 3주
+- hwan: Kotlin/JVM 에서 mockito 를 이용해 default nullable function 을 mock 할 때 주의사항:
++
+[source, kotlin]
+----
+fun divide(
+    num1: BigDecimal,
+    num2: BigDecimal,
+    onDivisionError: ((num1: BigDecimal, num2: BigDecimal) -> Unit)? = null
+): Future<Boolean>
+----
++
+선언한 `divide` 함수를 를 호출하는 production logic 이 다음과 같다고 할 때
++
+[source, kotlin]
+----
+val num1 = BigDecimal("10.0")
+val num2 = BigDecimal("1.0")
+
+val result = divisor.divide(num1, num2)
+----
++
+이를 kotlin 에서 mock 하려면:
++
+[source, kotlin]
+----
+`when`(divisor.divide(any(), any())).thenReturn(...)
+----
++
+으로 하기 마련인데,
++
+이 경우 실제로는 세번째 parameter 에 null 이 자동으로 들어가기 때문에, matcher 갯수가 맞지 않다는 예외와 함께 테스트가 실패한다. 그래서:
++
+[source, kotlin]
+----
+`when`(divisor.divide(any(), any(), any())).thenReturn(...)
+----
++
+로 두면 method call 이 mock 의 조건과 일치하지 않아 `thenReturn` 의 의도가 제대로 전달되지 않는 문제가 있다. 이런 경우에는:
++
+[source, kotlin]
+----
+`when`(divisor.divide(any(), any(), eq(null))).thenReturn(...)
+----
++
+로 mock 호출조건을 설정해야 하며 이를 편리하게 하려면 org.mockito.kotlin:mockito-kotlin 라이브러리를 쓰는 편이 좋다.
++
+라이브러리 없이 해결하기에는 matcher 를 일일히 구현해 주는 일이 매우 번거롭기 때문이다.
+
