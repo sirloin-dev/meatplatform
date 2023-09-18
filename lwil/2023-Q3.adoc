@@ -472,28 +472,33 @@ class Person extends Equatable {
 +
 [source, kotlin]
 ----
-fun divide(
-    num1: BigDecimal,
-    num2: BigDecimal,
-    onDivisionError: ((num1: BigDecimal, num2: BigDecimal) -> Unit)? = null
-): Future<Boolean>
+class DividerGranAlmacen {
+  fun divide(
+      num1: BigDecimal,
+      num2: BigDecimal,
+      onDivisionError: ((num1: BigDecimal, num2: BigDecimal) -> Unit)? = null
+  ): Future<Boolean>
+}
 ----
 +
 선언한 `divide` 함수를 를 호출하는 production logic 이 다음과 같다고 할 때
 +
 [source, kotlin]
 ----
+// org.mockito.kotlin.mock
+val divider = mock<DividerGranAlmacen>()
+
 val num1 = BigDecimal("10.0")
 val num2 = BigDecimal("1.0")
 
-val result = divisor.divide(num1, num2)
+val result = divider.divide(num1, num2)
 ----
 +
 이를 kotlin 에서 mock 하려면:
 +
 [source, kotlin]
 ----
-`when`(divisor.divide(any(), any())).thenReturn(...)
+`when`(divider.divide(any(), any())).thenReturn(...)
 ----
 +
 으로 하기 마련인데,
@@ -502,17 +507,16 @@ val result = divisor.divide(num1, num2)
 +
 [source, kotlin]
 ----
-`when`(divisor.divide(any(), any(), any())).thenReturn(...)
+`when`(divider.divide(any(), any(), any())).thenReturn(...)
 ----
 +
-로 두면 method call 이 mock 의 조건과 일치하지 않아 `thenReturn` 의 의도가 제대로 전달되지 않는 문제가 있다. 이런 경우에는:
+로 두면 method call 이 mock 의 조건과 일치하지 않아 `thenReturn` 의 의도가 제대로 전달되지 않는 문제가 있다. 이런 경우에는 다음과 같이 `eq` 를 써야 한다:
 +
 [source, kotlin]
 ----
-`when`(divisor.divide(any(), any(), eq(null))).thenReturn(...)
+`when`(divider.divide(any(), any(), eq(null))).thenReturn(...)
 ----
 +
-로 mock 호출조건을 설정해야 하며 이를 편리하게 하려면 org.mockito.kotlin:mockito-kotlin 라이브러리를 쓰는 편이 좋다.
+그리고 이를 편리하게 하려면 org.mockito.kotlin:mockito-kotlin 라이브러리를 쓰는 편이 좋다. 기존 mockito 의 `org.mockito.ArgumentMatchers.eq` 는 Java 기준이라 Kotlin 에서 쓰면 Null value exception 이 발생한다.
 +
-라이브러리 없이 해결하기에는 matcher 를 일일히 구현해 주는 일이 매우 번거롭기 때문이다.
-
+물론 Null value exception 문제는 회피방법이 어렵지 않기 때문에 라이브러리 없이 해결하는 방법도 가능하지만 matcher 를 일일히 구현해 주는 일은 매우 번거롭다. 하지만 mockito-kotlin 라이브러리는 그 귀찮은 일을 우리 대신 해 준다.
