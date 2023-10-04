@@ -19,3 +19,8 @@
 Kotlin standard library 에서는 이 문제를 link:https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/native-wasm/src/kotlin/collections/Collections.kt#L83[이렇게 해결]하고 있었다. 나는 처음 `shuffle` 이라는 문제를 받아들였을 때 `shuffle` 의 결과는 입력과 무조건 달라야 한다고 생각했었는데 따지고 보면 그럴 필요가 없다. 섞더라도 원본이 나올 수 있으니까. 즉, 처음부터 접근을 잘못하면 이 문제는 쓸데없이 복잡해 지는 문제라는 것을 알게 되었다. 참고로 Kotlin native 의 구현은 Fisher-Yates shuffle algorithm 을 참고하고 있는데, 이 로직은 시간 복잡도와 공간 복잡도가 O(`N`) 이며, 입력과 섞은 결과가 일치할 확률은 `1/N²` 으로 N 이 커질수록 같을 확률이 급격하게 0에 수렴하게 된다.
 +
 Java standard library 의 경우에는 조금 더 최적화를 먹여서, Input `N` 이 5 미만일 때는 공간 복잡도가 `1` 이 되는 구현을 쓰고 있다. 다만 이는 *모든 `List` 는 mutable* 이라는 Java 언어의 강한 가정 위에 성립하는 로직이므로 Kotlin/JVM 에서는 주의해야 한다.
+
+- wongue: Flutter 에서 Text Widget 이 화면에 글자를 그리기 위한 과정. +
+ `TextWidget Build` -> `RichText createRenderObject` -> `RenderParagraph` -> `TextPainter` -> `layout` -> `paint` -> `drawParagraph` -> `nativeParagraph._paint` -> `(impala engine)` -> `(grapic backend)` +
+impala engine 과 grapic backend(ex OpenGL ES) 안의 과정또한 flutter 내부의 과정과 비슷한 복잡도를 가진다. +
+단순히 글자를 그리는 동작도 이런 많은 인스턴스를 생성하고 상호작용해야하기 때문에, Flutter 에서 widget 의 불필요한 rebuild 를 줄이는것이 앱 퍼포먼스의 향상으로 이어지는 이유. +
