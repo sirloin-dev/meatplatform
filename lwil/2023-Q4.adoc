@@ -24,3 +24,13 @@ Java standard library 의 경우에는 조금 더 최적화를 먹여서, Input 
  `TextWidget Build` -> `RichText createRenderObject` -> `RenderParagraph` -> `TextPainter` -> `layout` -> `paint` -> `drawParagraph` -> `nativeParagraph._paint` -> `(impala engine)` -> `(grapic backend)` +
 impala engine 과 grapic backend(ex OpenGL ES) 안의 과정또한 flutter 내부의 과정과 비슷한 복잡도를 가진다. +
 단순히 글자를 그리는 동작도 이런 많은 인스턴스를 생성하고 상호작용해야하기 때문에, Flutter 에서 widget 의 불필요한 rebuild 를 줄이는것이 앱 퍼포먼스의 향상으로 이어지는 이유. +
+
+[[section-202310-W2]]
+=== 2023년 10월 2주
+- hwan: kotlin 에서 reflection 으로 어떤 `sealed class` 의 모든 하위 구현 타입들을 찾는 코드:
++
+[source, kotlin]
+----
+val allSubTypes = 
+    SomeSealedClass::class.nestedClasses.filter { it.isFinal && it.isSubclassOf(SomeSealedClass::class) }
+----
