@@ -34,3 +34,7 @@ impala engine 과 grapic backend(ex OpenGL ES) 안의 과정또한 flutter 내�
 val allSubTypes = 
     SomeSealedClass::class.nestedClasses.filter { it.isFinal && it.isSubclassOf(SomeSealedClass::class) }
 ----
+
+- wongue: 한 주의 시작을 월요일로 볼지, 일요일로 볼지 에 대한 국제 표준은 월요일이 한주의 시작이라고 한다. +
+한국에서 또한 이를 따라가기로 결정했다. link:https://e-ks.kr/streamdocs/view/sd;streamdocsId=72059203331956996[문서의 2.2.8 을 확인] +
+그럼에도 불구하고, google calender, ios calender, kakao calender 는 한 주의 시작을 일요일로 표현하는데, 이는 기독교 사회 전통이 강한 미국의 영향이라고 한다. +
