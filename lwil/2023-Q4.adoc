@@ -16,9 +16,9 @@
 === 2023년 10월 1주
 - hwan: 유명한 js 라이브러리인 lodash 에는 link:https://github.com/lodash/lodash/blob/main/src/sample.ts[sample] 과 link:https://github.com/lodash/lodash/blob/main/src/sampleSize.ts[sampleSize] 라는 로직이 있다. 테스트 뿐 아니라 이벤트 당첨자 추첨 같은 실제 비즈니스 로직에서도 종종 유용하게 사용했던 경험이 있다. 그런데 요즘 주로 사용하는 kotlin 에는 비슷한 함수가 없어 `Iterable<*>.shuffled().take(M)` 같은 호출을 해야 한다. 이 호출 chain 의 경우 입력 `Iterable` 의 크기를 `N` 이라고 하고, `take` 의 파라미터 크기를 `M` 이라 가정한다면, `M` < `N` 일수밖에 없음에도 시간과 공간 복잡도가 항상 `N` 이 나온다. 이 점이 이상하다고 생각해서, 시간과 공간 복잡도를 `M` 으로 줄여보려 했더니 Random Accessible `Iterable` 이라는 아주 한정적인 상황에서만 가능하다는 것을 알게 되었다. 왜냐면 `Iterable` 은 Random Access 가 불가능하기 때문에 `shuffle` 이 없는 `sample` 을 할 경우, 같은 `M` 에 대해 항상 같은 결과만 나오게 되어 로직이 그다지 쓸모 없게 된다.
 +
-Kotlin standard library 에서는 이 문제를 link:https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/native-wasm/src/kotlin/collections/Collections.kt#L83[이렇게 해결]하고 있었다. 나는 처음 `shuffle` 이라는 문제를 받아들였을 때 `shuffle` 의 결과는 입력과 무조건 달라야 한다고 생각했었는데 따지고 보면 그럴 필요가 없다. 섞더라도 원본이 나올 수 있으니까. 즉, 처음부터 접근을 잘못하면 이 문제는 쓸데없이 복잡해 지는 문제라는 것을 알게 되었다. 참고로 Kotlin native 의 구현은 Fisher-Yates shuffle algorithm 을 참고하고 있는데, 이 로직은 시간 복잡도와 공간 복잡도가 O(`N`) 이며, 입력과 섞은 결과가 일치할 확률은 `1/N²` 으로 N 이 커질수록 같을 확률이 급격하게 0에 수렴하게 된다.
+Kotlin standard library 에서는 이 문제를 link:https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/native-wasm/src/kotlin/collections/Collections.kt#L83[이렇게 해결]하고 있었다. 나는 처음 `shuffle` 이라는 문제를 받아들였을 때 `shuffle` 의 결과는 입력과 무조건 달라야 한다고 생각했었는데 따지고 보면 그럴 필요가 없다. 섞더라도 원본이 나올 수 있으니까. 즉, 처음부터 접근을 잘못하면 이 문제는 쓸데없이 복잡해 지는 문제라는 것을 알게 되었다. 참고로 Kotlin native 의 구현은 Fisher-Yates shuffle algorithm 을 참고하고 있는데, 이 로직은 시간 복잡도와 공간 복잡도가 O(`N`) 이며, 입력과 섞은 결과가 일치할 확률은 `1/N²` 으로 N 이 커질수록 `shuffle` 의 결과가 같을 확률이 급격하게 0에 수렴하게 된다.
 +
-Java standard library 의 경우에는 조금 더 최적화를 먹여서, Input `N` 이 5 미만일 때는 공간 복잡도가 `1` 이 되는 구현을 쓰고 있다. 다만 이는 *모든 `List` 는 mutable* 이라는 Java 언어의 강한 가정 위에 성립하는 로직이므로 Kotlin/JVM 에서는 주의해야 한다.
+https://github.com/openjdk/jdk/blob/jdk-21-ga/src/java.base/share/classes/java/util/Collections.java#L482:[Java standard library 의 경우]에는 조금 더 최적화를 먹여서, Input `N` 이 5 미만일 때는 공간 복잡도가 `1` 이 되는 구현을 쓰고 있다. 다만 이는 *모든 `List` 는 mutable* 이라는 Java 언어의 강한 가정 위에 성립하는 로직이므로 Kotlin/JVM 에서는 주의해야 한다.
 
 - wongue: Flutter 에서 Text Widget 이 화면에 글자를 그리기 위한 과정. +
  `TextWidget Build` -> `RichText createRenderObject` -> `RenderParagraph` -> `TextPainter` -> `layout` -> `paint` -> `drawParagraph` -> `nativeParagraph._paint` -> `(impala engine)` -> `(grapic backend)` +
@@ -42,11 +42,16 @@ val allSubTypes =
 - gon: java에서 os쓰레드와 java에서의 쓰레드가 있다. 그런데 java에서의 쓰레드를 부르는데 여러가지 이름이 있다. 여러 아티클을 보면 그린쓰레드, 유저쓰레드 등등등 java의 Thread를 부르는 이름이 제각각이었다.
 그런데 이번 가상쓰레드가 도입되면서 자바측에서 이름을 좀 정해준 느낌이 든다.
 가상쓰레드를 생성하는 팩토리 메서드의 이름이 다음과 같다
-```java
++
+[source, java]
+----
 Thread.ofVirtual() 
-```
+----
++
 그럼 기존의 쓰레드를 생성하는 팩토리 메서드는 뭘까?
-```java
+[source, java]
+----
 Thread.ofPlatform() 
-```
-이다. java에서 이제 플랫폼쓰레드 라는 이름을 좀 밀어주는것 같다
+----
+다. java에서 이제 플랫폼쓰레드 라는 이름을 좀 밀어주는것 같다
+
