@@ -38,3 +38,15 @@ val allSubTypes =
 - wongue: 한 주의 시작을 월요일로 볼지, 일요일로 볼지 에 대한 국제 표준은 월요일이 한주의 시작이라고 한다. +
 한국에서 또한 이를 따라가기로 결정했다. link:https://e-ks.kr/streamdocs/view/sd;streamdocsId=72059203331956996[문서의 2.2.8 을 확인] +
 그럼에도 불구하고, google calender, ios calender, kakao calender 는 한 주의 시작을 일요일로 표현하는데, 이는 기독교 사회 전통이 강한 미국의 영향이라고 한다. +
+
+- gon: java에서 os쓰레드와 java에서의 쓰레드가 있다. 그런데 java에서의 쓰레드를 부르는데 여러가지 이름이 있다. 여러 아티클을 보면 그린쓰레드, 유저쓰레드 등등등 java의 Thread를 부르는 이름이 제각각이었다.
+그런데 이번 가상쓰레드가 도입되면서 자바측에서 이름을 좀 정해준 느낌이 든다.
+가상쓰레드를 생성하는 팩토리 메서드의 이름이 다음과 같다
+```java
+Thread.ofVirtual() 
+```
+그럼 기존의 쓰레드를 생성하는 팩토리 메서드는 뭘까?
+```java
+Thread.ofPlatform() 
+```
+이다. java에서 이제 플랫폼쓰레드 라는 이름을 좀 밀어주는것 같다
