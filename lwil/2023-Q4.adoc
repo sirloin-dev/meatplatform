@@ -49,9 +49,9 @@ Thread.ofVirtual()
 ----
 +
 그럼 기존의 쓰레드를 생성하는 팩토리 메서드는 뭘까?
++
 [source, java]
 ----
 Thread.ofPlatform() 
 ----
 다. java에서 이제 플랫폼쓰레드 라는 이름을 좀 밀어주는것 같다
-
