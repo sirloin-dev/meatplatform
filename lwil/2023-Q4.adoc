@@ -55,3 +55,17 @@ Thread.ofVirtual()
 Thread.ofPlatform() 
 ----
 다. java에서 이제 플랫폼쓰레드 라는 이름을 좀 밀어주는것 같다
+
+- jaewon: 새로운 기능의 개발을 처음부터 맡게 되면서 배우게 된 것들이 많아 정리해 보았습니다.
++
+도메인 주도 개발::
+API 문서를 참고하여 Remote Service부터 구현한 뒤에 Repository, ViewModel, View의 순서대로 차근차근 개발해 나가면 된다고 생각했었는데, 먼저 구현해 둔 Remote Service와 그 DTO에 과도하게 의존하게 되어 Domain Object와 Repository를 정의할 때 어려움을 겪게 되었다.
++
+도메인 주도 개발의 관점에서는 해결하고자 하는 문제의 주된 개념인 Domain Object를 개발 의도에 맞게 정의하는 것이 가장 우선시되어야 하며, 이를 기반으로 Repository와 ViewModel을 구현하여 비즈니스 로직이 원활하게 작동할 수 있도록 해야 한다. Remote Service와 그 DTO는 말 그대로 Data를 옮기는, 부수적인 역할을 할 뿐이다.
++
+국제화/지역화::
+국제화/지역화 관점에서 모든 문자 리터럴은 다른 국가에서 해당 국가의 언어로 대체될 수 있기 때문에 리소스로 추출해 관리하는 게 좋고, 내용이 같더라도 다른 맥락을 지닌 리소스는 따로 분리해 둬야 한다.
++
+기타::
+* 위젯을 분리할 때, Helper Method보다는 Widget으로 분리하는 게 좋다.
+* 테스트 코드: Bad Case에 대해서도 사양에 포함되어야 한다.
