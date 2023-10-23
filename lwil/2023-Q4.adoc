@@ -80,3 +80,8 @@ API 문서를 참고하여 Remote Service부터 구현한 뒤에 Repository, Vie
 [[section-202310-W4]]
 === 2023년 10월 4주
 - hwan: 노르웨이는 국어가 2개인 나라라고 한다. 한국인 입장에서는 잘 상상이 되지 않지만... 각각 Bokmål(보크몰), Nynorsk(뉘노르스크) 라고 하는데 보크몰은 덴마크, 스웨덴어의 잔재가 많이 남은 언어, 뉘노르스크는 옛 노르웨이어를 최대한 복원한 말이라고 한다. 두 언어 사이에는 뜻이 거의 통하지 않는단다. 마치 우리나라의 본토말과 제주도말의 차이 같은걸까?
+
+- wongue: 
+link:https://developer.chrome.com/blog/from-webgl-to-webgpu/#canvas-handling[참고자료]를 보면, 한 WebDocs 안에서 활용할 수 있는 WebGL canvas의 최대 개수는 16개라고 한다. +
+그렇다면 flutter web 또한 graphic backend 를 webGL 을 사용하고 있을태니, 한 Docs 안에서 최대 16개의 flutter web app 을 띄울 수 있지 않을까? 란 궁금증이 생겼는데, +
+flutter web embedding 은 한 web docs 안에서 하나의 캔버스에만 가능한듯 하다. (iframe 등을 사용하지 않는다면.) 
