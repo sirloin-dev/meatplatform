@@ -100,3 +100,167 @@ push 모델과 pull모델이 있는데 각각의 특징은 다음과 같다
 ```
 대형 서비스에서는 해당 두가지 모델을 섞어 쓰는것으로 알고있습니다.
 유명인의 경우 pull모델을 적용시켜 리소스를 절약하고 일반사용자의 경우 push모델을 적용시켜 속도를 개선하는 방식으로 알고있습니다.
+
+[[section-202310-W5]]
+=== 2023년 10월 5주
+- hwan: JVM 17, Spring 5.3.x 환경에서 Spring data mongo 쓸 때 Custom converter 를 등록하기 위해 `MappingMongoConverter` 를 직접 @Bean 으로 만들 때의 주의사항
++
+java.time.Instant 를 필드로 쓰고 있는 `@Document` 를 사용할 때, MongoDb 환경설정을 요런 식으로 코딩할 경우 
++
+[source, kotlin]
+----
+@Document("my_mongo_document")
+class MyMongoDocument(
+    val createdAt: java.time.Instant
+)
+
+@Configuration
+@EnableMongoRepositories
+class MongoConfig {
+    @Bean
+    fun mappingMongoConverter(mongoDbFactory: SimpleMongoClientDatabaseFactory): MappingMongoConverter {
+        return MappingMongoConverter(DefaultDbRefResolver(mongoDbFactory), MongoMappingContext())
+    }
+}
+----
++
+이런 exception 이 발생
++
+[source, shell]
+----
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'myMongoRepository' defined in com.example.MyMongoRepository defined in @EnableMongoRepositories declared on com.example.appconfig.MongoConfig: Invocation of init method failed; nested exception is java.lang.reflect.InaccessibleObjectException: Unable to make private java.time.Instant(long,int) accessible: module java.base does not "opens java.time" to unnamed module @27082746
+----
++
+일단 문제 해결하려면 다음과 같이 코딩해야함. `MongoMappingContext` 를 Spring Boot 기본 설정으로부터 주입받아야 해결할 수 있음.
++
+[source, kotlin]
+----
+@Configuration
+@EnableMongoRepositories
+class MongoConfig {
+    @Bean
+    fun mappingMongoConverter(mongoDbFactory: SimpleMongoClientDatabaseFactory, mongoMappingContext: MongoMappingContext): MappingMongoConverter {
+        return MappingMongoConverter(DefaultDbRefResolver(mongoDbFactory), mongoMappingContext)
+    }
+}
+----
++
+`org.springframework.boot.autoconfigure.data.mongo.MongoDataConfiguration` 내부의 `MongoMappingContext` `@Bean` 생성과정에서 발생한 stack trace 를 따라가보면 문제 원인지점을 짐작할 수 있음
++
+[source, shell]
+----
+java.lang.reflect.InaccessibleObjectException: Unable to make private java.time.Instant(long,int) accessible: module java.base does not "opens java.time" to unnamed module @27082746
+    at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+    at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+    at java.base/java.lang.reflect.Constructor.checkCanSetAccessible(Constructor.java:188)
+    at java.base/java.lang.reflect.Constructor.setAccessible(Constructor.java:181)
+    at org.springframework.util.ReflectionUtils.makeAccessible(ReflectionUtils.java:202)
+    ... 생략 ...
+    at org.springframework.data.mongodb.core.mapping.MongoMappingContext.createPersistentEntity(MongoMappingContext.java:100)
+    at org.springframework.data.mongodb.core.mapping.MongoMappingContext.createPersistentEntity(MongoMappingContext.java:41)
+    at org.springframework.data.mapping.context.AbstractMappingContext.doAddPersistentEntity(AbstractMappingContext.java:430)   << 이 지점 주목
+    at org.springframework.data.mapping.context.AbstractMappingContext.addPersistentEntity(AbstractMappingContext.java:406)
+    ... 생략 ...
+----
++
+그리고 Spring data mongo 의 기본 `MongoMappingContext` `@Bean` 구현은 다음과 같은데,
++
+[source, java]
+----
+class MongoDataConfiguration {
+    @Bean
+    @ConditionalOnMissingBean
+    MongoCustomConversions mongoCustomConversions() {
+        return new MongoCustomConversions(Collections.emptyList());
+    }
+}
+
+public class MongoCustomConversions extends org.springframework.data.convert.CustomConversions {
+    private static final StoreConversions STORE_CONVERSIONS;
+
+    static {
+        // ... 생략 ...
+
+        STORE_CONVERSIONS = StoreConversions.of(MongoSimpleTypes.HOLDER, STORE_CONVERTERS);     // MongoSimpleTypes 에 주목
+    }
+
+    // 생략
+}
+----
++
+`org.springframework.data.mongodb.core.mapping.MongoSimpleTypes` 에는 `java.time.Instant` 변환 규칙이 추가되어 있고, 이 구현은 아래에서 확인할 수 있다.
++
+[source, java]
+----
+public class MongoCustomConversions extends org.springframework.data.convert.CustomConversions {
+    // ... 생략 ...
+    /**
+     * Create a new {@link MongoCustomConversions} instance registering the given converters.
+     *
+     * @param converters must not be {@literal null}.
+     */
+    public MongoCustomConversions(List<?> converters) {
+        this(MongoConverterConfigurationAdapter.from(converters));
+    }
+
+    /**
+     * Create a new {@link MongoCustomConversions} given {@link MongoConverterConfigurationAdapter}.
+     *
+     * @param conversionConfiguration must not be {@literal null}.
+     * @since 2.3
+     */
+    protected MongoCustomConversions(MongoConverterConfigurationAdapter conversionConfiguration) {
+        super(conversionConfiguration.createConverterConfiguration());  // createConverterConfiguration 호출에 주목
+    }
+
+    public static class MongoConverterConfigurationAdapter {
+        // ... 생략 ...
+        private boolean useNativeDriverJavaTimeCodecs = false;
+
+        /**
+         * Create a {@link MongoConverterConfigurationAdapter} using the provided {@code converters} and our own codecs for
+         * JSR-310 types.
+         *
+         * @param converters must not be {@literal null}.
+         * @return
+         */
+        public static MongoConverterConfigurationAdapter from(List<?> converters) {
+
+            Assert.notNull(converters, "Converters must not be null");
+
+            MongoConverterConfigurationAdapter converterConfigurationAdapter = new MongoConverterConfigurationAdapter();
+            converterConfigurationAdapter.useSpringDataJavaTimeCodecs();
+            converterConfigurationAdapter.registerConverters(converters);
+
+            return converterConfigurationAdapter;
+        }
+
+        ConverterConfiguration createConverterConfiguration() {
+            // ... 생략 ...
+
+            /*
+             * We need to have those converters using UTC as the default ones would go on with the systemDefault.
+             */
+            List<Object> converters = new ArrayList<>(STORE_CONVERTERS.size() + 3);
+            converters.add(DateToUtcLocalDateConverter.INSTANCE);
+            converters.add(DateToUtcLocalTimeConverter.INSTANCE);
+            converters.add(DateToUtcLocalDateTimeConverter.INSTANCE);
+            converters.addAll(STORE_CONVERTERS);
+
+            StoreConversions storeConversions = StoreConversions
+                    .of(new SimpleTypeHolder(JAVA_DRIVER_TIME_SIMPLE_TYPES, MongoSimpleTypes.HOLDER), converters);
+
+            return new ConverterConfiguration(storeConversions, this.customConverters, convertiblePair -> {
+                // ... 생략 ...
+            }, this.propertyValueConversions);
+        }
+    }
+}
+----
++
+Spring data mongo 가 이 문제를 해결하는 과정은 다음과 같다.
++
+1. `MongoCustomConversions(List)` 생성자 호출
+2. `protected` 생성자는 기본 `MongoConverterConfigurationAdapter` 구현 인스턴스를 생성하고 `createConverterConfiguration()` 호출
+3. 별다른 `MongoConverterConfigurationAdapter` 설정이 없기 때문에 `MongoCustomConversions` 생성시 등록된 `STORE_CONVERTERS` 를 변환규칙에 추가
+4. `STORE_CONVERTERS` 내에 있는 `java.time.Instant` 변환규칙이 자동으로 실행
