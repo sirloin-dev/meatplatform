@@ -264,3 +264,10 @@ Spring data mongo 가 이 문제를 해결하는 과정은 다음과 같다.
 2. `protected` 생성자는 기본 `MongoConverterConfigurationAdapter` 구현 인스턴스를 생성하고 `createConverterConfiguration()` 호출
 3. 별다른 `MongoConverterConfigurationAdapter` 설정이 없기 때문에 `MongoCustomConversions` 생성시 등록된 `STORE_CONVERTERS` 를 변환규칙에 추가
 4. `STORE_CONVERTERS` 내에 있는 `java.time.Instant` 변환규칙이 자동으로 실행
+
+- gon : 카프카가 흔히들 빠르다고 한다. 카프카는 어떻게 데이터를 빠르게 처리할까?
+답은 zero copy라는 방법을 써서 빠르게 데이터를 보낼수있다
+좀 더 자세히 설명하면
+기존의 전송 방식은 disk - os버퍼 -> app버퍼 -> 소켓버퍼 -> nic 버퍼라면
+zero-copy는 disk -> os버퍼 -> nic버퍼로 바로 데이터를 복사시킨다
+java에선 transferTo() 메서드를 이용하면 된다
