@@ -271,3 +271,6 @@ Spring data mongo 가 이 문제를 해결하는 과정은 다음과 같다.
 기존의 전송 방식은 disk - os버퍼 -> app버퍼 -> 소켓버퍼 -> nic 버퍼라면
 zero-copy는 disk -> os버퍼 -> nic버퍼로 바로 데이터를 복사시킨다
 java에선 transferTo() 메서드를 이용하면 된다
+
+- wongue: unicode 의 UTF-16 인코딩에서는 endian 문제가 발생하는데, 자릿수를 역순으로 읽을건가 정순으로 읽어야 하냐의 문제다. +
+이때 endian 이라는 단어는 조너선 스위프트의 '걸리버 여행기' 에서 유래했다고 한다.
