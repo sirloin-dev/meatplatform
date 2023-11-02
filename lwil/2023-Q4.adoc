@@ -277,4 +277,19 @@ java에선 transferTo() 메서드를 이용하면 된다
 
 - jaewon: Dart에서 변수를 선언할 때, `late` 키워드를 활용하면 해당 변수의 초기화를 뒤로 미룰 수 있다. 예를 들어, 비동기 통신의 결괏값이 할당되기 전까지 변수의 초기화를 지연시키고 싶은데, 해당 변수가 non-nullable하게 유지되어야 한다면 `late` 키워드로 그 변수에 "늦은" 초기화를 허용할 수 있다.
 +
-다만 ``late``가 적용된 변수에 대해서는 Compile-time에서의 검사가 생략되기 때문에, 만약 Runtime에서 초기화/할당에 성공하지 못한 변수에 접근하게 된다면 그 즉시 예외가 발생한다. 따라서 Compile-time에서 진행될 수 있는 검사가 불필요하게 Runtime으로 미뤄지지 않도록 ``late``의 사용을 최소화하는 것이 좋다.
+다만 ``late``가 적용된 변수에 대해서는 Compile-time에서의 검사가 생략되기 때문에, 만약 Runtime에서 초기화/할당에 성공하지 못한 변수에 접근하게 된다면 그 즉시 예외가 발생한다. 따라서 Compile-time에서 진행될 수 있는 검사가 불필요하게 Runtime으로 미뤄지지 않도록 ``late``의 사용을 최소화하는 것이 좋다. +
+
+[[section-202310-W6]]
+=== 2023년 10월 6주
+
+- wongue: dart/Flutter WebApp 에서는, 의존하는 패키지가 너무 많아지면 main.dart(); 의 초기화 시간이 늘어나는 문제가 있다. +
+이는 패키지 임포트를 deferred 로 선언하며 일부분 해결 할 수 있다.+
+[source ,dart]
+----
+import 'package:somePackagename.dart' deferred as SomePack; // 이렇게 선언하고
+
+....codes...
+
+// 필요한 시점에서 이런식으로 lazy하게 로딩할 수 있다.
+SomePack.loadLibrary();
+----
