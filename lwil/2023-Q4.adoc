@@ -1,4 +1,4 @@
-= 2023년 3분기 10월-12월 LWIL(Last week I learnt) 모음
+= 2023년 4분기 10월-12월 LWIL(Last week I learnt) 모음
 // Metadata:
 :description: Last Week I Learnt
 :keywords: study, til, lwil
@@ -66,9 +66,11 @@ API 문서를 참고하여 Remote Service부터 구현한 뒤에 Repository, Vie
 국제화/지역화::
 국제화/지역화 관점에서 모든 문자 리터럴은 다른 국가에서 해당 국가의 언어로 대체될 수 있기 때문에 리소스로 추출해 관리하는 게 좋고, 내용이 같더라도 다른 맥락을 지닌 리소스는 따로 분리해 둬야 한다.
 +
-기타::
-* 위젯을 분리할 때, Helper Method보다는 Widget으로 분리하는 게 좋다.
-* 테스트 코드: Bad Case에 대해서도 사양에 포함되어야 한다.
+Flutter::
+위젯을 분리할 때, Helper Method보다는 Widget으로 분리하는 게 좋다.
++
+테스트 코드::
+Bad Case에 대해서도 사양에 포함되어야 한다!
 
 [[section-202310-W3]]
 === 2023년 10월 3주
@@ -304,3 +306,42 @@ SomePack.loadLibrary();
 가령 Spring boot Test 에서 `@DataJpaTest` 에 포함된 `@Transactional` 때문에 JPA 조회가 실제 DB 수정 결과와 다른 경우 em flush, clear 를 해 줘야 한다. 왜냐면 entityManager 에 attach 한 상태인 객체는 DB 에서 읽어오지 않기 때문.
 +
 문제는 이런 사실을 사전에 충분히 인지하지 않으면 갑작스런 테스트 실패를 대응할 방법이 없다. 그래서 평소에 Cleanup 을 잘 하는 편이 차라리 낫다.
+
+- jaewon:
++
+`late` keyword in TypeScript::
+먼저, Dart 공식 문서에 소개된 `late` 키워드 관련 예제를 보자. (link:https://dart.dev/null-safety/understanding-null-safety#late-variables[출처])
++
+[source, dart]
+----
+class Coffee {
+  late String _temperature;
+
+  void heat() { _temperature = 'hot'; }
+  void chill() { _temperature = 'iced'; }
+
+  String serve() => _temperature + ' coffee';
+}
+----
++
+위 예제는 Dart에서 제공하는 `late` 키워드를 사용하여 `_temperature` 변수의 초기화를 뒤로 미루고 있다. 이렇게 하면 `_temperature` 변수를 non-nullable하게 유지하면서 초기화를 뒤로 미룰 수 있다.
++
+위 예제를 TypeScript로 옮기면 다음과 같다. (link:https://stackoverflow.com/questions/66843040[출처])
++
+[source, typescript]
+----
+class Coffee {
+  private _temperature!: string; // Note the !
+
+  heat() { this._temperature = "hot"; }
+  chill() { this._temperature = "iced"; }
+
+  serve() {
+    return this._temperature + ' coffee';
+  }
+}
+----
++
+``!``를 활용하면 TypeScript에서도 `_temperature` 변수를 non-nullable하게 유지한 채 초기화를 뒤로 미룰 수 있는 것 같다.
++
+단, TypeScript에서는 초기화/할당에 성공하지 못한 변수에 접근하더라도 해당 변수의 값을 `undefined`로 반환하기 때문에 (Dart에서와 달리) Runtime Error가 발생하지 않는다.
