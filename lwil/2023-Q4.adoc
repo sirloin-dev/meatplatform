@@ -300,3 +300,7 @@ SomePack.loadLibrary();
 . Medium Test 가 성공했다고 해서 내 로직이 제대로 돌 거라는 착각 금지. 테스트 스케일 내의 `@Transactional` 때문에 된 것일 수도 있다. Medium Test 로 검증한 조회로직이라 하더라도 Large Test 에서 이용자 시나리오 기반으로 한 번 더 확인하는 편이 정신건강에 이롭다.
 +
 . `@Transactional` 을 이용한 auto rollback 을 너무 믿지 말라는 것. 프로젝트 구조가 복잡해지고, JPA 와 JdbcTemplate 를 이용한 Raw Query, MongoDB, Redis, Neo4j 등 Persistent storage 의 종류가 다양해 지면 데이터의 정확한 보존 및 제거 경계가 애매해지기 쉽다. 특히 어떤 Test 에서 Persistent storage 에 write 를 했다면, '`@Transactional` 이 있으니까 cleanup 을 안 해도 괜찮아~' 같은 생각은 위험할 수 있다. 프로젝트가 한참 복잡해 진 뒤에 잘 되던 테스트가 갑자기 실패할 수 있는데, 가령 test 갯수가 2000개라면 2000개를 다 돌리는 중에 문제가 발생하기 쉽상이다. 이 경우 문제 원인을 찾는 과정은 정말 지옥이다.
++
+가령 Spring boot Test 에서 `@DataJpaTest` 에 포함된 `@Transactional` 때문에 JPA 조회가 실제 DB 수정 결과와 다른 경우 em flush, clear 를 해 줘야 한다. 왜냐면 entityManager 에 attach 한 상태인 객체는 DB 에서 읽어오지 않기 때문.
++
+문제는 이런 사실을 사전에 충분히 인지하지 않으면 갑작스런 테스트 실패를 대응할 방법이 없다. 그래서 평소에 Cleanup 을 잘 하는 편이 차라리 낫다.
