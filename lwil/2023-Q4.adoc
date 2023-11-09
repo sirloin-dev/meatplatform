@@ -364,3 +364,32 @@ fun doSomething(a: Duration)
 fun doSomething_Mangling(a: Long)
 ```
 value class의 객체가 사라지고 래핑된 프로퍼티로 변환합니다
+
+[[section-202311-W2]]
+=== 2023년 11월 2주
+- wongue: Programming Lang 에는 두 종류의 변수가 있다. Lvalue, Rvalue. +
+이름의 기원은 'left' vlaue, 'right' value 로 부터 시작했지만, 현재에는 의미가 조금더 확장되어 쓰이고 있다. +
+Lvalue 는 표현식 이후에도 접근, 수정 할 있는 값을 의미한다.
+Rvalue 는 표현식 이후에는 접근, 수정이 불가능한 값을 의미한다.
+예를 들면,
+``` dart
+x /* lvalue */ = 3 /* rvalue */; 
+x /* lvalue */ = x + 3 /* rvalue */;
+// '3' 과 'x + 3' 이 rvalue 임을 단적으로 증명하는 법.
+3 = x;
+x + 3 = 3;
+// 두 식 모두 rvalue 에 값을 지정하려고 시도하였기 때문에 문법오류가 발생한다.
+```
+
+비슷한 이유에서 cpp에서는
+``` c
+ ++x // 증가된 자신을 반환하기 때문에 lvalue.
+ x++ // 증가된 복사본을 반환하기 때문에 rvalue.
+
+ &(++x)// 는 가능하지만,
+ &(x++)// 가 불가능한 이유는 & operator 가 Lvalue 를 요구하기 때문이다.
+
+ // p.s cpp 11 에서부턴 && 으로 rvalue 를 참조 할 수 있는 opeartor 가 있다고 한다.
+ &&(x++)
+ &&(++x)
+```
