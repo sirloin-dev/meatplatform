@@ -372,17 +372,21 @@ value class의 객체가 사라지고 래핑된 프로퍼티로 변환합니다
 Lvalue 는 표현식 이후에도 접근, 수정 할 있는 값을 의미한다.
 Rvalue 는 표현식 이후에는 접근, 수정이 불가능한 값을 의미한다.
 예를 들면,
-``` dart
++
+[source,dart]
+----
 x /* lvalue */ = 3 /* rvalue */; 
 x /* lvalue */ = x + 3 /* rvalue */;
 // '3' 과 'x + 3' 이 rvalue 임을 단적으로 증명하는 법.
 3 = x;
 x + 3 = 3;
 // 두 식 모두 rvalue 에 값을 지정하려고 시도하였기 때문에 문법오류가 발생한다.
-```
-
+----
++
 비슷한 이유에서 cpp에서는
-``` c
++
+[source,c]
+----
  ++x // 증가된 자신을 반환하기 때문에 lvalue.
  x++ // 증가된 복사본을 반환하기 때문에 rvalue.
 
@@ -392,4 +396,63 @@ x + 3 = 3;
  // p.s cpp 11 에서부턴 && 으로 rvalue 를 참조 할 수 있는 opeartor 가 있다고 한다.
  &&(x++)
  &&(++x)
-```
+----
+
+- hwan: enum 과 sealed type 들은 단일 타입으로 표현하되 파라미터만 다른 경우에 타입을 한정시키는 용도로 매우 유용하다(enum 은 파라미터의 갯수가 같아야 하고, sealed type 은 그런 제약이 없어 더욱 강력함). 문제는 enum 과 sealed type 의 미묘한 특성 차이 때문에 어떤 random enum value 를 뽑아내는 코드인:
++
+[source,kotlin]
+----
+inline fun <reified T : Enum<T>> randomEnum(): T = enumValues<T>().random()
+----
++
+에 비해 random sealed type 을 만드려면, 1. 어떤 타입의 sealed inheritant 들을 모두 알아야 하고, 2. 개별 요소들의 생성 방법을 임의의 constructor 를 하나 골라서 만들던지 또는 생성 방법을 주입받아야 한다. 위 예시에서의 `randomEnum` 은 sealed type 에서의 step 2 에 해당하는 제약 사항이 없고, 요소들을 모두 알아내는 방법도 `.values()`(Kotlin 1.8 이하), `.entries`(Kotlin 1.9 이상) 로 고정되어 있어 상당히 수월하다. 반면, Sealed type 인 경우에서는 step 1 부터가 쉽지 않다. 그런데 Step 1 을 쉽게 할 수 있도록 Kotlin 에서는 다음과 같은 API 를 제공한다:
++
+[source,kotlin]
+----
+public interface KClass<T : Any> : KDeclarationContainer, KAnnotatedElement, KClassifier {
+    // ... 생략
+    /**
+     * The list of the immediate subclasses if this class is a sealed class, or an empty list otherwise.
+     */
+    @SinceKotlin("1.3")
+    public val sealedSubclasses: List<KClass<out T>>
+}
+----
++
+따라서 '어떤 random enum 을 뽑아줘' 와 비슷한 의도인 '어떤 Sealed type 의 random instance 를 뽑아줘' 를 이런 식으로 구현할 수 있다.
++
+[source,kotlin]
+----
+sealed interface Button {
+    val label: String
+}
+
+class OkButton(
+    override val label: String,
+    onClick: (OkButton) -> Unit
+) : Button
+
+class CancelButton(override val label: String): Button
+
+fun <T : Button> randomButton(buttonClass: KClass<T> = Button::class.sealedSubclasses.random()): Button {
+    val instance = when(buttonClass) {
+        OkButton::class -> OkButton(label = randomLabel(), onClick = { _ -> })
+        CancelButton::class -> CancelButton(label = randomLabel())
+        else -> throw IllegalArgumentException("$type 을 ${ActionButton::class} 로 변환할 Mock 규칙이 없습니다.")
+    }
+    
+    /*
+     * Button 의 하위타입을 추가해도 위의 when 구문 내의 else 조건으로 인해 컴파일 타임 체크가 이뤄지지 않습니다. 이 문제를 해결하기 위한 코드입니다.
+     * Production 에 써도 성능에 손해는 없지만 예외 flow 로 가는 순간 장애로 이어지게 되니 가급적 테스트 코드에서만 이런 기법을 쓰는게 좋습니다.
+     */
+    @Suppress("UNUSED_EXPRESSION")
+    when(it) {
+        is OkButton -> true
+        is CancelButton -> true
+    }
+
+    return instance
+}
+----
++
+(주로 test 또는 framework code 에서) static 타이밍에 어떤 sealed type instance 를 구할 방법이 필요할 때, 이 방법을 쓰면 좋을 것 같다.
