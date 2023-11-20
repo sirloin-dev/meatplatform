@@ -480,9 +480,9 @@ fun <T : Button> randomButton(buttonClass: KClass<T> = Button::class.sealedSubcl
 
 - gon: 최근들어 공식문서를 번역해보면서 공부하고있는데 몰랏던 세밀한 디테일 같은것을 확인하게 된다. 
 Spring에서 ApplicationContext는 BeanFactory의 하위 인터페이스이다. BeanFactory를 확장하면서 대표적으로 4가지 기능이 추가되었다
- ```
-- Easier integration with Spring’s AOP features(스프링 Aop와 더 쉬운 통합)
-- Message resource handling (for use in internationalization)(메시지 리소스 처리)
-- Event publication (이벤트 개시)
-- Application-layer specific contexts such as the WebApplicationContext for use in web applications. (웹 응용 프로그램에서 사용하는 WebApplicationContext와 같은 응용 프로그램 레이어별 특정 컨텍스트.)
+```
+1 Easier integration with Spring’s AOP features(스프링 Aop와 더 쉬운 통합)
+2 Message resource handling (for use in internationalization)(메시지 리소스 처리)
+3 Event publication (이벤트 개시)
+4 Application-layer specific contexts such as the WebApplicationContext for use in web applications. (웹 응용 프로그램에서 사용하는 WebApplicationContext와 같은 응용 프로그램 레이어별 특정 컨텍스트.)
 ```
