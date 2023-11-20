@@ -477,3 +477,10 @@ fun <T : Button> randomButton(buttonClass: KClass<T> = Button::class.sealedSubcl
 
 - wongue: Dart lang 은 놀랍게도 ecma 표준에서 정의된 언어이다. link:https://ecma-international.org/publications-and-standards/standards/ecma-408/[ecma408] 에서 이를 확인 할 수 있다. +
 하지만, 표준에서 이야기하는 Dart lang 의 버전은 Dart 1.0 으로, 이후 버전에 관련해서 최신화는 이루어지지 않고 있다.
+
+- gon: 최근들어 공식문서를 번역해보면서 공부하고있는데 몰랏던 세밀한 디테일 같은것을 확인하게 된다. 
+Spring에서 ApplicationContext는 BeanFactory의 하위 인터페이스이다. BeanFactory를 확장하면서 대표적으로 4가지 기능이 추가되었다
+- Easier integration with Spring’s AOP features(스프링 Aop와 더 쉬운 통합)
+- Message resource handling (for use in internationalization)(메시지 리소스 처리)
+- Event publication (이벤트 개시)
+- Application-layer specific contexts such as the WebApplicationContext for use in web applications. (웹 응용 프로그램에서 사용하는 WebApplicationContext와 같은 응용 프로그램 레이어별 특정 컨텍스트.)
