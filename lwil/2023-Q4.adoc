@@ -486,3 +486,14 @@ Spring에서 ApplicationContext는 BeanFactory의 하위 인터페이스이다. 
 3 Event publication (이벤트 개시)
 4 Application-layer specific contexts such as the WebApplicationContext for use in web applications. (웹 응용 프로그램에서 사용하는 WebApplicationContext와 같은 응용 프로그램 레이어별 특정 컨텍스트.)
 ```
+
+[[section-202311-W3]]
+=== 2023년 11월 3주
+
+- gyeongtae: PR Auto close란 Github에 올라와 있는 PR이 일련의 작업으로 인해 저절로 close 되는 현상을 말한다. 발생하는 시나리오는 다음과 같다. 
+
+feature -> main PR 생성되어있는 환경에서
+1. 로컬 환경에서 feature branch를 main에 merge 후 remote main branch에 push 함
+2. 로컬 또는 github UI에서 base branch를 삭제
+
+더 다양한 사례가 있지만 현재 우리 github flow에선 main만을 사용하고 여러 브랜치에 PR 올릴 일이 없기 때문에 해당 case를 조심해야한다.
