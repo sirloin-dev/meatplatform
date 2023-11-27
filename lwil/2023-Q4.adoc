@@ -504,7 +504,7 @@ feature -> main PR 생성되어있는 환경에서
 - wongue: 소고기 결함육중의 '근염'이 포함된 하자육의 의미는 정말 상품 근조직에 염증이 있는 상태를 의미하는것이 아닌, +
 염증등 다양한 이유로 인해 상품 내 근조직이 변성, 괴사되어 대체 결합조직인 지방으로 치환되어있는 상태를 의미한다. link:https://blog.naver.com/zzanggem/220723456942[자료] +
 그렇다면 사람에게도 이와 같은 현상이 일어 날수 있을까? 하는 의문이 들어 조금 찾아본 결과, 충분히 발생 가능하며 병명을 '근지방증' 이라고 부른다고 한다. +
-근지방증이 발병할 경우, 10년 내 사망률이 무려 10%(10%p 가 아니다. 독해애 주의하자) 나 올라가는 등 흡연, 당뇨병과 비등할정도로 장기 생존률과 안좋은 연관관계를 가진다고 한다. +
+근지방증이 발병할 경우, 10년 내 사망률이 무려 10%(10%p 가 아니다. 독해에 주의하자) 나 올라가는 등 흡연, 당뇨병과 비등할정도로 장기 생존률과 안좋은 연관관계를 가진다고 한다. +
 link:https://m.health.chosun.com/svc/news_view.html?contid=2023051901440[관련 기사]
 
 - hwan: 일산에서 자유로 따라 올라가다 보면 임진강 만나는 지점부터 철조망이 보이기 시작한다. 그게 휴전선(서부전선) 시작점이란다. 어릴 때 이후 간만에 가봤는데 서울이 최전방과 엄청 가깝다는 사실, 자유로에 이정표에 붙어있는 개성(평양) 방면 이라는 안내 표지 등을 보면 우리는 언제까지 분단국가로 살아야 하지 같은 생각들을 갖게 한 주말이었다.
@@ -512,3 +512,13 @@ link:https://m.health.chosun.com/svc/news_view.html?contid=2023051901440[관련 
 - gon: 스프링에는 depends-on이라는 어노테이션이 있다
 depends-on이 사용되는 빈은 초기화 되기전에 하나 이상의 빈이 명식적으로 초기화 되도록 강제합니다. 
 추가로 몰랏던것은 depends-on을 이용하면 종료 순서도 제어 할 수 있다는것에 놀랏다. 초기화때 종속성과 싱글톤 빈의 경우에는 dependency during destruction을 지정 할수 있다한다.
+
+
+[[section-202311-W4]]
+=== 2023년 11월 4주
+
+- wongue: `Iterable<T>.gernerate(), Iterable<T>.map()` 로 생성된 Iterable type 들은 (List, Map, Set 등이 아닌, Iterable 인스턴스의 상황을 말한다.), 순회할때 마다 iterator 를 다시 실행한다. +
+즉, `final Iterable<int> testIterable = Iterable<int>.gernerate(3, (_) => Random.nextInt());` 같은걸 만들어놓고 +
+`print(testIterable); print(testIterable);` 같은 이터러블 참조에 두번 접근할 때 동등성이 보장되지 않는다. +
+그 이유는 Iterable 의 정의된 스펙이 그렇기 때문. link:https://api.dart.dev/stable/3.2.1/dart-core/Iterable-class.html[공식 Docs] 에서 확인 할 수 있다.  +
+Each time iterator is read, it returns a new iterator, and different iterators can be stepped through independently, each giving access to all the elements of the iterable.
