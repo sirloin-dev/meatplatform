@@ -522,3 +522,5 @@ depends-on이 사용되는 빈은 초기화 되기전에 하나 이상의 빈이
 `print(testIterable); print(testIterable);` 같은 이터러블 참조에 두번 접근할 때 동등성이 보장되지 않는다. +
 그 이유는 Iterable 의 정의된 스펙이 그렇기 때문. link:https://api.dart.dev/stable/3.2.1/dart-core/Iterable-class.html[공식 Docs] 에서 확인 할 수 있다.  +
 Each time iterator is read, it returns a new iterator, and different iterators can be stepped through independently, each giving access to all the elements of the iterable.
+
+- hwan: 우리가 지구에서 보는 저녁 노을은 붉은 색이다. 그런데 화성에서는 푸른빛이라고 한다. 이유는 대기 성분 차이로 흡수되는 빛이 달라서 그런 거라고 한다. 그렇다면 만약 화성을 사람이 살 수 있도록 개조해서 산소농도가 높아진다면 푸른 노을은 못 보는건가? 그건 정당한 테라포밍인가 아니면 환경 파괴일까? 같은 쓸데없는 생각을 해 봤다.
