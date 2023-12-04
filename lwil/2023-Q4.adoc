@@ -524,3 +524,25 @@ depends-on이 사용되는 빈은 초기화 되기전에 하나 이상의 빈이
 Each time iterator is read, it returns a new iterator, and different iterators can be stepped through independently, each giving access to all the elements of the iterable.
 
 - hwan: 우리가 지구에서 보는 저녁 노을은 붉은 색이다. 그런데 화성에서는 푸른빛이라고 한다. 이유는 대기 성분 차이로 흡수되는 빛이 달라서 그런 거라고 한다. 그렇다면 만약 화성을 사람이 살 수 있도록 개조해서 산소농도가 높아진다면 푸른 노을은 못 보는건가? 그건 정당한 테라포밍인가 아니면 환경 파괴일까? 같은 쓸데없는 생각을 해 봤다.
+
+- gyeongtae: MySQL에서는 정렬 시 Index를 이용하여 순차대로 읽어들여 정렬된 데이터를 그대로 보여주는 방식과 조인의 드라이빙 테이블을 먼저 정렬한 후 정렬을 수행할 수 있다. 마지막으로 임시 테이블을 이용한 정렬도 가능하다. 이는 모두 옵티마이저에서 결정하여 적절한 정렬 알고리즘으로 정렬된 데이터를 보여준다. 
+당연히 조회 성능면에서 인덱스 > 조인의 드라이빙 테이블 선 정렬 > 임시 테이블 순이다. 
+
+다만 인덱스를 이용한 정렬을 이용한 쿼리를 짤 경우에 유의할 점은 다음과 같은 함정에 빠지지 말아야한다.
+
+```sql
+# 올바른 예시
+SELECT * 
+FROM employees e, salaries s
+WHERE s.emp_no=e.emp_no
+  AND e.emp_no BETWEEN 100002 AND 100020
+ORDER BY e.emp_no;
+
+# 올바르지 않은 대표적인 예시
+SELECT * 
+FROM employees e, salaries s
+WHERE s.emp_no=e.emp_no
+  AND e.emp_no BETWEEN 100002 AND 100020
+```
+
+위 쿼리와 아래 쿼리의 결과는 실제로 다르지 않지만 아래 쿼리는 정렬 조건이 명확하게 들어나지 않고 있고 의도치 않은 버그가 발생할 가능성이 있다.
