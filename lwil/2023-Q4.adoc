@@ -558,3 +558,40 @@ spring의 LookUp 기능인데 다음과 같은 경우를 해결할 때 사용하
 자세한 문법은 https://www.baeldung.com/spring-lookup 을 확인하면 좋습니다
 
 해당 기능의 장단점이 있다면 스프링의 ioc도 잘지키면서 위 요구사항을 잘 지킬수있지만 테스트하기 좀 힘들어지는 단점이 있습니다 (그래도 위와같은 요구사항이 나오면 사용하는것이 좋아보입니다)
+
+[[section-202312-W1]]
+=== 2023년 12월 1주
+
+- jaewon: 『도메인 주도 개발 시작하기』(한빛미디어, 2022)라는 책을 읽기 시작했는데, 첫 장에 등장하는 "도메인 모델" 관련 용어들을 정리해 보았습니다.
++
+Domain::
+도메인(Domain)은 소프트웨어로 구현해야 할 대상이자, 해결하고자 하는 문제 영역이다. 한 도메인은 여러 하위 도메인으로 구성되며, 하나 이상의 하위 도메인을 연동하여 기능을 제공할 수 있다. 예를 들어, 구매 기능은 주문, 결제, 배송, 혜택 도메인을 연동하여 제공할 수 있다.
++
+도메인 전문가와 같은 지식을 공유하고 직접 소통할수록 도메인 전문가가 원하는 제품을 만들 가능성이 커진다. 이는 본대로 서비스를 개발할 때 한우 도매 시장에 대한 지식을 갖춰야 하는 이유와 일맥상통한다.
++
+Domain Model::
+특정 도메인을 이해하기 위해 개념적으로 표현한 모델로, 도메인을 이해하는 데 도움이 된다면 그 표현 방식이 무엇인지는 중요하지 않다. 객체 기반 모델이나 상태 다이어그램은 물론이고, 그래프나 수학 공식 등을 활용해서 만들 수도 있다.
++
+Domain Model Pattern::
+애플리케이션이 제공할 도메인의 핵심 규칙을 **객체 지향 기법**으로 구현하는 패턴이다. (by 마틴 파울러)
++
+예를 들어, '주문 취소는 배송 전에만 할 수 있다'라는 핵심 규칙을 제공하는 주문 도메인을 구현하면 다음과 같다.
++
+[source,dart]
+----
+class Order {
+  OrderState state;
+  ShippingInfo shippingInfo;
+
+  void changeShippingInfo(final ShippingInfo newShippingInfo) {
+    if (!isShippingChangeable) {
+      throw IllegalStateException("Can't change shipping in $state");
+    }
+
+    shippingInfo = newShippingInfo;
+  }
+
+  bool get isShippingChangeable =>
+      state == OrderState.PAYMENT_WAITING || state == OrderState.PREPARING;
+}
+----
