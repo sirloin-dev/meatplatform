@@ -529,8 +529,9 @@ Each time iterator is read, it returns a new iterator, and different iterators c
 당연히 조회 성능면에서 인덱스 > 조인의 드라이빙 테이블 선 정렬 > 임시 테이블 순이다. 
 
 다만 인덱스를 이용한 정렬을 이용한 쿼리를 짤 경우에 유의할 점은 다음과 같은 함정에 빠지지 말아야한다.
-
-```sql
++
+[source, sql]
+----
 # 올바른 예시
 SELECT * 
 FROM employees e, salaries s
@@ -543,9 +544,9 @@ SELECT *
 FROM employees e, salaries s
 WHERE s.emp_no=e.emp_no
   AND e.emp_no BETWEEN 100002 AND 100020
-```
-
-위 쿼리와 아래 쿼리의 결과는 실제로 다르지 않지만 아래 쿼리는 정렬 조건이 명확하게 들어나지 않고 있고 의도치 않은 버그가 발생할 가능성이 있다.
+----
++
+위 쿼리와 아래 쿼리의 결과는 실제로 다르지 않지만 아래 쿼리는 정렬 조건이 명확하게 드러나지 않고 있고 의도치 않은 버그가 발생할 가능성이 있다.
 
 - gon  :
 
