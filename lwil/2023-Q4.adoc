@@ -603,6 +603,7 @@ class Order {
 - gyeongtae: DataBuffer라는 키워드에 대해서 알게되었다. 
              Http Streaming 모드라는 키워드를 듣고 문득 과거에 대량 I/O 처리하는 배치개발할 때 memory를 너무 많이 사용하는 이슈가 있었는데 이를 JDBC Streaming 모드 처럼 buffer에 두고 하나씩 또는 chunk 단위로 처리하면 어떨까 고민 되서 관련 키워드를 찾아보았다.
              webClient의 Databuffer를 이용하면 대량의 데이터를 메모리에 한 번에 올리는 것이 아닌 buffer에 저장하여 chunk 단위로 처리가 가능하다고 하다. 이를 이용했더라면 메모리를 효율적으로 사용할 수 있다.
+
 [[section-202312-W2]]
 === 2023년 12월 2주
 
