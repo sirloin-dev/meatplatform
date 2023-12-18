@@ -653,3 +653,7 @@ Generic 선언이 이런 형태였더라면 어땠을까 하는 아쉬움이 남
 ----
 public class TreeSet<E extends Comparable<?>> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, java.io.Serializable
 ----
+
+- wongue: 프로그래밍 언어에서 다루는 타입은 대수적 성질을 가진다. +
+대수적 성질을 만족하다보니, 타입을 미분을 할수도 있다고 한다?? 
+link:https://eatchangmyeong.github.io/2022/06/05/how-is-type-derivative-a-thing.html[링크]
