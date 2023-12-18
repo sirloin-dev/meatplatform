@@ -603,7 +603,6 @@ class Order {
 - gyeongtae: DataBuffer라는 키워드에 대해서 알게되었다. 
              Http Streaming 모드라는 키워드를 듣고 문득 과거에 대량 I/O 처리하는 배치개발할 때 memory를 너무 많이 사용하는 이슈가 있었는데 이를 JDBC Streaming 모드 처럼 buffer에 두고 하나씩 또는 chunk 단위로 처리하면 어떨까 고민 되서 관련 키워드를 찾아보았다.
              webClient의 Databuffer를 이용하면 대량의 데이터를 메모리에 한 번에 올리는 것이 아닌 buffer에 저장하여 chunk 단위로 처리가 가능하다고 하다. 이를 이용했더라면 메모리를 효율적으로 사용할 수 있다.
-
 [[section-202312-W2]]
 === 2023년 12월 2주
 
@@ -620,3 +619,36 @@ class Order {
 - gyeongtae: 해시 조인은 조인 시 레코드가 적은 테이블을 골라 드라이빙 테이블기준으로 탐색 시 O(N)을 O(1)로 줄일 수 있는 매우 유용한 조인 기법이다.
              하지만 초반 hashcode를 생성하는 비용 때문에 바로 데이터에 접근하는 것이 아니라서 빠른 응답 속도보다 빠른 처리속도에 집중했다. 그렇기 때문에 
              웹 서비스에서 매우 유용하게 쓰이는 편은 아니다.
+
+- hwan: `java.util.TreeSet` 을 쓰며 아쉬운 점은 바로 `TreeSet` 의 Generic 이 `Comparable` 을 강제하지 않는다는 점이다.
++
+[source, java]
+----
+public class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, java.io.Serializable
+----
++
+이 때문에 이런 코드가 컴파일 단계에서 아무 문제 없이 통과된다(실제로는 경고가 발생하기는 한다).
++
+java:
++
+[source, java]
+----
+record MyObject(final int value);
+
+final Set<MyObject> set = TreeSet<MyObject>();
+----
++
+kotlin/jvm:
++
+[source, kotlin]
+----
+@JvmInline value class MyObject(val value: Int)
+
+val set = TreeSet<MyObject>()
+----
+Generic 선언이 이런 형태였더라면 어땠을까 하는 아쉬움이 남는다. 그렇다면 컴파일 단계에서 문제 원인을 체크할 수 있을 텐데.
++
+[source, java]
+----
+public class TreeSet<E extends Comparable<?>> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, java.io.Serializable
+----
