@@ -668,3 +668,9 @@ gon: 스프링 공식문서에서 @PostConstruct를 잘못 사용하면 DeadLock
 초기화 메소드가 반환된 후에 빈 인스턴스가 완전히 초기화되고 다른 객체에 공개될 준비가 되었다고 간주됩니다.
 
 초기화 메서드에서 다른 bean에 접근하여 외부 활동을 하게되면 컨테이너의 잠금과 외부 빈 인스턴스에 접근하려다 DeadLock 위험이 있다 생각된다.
+
+wongue: RTOS는 크게 Hard type 과 Soft type 으로 나뉘어진다. +
+일반적으로 time-sensitive 한 hard type system 에서는 managed lang 인 Java, Python 등을 사용 할 수 없다고 알려져있지만 +
+link:https://www.eetimes.com/using-java-in-real-time-systems/[자료] 에 따르면 꼭 그렇지는 않다고 한다. +
+약간 과격한 방식이지만, GC 가 도는 방식이 비결정적이라 시간 응답성을 보장할 수 없으면 객채를 생성하지 않으면 메모리도 할당되지 않고, 따라서 GC 도 돌지 않을 수 있다고 한다. +
+이러한 방식으로 구현된 실제 사례또한 있다고 하는데, cpp 혹은 rust 의 다른 해결방식에 비해 어떠한 장점을 가지는지는... 아직 잘 모르겠다.
