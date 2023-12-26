@@ -657,3 +657,14 @@ public class TreeSet<E extends Comparable<?>> extends AbstractSet<E> implements 
 - wongue: 프로그래밍 언어에서 다루는 타입은 대수적 성질을 가진다. +
 대수적 성질을 만족하다보니, 타입을 미분을 할수도 있다고 한다?? 
 link:https://eatchangmyeong.github.io/2022/06/05/how-is-type-derivative-a-thing.html[링크]
+
+[[section-202312-W3]]
+=== 2023년 12월 3주
+
+gon: 스프링 공식문서에서 @PostConstruct를 잘못 사용하면 DeadLock(데드락) 위험이 있다고 경고한다. 
+출처: https://docs.spring.io/spring-framework/reference/core/beans/factory-nature.html
+
+@PostConstruct 및 일반적인 초기화 메소드는 컨테이너의 싱글톤 생성 잠금(singleton creation lock)내에서 실행된다 한다.
+초기화 메소드가 반환된 후에 빈 인스턴스가 완전히 초기화되고 다른 객체에 공개될 준비가 되었다고 간주됩니다.
+
+초기화 메서드에서 다른 bean에 접근하여 외부 활동을 하게되면 컨테이너의 잠금과 외부 빈 인스턴스에 접근하려다 DeadLock 위험이 있다 생각된다.
