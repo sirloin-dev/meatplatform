@@ -1,0 +1,15 @@
+= 2024년 1분기 01월-03월 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[section-202401]]
+== 2024년 01월
+
+gon : Spring의 web 기반 ApplicationContext 구현은 관련 웹 애플리케이션이 종료될 때 Spring IoC 컨테이너를 우아하게 종료시키기(graceful shutdown)) 위한 코드를 이미 포함하고 있습니다. web이 아니라면 별도의 설정을 해줘야 한다.
