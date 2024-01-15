@@ -26,3 +26,50 @@
 - gon: 프로세스의 생성과 종료는 어떻게 될까? +
 생성: 프로세스 생성은 보통 부모 프로세스가 fork() 시스템 콜을 사용하여 자식 프로세스를 생성하는 방식으로 이루어집니다. 이때 자식 프로세스는 부모 프로세스의 복사본으로 생성되며, 필요한 경우 exec() 시스템 콜을 통해 다른 프로그램으로 교체될 수 있습니다. 이렇게 할 경우 부모프로세스가 자식프로세스를 관리하기가 굉장히 쉬워지고 프로세스를 처음부터 생성하는것보다 복사후 덮어씌우는게 더 빠릅니다. +
 종료: 프로세스는 작업을 완료하거나 종료 시스템 콜을 통해 종료될 수 있습니다. 프로세스가 종료되면 운영 체제는 해당 프로세스에 할당된 자원을 회수합니다.
+
+- hwan: Kotlin/JVM 에서 Value class 를 사용할 경우 `@JvmInline` 특성 때문에 타입 이름 및 필드명과 실 구현체의 정보가 달라 mockito(및 mockito-kotlin) 라이브러리의 `any()` 가 잘 동작하지 않는 문제가 있다. 가령:
++
+[source, kotlin]
+----
+@JvmInline value class Foo(val realValue: String)
+----
++
+을 파라미터로 사용하는 어떤 객체의 mock 조건을 다음처럼 `any()` 로 설정할 경우:
++
+[source, kotlin]
+----
+given(someMockRepository.findByFoo(any())).willReturn(bar)
+----
++
+다음과 같은 예외가 발생한다.
++
+[source, kotlin]
+----
+java.lang.IllegalArgumentException: Parameter specified as non-null is null: method Foo.box-impl, parameter v
+----
++
+이는 코틀린 컴파일러가 컴파일타임에 주입해준 정보와 로직이 런타임에 Reflection 으로 실제 얻어낸 정보가 불일치해 발생하는 현상이다. 코드상에서는 `Foo` 라는 타입을 파라미터로 쓰지만 실제로는 `String` 을 쓰도록 컴파일하기 때문에 mock 라이브러리가 이를 감안해줘야 하는데 그 과정이 2024-01 현재 업데이트 되지 않아 발생하는 것이다. 따라서 이 문제를 해결하려면 다음과 같은 구현을 추가해 주고 `any()` 사용처를 `anyValueClass()` 로 바꿔 주면 된다.
++
+[source, kotlin]
+----
+/**
+ * Kotlin 의 value class 들은 Mockito-Kotlin 라이브러리의 [ArgumentMatchers.any] matcher 를 쓸 수 없다.
+ * 이 문제를 해결해 주기 위한 함수. 이 구현 내에서 반환하는 기본값은 구색 맞추기에 불과하고 ArgumentMatcher 내부에서는
+ * 클래스의 Canonical name 을 비교하기 때문에, 이 함수를 통해 반환되는 객체는 실제로는 사용되지 않는다.
+ *
+ * @author yh@sirloin.co.kr
+ * @since 2023-12-03
+ */
+inline fun <reified T: Any> anyValueClass(): T {
+    val (javaClass, emptyValue) = when {
+        NumberValueHolder::class.java.isAssignableFrom(T::class.java) -> Number::class.java to NumberValueHolder.EMPTY_VALUE_INT
+        UuidValueHolder::class.java.isAssignableFrom(T::class.java) -> UUID::class.java to UuidValueHolder.EMPTY_VALUE
+        StringValueHolder::class.java.isAssignableFrom(T::class.java) -> String::class.java to StringValueHolder.EMPTY_VALUE
+        else -> throw NotImplementedError("${T::class} 타입의 기본값 전략을 구현해 주세요.")
+    }
+    val constructor = T::class.constructors.find { it.parameters.size == 1 }
+    val emptyInstance = constructor?.call(emptyValue)
+
+    return (ArgumentMatchers.any(javaClass) ?: emptyInstance) as T
+}
+----
