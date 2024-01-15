@@ -73,3 +73,12 @@ inline fun <reified T: Any> anyValueClass(): T {
     return (ArgumentMatchers.any(javaClass) ?: emptyInstance) as T
 }
 ----
+
+- wongue: 기하학, 혹은 컴퓨터 그래픽에서 종종 다루게 되는 언어 법선(法線). +
+법선에서 법(法)이 가지는 의미에 대해 종종 궁금점을 가지고 있었는데, 메가스터디의 현우진 강사의 유튭 쇼츠에서 perpendicular의 'per-' 의 중국식 음차에 기반했다는 주장을 듣게되었다. +
+이를 듣고 조금 미심쩍었는데, 비슷한 생각을 가진 글을 발견했다. link:https://orbi.kr/00056500907[오르비 게시물] +
+[per] 와 法 의 중국식 발음 [Fa] 는 그리 비슷한 발음은 아니기 떄문에 단순 음차로서 결정됬다기 보단, plumb line (link:https://ko.wikipedia.org/wiki/%EB%8B%A4%EB%A6%BC%EC%B6%94[다림추]) 와 같이 [기준이 되는] 이라는 의미를 전달하기 위함이 아니였을까 하는 주장이다. +
+여기에 또한 의문인게, '법선' 은 perpendicular line 보다는 normal line 이라고 주로 표현된다. + 
+두 단어의 유래를 찾아보면, link:https://www.etymonline.com/kr/word/perpendicular#etymonline_v_12733[perpendicular]이 '완벽하게 수직한' 이라는 뜻을 가진 시기는 1590 년이고, link:https://www.etymonline.com/kr/word/normal#etymonline_v_9799[normal] 이 '수직의' 이라는 뜻을 가지게 된건 1640 년이라고 한다. +
+18~19 세기즈음 중국에서 '법선' 이라는 단어를 번역했을때의 원 단어가 'perpendicular line' 이 아닌 'normal line' 일 확률이 더 높다 생각되고, + 
+normal 에는 공통되는 표준, 규칙에 따른, 일반적인 이라는 의미또한 따르니, 이를 의미하는 글자 法 을 선택한게 아닐까 하는 개인적인 추측이다.
