@@ -82,3 +82,7 @@ inline fun <reified T: Any> anyValueClass(): T {
 두 단어의 유래를 찾아보면, link:https://www.etymonline.com/kr/word/perpendicular#etymonline_v_12733[perpendicular]이 '완벽하게 수직한' 이라는 뜻을 가진 시기는 1590 년이고, link:https://www.etymonline.com/kr/word/normal#etymonline_v_9799[normal] 이 '수직의' 이라는 뜻을 가지게 된건 1640 년이라고 한다. +
 18~19 세기즈음 중국에서 '법선' 이라는 단어를 번역했을때의 원 단어가 'perpendicular line' 이 아닌 'normal line' 일 확률이 더 높다 생각되고, + 
 normal 에는 공통되는 표준, 규칙에 따른, 일반적인 이라는 의미또한 따르니, 이를 의미하는 글자 法 을 선택한게 아닐까 하는 개인적인 추측이다.
+
+- gyeongtae: line/JDSL 공식문서 JPQL with Kotlin JDSL에는 다음과 같은 문장이 있습니다. JpqlRenderer는 상태를 가지지 않기 때문에 객체의 재사용이 가능하며 멀티 쓰레드 환경에서 사용하기에 안전합니다. Immutable이 아니라면 어떻게 되길래 이런 문구를 써놨을까 궁금했습니다. 객체에서 상태란 조건이나 특성 필드 등을 말하는데 이 정보들이 가변 상태로 외부로부터 변경이 가능하다면 내부 상태가 다른 스레드로 부터 변경되어 원하는 동작이 안할 수도 있다고 합니다. jdsl에서 SelectQuery 객체를 받아 sql string value로 바꿔주는 동작을 하는 JpqlRenderer기 가변상태라면 select * from member 가 나와야하는 SelectQuery를 파라미터로 요청해도 다른 스레드로 인해 다른 쿼리가 실행될 수 있는 것입니다. 그렇기 때문에 line 에서는 해당 객체를 불변 상태로 외부에서 변경 가능하지 않게 한 것입니다. 
+
+앞으로 Base64 같은 외부에서 선언해주는 객체들이 정말 Thread-safe한가 고민해보고 선언해야되겠습니다.
