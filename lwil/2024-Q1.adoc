@@ -93,3 +93,5 @@ normal 에는 공통되는 표준, 규칙에 따른, 일반적인 이라는 의�
 
 gon: 대표적인 동기화 메커니즘인 Mutex와 Semaphore의 핵심적 차이는 임계영역에 접근가능한 작업자가 1이냐 아니냐도 맞지만 또 다른 차이는 소유권(잠금)에 대한 해제의 권한의 차이도있다 +
 Mutex는 잠금을 소유하면 소유한 작업자가 반드시 직접 해제를 해야한다. 반면 Semaphore는 잠금을 소유한 작업자가 아니더라도 다른 작업자가 잠금을 해제 가능하다 즉 잠금 해제에 대한 제한이 없다. 
+
+gyeongtae: linux에는 사용자가 시스템을 쉽게 구성하고 동작시키게 해주는 명령어인 service와 systemctl이 있다. systemctl은 좀 더 현대에 나온 기술이고 services는 이전 Linux에서 사용되는 전통적인 명령어이다. systemctl은 시스템 로그를 보고 활성 비활성 등의 다양한 작업이 가능하다. 하지만 service는 systemctl에 비해 기능이 제한적이라고 한다. 참고로 service는 init.d 기반 systemctl은 systemd 기반으로 기반 시스템도 다르다.
