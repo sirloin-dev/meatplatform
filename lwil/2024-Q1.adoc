@@ -215,5 +215,6 @@ child constructor block 순으로 진행된다
 
 간단히 요약하자면 부모의 인스턴스를 전부 초기화후 자식의 인스턴스가 초기화 된다.
 
-
+- wongue: Dart 에 macro 가 추가될 예정이라고 한다. (experimental branch 에는 이미 추가가 되었다.) +
+link:https://github.com/dart-lang/language/blob/main/working/macros/motivation.md[관련링크]
 
