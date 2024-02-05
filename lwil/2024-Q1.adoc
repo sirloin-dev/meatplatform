@@ -187,3 +187,33 @@ fun main() {
 
 by 키워드를 통해 Base를 위임 받아 Derived에 위임 해주면 Derived는 Base가 하는 일을 수행할 수 있습니다.
 이는 kotlin의 모든 class가 final인 특성을 감안하여 불변 객체에서 상속의 특성을 이용해 보일러 플레이트 코드를 줄일 수 있다는 장점이 있습니다. 
+
+[[section-202402-W1]]
+=== 2024년 02월 1주
+
+- gon : 코틀린에서 객체의 초기화시 순서는 다음과 같다
+
+constructor default argument
+
+property / init 둘은 선언 순서에 따라 달라질수있다
+
+constructor block
+
+여기서 상속관계가 있다면
+
+child constructor default argument
+
+parent constructor default argument
+
+parent property / init
+
+parent constructor block
+
+child property / init
+
+child constructor block 순으로 진행된다
+
+간단히 요약하자면 부모의 인스턴스를 전부 초기화후 자식의 인스턴스가 초기화 된다.
+
+
+
