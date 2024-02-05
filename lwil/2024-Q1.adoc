@@ -167,7 +167,8 @@ Icloud 측에서 conflict 를 직접 해결하라고 text 1.txt 와 같은 파�
 
 - gyeongtae: kotlin delegation은 상속 없이 객체의 공통 멤버들을 특정 객체에 위임합니다. 예를 들어 
 
-```kotlin
+[source, kotlin]
+----
 interface Base {
     fun print()
 }
@@ -182,7 +183,7 @@ fun main() {
     val b = BaseImpl(10)
     Derived(b).print()
 }
-```
+----
 
 by 키워드를 통해 Base를 위임 받아 Derived에 위임 해주면 Derived는 Base가 하는 일을 수행할 수 있습니다.
 이는 kotlin의 모든 class가 final인 특성을 감안하여 불변 객체에서 상속의 특성을 이용해 보일러 플레이트 코드를 줄일 수 있다는 장점이 있습니다. 
