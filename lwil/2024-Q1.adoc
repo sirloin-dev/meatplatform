@@ -218,3 +218,13 @@ child constructor block 순으로 진행된다
 - wongue: Dart 에 macro 가 추가될 예정이라고 한다. (experimental branch 에는 이미 추가가 되었다.) +
 link:https://github.com/dart-lang/language/blob/main/working/macros/motivation.md[관련링크]
 
+- gyeongtae: form 태그 안에 button 태그가 있을 경우 발생하는 문제가 있다. 어떤 이벤트가 발생하든 해당 버튼을 누르면 reload가 된다. 그리고 이로인해 console에 error 로그가 사라져서 동작에는 문제가 없을 수 있지만 디버깅 하는데 어려움을 겪을 수 있다. 
+
+[source, html]
+----
+<form>
+  <button type="button">Sign in</button>
+</form>
+----
+
+위 코드 처럼 type 을 button으로 주면 reload가 되지 않는다. 이는 default type이 submit이기 때문이다.
