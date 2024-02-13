@@ -246,3 +246,9 @@ link:https://github.com/dart-lang/language/blob/main/working/macros/motivation.m
 mac os 특정버전이상에서 임베디드 레디스가 제대로 작동안하는 버그가 있다
 https://stackoverflow.com/questions/77304264/cant-start-redis-server-exception-occurs-when-trying-to-run-spring-boot-on-my
 질문의 답변대로 새로운 임베디드 레디스 라이브러리를 사용하면 코드의 변경없이 문제 해결이 가능했다.
+
+- wongue:
+ 흔히 냉철한 펙트를 기반한 과격한 피드벡이 사람을 보다 성장시킨다는 믿음(myth)을 가진 사람이 많다. +
+ 하지만, 이는 사실과는 거리가 멀다고 한다. 교육과 심리상담 양측 분야에서 모두 내담자를 존중하지 않는 방식은 장기적으로 효과가 없거나 부정적이였다는 것이고, 동시에 내담자들은 이 방식에 현혹될 가능성이 있다. +
+ '쓰다고 모두 약은 아니다' 그리고 피드백을 핑계로 폭력성을 정당화하는것을 경계해야한다. +
+ link:https://web.archive.org/web/20200227120819/http://agile.egloos.com/5931859[출처]
