@@ -241,3 +241,8 @@ link:https://github.com/dart-lang/language/blob/main/working/macros/motivation.m
 단, AWS 에서 IP 주소를 더 이상 안 줄 때도 있으니 이 문제는 감안해야 한다.
 +
 또한 생성한 subnet 이 internet gateway 에 붙어있나도 확인해야 한다. VPC > Route Tables 메뉴에서 대상 Subnet 을 클릭하고  'Edit Routes' 를 고른 다음, Destination 항목에 0.0.0.0/0, Target 'Internet Gateway' 가 있나 확인해야 한다. 그렇게 하지 않으면 공공 IP 를 모두 할당받고 모든 작업을 다 끝냈음에도 외부와 통신할 수 없는 문제가 발생한다.
+
+- gon : 
+mac os 특정버전이상에서 임베디드 레디스가 제대로 작동안하는 버그가 있다
+https://stackoverflow.com/questions/77304264/cant-start-redis-server-exception-occurs-when-trying-to-run-spring-boot-on-my
+질문의 답변대로 새로운 임베디드 레디스 라이브러리를 사용하면 코드의 변경없이 문제 해결이 가능했다.
