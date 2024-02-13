@@ -192,39 +192,52 @@ by 키워드를 통해 Base를 위임 받아 Derived에 위임 해주면 Derived
 === 2024년 02월 1주
 
 - gon : 코틀린에서 객체의 초기화시 순서는 다음과 같다
-
-constructor default argument
-
-property / init 둘은 선언 순서에 따라 달라질수있다
-
-constructor block
-
-여기서 상속관계가 있다면
-
-child constructor default argument
-
-parent constructor default argument
-
-parent property / init
-
-parent constructor block
-
-child property / init
-
-child constructor block 순으로 진행된다
-
++
+. constructor default argument
++
+. property / init 둘은 선언 순서에 따라 달라질수있다
++
+. constructor block
++
+. 여기서 상속관계가 있다면
++
+. child constructor default argument
++
+. parent constructor default argument
++
+. parent property / init
++
+. parent constructor block
++
+. child property / init
++
+. child constructor block 순으로 진행된다
++
 간단히 요약하자면 부모의 인스턴스를 전부 초기화후 자식의 인스턴스가 초기화 된다.
 
 - wongue: Dart 에 macro 가 추가될 예정이라고 한다. (experimental branch 에는 이미 추가가 되었다.) +
 link:https://github.com/dart-lang/language/blob/main/working/macros/motivation.md[관련링크]
 
 - gyeongtae: form 태그 안에 button 태그가 있을 경우 발생하는 문제가 있다. 어떤 이벤트가 발생하든 해당 버튼을 누르면 reload가 된다. 그리고 이로인해 console에 error 로그가 사라져서 동작에는 문제가 없을 수 있지만 디버깅 하는데 어려움을 겪을 수 있다. 
-
++
 [source, html]
 ----
 <form>
   <button type="button">Sign in</button>
 </form>
 ----
-
++
 위 코드 처럼 type 을 button으로 주면 reload가 되지 않는다. 이는 default type이 submit이기 때문이다.
+
+[[section-202402-W2]]
+=== 2024년 02월 2주
+
+- hwan: aws 의 private subnet 은 외부로부터의 접근을 차단할 수 있지만 public IP 도 없기 때문에 반대로 외부 접속도 못 하는 서버가 됨. 이를 해결하려면 NAT 설정을 추가로 해 줘야 한다.
++
+이 때문에 긴급하게 호스트 하나 파서 뭔가 간단한 작업만 하고 종료할 때 이 지식이 기억나지 않는다면 엄청 헤매게 된다. 새로운 subnet 을 추가했음에도 이 subnet 을 사용하는 host 들이 public IP 가 없어 내/외부에서 접근할 수 없는 상황이 생기는 것이다.
++
+이를 해결하려면 VPC > Subnets > [생성한 Subnet 선택] > Edit Subnet Settings 에 진입 후 'Enable auto-assign public IPv4 Address' 항목에 체크해 주면 된다.
++
+단, AWS 에서 IP 주소를 더 이상 안 줄 때도 있으니 이 문제는 감안해야 한다.
++
+또한 생성한 subnet 이 internet gateway 에 붙어있나도 확인해야 한다. VPC > Route Tables 메뉴에서 대상 Subnet 을 클릭하고  'Edit Routes' 를 고른 다음, Destination 항목에 0.0.0.0/0, Target 'Internet Gateway' 가 있나 확인해야 한다. 그렇게 하지 않으면 공공 IP 를 모두 할당받고 모든 작업을 다 끝냈음에도 외부와 통신할 수 없는 문제가 발생한다.
