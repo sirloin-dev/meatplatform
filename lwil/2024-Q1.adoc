@@ -252,3 +252,10 @@ https://stackoverflow.com/questions/77304264/cant-start-redis-server-exception-o
  하지만, 이는 사실과는 거리가 멀다고 한다. 교육과 심리상담 양측 분야에서 모두 내담자를 존중하지 않는 방식은 장기적으로 효과가 없거나 부정적이였다는 것이고, 동시에 내담자들은 이 방식에 현혹될 가능성이 있다. +
  '쓰다고 모두 약은 아니다' 그리고 피드백을 핑계로 폭력성을 정당화하는것을 경계해야한다. +
  link:https://web.archive.org/web/20200227120819/http://agile.egloos.com/5931859[출처]
+
+[[section-202402-W3]]
+=== 2024년 02월 3주
+
+- gon : 코틀린이 2.0 beta가 올라왔습니다. +
+https://github.com/JetBrains/kotlin/releases +
+https://kotlinlang.org/docs/whatsnew-eap.html
