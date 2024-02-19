@@ -259,3 +259,7 @@ https://stackoverflow.com/questions/77304264/cant-start-redis-server-exception-o
 - gon : 코틀린이 2.0 beta가 올라왔습니다. +
 https://github.com/JetBrains/kotlin/releases +
 https://kotlinlang.org/docs/whatsnew-eap.html
+
+- wongue: mprotect() 라는 함수로 특정 메모리 구역의 접근 권한을 제어할 수 있다. +
+따라서 서버가 나이브하게 요청으로 들어온 스크립트를 모두 실행하는 보안적 결함이 있다면, mprotect() 를 이용해 코드 세그먼트의 영역에 접근해 외부 소스코드를 덮어씌워버릴수 있는것. +
+이러한 공격이 성공하게되면 공격자는 임의코드 실행, 시스템 권한 상승, 백도어 설치, 데이터 탈취및 조작등 상상할 수 있는 거의 모든 행동이 가능해진다. +
