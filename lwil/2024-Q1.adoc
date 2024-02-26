@@ -300,3 +300,17 @@ REQUEST : 클라이언트 요청 +
 ERROR : 오류 요청 +
 이라 보면 된다 +
 interceptor는 path를 제외하는 식으로 해결 가능하다
+
+- gyeongtae: Javascript에서 async/await로 생성되는 Promise를 처리할 때 microtaskQueue가 사용된다고 한다. 이벤트 루프에 일반적인 TaskQueue랑은 따로 존재하며 await 키워드가 붙은 작업이 모두 완료되면 microtaskQueue에 쌓인다. 이 후 event loop가 microtaskQueue에 접근하여 Queue가 비워질 때 까지 작업을 처리하고 이후 Task를 실행한다. 
+
+[source, javascript]
+----
+Promise.resolve().then(() => console.log('Promise 실행됨'));
+
+queueMicrotask(() => console.log('queueMicrotask 실행됨'));
+
+console.log('메인 스크립트 실행됨');
+----
+
+실제로 위 함수를 실행시키면 메인 스크립트 실행됨이 먼저 출력 후 Promise 실행됨, queueMicrotask 실행됨이 출력된다. 이는 메인 스크립트가 완료된 직후 event loop가 microtaskQueue를 처리하기 때문이다.
+
