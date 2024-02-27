@@ -278,31 +278,39 @@ https://stackoverflow.com/questions/9481865/getting-the-ip-address-of-the-curren
 +
 나는 커피를 차 처럼 마시는걸 좋아하는데, 이런 방식의 커피가 드립 커피란다. 좋은 상식을 하나 배웠다.
 
-- gon : 스프링에서 흔히 @ErrorController를 이용해서 에러처리를 하는데 내부 구현이 정확히 어떻게 되어있는지 몰랏는데 이번 기회를 통해알게되었다. +
+- gon : 스프링에서 흔히 @ErrorController를 이용해서 에러처리를 하는데 내부 구현이 정확히 어떻게 되어있는지 몰랏는데 이번 기회를 통해 알게되었다.
++
 흔히 외부로 부터 요청이 들어오게되면 다음과 같은 순서를 타고 App의 Controller를 호출한다. 
++
 ```
 WAS -> filter -> servlet -> interceptor -> Controller
 ```
++
 이제 요청에서 에러가 발생하여 response.sendError()를 호출하면 WAS에게 까지 내용이 전파된다 +
 (response.sendError() 호출안하면 그대로 client에게 was의 에러처리가 응답으로 보내진다) +
 WAS는 오류 처리에 대한 정보를 찾아야하기 때문에 다시 요청을 보낸다 +
-순서를 그리자면 다음과 같다 +
+순서를 그리자면 다음과 같다. 
++
 ```
 1. 처음 요청시
 WAS -> filter -> servlet -> interceptor -> Controller
+
 2. error 발생
 WAS(error 전파 완) <- filter <- servlet <- interceptor <- Controller(response.sendError() 호출)
+
 3. 에러 정보를 찾기위해 다시 요청
 WAS("/error") -> filter -> servlet -> interceptor -> Controller("/error" 에 맞는 에러 api 호출)
 ```
+
++
 이때 다시 요청을 보낼때 filter를 다시 거치게되는데 유저의 요청인지 에러 정보를 찾기위한 요청인지를 구분하기 위해 사용하는것이 `DispatcherType`이라는걸 추가로 사용한다. (servlet에서 제공하는 개념) +
-REQUEST : 클라이언트 요청 +
-ERROR : 오류 요청 +
+REQUEST : 클라이언트 요청 +
+ERROR : 오류 요청 +
 이라 보면 된다 +
-interceptor는 path를 제외하는 식으로 해결 가능하다
+interceptor는 path를 제외하는 식으로 해결 가능하다.
 
 - gyeongtae: Javascript에서 async/await로 생성되는 Promise를 처리할 때 microtaskQueue가 사용된다고 한다. 이벤트 루프에 일반적인 TaskQueue랑은 따로 존재하며 await 키워드가 붙은 작업이 모두 완료되면 microtaskQueue에 쌓인다. 이 후 event loop가 microtaskQueue에 접근하여 Queue가 비워질 때 까지 작업을 처리하고 이후 Task를 실행한다. 
-
++
 [source, javascript]
 ----
 Promise.resolve().then(() => console.log('Promise 실행됨'));
@@ -312,11 +320,10 @@ queueMicrotask(() => console.log('queueMicrotask 실행됨'));
 console.log('메인 스크립트 실행됨');
 ----
 
++
 실제로 위 함수를 실행시키면 메인 스크립트 실행됨이 먼저 출력 후 Promise 실행됨, queueMicrotask 실행됨이 출력된다. 이는 메인 스크립트가 완료된 직후 event loop가 microtaskQueue를 처리하기 때문이다.
 
 - wongue: JIT 컴파일에 대해 조금 공부해보았다. Just In Time 컴파일링이라는것은 빌드 과정 이후, 런타임에서 필요한 시점에 바이너리 코드를 생성하는것을 의미한다. +
 하지만, 여기서 의문이 들었다. linux 의 memory structure 를 보면 코드 세크먼트는 프로그렘 로드 과정에서 결정되고 그 이후에 동적으로 변경되지는 않는것으로 알고 있는데, 어떻게 런타임에 생성한 코드를 CPU 가 읽을 수 있도록 메모리에 할당하는걸까? +
 대부분의 JIT 는 Java 나 JS 의 런타임 환경에서의 컴파일링을 말하는데, 두 런타임 모두 VM 위에서 돌아가기 때문에 힙 메모리 안에 컴파일된 바이너리 코드가 올라감을 확인할 수 있었다. +
 하지만 아직 Cpp 의 JTP 컴파일에 대해서는 의문이다. OpenGL 등 쉐이더 코드는 프로그렘 런타임에 컴파일이 되는데, 이떄 컴파일된 코드는 메모리의 어떤 영역에서 관리되는걸까?
-
-
