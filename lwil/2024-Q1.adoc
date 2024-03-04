@@ -340,3 +340,11 @@ console.log('메인 스크립트 실행됨');
 1. 캐시 만료 시간 무작위 : 캐싱을 할때 만료시간을 일정하게 하지말고 기준으로부터 약간의 변동을 주어 캐시가 동시에 만료되지 않게 합니다. 
 2. 캐시 갱신 : 백그라운드에서 캐시된 데이터를 주기적으로 갱신하거나 만료되기전에 자동으로 갱신 합니다. 
 3. Lock 메커니즘 : 캐시가 재생성 될 때 해당 데이터에 접근하는 다른 요청들을 대기 시킨후 캐시가 갱신된 이후에 요청을 진행시킵니다.
+
+- wongue: Entity 와 VO(Value Object) 는 뭐가 다른거고, 새로운 클래스를 디자인할때 어떤 기준을 가지고 설계해야하는 걸까? +
+link:https://martinfowler.com/bliki/EvansClassification.html[마틴 파울러의 블로그] 에서도 + 
+"the trio(Entity, VO, Service Obj) are hard to define precisely, they are of the I know them when i see them category" 이를 정확히 나누는건 쉽지 않은 문제라른 사실을 말하고 있다. +
+VO 와 Entity 의 명확한 구분법 중 하나는 VO 는 값을 기반으로 동등성 비교를 재정의하는 반면, Entity 는 그렇지 않다는 점이다. +
+특정한 ID 를 기반으로 동일성을 비교한다면, Entity 모든 내부 필드의 동등성을 비교해야한다면 VO 라 생각할 수 있다. +
+조금 더 정리해보자면, Entity 는 정보를 가져오는 방법에 대해 이야기하고 있다. (굳이 DB가 아니더라도) VO는 가저온 정보를 바탕으로 Domain Model 에 전달하기 위한 임시 객체 or Model 의 내부 필드로서 사용된다. +
+따라서 Entity 는 데이터의 수집과 전달에 집중한 메서드를 가지고 있어야하고, VO는 가지고 있는 필드에 대한 연산에 집중한 메서드를 가지고 있는데 집중해야한다 생각한다.
