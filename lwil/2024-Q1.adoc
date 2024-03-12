@@ -361,3 +361,5 @@ https://pub.dev/packages/google_ml_kit
 ----
 for id in $(docker container ls -aq); do docker container rm $id; done
 ----
+
+- gyeongtae: routify $goto function에 대해 알게 되었다. $goto function은 새로고침 없이 렌더링을 통해 상태를 유지한 상태로 재렌더링 하여 라우팅 하게 해준다. 이를 이용하면 페이지 변환이 빨라 UX를 향상시킬 수 있을 뿐만 아니라 store에 저장된 상태가 유지되게 할 수 있다.
