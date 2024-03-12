@@ -354,3 +354,10 @@ VO 와 Entity 의 명확한 구분법 중 하나는 VO 는 값을 기반으로 �
 
 - wongue: flutter 커뮤니티에서도 요즘 떠오르는 신성인 Ondevice ai 를 위한 패키지가 주목을 받고 있다.
 https://pub.dev/packages/google_ml_kit
+
+- hwan: 시스템에 생성된 모든 docker container 들 한방에 지워버리기:
++
+[source, shell]
+----
+for id in $(docker container ls -aq); do docker container rm $id; done
+----
