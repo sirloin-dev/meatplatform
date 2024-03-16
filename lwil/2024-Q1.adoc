@@ -363,3 +363,33 @@ for id in $(docker container ls -aq); do docker container rm $id; done
 ----
 
 - gyeongtae: routify $goto function에 대해 알게 되었다. $goto function은 새로고침 없이 렌더링을 통해 상태를 유지한 상태로 재렌더링 하여 라우팅 하게 해준다. 이를 이용하면 페이지 변환이 빨라 UX를 향상시킬 수 있을 뿐만 아니라 store에 저장된 상태가 유지되게 할 수 있다.
+
+[[section-202403-W3]]
+=== 2024년 03월 3주
+- hwan: `AUTO_INCREMENT` 를 미처 추가하지 않은 테이블에 나중에 `AUTO_INCREMENT` 를 추가하고 싶을 경우, 다음과 같은 방법을 써서 해결할 수 있다.
++
+
+[source, sql]
+----
+ALTER TABLE `some_table` ADD COLUMN `seq` BIGINT;
+
+SET @row_number = 0;
+UPDATE `some_table`
+SET `seq` = @row_number:=@row_number+1
+ORDER BY `created_at`;
+
+ALTER TABLE `some_table` MODIFY COLUMN `seq` BIGINT NOT NULL AUTO_INCREMENT, ADD UNIQUE INDEX `uk_some_table_seq` (`seq`);
+----
++
+
+단 이 방법은 아주 큰 단점이 몇가지가 있다.
++
+
+. 당연히 Large data set 에서는 할 수 없다. 
+. Table 에 어떤 비교순서로 정렬 가능한 기준 column 이 있어야 한다.
+. 중간 실패시 간단하게 돌아갈 수 있는 방법이 없다.
+. 이 때문에 무중단 작업 진행은 불가능. 로직이 뒷받침되어야 하며 이 때문에 빠르게 작업하기 어려움
+
++
+
+내부 관리용 Application 처럼 데이터 크기가 별로 크지 않은 상황에서 유용한 SQL 인듯.
