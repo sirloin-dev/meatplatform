@@ -437,4 +437,4 @@ function doSomething() {
 }
 ----
 
-root layout page에서 
+root layout page에서 globalGoto store에 $goto function을 저장하고 전역에서 globalGoto state를 변경해줘 상태에 따라 라우팅 가능한 전역 store로 감싸주면 javascript file에서도 $goto function을 쓸 수 있다고한다.
