@@ -438,3 +438,9 @@ function doSomething() {
 ----
 
 root layout page에서 globalGoto store에 $goto function을 저장하고 전역에서 globalGoto state를 변경해줘 상태에 따라 라우팅 가능한 전역 store로 감싸주면 javascript file에서도 $goto function을 쓸 수 있다고한다.
+
+- wongue: toString() 와 같은 메소드를 비즈니스 로직에 사용하는것은 종종 위험한 결과를 초래 할 수 있다. +
+toString(); 의 동작이 기대한 바 대로 동작한다는 보장을 확실히 할 수 없기 때문이다. +
+실제로 flutter web build 버전에서는 Type.toString(); 이 자기 자신의 symbol 을 나타내지 않고, 빌드과정중 tree-shaken 된 이후 임의의 이름을 반환하게 되는 문제가 있다. +
+비즈니스 로직에 사용되는 코드는, 동작 방식을 검증할 수 있는 코드만 사용하는것이 권장된다.
+
