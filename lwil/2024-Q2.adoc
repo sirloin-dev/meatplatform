@@ -23,13 +23,13 @@ abstract class GenericTemplate<T, U> {
     protected abstract fun T.convert(): U
 }
 
-class StringToNumberConverter<String, Number> {
+class StringToNumberConverter : GenericTemplate<String, Number> {
     override fun String.convert(): Number {
         // ..
     }
 }
 
-class StringToUuidConverter<String, Uuid> {
+class StringToUuidConverter : GenericTemplate<String, Uuid> {
     override fun String.convert(): Uuid {
         // ..
     }
