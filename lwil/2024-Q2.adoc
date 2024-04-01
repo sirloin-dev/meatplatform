@@ -19,17 +19,17 @@
 
 [source, kotlin]
 ----
-abstract class GenericTemplate<T, U> {
+abstract class Converter<T, U> {
     protected abstract fun T.convert(): U
 }
 
-class StringToNumberConverter : GenericTemplate<String, Number> {
+class StringToNumberConverter : Converter<String, Number> {
     override fun String.convert(): Number {
         // ..
     }
 }
 
-class StringToUuidConverter : GenericTemplate<String, Uuid> {
+class StringToUuidConverter : Converter<String, Uuid> {
     override fun String.convert(): Uuid {
         // ..
     }
