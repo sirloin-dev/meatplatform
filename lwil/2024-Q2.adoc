@@ -1,0 +1,37 @@
+= 2024년 2분기 04월-06월 LWIL(Last week I learnt) 모음
+// Metadata:
+:description: Last Week I Learnt
+:keywords: study, til, lwil
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+
+[[section-202404]]
+== 2024년 04월
+
+[[section-202404-W1]]
+=== 2024년 04월 1주
+- hwan: Kotlin 에서는 extension function 도 상속을 이용한 확장 구현이 된다. Template pattern 에서 유용하게 활용할 수 있는 테크닉인듯...
++
+
+[source, kotlin]
+----
+abstract class GenericTemplate<T, U> {
+    protected abstract fun T.convert(): U
+}
+
+class StringToNumberConverter<String, Number> {
+    override fun String.convert(): Number {
+        // ..
+    }
+}
+
+class StringToUuidConverter<String, Uuid> {
+    override fun String.convert(): Uuid {
+        // ..
+    }
+}
+----
