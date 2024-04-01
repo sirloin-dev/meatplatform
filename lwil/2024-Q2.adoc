@@ -35,3 +35,15 @@ class StringToUuidConverter : Converter<String, Uuid> {
     }
 }
 ----
+
+- gon :
+```
+@Transactional
+@Schedule(3)
+fun scheduleTask() {}
+```
+위 코드를 보시면 어떤 문제가 있을것으로 생각되나요?
+@Transactional을 너무 습관적으로 붙힌 안좋은 대표적인 예라고 생각합니다.
+위 코드의 경우 task가 어떠한 일을 하지않아도 3초마다 트랜잭션을 열고 닫습니다.
+그것이 스케줄링에서 원하는 행동이라면 상관없지만 보통은 스케줄링돌때 아무일도 안하는 경우에 트랜잭션을 열 이유는 없기때문에
+@Transactional을 사용한다면 꼭 그뒤의 동작을 잘 예상하면서 사용해야 한다.
