@@ -85,8 +85,7 @@ FCM(Firebase Cloud Messaging) +
 - **장점**: 다양한 플랫폼에서 사용 가능하며, 대규모로 메시지를 보낼 수 있습니다. +
 - **단점**: 실시간성에 제한이 있을 수 있고, 외부 서비스에 대한 의존도가 생깁니다.
 
-
-gyeongate: typescript를 도입하는 과정에서 mocking이 안되는 문제를 해결하기위해 찾아보니 mock에 여러 종류가 있어 찾아보았다. 
+- gyeongate: typescript를 도입하는 과정에서 mocking이 안되는 문제를 해결하기위해 찾아보니 mock에 여러 종류가 있어 찾아보았다. 
 
 mock +
 - 의존성이 주입 되는 시점에 모방한 객체, 모방된 객체는 동작에 대한 결과를 미리 정의할 수 있으며 몇번 호출 되었는지, 호출이 되었는지를 검증할 수 있다.
@@ -96,3 +95,55 @@ spy +
 
 stub + 
 - 미리 정의된 응답을 제공해주는 객체 일반적으로 테스트를 특정 방향으로 안내하기 위해 시뮬레이션되는 객체, mock과는 달리 유연하게 동작에 대한 응답을 미리 정의하는 것이 어렵다.
+
+[[section-202404-W3]]
+=== 2024년 04월 3주
+- hwan: MongoDB 는 트랜잭션을 쓰려면 반드시 클러스터로 운영해야 한다. 이 때문에 마이그레이션을 해야 했다. 
++
+
+. 데이터 덤프 및 서비스 stop
++
+
+[source, shell]
+----
+db.shutdown();
+
+mongodump --out /path/to/restore
+----
++
+
+. 클러스터로 쓸 호스트에 mongod 를 추가 설치하고 시작 옵션을 조절해 Replica set 설정
++
+
+[source, shell]
+----
+mongod --replSet ${REPLICA_SET}
+----
++
+
+. Master cluster 에 replica set 을 설정
++
+
+[source, shell]
+----
+rs.initiate();
+rs.add({host: \"$NAME_REPL_1:27017\", priority: 0.5});
+----
++
+
+. master cluster 의 mongosh 에 접속후 dump 한 데이터를 import
++
+
+[source, shell]
+----
+mongorestore /path/to/restore
+----
+
++
+. 데이터 정상 이동여부를 확인.
++
+
+[source, shell]
+----
+db.collection.count()
+----
