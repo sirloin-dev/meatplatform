@@ -127,7 +127,7 @@ mongod --replSet ${REPLICA_SET}
 [source, shell]
 ----
 rs.initiate();
-rs.add({host: \"$NAME_REPL_1:27017\", priority: 0.5});
+rs.add({host: \"$NAME_REPL_1:$PORT_REPL_1\", priority: 0.5});
 ----
 +
 
