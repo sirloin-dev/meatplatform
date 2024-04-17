@@ -37,14 +37,19 @@ class StringToUuidConverter : Converter<String, Uuid> {
 ----
 
 - gon :
-```
++
+
+[source, kotlin]
+----
 @Transactional
 @Schedule(3)
 fun scheduleTask() {
     if(list.isEmpty()) { return }
     // doSomething
 }
-```
+----
++
+
 위 코드를 보시면 어떤 문제가 있을것으로 생각되나요? +
 @Transactional을 너무 습관적으로 붙힌 안좋은 대표적인 예라고 생각합니다. +
 위 코드의 경우 task가 어떠한 일을 하지않아도 3초마다 트랜잭션을 열고 닫습니다. +
@@ -153,7 +158,10 @@ db.collection.count()
 조건부 빈 생성을 위한 주석Annotation이다. @ConditionalOnProperty는 주어진 속성(프로퍼티)이 특정한 값을 가질 때만 스프링 빈을 생성하거나 설정하도록 합니다.
 yml이나 application.properties에 특정한 값이 있을때만 bean을 등록하게끔 할 수 있다.
 문법은 다음과 같다
++
 
+[source, kotlin]
+----
 @Configuration
 @ConditionalOnProperty(name = ["myapp.feature.enabled"], havingValue = "true")
 class MyFeatureConfiguration {
@@ -164,6 +172,7 @@ class MyFeatureConfiguration {
     }
 
 }
+----
 
 - wongue: Xcode 의 min deployment target 을 ios 업데이트 마다 재깍재깍 올려주는게 좋다. +
 애플은 새로운 ios 버전 배포 이후, 가끔씩 이전 버전의 ios 지원을 걍 날려버리고, 따로 경고나 빌드시 오류를 주지 않는 경우가 종종 발생한다.
