@@ -153,9 +153,7 @@ mongorestore /path/to/restore
 db.collection.count()
 ----
 
-- gon : @ConditionalOnProperty
-
-조건부 빈 생성을 위한 주석Annotation이다. @ConditionalOnProperty는 주어진 속성(프로퍼티)이 특정한 값을 가질 때만 스프링 빈을 생성하거나 설정하도록 합니다.
+- gon : `@ConditionalOnProperty` 는 조건부 빈 생성을 위한 주석Annotation이다. @ConditionalOnProperty는 주어진 속성(프로퍼티)이 특정한 값을 가질 때만 스프링 빈을 생성하거나 설정하도록 합니다.
 yml이나 application.properties에 특정한 값이 있을때만 bean을 등록하게끔 할 수 있다.
 문법은 다음과 같다
 +
