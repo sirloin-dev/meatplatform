@@ -171,6 +171,33 @@ class MyFeatureConfiguration {
 - wongue: Xcode 의 min deployment target 을 ios 업데이트 마다 재깍재깍 올려주는게 좋다. +
 애플은 새로운 ios 버전 배포 이후, 가끔씩 이전 버전의 ios 지원을 걍 날려버리고, 따로 경고나 빌드시 오류를 주지 않는 경우가 종종 발생한다.
 
-- gyeongtae: 도메인이란 문제의 영역을 말하고 문제의 영역을 어떻게 동작하게 만들 것인지가 DDD의 본질이라고 한다. 그리고 문제의 특정 영역을 동작시키기 위한 모델이 존재할 텐데
-             이것을 도메인 모델이라고 하고 도메인 모델은 곧 코드가 된다. 그리고 이 코드는 자체만으로 도메인을 설명하는 문서 역할을 하게 된다. 아예 문서가 필요없다고 할 순 없지만 
-             도메인 지식으로부터 표현된 도메인 모델 즉, 코드로도 비즈니스가 이해될 수 있게 작성하면 따로 문서가 필요 없을것이라고 한다.
+[[section-202404-W4]]
+=== 2024년 04월 4주
+- hwan: HTTP GET 에 Body 를 보내는 행위는 '일반적' 으로 잘못된 행위라고 인식해 왔다. 그러나 그걸 잘못되었다고 인식하는 것은 잘못되었다. HTTP 를 정의한 link:https://www.rfc-editor.org/rfc/rfc2616#section-4.3[RFC 2616] 에서는 
++
+
+> entity-body 맥락을 정의하지 않은 요청이 message-body 를 포함한 경우 이를 되도록(SHOULD) 무시하도록 구현해야 한다
++
+
+라는 구문이 있었다. 그러나 2014년에 HTTP 를 새로 정의한 RFC 7230 부터 RFC 7237 중 link:https://datatracker.ietf.org/doc/html/rfc7231#section-4.3[RFC 7231] 에 따르면 원래의 정의가 제거되었을 뿐 아니라 GET 요청에 대한 정의도 다음과 같이 변경되었다.
++
+
+> GET 요청의 payload(맥락상 message-body) 는 정의된 맥락을 가지지 않는다. payload body 를 가진 GET 요청은, (서버측에서) 요청을 거절하기 위한 구현을 추가해야 할 수도 있다.
++
+
+즉, Request body 를 포함한 GET 요청을 거부할지 말지는 서버의 몫이며 RFC 에서는 잘못되었다는 표현을 하지 않도록 변경되었다는 것이다. 10년 전에 변경된 사양을 이제서야 알게 되다니 부끄러운 한 주였다. 다만, 문서에서 이를 허용해 줬다 해서 GET 에 request body 를 담는 구현을 허용할지 말지를 가지고 싸우는 일은 피했으면 좋겠다. 예를 들어 GET 요청의 경우 복수 개의 parameter 를 표현하는 일은 대부분 번거롭다.
++
+
+[source, shell]
+----
+GET https://my-site/user/profiles/ABCD,EFGH,IJKL,MNOP,QRST,UVWX
+
+또는
+
+GET https://my-site/user?profile=ABCD&profile=EFGH&profile=IJKL&profile=MNOP&profile=QRST&profile=UVWX
+----
++
+
+어느 쪽이던 표현이 깔끔하지 않다. 이런 경우 request body 를 포함한 GET method 를 허용하는 것도 고려한다던가 하는 유연함을 가지는 것도 좋을 것 같다.
+
+- gyeongtae: 도메인이란 문제의 영역을 말하고 문제의 영역을 어떻게 동작하게 만들 것인지가 DDD의 본질이라고 한다. 그리고 문제의 특정 영역을 동작시키기 위한 모델이 존재할 텐데, 이것을 도메인 모델이라고 하고 도메인 모델은 곧 코드가 된다. 그리고 이 코드는 자체만으로 도메인을 설명하는 문서 역할을 하게 된다. 아예 문서가 필요없다고 할 순 없지만 도메인 지식으로부터 표현된 도메인 모델 즉, 코드로도 비즈니스가 이해될 수 있게 작성하면 따로 문서가 필요 없을것이라고 한다.
