@@ -240,3 +240,8 @@ forward는 내부적으로 지정된 resource를 client에 영향을 미치지 �
 forward는 내부적으로 지정된 resource를 client에 바로 반환하지만 reidrect는 302 혹은 303 상태코드를 반환하게 한 후 redirect를 client가 직접 수행하게 하여 client는 요청을 두 번 해야 원하는 resource를 전달 받을 수 있습니다. 
 
 이 차이로 인하여 외부 client url이 index.html로 변하면서 빈 페이지만 보였던 것입니다. 이 문제를 forward로 바꾸면 내부적으로는 index.html resource를 return 하지만 client 요청 자체는 바뀌지 않기때문에 routing url로 index.html에 요청을 할 수 있어 routing 되는데 문제가 없던 것입니다.
+
+- gon : 읽고있는 중이라 정리는 아직 못했지만 너무 좋은 글이라 공유하여봅니다 +
+https://guruma.github.io/posts/2018-11-18-Continuation-Concept/ +
+cps 스타일에 대한 정석같은 아티클입니다
+
