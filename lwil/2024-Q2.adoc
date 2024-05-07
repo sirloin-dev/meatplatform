@@ -284,3 +284,10 @@ fun `when limit rate set, then split into chunks`() {
 wongue: Flutter 프로젝트에서 공식 l10n 과 buildrunner를 같이 의존하게된다면, dart run build_runner build 를 실행할 때 오류가 발생한다. +
 이를 해결하기 위해서는 build_runner build 직전에 pubspec.lock 파일을 삭제하면 정상적으로 codegen 이 가능해진다. +
 이는 다시 dart run pub get 을 실행하기 전까지는 반복해 codegen 을 수행할 수 있다.
+
+- gon : TransactionSynchronizationManager 란?
+
+Spring 프레임워크를 사용할 때 현재 코드가 트랜잭션 내에서 실행되고 있는지 확인하는 방법은 여러 가지가 있다. +
+그중 대표적인것이 TransactionSynchronizationManager 클래스이다. +
+TransactionSynchronizationManager는 스프링의 org.springframework.transaction.support 패키지에 있는 유틸리티 클래스로, 현재 스레드의 트랜잭션 상태 정보에 접근할 수 있게 해준다. +
+이 클래스의 isActualTransactionActive() 메소드를 사용하면 현재 코드가 트랜잭션 내에서 실행되고 있는지 여부를 확인할 수 있다.
