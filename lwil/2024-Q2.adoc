@@ -249,11 +249,11 @@ cps 스타일에 대한 정석같은 아티클입니다
 - hwan: IntelliJ 2022 -> 2023 업데이트 이후 Run/Debug Configurations 툴바 기능이 이상하게 바뀌어 매우 성가시다. 'Recent Configurations' 항목이 추가되며 기존에 만들어 둔 Configurations 들의 순서를 제 멋대로 바꾸는 현상이 발생하기 때문이다. 이 기능을 끌 방법을 찾아봤지만 딱히 없어 두배로 성가시다. 다만 전 세계의 다른 동료 개발자들도 이 기능을 굉장히 마음에 들지 않아 하는 것 같다. link:https://youtrack.jetbrains.com/issue/IJPL-119723/Run-widget-show-all-run-configurations-by-default[IntelliJ IDEA Bug Tracker] 에 대놓고 이 이슈가 있는 걸로 봐서는 조만간 업데이트가 있을 거라는 희망을 가져도... 되겠지?
 
 
-[[section-202404-W4]]
+[[section-202405-W1]]
 === 2024년 05월 1주
 
-gyeongtae: webflux나 webClient로 non-blocking I/O로 높은 처리량을 달성하여 다량의 파일 다운로드 시스템이나 크롤링 같은 시스템에서 자원적으로나 성능면으로나 큰 이득을 얻을 수 있지만 문제가 되는 부분은 처리량을 애플리케이션이 버틸 수 있나이다. 단적인 예로 pending Queue가 순식간에 꽉차버려 이후 요청이 버려지는 문제, 요청량 증가로 인한 CPU 부하 등이 있다. 
-이 경우엔 back pressure 매커니즘을 이용하여 처리량을 조절할 수 있는데 webflux에서는 다음과 같이 제공해줍니다. 
+- gyeongtae: webflux나 webClient로 non-blocking I/O로 높은 처리량을 달성하여 다량의 파일 다운로드 시스템이나 크롤링 같은 시스템에서 자원적으로나 성능면으로나 큰 이득을 얻을 수 있지만 문제가 되는 부분은 처리량을 애플리케이션이 버틸 수 있나이다. 단적인 예로 pending Queue가 순식간에 꽉차버려 이후 요청이 버려지는 문제, 요청량 증가로 인한 CPU 부하 등이 있다. 이 경우엔 back pressure 매커니즘을 이용하여 처리량을 조절할 수 있는데 webflux에서는 다음과 같이 제공해줍니다. 
++
 
 [source, kotlin]
 ----
@@ -278,16 +278,26 @@ fun `when limit rate set, then split into chunks`() {
         .verifyComplete()
 }
 ----
++
 
 또는 Message Queue를 이용한 처리량 조절도 가능하다. 이벤트는 Queue로 보내고 Queue에서 받은 이벤트를 천천히 하나 씩 처리하는 방법으로 back pressure 매커니즘을 구현할 수도 있다.
++
 
-wongue: Flutter 프로젝트에서 공식 l10n 과 buildrunner를 같이 의존하게된다면, dart run build_runner build 를 실행할 때 오류가 발생한다. +
-이를 해결하기 위해서는 build_runner build 직전에 pubspec.lock 파일을 삭제하면 정상적으로 codegen 이 가능해진다. +
-이는 다시 dart run pub get 을 실행하기 전까지는 반복해 codegen 을 수행할 수 있다.
+wongue: Flutter 프로젝트에서 공식 l10n 과 buildrunner를 같이 의존하게된다면, dart run build_runner build 를 실행할 때 오류가 발생한다. 이를 해결하기 위해서는 build_runner build 직전에 pubspec.lock 파일을 삭제하면 정상적으로 codegen 이 가능해진다. 이는 다시 dart run pub get 을 실행하기 전까지는 반복해 codegen 을 수행할 수 있다.
 
 - gon : TransactionSynchronizationManager 란?
++
 
-Spring 프레임워크를 사용할 때 현재 코드가 트랜잭션 내에서 실행되고 있는지 확인하는 방법은 여러 가지가 있다. +
-그중 대표적인것이 TransactionSynchronizationManager 클래스이다. +
-TransactionSynchronizationManager는 스프링의 org.springframework.transaction.support 패키지에 있는 유틸리티 클래스로, 현재 스레드의 트랜잭션 상태 정보에 접근할 수 있게 해준다. +
-이 클래스의 isActualTransactionActive() 메소드를 사용하면 현재 코드가 트랜잭션 내에서 실행되고 있는지 여부를 확인할 수 있다.
+Spring 프레임워크를 사용할 때 현재 코드가 트랜잭션 내에서 실행되고 있는지 확인하는 방법은 여러 가지가 있다. 그중 대표적인것이 TransactionSynchronizationManager 클래스이다. TransactionSynchronizationManager는 스프링의 org.springframework.transaction.support 패키지에 있는 유틸리티 클래스로, 현재 스레드의 트랜잭션 상태 정보에 접근할 수 있게 해준다. 이 클래스의 isActualTransactionActive() 메소드를 사용하면 현재 코드가 트랜잭션 내에서 실행되고 있는지 여부를 확인할 수 있다.
+
+- hwan : Optional 로 감싼 field 에 JSR-301 Validation 적용하기
++
+
+[source, kotlin]
+----
+@JsonProperty("name")
+val name: Optional<@Size(
+    min = CustomerInflowRoute.MIN_NAME_LENGTH,
+    max = CustomerInflowRoute.MAX_NAME_LENGTH
+) String>?,
+----
