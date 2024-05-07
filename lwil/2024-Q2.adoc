@@ -280,3 +280,7 @@ fun `when limit rate set, then split into chunks`() {
 ----
 
 또는 Message Queue를 이용한 처리량 조절도 가능하다. 이벤트는 Queue로 보내고 Queue에서 받은 이벤트를 천천히 하나 씩 처리하는 방법으로 back pressure 매커니즘을 구현할 수도 있다.
+
+wongue: flutter 에서 공식 l10n 패키지와 build_runner 를 같이 의존하면, dart run build_runner build 가 정상적으로 실행되지 못하는 문제가 있다. +
+이를 해결하는 방법은, build_runner build 직전 pubspec.lock 파일을 삭제해주면 정상적으로 빌드가 가능하다. + 
+이후 dart pub get 을 실행하기 전까지는 codegen 에 문제가 발생하지 않는다.
