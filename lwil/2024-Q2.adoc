@@ -348,3 +348,5 @@ prototype 남발은:
 +
 
 그러나 typescript compiler 는 `import "./DateUtils"`; 구문이 없다면 이 interface augmentation 을 제대로 컴파일 하지 않는다. 즉 컴파일 타임에서의 맥락 한정 효과는 여전히 유효하다는 의미. 따라서 typescript 를 계속 사용할 것이라면 위의 technique 는 코드 가독성에 도움이 될 것 같다. 기능이 정말 보편적이라면 고려해 볼 만한 technique 인 것 같다.
+
+- gon : MMU 내부에는 TLB라는 캐시가 존재하는데, 이는 자주 사용되는 가상 주소의 변환 결과를 저장하여 변환 과정의 속도를 향상시킵니다.
