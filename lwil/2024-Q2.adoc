@@ -408,3 +408,49 @@ prototype 남발은:
 
 - gon : 클로저에 대해 개념이 모호했는데 이번에 공부하면서 좀 잡힌거같다 + 
 간단히 한문장으로 요약하자면 "클로저는 함수 내부에서 선언된 함수가 외부 함수의 변수에 접근할 수 있도록 하는 기능을 말합니다."
+
+- hwan: javascript 의 non-`async` 맥락에서 결과를 기다릴 필요가 없는 `async`-`await` 가 필요할 때, link:https://developer.mozilla.org/en-US/docs/Glossary/IIFE[IIFE] 를 이용해 문제를 해결할 수 있다. 이 기법은 예를 들어 어떤 동작 이후 비동기로 서버에 log 를 보낸다던가 하는 시나리오에서 유용하다. 내가 실제로 유용하게 사용하는 경우는 async getter 를 구현할 경우다.
++
+
+[source,javascript]
+----
+// myFunction 은 async function 이 아니기 때문에 내부에서 await 를 쓸 수 없음
+function myFunction() {
+    doMyJob();
+
+    (async() {
+        // await 사용가능
+        const result = await sendLog();
+        if (!result) {
+            console.debug("Log 전송에 문제가 발생했습니다.");
+        }
+    })();
+}
+----
++
+
+.async getter 구현 예제
+[source,javascript]
+----
+import * as fs from "node:fs"
+
+class UserSettings {
+    // returns Promise<string>
+    get loginUserName() {
+        return (async() {
+            try {
+                const configFile = await fs.readFile('/config.txt', { encoding: 'utf8' });
+                const regex = new RegExp(`^${key}=(.*)$`, 'm');
+                const match = data.match(regex);
+                if (match) {
+                    return match[1];
+                } else {
+                    return Promise.reject();
+                }
+            } catch (err) {
+                return Promise.reject();
+            }
+        }
+    })();
+}
+----
