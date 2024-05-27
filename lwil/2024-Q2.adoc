@@ -440,6 +440,7 @@ class UserSettings {
         return (async() {
             try {
                 const configFile = await fs.readFile('/config.txt', { encoding: 'utf8' });
+                const key = "username";
                 const regex = new RegExp(`^${key}=(.*)$`, 'm');
                 const match = data.match(regex);
                 if (match) {
