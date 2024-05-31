@@ -469,3 +469,31 @@ Bounded Context::
 +
 Context Map::
 컨텍스트 맵(Context Map)은 말 그대로 바운디드 컨텍스트 간의 관계를 지도 형태로 표현한 것으로, 전체 비즈니스를 조망할 수 있는 시각 자료로도 활용할 수 있다.
+
+gyeongtae:
+
+kotlin Nothing vs JS never
+
+공통점 : 두 타입 모두 함수가 반환되지 않음을 보장하지 않음을 표현하기 위한 타입입니다. 이 타입이 선언된 함수에서 함수를 종료하는 action (throw exception or System.exit(0), etc...) 이 발생하지 않으면 컴파일 에러를 발생시켜 함수가 값을 반환하지 않고 예외를 던지거나 종료됨을 알리는데 사용됩니다. 
+
+사용 예 
+
+[source, javascript]
+----
+function validateFail(userId: number): never {
+    // 실패 로직 
+    throw new Error(`this ${userId} is wrong userId. Please check your UserId`);
+}
+----
+
+[source, kotlin]
+----
+fun validateFail(userId: Long): Nothing {
+    // 실패 로직 
+    throw IllegalArgumentException(`this ${userId} is wrong userId. Please check your UserId`)
+}
+----
+
+차이점
+
+사용되는 언어가 다를 뿐 공부하면서 큰 차이를 느끼지 않습니다. 추후에 더 차이점을 찾아볼 예정입니다.
