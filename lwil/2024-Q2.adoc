@@ -553,5 +553,5 @@ abstract class StrategyPatternExample {
 }
 ----
 +
-kotlin 과 비교하면 code 가 늘어지는 경향이 있지만 이런 방식으로 enum 의 기능 부실을 해결할 수 있다.
+kotlin 과 비교하면 code 가 늘어지고, `never` 를 이용한 exhaustiveness 강제를 쓸 수 없는 문제가 있지만 이런 방식으로 typescript `enum` 의 기능 부실을 해결할 수 있다.
 
