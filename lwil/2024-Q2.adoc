@@ -555,3 +555,11 @@ abstract class StrategyPatternExample {
 +
 kotlin 과 비교하면 code 가 늘어지고, `never` 를 이용한 exhaustiveness 강제를 쓸 수 없는 문제가 있지만 이런 방식으로 typescript `enum` 의 기능 부실을 해결할 수 있다.
 
++ wongue: c-family language 에서 loop 를 선언할때 주의 할 점. +
+``` js
+    for (let i = 0; i !== 1.0; i += 0.1) {
+    console.log(i);
+}
+```
+이와 같이 loop 의 탈출조건에 실수형 타입을 선언하는것을 피하자. +
+왜 그래야 하는지 궁금하면, 저 코드를 콘솔에 실행해보면 전기세를 낭비 해 볼 수 있다.
