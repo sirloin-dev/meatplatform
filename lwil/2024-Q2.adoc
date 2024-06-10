@@ -502,6 +502,56 @@ fun validateFail(userId: Long): Nothing {
 === 2024년 06월 1주
 - gon : 팬텀리드, 반복가능하지않는 조회, 더티리드는 트랜잭션내에 격리수준에 따라 일어나는 현상을 말한다.
 
-- 팬텀 리드: 트랜잭션 내에서 동일한 쿼리로 읽었을 때 결과의 개수가 달라지는 것.
-- 반복 불가능한 조회: 트랜잭션 내에서 동일한 쿼리로 조회할 때 레코드의 값이 달라지는 것.
-- 더티 리드: 다른 트랜잭션에서 커밋되지 않은 상태의 데이터를 조회하는 것.
+  * 팬텀 리드: 트랜잭션 내에서 동일한 쿼리로 읽었을 때 결과의 개수가 달라지는 것.
+  * 반복 불가능한 조회: 트랜잭션 내에서 동일한 쿼리로 조회할 때 레코드의 값이 달라지는 것.
+  * 더티 리드: 다른 트랜잭션에서 커밋되지 않은 상태의 데이터를 조회하는 것.
+
+- hwan: Typescript 를 이용한 java/kotlin 스타일의 enum 전략 패턴 구현하기.
++
+.Kotlin 으로 구현한 enum class
+[source, kotlin]
+----
+enum class StrategyPatternExample {
+    STRATEGY1 {
+        override fun operation(): String = "Strategy 1 operation"
+    },
+    STRATEGY2 {
+        override fun operation(): String = "Strategy 2 operation"
+    };
+
+    abstract fun operation(): String
+}
+----
++
+.Typescript 로 구현한 enum class
+[source, typescript]
+----
+abstract class StrategyPatternExample {
+    private static _entries: StrategyPatternExample[] = new StrategyPatternExample[];
+
+    static readonly STRATEGY1 = new (class extends StrategyPatternExample {
+        operation(): string {
+            return "Strategy 1 operation";
+        }
+    })();
+
+    static readonly STRATEGY2 = new (class extends StrategyPatternExample {
+        operation(): string {
+            return "Strategy 2 operation";
+        }
+    })();
+
+    abstract operation(): string;
+
+    public constructor() {
+        StrategyPatternExample._entries.push(this)
+    }
+
+    public get entries(): StrategyPatternExample[] {
+        return _entries;
+    }
+}
+----
++
+kotlin 과 비교하면 code 가 늘어지는 경향이 있지만 이런 방식으로 enum 의 기능 부실을 해결할 수 있다.
+
