@@ -563,3 +563,33 @@ kotlin 과 비교하면 code 가 늘어지고, `never` 를 이용한 exhaustiven
 ```
 이와 같이 loop 의 탈출조건에 실수형 타입을 선언하는것을 피하자. +
 왜 그래야 하는지 궁금하면, 저 코드를 콘솔에 실행해보면 전기세를 낭비 해 볼 수 있다.
+
+- gyeongtae: svelte $ 구문이란? 
++
+$ 구문은 반응형 구문으로 구성 요소가 변경되면 DOM을 자동으로 업데이트 한다. 선언은 다음처럼 할 수 있습니다.
+
++
+[source, svelte]
+----
+<script>
+	let count = 0;
+
+	function increment() {
+		count += 1;
+	}
+
+	$: doubled = count * 2;
+</script>
+
+<button on:click={increment}>
+	Clicked {count}
+	{count === 1 ? 'time' : 'times'}
+</button>
+
+<h2>클릭 횟수 * 2</h2>
+<p>{doubled}</p>
+----
+
++
+반응형 구문은 구성 요소에 따라 무조건 DOM 업데이트가 일어나기 때문에 이 점을 유의하여 사용해야한다. 만일 검색 동작이 반응형 구문으로 동작하고 구성 요소가 DOM 변경에 영향을 주고 있다면
+원하는 방향으로 동작하지 않을 수 있다. (구성 요소에 따라 자동으로 검색 요청이 서버로 갈 수도 있습니다.)
