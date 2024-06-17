@@ -603,3 +603,24 @@ $ 구문은 반응형 구문으로 구성 요소가 변경되면 DOM을 자동�
 예를 들어, Scaffold 위젯 위에 온-스크린 키보드가 표시되었을 때, resizeToAvoidBottomInset 속성의 값이 ``false``라면 키보드의 높이만큼 Scaffold 위젯의 body나 플로팅 위젯이 가려지게 되는데, 값을 ``true``로 변경하면 키보드와 겹치지 않도록 위젯들의 높이와 크기가 자연스럽게 조정되는 걸 볼 수 있습니다.
 +
 앞으로도 floatingActionButton 속성과 같은 Scaffold 위젯 고유의 기능들을 적극 활용할 예정이기 때문에 이와 연관된 속성들에 대해서도 어느 정도 학습해두면 좋을 것 같습니다.
+
+[[section-202406-W2]]
+=== 2024년 06월 2주
+
+- hwan: eslint 사용시, 일부 규칙을 특정 file 내에서만 on/off 하는 방법
++
+[source, javascript]
+----
+다음 한 줄 비활성화
+/* eslint-disable-next-line  @typescript-eslint/no-explicit-any */
+
+블럭 비활성화
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// some javascript code ... {
+//
+// }
+/* eslint-enable @typescript-eslint/no-explicit-any */
+----
++
+block comment 형식으로 작성해야 한다는 점에 주의
+
