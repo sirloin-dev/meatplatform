@@ -665,3 +665,7 @@ DHCP로 인하여 무선 인터넷 연결 시 계속해서 동적 IP를 할당�
 ----
 <li class="right"><a class="button-positive" href={undefined} on:click={() => send()}>Send</a></li>
 ----
+
+- wongue: nodeJS 런타임의 병렬성 페러다임인 WebWorker에 대해 새롭게 알게 된 점. +
+WebWorker 는 한마디로 이야기하면 isolate다. 자원을 공유하지 않기 떄문. +
+
