@@ -647,3 +647,21 @@ DHCP 를 사용하는 이유?
 +
 DHCP 사용 시 주의점
 DHCP로 인하여 무선 인터넷 연결 시 계속해서 동적 IP를 할당받아 서버로 운영하기 어려운 단점이 있다. 이러한 경우 고정 IP를 할당 받아서 해결해야한다.
+
+[[section-202406-W3]]
+=== 2024년 06월 3주
+
+- hwan: svelte 에서 href 에 잘못된 값을 입력했다는 경고(accessibility warning)를 suppress 하는 방법
++
+.Svelte: A11y: 'javascript:void(0)' is not a valid href attribute
+[source, html]
+----
+<li class="right"><a class="button-positive" href="javascript:void(0)" on:click={() => send()}>Send</a></li>
+----
+
++
+.Accessibility 경고를 제거한 source code
+[source, html]
+----
+<li class="right"><a class="button-positive" href={undefined} on:click={() => send()}>Send</a></li>
+----
