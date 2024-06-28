@@ -670,8 +670,32 @@ DHCP로 인하여 무선 인터넷 연결 시 계속해서 동적 IP를 할당�
 WebWorker 는 한마디로 이야기하면 isolate다. 자원을 공유하지 않기 떄문. +
 
 - gon : Java의 LinkedHashMap과 LRU
-
++
 LRU캐쉬를 Java에서 구현할때 LinkedHashMap를 이용해서 많이 구현한다.
 이때 주의할점이 accessOrder 값을 꼭 true로 지정하여야한다
 map의 반복순서를 정하는 값인데
 true일 경우 액세스 순서, false일 경우 삽입 순서에 따라 map의 반복순서를 관리합니다.
+
+- gyeongtae: flowbite library에서 tailwind를 사용하다보니 알게된 postcss에 대해서 정리
++
+PostCss는 css를 후처리 하는 도구, javascript 기반의 플러그인 아키텍처를 사용하여 css코드를 변환, 분석, 최적화가 가능. 
+PostCss는 단독으로 아무기능도 수행하지 않지만 다양한 플러그인을 통해 강력한 기능 제공 가능 
+
++
+- CSS 전처리 및 후처리: SCSS, LESS와 유사한 기능을 제공하여 CSS 코드를 더 쉽게 작성하고 유지보수할 수 있게 합니다.
+- CSS 모듈화: CSS 파일을 모듈화하여 코드의 재사용성을 높이고, 전역 네임스페이스 오염을 방지할 수 있습니다.
+- 자동 벤더 프리픽스 추가: Autoprefixer 같은 플러그인을 사용하여 다양한 브라우저 호환성을 위해 CSS에 자동으로 벤더 프리픽스를 추가합니다.
+
++
+- postcss.config.js 
+[source, javascript]
+----
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
+};
+----
+
+다음과 같은 세팅으로 postcss와 tailwindcss를 적용하여 svelte에서 사용할 수 있다.
