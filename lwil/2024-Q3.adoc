@@ -48,3 +48,8 @@ LangChain의 핵심 구성 요소:
 출처 : https://aws.amazon.com/ko/what-is/langchain/
 
 - hwan: link:https://html2canvas.hertzen.com/[html2canvas] - HTML Document 를 통째로 capture 해서 Canvas 의 image 로 만들어 주는 프로젝트. 어떻게 구현한건지 신기해서 조금 뜯어봤더니, 그냥 DOM 을 통째로 순회하며 CSS 에 맞춰 Canvas 에 그려주도록 되어 있다. 제작자의 근성에 박수를.
+
+- wongue: link:https://en.wikipedia.org/wiki/Signed_distance_function[SDF] Signed Distance Function(or Field)는 그래픽스에서 다양한 방식으로 이용할 수 있다. +
+SDF는 정의역을 실수 xy 평면 영역을 가지기 때문에, rasterzied 이미지의 SDF 를 구할 수 있다면, 이를 활용해 자유롭게 해당 이미지를 확대 축소시켜 화면에 투영 할 수 있기 때문. + 
+흥미로운 그래픽 아웃풋의 예시로는 link:https://tympanus.net/codrops/2024/06/12/shape-lens-blur-effect-with-sdfs-and-webgl/[링크] 이런 예시가 있고, +
+엔지니어링적으로는 link:https://www.redblobgames.com/x/2403-distance-field-fonts/[다음]과 같이 레스터 폰트 파일의 확대, 축소에 활용 될 수 있다.
