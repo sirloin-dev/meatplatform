@@ -100,3 +100,7 @@ BreadCrumb는 탐색 도구로 사용되며 다음과 같은 장점을 보여줍
 
 +
 유의할 점으로는 BreadCrumb가 길어지지 않게 적절한 UI로 표현하여 제공해주는게 UX 향상에 도움을 준다. ex) Home > order > ... > refund > confirm
+[[section-202407-W3]]
+=== 2024년 07월 3주
+- wongue: 실무에서 method chaining 을 주로 사용하는데, 이게 어디까지가 적절선인지 판단하기 어려움을 겪었었다. +
+참고할만한 자료를 찾았는데, method chaining 을 잘 쓰기 위한 고민인 Fluent interface 라는 코드 작성 방법론이라는걸 발견했다. 
