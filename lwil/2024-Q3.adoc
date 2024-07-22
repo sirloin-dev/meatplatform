@@ -104,3 +104,13 @@ BreadCrumb는 탐색 도구로 사용되며 다음과 같은 장점을 보여줍
 === 2024년 07월 3주
 - wongue: 실무에서 method chaining 을 주로 사용하는데, 이게 어디까지가 적절선인지 판단하기 어려움을 겪었었다. +
 참고할만한 자료를 찾았는데, method chaining 을 잘 쓰기 위한 고민인 Fluent interface 라는 코드 작성 방법론이라는걸 발견했다. 
+
+-gon : 코틀린에는 list확장함수에 +
+
+```kotlin
+public fun <T : Comparable<T>> List<T?>.binarySearch(element: T?, fromIndex: Int = 0, toIndex: Int = size): Int
+```
+
+이런 이진탐색 확장함수가 존재한다. +
+당연히 이진탐색이라서 정렬된 상태에서 써야한다. 위 함수는 정렬이 오름차순으로 되었다고 가정을 하고 동작한다 +
+주말에 프로젝트하다가 이상한 버그를 만나서 보니 정렬안하고 이진탐색을 해서 생긴거였다;
