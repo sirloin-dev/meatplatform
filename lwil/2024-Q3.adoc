@@ -107,12 +107,66 @@ BreadCrumb는 탐색 도구로 사용되며 다음과 같은 장점을 보여줍
 - wongue: 실무에서 method chaining 을 주로 사용하는데, 이게 어디까지가 적절선인지 판단하기 어려움을 겪었었다. +
 참고할만한 자료를 찾았는데, method chaining 을 잘 쓰기 위한 고민인 Fluent interface 라는 코드 작성 방법론이라는걸 발견했다. 
 
--gon : 코틀린에는 list확장함수에 +
-
+- gon : 코틀린에는 list확장함수에
++
 ```kotlin
 public fun <T : Comparable<T>> List<T?>.binarySearch(element: T?, fromIndex: Int = 0, toIndex: Int = size): Int
 ```
-
++
 이런 이진탐색 확장함수가 존재한다. +
 당연히 이진탐색이라서 정렬된 상태에서 써야한다. 위 함수는 정렬이 오름차순으로 되었다고 가정을 하고 동작한다 +
 주말에 프로젝트하다가 이상한 버그를 만나서 보니 정렬안하고 이진탐색을 해서 생긴거였다;
+
+- hwan: Kotlin 에서 reflection 으로 overloaded function 을 참조하는 법
++
+[source, kotlin]
+----
+interface MyInterface {
+    fun doSomething()
+
+    fun doSomething(message: Int)
+}
+
+fun methodReference() {
+    // length 1 인 이유는 class method 라서 0 번째 parameter 를 this 로 받기 때문
+    val doSomethingWithAny = MyInterface::class.members
+        .first { it.name == "doSomething" && it.parameters.length == 1 }
+
+    // 여기에서는 생략했지만 length 가 2 다. this, Int 를 parameter 로 받는 method 기 때문이다.
+    val doSomethingWithInt = MyInterface::class.members
+        .first { it.name == "doSomething" && it.parameters[1].type == Int::class.createType() }
+
+    println(doSomethingWithAny)
+    println(doSomethingWithInt)
+}
+----
++
+`Class::method` 로만 reference 를 표시하기 때문에 이런 사례에서는 function reference 를 쉽게 만들 방법은 없다. 위와 같은 사례를 모두 해결하는 utility function 을 만들면 다음과 같다.
++
+[source, kotlin]
+----
+fun T.funcRef(name: String, vararg argumentTypes: KClass<*>):  KCallable<*>? {
+    this::class.members.find { m ->
+        val hasSameName = m.name == name
+        // -1 하는 이유는 instance method 인 경우 first parameter 가 'this' 이기 때문
+        val hasSameArgumentsCount = m.parameters.size - 1 == argumentTypes.size
+        val hasSameArgumentTypes = m.parameters.takeLast(argumentTypes.size).map { it.type.classifier } == argumentTypes.toList()
+
+        return@find hasSameName && hasSameArgumentsCount && hasSameArgumentTypes
+    }
+}
+
+// Example usage:
+fun doSomethingWithMyInterface(ifce: MyInterFace) {
+    // doSomething() 함수의 KCallable<*> reference 획득
+    ifce.funcRef("doSomething")
+
+    // doSomething() 함수의 KCallable<*> reference 획득
+    ifce.funcRef("doSomething", Int::class)
+
+    // null
+    ifce.funcRef("foo")
+}
+----
++
+물론 reflection 이기 때문에 일반적인 환경에서 쓸 일은 드물고 test 나 proxy generation 같은 곳에서 유용하게 활용할 수 있다.
