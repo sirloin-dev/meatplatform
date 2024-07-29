@@ -170,3 +170,12 @@ fun doSomethingWithMyInterface(ifce: MyInterFace) {
 ----
 +
 물론 reflection 이기 때문에 일반적인 환경에서 쓸 일은 드물고 test 나 proxy generation 같은 곳에서 유용하게 활용할 수 있다.
+
+[[section-202407-W4]]
+=== 2024년 07월 4주
+
+- hwan: kotlin - Spring WebMVC 환경에서 `Optional<T>` 를 쓸 때 T 가 JVM primitive type 인 경우, restassured 에서 제대로 serialise 가 안 되는 문제를 발견했다. 이는 Jackson 라이브러리의 버그로서. Spring boot 3 에서 해결된 문제다.
++
+kotlin 을 도입한 이후 java 의 `Optional` 을 쓸 일이 없어 인지하지 못하던 사실이었다. HTTP 의 Patch 를 구현하려면 `Optional<T>` 을 써야 하는데 이 때 유독 직렬화가 되지 않는 문제가 있었다.
++
+link:https://github.com/FasterXML/jackson-databind/issues/3836[Jackson bug link]
