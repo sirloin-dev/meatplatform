@@ -181,6 +181,7 @@ kotlin 을 도입한 이후 java 의 `Optional` 을 쓸 일이 없어 인지하�
 link:https://github.com/FasterXML/jackson-databind/issues/3836[Jackson bug link]
 
 - gon : 
+
 #### JtaTransactionManager 란?
 
 JtaTransactionManager는 Java Transaction API(JTA)를 사용하여 트랜잭션을 관리하는 스프링 프레임워크의 클래스이다. +
