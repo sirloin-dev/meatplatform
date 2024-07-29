@@ -179,3 +179,17 @@ fun doSomethingWithMyInterface(ifce: MyInterFace) {
 kotlin 을 도입한 이후 java 의 `Optional` 을 쓸 일이 없어 인지하지 못하던 사실이었다. HTTP 의 Patch 를 구현하려면 `Optional<T>` 을 써야 하는데 이 때 유독 직렬화가 되지 않는 문제가 있었다.
 +
 link:https://github.com/FasterXML/jackson-databind/issues/3836[Jackson bug link]
+
+- gon : 
+#### JtaTransactionManager 란?
+
+JtaTransactionManager는 Java Transaction API(JTA)를 사용하여 트랜잭션을 관리하는 스프링 프레임워크의 클래스이다. +
+이 클래스는 주로 분산 트랜잭션 관리에 사용되며, 여러 데이터 소스와의 작업을 하나의 트랜잭션으로 묶어 관리할 수 있도록 합니다.  +
+그러나 JTA의 트랜잭션 관리를 위해서는 XA 트랜잭션을 지원하는 데이터 소스가 필요합니다.  +
+예를 들어 Redis는 XA 트랜잭션을 지원하지 않기 때문에, JtaTransactionManager를 사용하여 Redis에서 직접 트랜잭션을 관리할 수 없습니다.  +
+
+#### XA Transaction
+
+XA 트랜잭션은 분산 트랜잭션 표준 중 하나로, 여러 자원 관리자가 참여하는 트랜잭션을 조율할 때 사용된다.  +
+XA는 두 가지 주요 단계를 통해 분산 트랜잭션을 관리합니다: 준비(Prepare)와 커밋(Commit)/롤백(Rollback).  +
+RDB의 트랜잭션은 왠만하면 XA Transaction를 구현한다.  +
