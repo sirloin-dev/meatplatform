@@ -205,7 +205,7 @@ RDB의 트랜잭션은 왠만하면 XA Transaction를 구현한다.  +
 
 - gon : explain 값들 보는 법 간략 요약 +
 +
-`EXPLAIN`은 SQL 쿼리의 실행 계획을 보여주는 명령어이다, 쿼리의 성능을 분석하고 최적화하는 데 유용하다.
+MySQL 및 mariaDB 의 `EXPLAIN` 은 SQL 쿼리의 실행 계획을 보여주는 명령어이다, 쿼리의 성능을 분석하고 최적화하는 데 유용하다.
 +
 * `id` : 쿼리의 순서 및 단계. 여러 단계로 이루어진 쿼리는 각 단계마다 다른 id를 가진다.
 * `select_type` : 쿼리의 유형, SIMPLE(단순 SELECT), PRIMARY(메인 쿼리), SUBQUERY(서브쿼리) 등이 있다.
