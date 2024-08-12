@@ -195,8 +195,8 @@ XA 트랜잭션은 분산 트랜잭션 표준 중 하나로, 여러 자원 관�
 XA는 두 가지 주요 단계를 통해 분산 트랜잭션을 관리합니다: 준비(Prepare)와 커밋(Commit)/롤백(Rollback).  +
 RDB의 트랜잭션은 왠만하면 XA Transaction를 구현한다.  +
 
-[[section-202407-W5]]
-=== 2024년 07월 5주
+[[section-202408-W2]]
+=== 2024년 08월 2주
 
 - hwan: 무료 VPN 을 구축할 수 있는 솔루션들 중 OpenVPN 과 Wireguard 라는 제품들이 있다. 이중 WireGuard 는 UI 및 QR Code 기반의 클라이언트를 제공해 주기 때문에 사용하기 좀 더 편리하다. 그런데 이 제품을 Linux(Ubuntu) 환경에서 쓰려면 가이드 문서대로 따라할 경우 제대로 되지 않는다. `wg-quick` 이라는 명령을 이용해서 VPN adapter 를 up/down 하는 식으로 운영해야 한다.
 [[section-202408-W2]]
