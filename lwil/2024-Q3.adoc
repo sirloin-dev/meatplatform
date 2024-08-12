@@ -199,30 +199,30 @@ RDB의 트랜잭션은 왠만하면 XA Transaction를 구현한다.  +
 === 2024년 07월 5주
 
 - hwan: 무료 VPN 을 구축할 수 있는 솔루션들 중 OpenVPN 과 Wireguard 라는 제품들이 있다. 이중 WireGuard 는 UI 및 QR Code 기반의 클라이언트를 제공해 주기 때문에 사용하기 좀 더 편리하다. 그런데 이 제품을 Linux(Ubuntu) 환경에서 쓰려면 가이드 문서대로 따라할 경우 제대로 되지 않는다. `wg-quick` 이라는 명령을 이용해서 VPN adapter 를 up/down 하는 식으로 운영해야 한다.
-
 [[section-202408-W2]]
 === 2024년 08월 2주
 
 - gon : explain 값들 보는 법 간략 요약 +
-
++
 `EXPLAIN`은 SQL 쿼리의 실행 계획을 보여주는 명령어이다, 쿼리의 성능을 분석하고 최적화하는 데 유용하다.
++
+* `id` : 쿼리의 순서 및 단계. 여러 단계로 이루어진 쿼리는 각 단계마다 다른 id를 가진다.
+* `select_type` : 쿼리의 유형, SIMPLE(단순 SELECT), PRIMARY(메인 쿼리), SUBQUERY(서브쿼리) 등이 있다.
+* `table` : 쿼리가 참조하는 테이블 이름.
+* `type` : 조인의 유형, 성능이 좋은 순서대로 system, const, eq_ref, ref, range, index, ALL 등이 있다. ALL 은 테이블의 전체 스캔을 의미하며 성능이 가장 나쁘다.
+* `possible_keys` : 쿼리에서 사용할 수 있는 인덱스 목록
+* `key` : 실제로 사용된 인덱스
+* `key_len` : 사용된 인덱스의 길이, 인덱스가 얼마나 효과적으로 사용되는지 확인할 수 있다.
+* `ref` : 인덱스와 비교할 열 또는 상수
+* `rows` : 쿼리가 처리할 것으로 예상되는 행의 수, 값이 클수록 쿼리의 비용이 높아집니다.
+* `Extra` : 쿼리 실행에 대한 추가 정보를 제공, Using index, Using temporary, Using filesort 등이 있다.. Using filesort 와 같은 항목은 성능 저하를 의미할 수 있다.
 
-id : 쿼리의 순서 및 단계. 여러 단계로 이루어진 쿼리는 각 단계마다 다른 id를 가진다.
-
-select_type : 쿼리의 유형, SIMPLE(단순 SELECT), PRIMARY(메인 쿼리), SUBQUERY(서브쿼리) 등이 있다.
-
-table : 쿼리가 참조하는 테이블 이름.
-
-type : 조인의 유형, 성능이 좋은 순서대로 system, const, eq_ref, ref, range, index, ALL 등이 있다. ALL 은 테이블의 전체 스캔을 의미하며 성능이 가장 나쁘다.
-
-possible_keys : 쿼리에서 사용할 수 있는 인덱스 목록
-
-key : 실제로 사용된 인덱스
-
-key_len : 사용된 인덱스의 길이, 인덱스가 얼마나 효과적으로 사용되는지 확인할 수 있다.
-
-ref : 인덱스와 비교할 열 또는 상수
-
-rows : 쿼리가 처리할 것으로 예상되는 행의 수, 값이 클수록 쿼리의 비용이 높아집니다.
-
-Extra : 쿼리 실행에 대한 추가 정보를 제공, Using index, Using temporary, Using filesort 등이 있다.. Using filesort 와 같은 항목은 성능 저하를 의미할 수 있다.
+- hwan: Flutter 를 수년간 다뤄보며 내린 결론: 
++
+View Model, 특히 BLoC 으로 구현한 View Model 에서는 최대한 Flutter 맥락을 배제하고, dart pure 하도록 구현하는게 좋다.
++
+왜냐하면 View Model 이 Flutter 의 동작에 의존하게 만들 경우, Flutter mock 을 지원받지 못하는 상황에서 이용자 시나리오를 정확하게 검증하기 어렵기 때문이다.
++
+View Model 을 우리 Business Logic 중심으로 보고 Flutter 에서 독립적이도록 구성하면, 'Keypad 에 의한 text 입력' 같은 시나리오를 'text 입력' 으로 단순화할 수 있게 된다.
++
+또한 keypad 가 아니라 모스부호라던지, 음성입력이라던지 같은 변경이 있더라도 VIew Model 을 크게 바꿀 일이 없어진다.
