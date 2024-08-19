@@ -227,3 +227,28 @@ View Model, 특히 BLoC 으로 구현한 View Model 에서는 최대한 Flutter 
 View Model 을 우리 Business Logic 중심으로 보고 Flutter 에서 독립적이도록 구성하면, 'Keypad 에 의한 text 입력' 같은 시나리오를 'text 입력' 으로 단순화할 수 있게 된다.
 +
 또한 keypad 가 아니라 모스부호라던지, 음성입력이라던지 같은 변경이 있더라도 VIew Model 을 크게 바꿀 일이 없어진다.
+
+
+[[section-202408-W3]]
+=== 2024년 08월 3주
+- gon : 
+
+# ReentrantLock, ReadWriteLock, StampedLock 성능 비교
+
+- **ReentrantLock**: 하나의 스레드가 중복해서 락을 획득할 수 있는 락, 추가로 조건 객체(Condition)도 지원하여 더 세밀한 제어가 가능. 동시 읽기가 불가능하다.
+
+- **ReadWriteLock**: 읽기와 쓰기를 구분해 읽기는 여러 스레드가 동시에 가능하지만 쓰기는 하나의 스레드만 가능하도록 제어하는 락.
+
+- **StampedLock**: 낙관적 읽기 잠금(잠금이전에 먼저 읽을수 있다.)을 지원해 성능을 높이는 락으로, 기존의 ReadWriteLock보다 가벼운 락을 제공.
+
+위 3개의 Lock의 성능 비교이다
+
+read와 write를 둘다 한다는 가정하에 비교된 성능이다 +
+write의 비율을 조절해가며 테스트되었다 +
+읽는데 약간의 지연시간이 있다 가정하고 테스트하면 다음과같다 +
+StampedLock < ReadWriteLock < ReentrantLock +
+순으로 StampedLock이 제일 빠르고 ReentrantLock 제일 느렷다 +
+그러나 읽기 비율, 읽기의 실행시간, 동시 접근 쓰레드 수에 따라 ReadWriteLock이 ReentrantLock보다 느릴 수 있다. +
+읽기/쓰기가 섞여 있는 다수 상황에서는 StampedLock이 더 유리하다
+
+출처 : https://youtu.be/nTjW9A-TTtw?si=n7VINbqy_WJPt-rj
