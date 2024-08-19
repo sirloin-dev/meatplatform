@@ -236,17 +236,17 @@ View Model 을 우리 Business Logic 중심으로 보고 Flutter 에서 독립�
 * **ReentrantLock**: 하나의 스레드가 중복해서 락을 획득할 수 있는 락, 추가로 조건 객체(Condition)도 지원하여 더 세밀한 제어가 가능. 동시 읽기가 불가능하다.
 * **ReadWriteLock**: 읽기와 쓰기를 구분해 읽기는 여러 스레드가 동시에 가능하지만 쓰기는 하나의 스레드만 가능하도록 제어하는 락.
 * **StampedLock**: 낙관적 읽기 잠금(잠금이전에 먼저 읽을수 있다.)을 지원해 성능을 높이는 락으로, 기존의 ReadWriteLock보다 가벼운 락을 제공.
-
++
 위 3개의 Lock의 성능 비교이다
-
++
 read와 write를 둘다 한다는 가정하에 비교된 성능이다 +
 write의 비율을 조절해가며 테스트되었다 +
 읽는데 약간의 지연시간이 있다 가정하고 테스트하면 다음과같다 +
-StampedLock < ReadWriteLock < ReentrantLock +
-순으로 StampedLock이 제일 빠르고 ReentrantLock 제일 느렷다 +
-그러나 읽기 비율, 읽기의 실행시간, 동시 접근 쓰레드 수에 따라 ReadWriteLock이 ReentrantLock보다 느릴 수 있다. +
-읽기/쓰기가 섞여 있는 다수 상황에서는 StampedLock이 더 유리하다
-
+`StampedLock` < `ReadWriteLock` < `ReentrantLock` +
+순으로 `StampedLock` 이 제일 빠르고 `ReentrantLock` 이 제일 느렷다 +
+그러나 읽기 비율, 읽기의 실행시간, 동시 접근 쓰레드 수에 따라 `ReadWriteLock` 이 `ReentrantLock` 보다 느릴 수 있다. +
+읽기/쓰기가 섞여 있는 다수 상황에서는 `StampedLock` 이 더 유리하다
++
 출처 : https://youtu.be/nTjW9A-TTtw?si=n7VINbqy_WJPt-rj
 
 - wongue: 요즘 퇴근 이후 시간에 NN(Neural Network) 기초 이론을 짬짬히 보면서 알게 된 사실. +
@@ -254,5 +254,7 @@ NN 에서 loss function 의 미분가능성이 왜 그렇게 중요하게 다루
 좀더 자세히 설명하자면, NN 의 '학습' 은 attribute 가 Z^p, W 인 Learning Machine Y^p = F(Z^p, W) 이 가지는 오차 E^P = D(D^P, F(W, Z^P)) 을 최소화하는 W 을 구하는 문제라고 볼 수 있다. +
 이때 매 iteration 간, Loss 를 최소화 하는 방향을 Gradient 를 이용해 정의하고, Gradient 는 그 정의에 따라서, scala function 의 모든 차원에 대한 편미분을 수행한다. +
 따라서 loss function 이 W 에 대해 미분 가능한지가 학습 가능성 여부에 매우 중요한 factor 가 되는것.
-
++
 참고자료: http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf
+
+- hwan: Spring 에서 CRON 을 이용한 logic 의 실제 호출 여부, 주기 등을 검증하는 방법: link:https://bootcamptoprod.com/how-to-test-spring-cron-expressions-and-print-next-instances/[link]
