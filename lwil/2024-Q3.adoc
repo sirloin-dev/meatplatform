@@ -248,3 +248,11 @@ StampedLock < ReadWriteLock < ReentrantLock +
 읽기/쓰기가 섞여 있는 다수 상황에서는 StampedLock이 더 유리하다
 
 출처 : https://youtu.be/nTjW9A-TTtw?si=n7VINbqy_WJPt-rj
+
+- wongue: 요즘 퇴근 이후 시간에 NN(Neural Network) 기초 이론을 짬짬히 보면서 알게 된 사실. +
+NN 에서 loss function 의 미분가능성이 왜 그렇게 중요하게 다루어지는지에 대한 이유는, 바로 back-propagation 이 편미분이기 때문이다. +
+좀더 자세히 설명하자면, NN 의 '학습' 은 attribute 가 Z^p, W 인 Learning Machine Y^p = F(Z^p, W) 이 가지는 오차 E^P = D(D^P, F(W, Z^P)) 을 최소화하는 W 을 구하는 문제라고 볼 수 있다. +
+이때 매 iteration 간, Loss 를 최소화 하는 방향을 Gradient 를 이용해 정의하고, Gradient 는 그 정의에 따라서, scala function 의 모든 차원에 대한 편미분을 수행한다. +
+따라서 loss function 이 W 에 대해 미분 가능한지가 학습 가능성 여부에 매우 중요한 factor 가 되는것.
+
+참고자료: http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf
