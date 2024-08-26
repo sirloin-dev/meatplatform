@@ -258,3 +258,29 @@ NN 에서 loss function 의 미분가능성이 왜 그렇게 중요하게 다루
 참고자료: http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf
 
 - hwan: Spring 에서 CRON 을 이용한 logic 의 실제 호출 여부, 주기 등을 검증하는 방법: link:https://bootcamptoprod.com/how-to-test-spring-cron-expressions-and-print-next-instances/[link]
+
+
+[[section-202408-W4]]
+=== 2024년 08월 4주
+- hwan: `spring-data-jpa` 활용시 `AUTO_INCREMENT` 를 활용할 경우 다음처럼 id 값에 0 을 넣어주면 non-null 을 유지하면서도 `AUTO_INCREMENT` 특성을 써먹을 수 있다.
++
+[source, kotlin]
+----
+@Entity
+class MyJpaEntity(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0L
+)
+----
++
+이는 SimpleJpaRepository 의 call sequence 을 확인해 보면 알 수 있다.
++
+[source, kotlin]
+----
+1. SimpleJpaRepository.save(Entity entity)
+2. entityInformation.isNew(entity)
+3. JpaMetamodelEntityInformation.isNew() -> versionAttirubte 가 없어서 super.isNew()
+4. AbstractEntityInformation.isNew()
+----
+
+위 call sequence 의 `AbstractEntityInformation.isNew` 에서 new 를 판단하는 기준: Number 인 경우 값이 `0` 또는 `null`
