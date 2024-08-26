@@ -282,5 +282,6 @@ class MyJpaEntity(
 3. JpaMetamodelEntityInformation.isNew() -> versionAttirubte 가 없어서 super.isNew()
 4. AbstractEntityInformation.isNew()
 ----
-
++
 위 call sequence 의 `AbstractEntityInformation.isNew` 에서 new 를 판단하는 기준: Number 인 경우 값이 `0` 또는 `null`
+
