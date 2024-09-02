@@ -291,17 +291,35 @@ class MyJpaEntity(
 [[section-202409-W1]]
 === 2024년 09월 1주
 
-wongue: 이전에 이어 CNN 모델중 가장 유명한 모델인 LeNet-5 모델의 구조에 대해서 정리해봤다. +
-이 모델이 기존의 접근법과 다른 성능격차를 내며 hand-writtern charecter classification 문제의 milestone 이 될 수 있었던 이유는, 세 가지의 공학적 아이디어을 접목했던 이유가 크다. +
-1. local receptive Field (지역 수용영역의 도입) +
+- wongue: 이전에 이어 CNN 모델중 가장 유명한 모델인 LeNet-5 모델의 구조에 대해서 정리해봤다. +
+이 모델이 기존의 접근법과 다른 성능격차를 내며 hand-writtern charecter classification 문제의 milestone 이 될 수 있었던 이유는, 세 가지의 공학적 아이디어을 접목했던 이유가 크다.
++
+. local receptive Field (지역 수용영역의 도입) +
   이전의 document detection 에서의 모델 접근법에선는 FN(Fully-conectted nework) 를 주로 사용했다. +
   이 때 input layer 에서 주입되는 row-data, image 는, 데이터의 형식상 매우 중요한 의미를 가지는 topology 를 잃어버리고 Flattened 되어 사용되기 된다는 단점이 있었다. +
   이를 고양이과의 각막 세포의 구조를 모방하여 주변 pixel 의 input 만을 공유하는 local receptive Field 라는 개념을 차용해 topology 를 NN 에 전달 할 수 있었다. +
-2. shared weigth (가중치 공유) +
+. shared weigth (가중치 공유) +
   input 의 distortion 과 shift, scale 변경에 보다 강건하게 대응할 수 있는 방법 중 하나. +
   특정 feature 를 추출하는데 특화되어있는 kernel 을 input img 전역에 적용해, 특징을 추출한다. +
-3. spatial subsampling(공간적 서브셈플링) +
+. spatial subsampling(공간적 서브셈플링) +
   일단 Feature 가 한번 추출되면, NN 모델이 관련 위치정보에 대한 bias 를 가능한 빨리 잊어버리는게, distortion 과 shift, scale 변경에 보다 강건하게 대응할 수 있는 방법중 하나. +
-  row data 형식인 pixel 의 형태에서 추상화 벡터의 형태로 그 특징을 추출해 관리하도록 하는것이 핵심 아이디어였다. +
+  row data 형식인 pixel 의 형태에서 추상화 벡터의 형태로 그 특징을 추출해 관리하도록 하는것이 핵심 아이디어였다.
 
 위의 세 가지 아이디어를 기반으로 1998 년 기준 효과적인 output 을 내, 기념비적인 모델 구조로 이름이 남게 되었다.
+
+- hwan: 건강검진 항목을 고를 때
++
+. 하시면 좋습니다
+  * 5대암 검사: 위암, 대장암, 간암, 자궁경부암, 유방암 + 폐암
+  * 피검사, 소변검사: 빈혈, 간기능검사, 혈당, 고지혈증, 콜레스테롤
+  * 위내시경, 분변잠혈반응검사 -> 대장내시경, 간암: 복부 초음파
+  * 갑상선 초음파 -> 매년
+  * 심장: 관상동맥 CT -> 매년
+  * 폐 CT -> 매년
+  * 뇌 MRA 엔지오그래피(뇌동맥류검사, 고혈압위험군) -> 대략 5년
++
+. 하지마세요 
+  * 조영증강 없는 복부CT
+  * PET-CT: 암환자들 대상으로 하는 검진. 방사선량이 너무 높기 때문에 일반인은 안해도 됨.
+  * 사지 MRI: 기능에 문제 있기 전까지 찍지 마. 전문 병원 가서 찍어.
+  * 심장 초음파
