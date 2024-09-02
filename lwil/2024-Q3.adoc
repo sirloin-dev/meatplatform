@@ -299,7 +299,7 @@ wongue: 이전에 이어 CNN 모델중 가장 유명한 모델인 LeNet-5 모델
   이를 고양이과의 각막 세포의 구조를 모방하여 주변 pixel 의 input 만을 공유하는 local receptive Field 라는 개념을 차용해 topology 를 NN 에 전달 할 수 있었다. +
 2. shared weigth (가중치 공유) +
   input 의 distortion 과 shift, scale 변경에 보다 강건하게 대응할 수 있는 방법 중 하나. +
-  특정 feature 를 추출하는데 특화되어있는 kernel 을 input img 전역에 적용해, 특징을 추출한다.
+  특정 feature 를 추출하는데 특화되어있는 kernel 을 input img 전역에 적용해, 특징을 추출한다. +
 3. spatial subsampling(공간적 서브셈플링) +
   일단 Feature 가 한번 추출되면, NN 모델이 관련 위치정보에 대한 bias 를 가능한 빨리 잊어버리는게, distortion 과 shift, scale 변경에 보다 강건하게 대응할 수 있는 방법중 하나. +
   row data 형식인 pixel 의 형태에서 추상화 벡터의 형태로 그 특징을 추출해 관리하도록 하는것이 핵심 아이디어였다. +
